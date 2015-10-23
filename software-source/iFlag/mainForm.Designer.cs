@@ -69,6 +69,10 @@
             this.Controls.Add(this.optionsButton);
             this.Name = "mainForm";
             this.Text = "mainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.mainForm_FormClosing);
+            this.Load += new System.EventHandler(this.mainForm_Load);
+            this.Move += new System.EventHandler(this.mainForm_Move);
             this.optionsMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
