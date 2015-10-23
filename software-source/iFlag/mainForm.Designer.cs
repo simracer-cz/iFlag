@@ -41,7 +41,7 @@
             this.optionsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.alwaysOnTopMenuItem});
             this.optionsMenu.Name = "optionsMenu";
-            this.optionsMenu.Size = new System.Drawing.Size(150, 26);
+            this.optionsMenu.Size = new System.Drawing.Size(153, 26);
             // 
             // alwaysOnTopMenuItem
             // 
@@ -55,7 +55,7 @@
             // 
             // optionsButton
             // 
-            this.optionsButton.Location = new System.Drawing.Point(155, 108);
+            this.optionsButton.Location = new System.Drawing.Point(213, 12);
             this.optionsButton.Name = "optionsButton";
             this.optionsButton.Size = new System.Drawing.Size(59, 23);
             this.optionsButton.TabIndex = 1;
@@ -67,7 +67,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(281, 60);
             this.Controls.Add(this.optionsButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
