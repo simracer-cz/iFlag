@@ -35,6 +35,7 @@
             this.optionsButton = new System.Windows.Forms.Button();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.commLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.hardwareLight = new System.Windows.Forms.Label();
             this.optionsMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -85,11 +86,23 @@
             this.commLabel.Size = new System.Drawing.Size(78, 17);
             this.commLabel.Text = "Connecting...";
             // 
+            // hardwareLight
+            // 
+            this.hardwareLight.BackColor = System.Drawing.Color.Red;
+            this.hardwareLight.ForeColor = System.Drawing.Color.White;
+            this.hardwareLight.Location = new System.Drawing.Point(1, 39);
+            this.hardwareLight.Name = "hardwareLight";
+            this.hardwareLight.Size = new System.Drawing.Size(41, 20);
+            this.hardwareLight.TabIndex = 3;
+            this.hardwareLight.Text = "Matrix";
+            this.hardwareLight.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(281, 60);
+            this.Controls.Add(this.hardwareLight);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.optionsButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -116,6 +129,7 @@
         private System.Windows.Forms.Button optionsButton;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel commLabel;
+        private System.Windows.Forms.Label hardwareLight;
     }
 }
 
