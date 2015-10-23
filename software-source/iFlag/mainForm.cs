@@ -9,9 +9,20 @@ namespace iFlag
 {
     public partial class mainForm : Form
     {
+        // Version
+        const byte major = 0;
+        const byte minor = 50;
+        String edition = "";
+
         public mainForm()
         {
             InitializeComponent();
+
+            // Put version number into the window title
+            this.Text += " v" + major + "." + minor;
+
+            // And special edition string if applicable
+            if (edition != "") this.Text += edition;
 
             startCommunication();
         }
