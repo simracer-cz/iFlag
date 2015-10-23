@@ -36,6 +36,8 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.commLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.hardwareLight = new System.Windows.Forms.Label();
+            this.timeoutTimer = new System.Windows.Forms.Timer(this.components);
+            this.connectTimer = new System.Windows.Forms.Timer(this.components);
             this.optionsMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -97,6 +99,17 @@
             this.hardwareLight.Text = "Matrix";
             this.hardwareLight.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // timeoutTimer
+            // 
+            this.timeoutTimer.Interval = 5000;
+            this.timeoutTimer.Tick += new System.EventHandler(this.timeoutTimer_Tick);
+            // 
+            // connectTimer
+            // 
+            this.connectTimer.Enabled = true;
+            this.connectTimer.Interval = 3000;
+            this.connectTimer.Tick += new System.EventHandler(this.connectTimer_Tick);
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -130,6 +143,8 @@
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel commLabel;
         private System.Windows.Forms.Label hardwareLight;
+        private System.Windows.Forms.Timer timeoutTimer;
+        private System.Windows.Forms.Timer connectTimer;
     }
 }
 

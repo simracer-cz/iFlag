@@ -12,6 +12,8 @@ namespace iFlag
         public mainForm()
         {
             InitializeComponent();
+
+            startCommunication();
         }
 
         private void mainForm_Load(object sender, EventArgs e)
@@ -19,6 +21,7 @@ namespace iFlag
             this.Location = Settings.Default.WindowLocation;
             this.WindowState = Settings.Default.WindowState;
             this.TopMost = this.alwaysOnTopMenuItem.Checked = Settings.Default.WindowTopMost;
+            restoreCommunication();
         }
 
         private void mainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -26,6 +29,7 @@ namespace iFlag
             Settings.Default.WindowState = this.WindowState;
             if (this.WindowState == FormWindowState.Normal) Settings.Default.WindowLocation = this.Location;
             Settings.Default.WindowTopMost = this.TopMost;
+            storeCommunication();
             Settings.Default.Save();
         }
 
@@ -42,6 +46,24 @@ namespace iFlag
         private void alwaysOnTopMenuItem_CheckStateChanged(object sender, EventArgs e)
         {
             Settings.Default.WindowTopMost = this.TopMost = this.alwaysOnTopMenuItem.Checked;
+        }
+
+        // Visually indicates the serial connection alive state
+        // by changin color of the "Matrix" indicator
+        // in the lower left corner of the main form
+        //
+        private void indicateConnection()
+        {
+            if (deviceConnected)
+            {
+                hardwareLight.BackColor = Color.FromName("ForestGreen");
+                commLabel.Text = "v" + firmwareVersionMajor + "." + firmwareVersionMinor + " @" + port;
+            }
+            else
+            {
+                hardwareLight.BackColor = Color.FromName("Red");
+                commLabel.Text = "";
+            }
         }
     }
 }
