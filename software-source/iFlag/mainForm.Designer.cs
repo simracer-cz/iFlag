@@ -33,6 +33,7 @@
             this.optionsMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.alwaysOnTopMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsButton = new System.Windows.Forms.Button();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.optionsMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,7 +56,7 @@
             // 
             // optionsButton
             // 
-            this.optionsButton.Location = new System.Drawing.Point(213, 12);
+            this.optionsButton.Location = new System.Drawing.Point(214, 8);
             this.optionsButton.Name = "optionsButton";
             this.optionsButton.Size = new System.Drawing.Size(59, 23);
             this.optionsButton.TabIndex = 1;
@@ -63,11 +64,22 @@
             this.optionsButton.UseVisualStyleBackColor = true;
             this.optionsButton.Click += new System.EventHandler(this.optionsButton_Click);
             // 
+            // statusStrip
+            // 
+            this.statusStrip.Location = new System.Drawing.Point(0, 38);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.statusStrip.Size = new System.Drawing.Size(281, 22);
+            this.statusStrip.SizingGrip = false;
+            this.statusStrip.TabIndex = 2;
+            this.statusStrip.Text = "statusStrip";
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(281, 60);
+            this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.optionsButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -80,6 +92,7 @@
             this.Move += new System.EventHandler(this.mainForm_Move);
             this.optionsMenu.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -88,6 +101,7 @@
         private System.Windows.Forms.ContextMenuStrip optionsMenu;
         private System.Windows.Forms.ToolStripMenuItem alwaysOnTopMenuItem;
         private System.Windows.Forms.Button optionsButton;
+        private System.Windows.Forms.StatusStrip statusStrip;
     }
 }
 
