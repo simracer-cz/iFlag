@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
+using iFlag.Properties;
+
 namespace iFlag
 {
     public partial class mainForm : Form
