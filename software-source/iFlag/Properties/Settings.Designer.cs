@@ -46,5 +46,17 @@ namespace iFlag.Properties {
                 this["WindowState"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool WindowTopMost {
+            get {
+                return ((bool)(this["WindowTopMost"]));
+            }
+            set {
+                this["WindowTopMost"] = value;
+            }
+        }
     }
 }

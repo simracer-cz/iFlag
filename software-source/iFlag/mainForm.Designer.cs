@@ -50,7 +50,8 @@
             this.alwaysOnTopMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.alwaysOnTopMenuItem.Name = "alwaysOnTopMenuItem";
             this.alwaysOnTopMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.alwaysOnTopMenuItem.Text = "Always on top";
+            this.alwaysOnTopMenuItem.Text = "Always on Top";
+            this.alwaysOnTopMenuItem.CheckStateChanged += new System.EventHandler(this.alwaysOnTopMenuItem_CheckStateChanged);
             // 
             // optionsButton
             // 
