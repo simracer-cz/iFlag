@@ -34,7 +34,9 @@
             this.alwaysOnTopMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsButton = new System.Windows.Forms.Button();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.commLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.optionsMenu.SuspendLayout();
+            this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // optionsMenu
@@ -66,6 +68,8 @@
             // 
             // statusStrip
             // 
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.commLabel});
             this.statusStrip.Location = new System.Drawing.Point(0, 38);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -73,6 +77,13 @@
             this.statusStrip.SizingGrip = false;
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "statusStrip";
+            // 
+            // commLabel
+            // 
+            this.commLabel.Margin = new System.Windows.Forms.Padding(41, 3, 0, 2);
+            this.commLabel.Name = "commLabel";
+            this.commLabel.Size = new System.Drawing.Size(78, 17);
+            this.commLabel.Text = "Connecting...";
             // 
             // mainForm
             // 
@@ -91,6 +102,8 @@
             this.Load += new System.EventHandler(this.mainForm_Load);
             this.Move += new System.EventHandler(this.mainForm_Move);
             this.optionsMenu.ResumeLayout(false);
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -102,6 +115,7 @@
         private System.Windows.Forms.ToolStripMenuItem alwaysOnTopMenuItem;
         private System.Windows.Forms.Button optionsButton;
         private System.Windows.Forms.StatusStrip statusStrip;
+        private System.Windows.Forms.ToolStripStatusLabel commLabel;
     }
 }
 
