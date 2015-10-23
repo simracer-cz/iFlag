@@ -1,6 +1,6 @@
 ﻿namespace iFlag
 {
-    partial class FormMain
+    partial class mainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -61,14 +61,14 @@
             this.optionsButton.UseVisualStyleBackColor = true;
             this.optionsButton.Click += new System.EventHandler(this.optionsButton_Click);
             // 
-            // FormMain
+            // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
             this.Controls.Add(this.optionsButton);
-            this.Name = "FormMain";
-            this.Text = "FormMain";
+            this.Name = "mainForm";
+            this.Text = "mainForm";
             this.optionsMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 

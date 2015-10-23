@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace iFlag
 {
-    public partial class FormMain : Form
+    public partial class mainForm : Form
     {
-        public FormMain()
+        public mainForm()
         {
             InitializeComponent();
         }
