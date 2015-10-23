@@ -29,8 +29,27 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.optionsMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.alwaysOnTopMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsButton = new System.Windows.Forms.Button();
+            this.optionsMenu.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // optionsMenu
+            // 
+            this.optionsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.alwaysOnTopMenuItem});
+            this.optionsMenu.Name = "optionsMenu";
+            this.optionsMenu.Size = new System.Drawing.Size(150, 26);
+            // 
+            // alwaysOnTopMenuItem
+            // 
+            this.alwaysOnTopMenuItem.Checked = true;
+            this.alwaysOnTopMenuItem.CheckOnClick = true;
+            this.alwaysOnTopMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.alwaysOnTopMenuItem.Name = "alwaysOnTopMenuItem";
+            this.alwaysOnTopMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.alwaysOnTopMenuItem.Text = "Always on top";
             // 
             // optionsButton
             // 
@@ -40,6 +59,7 @@
             this.optionsButton.TabIndex = 1;
             this.optionsButton.Text = "Options";
             this.optionsButton.UseVisualStyleBackColor = true;
+            this.optionsButton.Click += new System.EventHandler(this.optionsButton_Click);
             // 
             // FormMain
             // 
@@ -49,12 +69,15 @@
             this.Controls.Add(this.optionsButton);
             this.Name = "FormMain";
             this.Text = "FormMain";
+            this.optionsMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
+        private System.Windows.Forms.ContextMenuStrip optionsMenu;
+        private System.Windows.Forms.ToolStripMenuItem alwaysOnTopMenuItem;
         private System.Windows.Forms.Button optionsButton;
     }
 }

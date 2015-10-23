@@ -15,5 +15,10 @@ namespace iFlag
         {
             InitializeComponent();
         }
+
+        private void optionsButton_Click(object sender, EventArgs e)
+        {
+            optionsMenu.Show(Cursor.Position);
+        }
     }
 }
