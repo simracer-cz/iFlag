@@ -38,6 +38,7 @@
             this.hardwareLight = new System.Windows.Forms.Label();
             this.timeoutTimer = new System.Windows.Forms.Timer(this.components);
             this.connectTimer = new System.Windows.Forms.Timer(this.components);
+            this.simLight = new System.Windows.Forms.Label();
             this.optionsMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -110,11 +111,23 @@
             this.connectTimer.Interval = 3000;
             this.connectTimer.Tick += new System.EventHandler(this.connectTimer_Tick);
             // 
+            // simLight
+            // 
+            this.simLight.BackColor = System.Drawing.Color.SteelBlue;
+            this.simLight.ForeColor = System.Drawing.Color.White;
+            this.simLight.Location = new System.Drawing.Point(227, 39);
+            this.simLight.Name = "simLight";
+            this.simLight.Size = new System.Drawing.Size(53, 20);
+            this.simLight.TabIndex = 4;
+            this.simLight.Text = "iRacing";
+            this.simLight.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(281, 60);
+            this.Controls.Add(this.simLight);
             this.Controls.Add(this.hardwareLight);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.optionsButton);
@@ -145,6 +158,7 @@
         private System.Windows.Forms.Label hardwareLight;
         private System.Windows.Forms.Timer timeoutTimer;
         private System.Windows.Forms.Timer connectTimer;
+        private System.Windows.Forms.Label simLight;
     }
 }
 

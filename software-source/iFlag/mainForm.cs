@@ -14,6 +14,8 @@ namespace iFlag
         const byte minor = 50;
         String edition = "";
 
+        bool simConnected;
+
         public mainForm()
         {
             InitializeComponent();
@@ -25,6 +27,7 @@ namespace iFlag
             if (edition != "") this.Text += edition;
 
             startCommunication();
+            startSDK();
         }
 
         private void mainForm_Load(object sender, EventArgs e)
@@ -75,6 +78,21 @@ namespace iFlag
                 hardwareLight.BackColor = Color.FromName("Red");
                 commLabel.Text = "";
             }
+
+            detectSDK();
+        }
+
+        private void indicateSimConnected(bool connected)
+        {
+            if (connected && !simConnected)
+            {
+                simLight.BackColor = Color.FromName("ForestGreen");
+            }
+            else if (!connected)
+            {
+                simLight.BackColor = Color.FromName("Red");
+            }
+            simConnected = connected;
         }
     }
 }

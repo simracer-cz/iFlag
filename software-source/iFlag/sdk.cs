@@ -11,5 +11,29 @@ namespace iFlag
         private void startSDK()
         {
         }
+
+        // Takes care of detecting a live iRacing session
+        //
+        private void detectSDK()
+        {
+            if (sdk.IsConnected() && sdk.VarHeaders.Count > 0)
+            {
+                indicateSimConnected(true);
+            }
+            else
+            {
+                indicateSimConnected(false);
+
+                if (sdk.IsInitialized)
+                {
+                    sdk.Shutdown();
+                }
+                else
+                {
+                    sdk.Startup();
+                }
+            }
+        }
+
     }
 }
