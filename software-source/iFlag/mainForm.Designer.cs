@@ -113,7 +113,7 @@
             // 
             // simLight
             // 
-            this.simLight.BackColor = System.Drawing.Color.SteelBlue;
+            this.simLight.BackColor = System.Drawing.Color.Red;
             this.simLight.ForeColor = System.Drawing.Color.White;
             this.simLight.Location = new System.Drawing.Point(227, 39);
             this.simLight.Name = "simLight";
