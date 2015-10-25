@@ -47,6 +47,25 @@ namespace iFlag
             return true;
         }
 
+
+                                                  // Takes a moment to ensure a system flag
+                                                  // gets displayed long enough before it gets overruled
+                                                  // by timeouts
+        private void showSystemFlag(uint flag = ORIENTATION_CHECK)
+        {
+            if (demoTimer.Enabled)
+            {
+                demoTimer.Stop();
+                demoTimer.Start();
+            }
+            if (updateTimer.Enabled)
+            {
+                updateTimer.Stop();
+                updateTimer.Start();
+            }
+            flagOnDisplay = NO_FLAG;
+            showFlag(flag);
+        }
                                                   // Flag patterns
 
 
