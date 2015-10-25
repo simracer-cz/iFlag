@@ -11,7 +11,7 @@ namespace iFlag
     {
         // Version
         const byte major = 0;
-        const byte minor = 51;
+        const byte minor = 52;
         String edition = "";
 
         bool simConnected;
