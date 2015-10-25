@@ -43,7 +43,7 @@ namespace iFlag
         public bool flag(string flagName, byte[, ,] pattern, byte[] color, bool speed)
         {
             Console.WriteLine(DateTime.Now + " " + flagName);
-            //flagToMatrix(flagName, pattern, color, speed);
+            flagToMatrix(flagName, pattern, color, speed);
             return true;
         }
 
