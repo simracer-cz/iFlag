@@ -20,6 +20,13 @@ namespace iFlag
         int serialTimeout = 1000;                 // Miliseconds of silence before dropping the comm port
         DateTime lastPingTime;                    // Timestamp of last received ping beacon
 
+                                                  // Serial commands, which match the v0.15 firmware
+                                                  // set of instructions, so don't change.
+        byte[] COMMAND_DRAW         = new byte[8] { 0xFF, 0xFF, 0xA0, 0x00, 0x00, 0x00, 0x00, 0x00 };
+        byte[] COMMAND_BLINK_FAST   = new byte[8] { 0xFF, 0xFF, 0xA1, 0x04, 0x00, 0x00, 0x00, 0x00 };
+        byte[] COMMAND_BLINK_SLOW   = new byte[8] { 0xFF, 0xFF, 0xA1, 0x02, 0x00, 0x00, 0x00, 0x00 };
+        byte[] COMMAND_NOBLINK      = new byte[8] { 0xFF, 0xFF, 0xA1, 0x00, 0x00, 0x00, 0x00, 0x00 };
+
                                                   // Builds a list of serial ports (`ports`)
                                                   // for the port probe to cycle over
                                                   // when searching for compatible device
@@ -143,6 +150,23 @@ namespace iFlag
                     Console.WriteLine(ex);
                 }
             }
+        }
+
+                                                  // Sends out 8-bit data packets through the serial connection
+        private void SP_SendData(byte[] data)
+        {
+            if (deviceConnected)
+                try
+                {
+                    SP.Write(data, 0, 8);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("SERIAL WRITE FAIL");
+                    Console.WriteLine(ex);
+                    deviceConnected = false;
+                    indicateConnection();
+                }
         }
 
                                                   // Timed connection attempts cycling the known
