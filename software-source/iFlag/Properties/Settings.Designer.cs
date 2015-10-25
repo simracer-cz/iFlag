@@ -70,5 +70,17 @@ namespace iFlag.Properties {
                 this["SerialPort"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public byte UsbConnector {
+            get {
+                return ((byte)(this["UsbConnector"]));
+            }
+            set {
+                this["UsbConnector"] = value;
+            }
+        }
     }
 }
