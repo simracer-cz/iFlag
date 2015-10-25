@@ -7,7 +7,7 @@ namespace iFlag
     {
         uint flagOnDisplay = 47652875;            // Currently displayed flag; initiated with "random" number
 
-        // Special purpose system-level "flags"
+                                                  // Special purpose system-level "flags"
         const uint NO_FLAG = 7777;
         const uint ORIENTATION_CHECK = 8888;
 
@@ -15,9 +15,9 @@ namespace iFlag
         {
         }
 
-        // Accepts a flag identifier number and matches it against a bank of known flags/signals
-        // Returns true if matched, false otherwise.
-        //
+                                                  // Accepts a flag identifier number
+                                                  // and matches it against a bank of known flags/signals
+                                                  // Returns true if matched, false otherwise.
         private bool showFlag(uint flagID)
         {
             if (flagID != flagOnDisplay)
@@ -28,9 +28,8 @@ namespace iFlag
             }
             return false;
         }
-        // Ruleset of "flags" or flag signals used for system purposes
-        // Returns true if flag matched, false otherwise.
-        //
+                                                  // Ruleset of "flags" or flag signals used for system purposes
+                                                  // Returns true if flag matched, false otherwise.
         private bool matchSystemFlags(uint flagID)
         {
             if (flagID == NO_FLAG) return flag("", SIMPLE_FLAG, new byte[] { COLOR_BLACK, COLOR_BLACK }, SLOW);
@@ -38,10 +37,9 @@ namespace iFlag
             else return false;
         }
 
-        // Pour the specified flag into the matrix awaiting boradcast
-        // logging the flags with time codes into console <- this might be eventually
-        // going into a log file in the future.
-        //
+                                                  // Pour the specified flag into the matrix awaiting boradcast
+                                                  // logging the flags with time codes into console
+                                                  // (^^ this might be eventually going into a file in the future.)
         public bool flag(string flagName, byte[, ,] pattern, byte[] color, bool speed)
         {
             Console.WriteLine(DateTime.Now + " " + flagName);
@@ -49,7 +47,8 @@ namespace iFlag
             return true;
         }
 
-        // Flag patterns
+                                                  // Flag patterns
+
 
         byte[, ,] SIMPLE_FLAG = new byte[,,] { {
           { 0, 0, 0, 0, 0, 0, 0, 0 },
