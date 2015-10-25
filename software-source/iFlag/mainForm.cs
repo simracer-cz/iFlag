@@ -28,6 +28,8 @@ namespace iFlag
 
             startCommunication();
             startSDK();
+            startMatrix();
+            startFlags();
         }
 
         private void mainForm_Load(object sender, EventArgs e)
