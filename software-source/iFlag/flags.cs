@@ -9,6 +9,7 @@ namespace iFlag
 
         // Special purpose system-level "flags"
         const uint NO_FLAG = 7777;
+        const uint ORIENTATION_CHECK = 8888;
 
         private void startFlags()
         {
@@ -33,6 +34,7 @@ namespace iFlag
         private bool matchSystemFlags(uint flagID)
         {
             if (flagID == NO_FLAG) return flag("", SIMPLE_FLAG, new byte[] { COLOR_BLACK, COLOR_BLACK }, SLOW);
+            else if (flagID == ORIENTATION_CHECK) return flag("Letter \"F\" check!", F_FLAG, new byte[] { COLOR_BLACK, COLOR_GREEN }, SLOW);
             else return false;
         }
 
@@ -59,5 +61,17 @@ namespace iFlag
           { 0, 0, 0, 0, 0, 0, 0, 0 },
           { 0, 0, 0, 0, 0, 0, 0, 0 }
         } };
+
+        byte[, ,] F_FLAG = new byte[,,] { {
+          { 1, 1, 1, 1, 1, 1, 1, 1 },
+          { 1, 1, 0, 0, 0, 0, 1, 1 },
+          { 1, 1, 0, 1, 1, 1, 1, 1 },
+          { 1, 1, 0, 0, 0, 0, 1, 1 },
+          { 1, 1, 0, 1, 1, 1, 1, 1 },
+          { 1, 1, 0, 1, 1, 1, 1, 1 },
+          { 1, 1, 0, 1, 1, 1, 1, 1 },
+          { 1, 1, 1, 1, 1, 1, 1, 1 }
+        } };
+
     }
 }
