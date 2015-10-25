@@ -67,8 +67,6 @@ namespace iFlag
                             matrixY = 8 - x - 1;
                             break;
                     }
-                    matrixX = x;
-                    matrixY = y;
                     matrix[0, x, y] = color[pattern[0, matrixX, matrixY]];
                                                   // For single-frame patterns the second frame of the matrix
                                                   // is a clone of the first one.
