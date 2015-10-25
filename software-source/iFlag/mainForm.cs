@@ -102,7 +102,7 @@ namespace iFlag
             {
                 simLight.BackColor = Color.FromName("ForestGreen");
             }
-            else if (!connected)
+            else if (!connected && simConnected)
             {
                 simLight.BackColor = Color.FromName("Red");
             }
