@@ -9,26 +9,29 @@ namespace iFlag
 {
     public partial class mainForm : Form
     {
-        static SerialPort SP;
-        String[] ports;
-        String port;
-        byte tryPortIndex;
-        byte firmwareVersionMajor;
-        byte firmwareVersionMinor;
-        bool deviceConnected;
-        int serialTimeout = 1000; // Miliseconds of silence before dropping the comm port
-        DateTime lastPingTime;
+        static SerialPort SP;                     // Serial port IO instance
+        String[] ports;                           // List of known ports to scan through for device
+        String port;                              // Currently open serial port name
+        byte tryPortIndex;                        // Index in list of `ports¨
 
-        // Builds a list of serial ports (`ports`) for the port probe to cycle over
-        // when searching for compatible device
-        //
+        bool deviceConnected;                     // Well, whether device is connected or not
+        byte firmwareVersionMajor;                // Major firmware version of the device connected
+        byte firmwareVersionMinor;                // Minor version of the same
+        int serialTimeout = 1000;                 // Miliseconds of silence before dropping the comm port
+        DateTime lastPingTime;                    // Timestamp of last received ping beacon
+
+                                                  // Builds a list of serial ports (`ports`)
+                                                  // for the port probe to cycle over
+                                                  // when searching for compatible device
         private void startCommunication()
         {
             string[] portsList = SerialPort.GetPortNames();
             if (Settings.Default.SerialPort != "")
             {
-                // If we know the port from last time, put it first on the list.
-                // This makes second and subsequent connections faster than the very first one.
+                                                  // If we know the port from last time,
+                                                  // put it first on the list. This makes second
+                                                  // and subsequent connections faster
+                                                  // than the very first one.
                 ports = new string[portsList.Length + 1];
                 ports[0] = Settings.Default.SerialPort;
                 Array.Copy(portsList, 0, ports, 1, portsList.Length);
@@ -38,31 +41,29 @@ namespace iFlag
                 ports = portsList;
             }
 
-            // Make first attempt now, the rest are timer-launched
+                                                  // Make first attempt now, the rest are timer-launched
             attemptConnection();
         }
 
-        // Stores the currently used port into settings for next time
+                                                  // Stores the currently used port into settings for next time
         private void storeCommunication()
         {
             Settings.Default.SerialPort = port;
         }
 
-        // Does nothing at this moment
         private void restoreCommunication()
         {
         }
 
-        // Probes a serial port for a communicative USB device
-        // to eventually estzablish a working connection.
-        //
+                                                  // Probes a serial port for a communicative USB device
+                                                  // to eventually estzablish a working connection.
         private void attemptConnection()
         {
             if (!deviceConnected)
             {
                 timeoutTimer.Enabled = false;
 
-                // Cycle over the ports list eventually
+                                                  // Cycle over the ports list eventually
                 if (tryPortIndex >= ports.Length)
                 {
                     commLabel.Text = "No device.";
@@ -77,8 +78,10 @@ namespace iFlag
                     SP = new SerialPort(port, 9600, Parity.None, 8);
                     SP.Open();
 
-                    // If the device is present and physically connected, it pings the host software in regular intervals
-                    // and if those data are received, the connection will be established and held.
+                                                  // If the device is present and physically connected,
+                                                  // it pings the host software in regular intervals
+                                                  // and if those data are received, the connection
+                                                  // will be established and held.
                     SP.DataReceived += SP_DataReceived;
                 }
                 catch (Exception ex)
@@ -86,7 +89,8 @@ namespace iFlag
                     Console.WriteLine(ex);
                 }
 
-                // In case the device doesn't respond in time, prepare to try the next port in the list
+                                                  // In case the device doesn't respond in time,
+                                                  // prepare to try the next port in the list
                 tryPortIndex++;
             }
             else
@@ -96,9 +100,9 @@ namespace iFlag
             }
         }
 
-        // Ingress and digest serial data coming from the USB device.
-        // This one is a simple device, so only ping packets are arriving.
-        //
+                                                  // Ingress and digest serial data coming from the USB device.
+                                                  // This one is a simple device, so only ping packets
+                                                  // are arriving.
         private void SP_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
             while (SP.IsOpen && SP.BytesToRead >= 8)
@@ -117,9 +121,9 @@ namespace iFlag
                     {
                         switch (command)
                         {
-                            case 0xB0: // ping beacon
-                                // In order to not try to communicate with other unrelated
-                                // devices on the serial bus device identifier is checked here.
+                            case 0xB0:            // ping beacon
+                                                  // In order to not try to communicate with other unrelated
+                                                  // devices on the serial bus device identifier is checked here.
                                 if (value == 0xD2)
                                 {
                                     if (!deviceConnected)
@@ -141,15 +145,14 @@ namespace iFlag
             }
         }
 
-        // Timed connection attempts cycling the known serial ports list.
-        //
+                                                  // Timed connection attempts cycling the known
+                                                  // serial ports list.
         private void connectTimer_Tick(object sender, EventArgs e)
         {
             attemptConnection();
         }
 
-        // If connection gets broken for more than 1 second, drop it.
-        //
+                                                  // If connection gets broken for more than 1 second, drop it.
         private void timeoutTimer_Tick(object sender, EventArgs e)
         {
             if (lastPingTime.AddMilliseconds(serialTimeout).CompareTo(DateTime.Now) < 0)
