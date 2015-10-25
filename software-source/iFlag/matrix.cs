@@ -8,6 +8,9 @@ namespace iFlag
     public partial class mainForm : Form
     {
         byte[, ,] matrix = new byte[2, 8, 8];     // The physical matrix buffer to hold the flag in
+        bool blinkSpeed;                          // Blinking speed of the pattern
+        const bool SLOW = false;                  // Symbol of slow blinking
+        const bool FAST = true;                   // Symbol of fast blinking
 
                                                   // On what side of the matrix does the Arduino
                                                   // USB connector sticks out. Persistent user option.
