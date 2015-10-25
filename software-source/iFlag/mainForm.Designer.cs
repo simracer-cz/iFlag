@@ -32,6 +32,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
             this.optionsMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.alwaysOnTopMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.connectorMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.connectorTopMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.connectorLeftMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.connectorRightMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.connectorBottomMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsButton = new System.Windows.Forms.Button();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.commLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -46,9 +51,10 @@
             // optionsMenu
             // 
             this.optionsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.alwaysOnTopMenuItem});
+            this.alwaysOnTopMenuItem,
+            this.connectorMenuItem});
             this.optionsMenu.Name = "optionsMenu";
-            this.optionsMenu.Size = new System.Drawing.Size(153, 26);
+            this.optionsMenu.Size = new System.Drawing.Size(155, 92);
             // 
             // alwaysOnTopMenuItem
             // 
@@ -59,6 +65,51 @@
             this.alwaysOnTopMenuItem.Size = new System.Drawing.Size(152, 22);
             this.alwaysOnTopMenuItem.Text = "Always on Top";
             this.alwaysOnTopMenuItem.CheckStateChanged += new System.EventHandler(this.alwaysOnTopMenuItem_CheckStateChanged);
+            // 
+            // 
+            // connectorMenuItem
+            // 
+            this.connectorMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.connectorTopMenuItem,
+            this.connectorLeftMenuItem,
+            this.connectorRightMenuItem,
+            this.connectorBottomMenuItem});
+            this.connectorMenuItem.Name = "connectorMenuItem";
+            this.connectorMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.connectorMenuItem.Text = "USB Connector";
+            this.connectorMenuItem.ToolTipText = "Configure here how is your Arduino unit assembly oriented";
+            // 
+            // connectorTopMenuItem
+            // 
+            this.connectorTopMenuItem.CheckOnClick = true;
+            this.connectorTopMenuItem.Name = "connectorTopMenuItem";
+            this.connectorTopMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.connectorTopMenuItem.Text = "Top";
+            this.connectorTopMenuItem.Click += new System.EventHandler(this.connectorMenuItem_Click);
+            // 
+            // connectorLeftMenuItem
+            // 
+            this.connectorLeftMenuItem.CheckOnClick = true;
+            this.connectorLeftMenuItem.Name = "connectorLeftMenuItem";
+            this.connectorLeftMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.connectorLeftMenuItem.Text = "Left";
+            this.connectorLeftMenuItem.Click += new System.EventHandler(this.connectorMenuItem_Click);
+            // 
+            // connectorRightMenuItem
+            // 
+            this.connectorRightMenuItem.CheckOnClick = true;
+            this.connectorRightMenuItem.Name = "connectorRightMenuItem";
+            this.connectorRightMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.connectorRightMenuItem.Text = "Right";
+            this.connectorRightMenuItem.Click += new System.EventHandler(this.connectorMenuItem_Click);
+            // 
+            // connectorBottomMenuItem
+            // 
+            this.connectorBottomMenuItem.CheckOnClick = true;
+            this.connectorBottomMenuItem.Name = "connectorBottomMenuItem";
+            this.connectorBottomMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.connectorBottomMenuItem.Text = "Bottom";
+            this.connectorBottomMenuItem.Click += new System.EventHandler(this.connectorMenuItem_Click);
             // 
             // optionsButton
             // 
@@ -159,6 +210,11 @@
         private System.Windows.Forms.Timer timeoutTimer;
         private System.Windows.Forms.Timer connectTimer;
         private System.Windows.Forms.Label simLight;
+        private System.Windows.Forms.ToolStripMenuItem connectorMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem connectorTopMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem connectorLeftMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem connectorRightMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem connectorBottomMenuItem;
     }
 }
 

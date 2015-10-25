@@ -37,6 +37,16 @@ namespace iFlag
             this.Location = Settings.Default.WindowLocation;
             this.WindowState = Settings.Default.WindowState;
             this.TopMost = this.alwaysOnTopMenuItem.Checked = Settings.Default.WindowTopMost;
+
+            connectorSide = Settings.Default.UsbConnector;
+            switch (connectorSide)
+            {
+                case 0x00: connectorBottomMenuItem.Checked = true; break;
+                case 0x01: connectorRightMenuItem.Checked = true; break;
+                case 0x02: connectorLeftMenuItem.Checked = true; break;
+                case 0x03: connectorTopMenuItem.Checked = true; break;
+            }
+
             restoreCommunication();
         }
 
@@ -46,6 +56,7 @@ namespace iFlag
             Settings.Default.WindowState = this.WindowState;
             if (this.WindowState == FormWindowState.Normal) Settings.Default.WindowLocation = this.Location;
             Settings.Default.WindowTopMost = this.TopMost;
+            Settings.Default.UsbConnector = connectorSide;
             storeCommunication();
             Settings.Default.Save();
         }
@@ -96,6 +107,26 @@ namespace iFlag
                 simLight.BackColor = Color.FromName("Red");
             }
             simConnected = connected;
+        }
+
+        private void connectorMenuItem_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine(((ToolStripMenuItem)sender).Name);
+            switch (((ToolStripMenuItem)sender).Name)
+            {
+                case "connectorBottomMenuItem": connectorSide = 0x00; break;
+                case "connectorRightMenuItem":  connectorSide = 0x01; break;
+                case "connectorLeftMenuItem":   connectorSide = 0x02; break;
+                case "connectorTopMenuItem":    connectorSide = 0x03; break;
+            }
+            connectorTopMenuItem.Checked = false;
+            connectorLeftMenuItem.Checked = false;
+            connectorRightMenuItem.Checked = false;
+            connectorBottomMenuItem.Checked = false;
+            ((ToolStripMenuItem)sender).Checked = true;
+
+            Settings.Default.UsbConnector = connectorSide;
+            showSystemFlag(ORIENTATION_CHECK);
         }
     }
 }
