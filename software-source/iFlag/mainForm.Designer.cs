@@ -82,8 +82,8 @@
             this.connectorRightMenuItem,
             this.connectorBottomMenuItem});
             this.connectorMenuItem.Name = "connectorMenuItem";
-            this.connectorMenuItem.Text = "USB facing...";
             this.connectorMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.connectorMenuItem.Text = "USB Connector";
             // 
             // connectorTopMenuItem
             // 
@@ -154,8 +154,8 @@
             this.demoMenuItem.CheckOnClick = true;
             this.demoMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.demoMenuItem.Name = "demoMenuItem";
-            this.demoMenuItem.Text = "Demo mode";
             this.demoMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.demoMenuItem.Text = "Demo Mode";
             this.demoMenuItem.ToolTipText = "Only when not in iRacing session. Cycles some of the flags for amusement";
             this.demoMenuItem.CheckStateChanged += new System.EventHandler(this.demoMenuItem_CheckStateChanged);
             // 
