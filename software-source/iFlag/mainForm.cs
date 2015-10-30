@@ -18,6 +18,8 @@ namespace iFlag
                                                   // which features in the window title
         String edition = "";
 
+        string repositoryURL = "https://github.com/simracer-cz/iFlag";
+
         bool simConnected;
         bool greeted;                             // Whether the startup greeting has happened
 
@@ -83,6 +85,12 @@ namespace iFlag
         private void optionsButton_Click(object sender, EventArgs e)
         {
             optionsMenu.Show(Cursor.Position);
+        }
+
+
+        private void gitMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(repositoryURL);
         }
 
         private void demoTimer_Tick(object sender, EventArgs e)

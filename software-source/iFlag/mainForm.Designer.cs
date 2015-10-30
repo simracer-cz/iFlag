@@ -43,6 +43,7 @@
             this.alwaysOnTopMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsMenuSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.appMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsButton = new System.Windows.Forms.Button();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.commLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -65,10 +66,11 @@
             this.demoMenuItem,
             this.alwaysOnTopMenuItem,
             this.optionsMenuSeparator,
-            this.appMenuItem});
+            this.appMenuItem,
+            this.gitMenuItem});
             this.optionsMenu.Name = "optionsMenu";
             this.optionsMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.optionsMenu.Size = new System.Drawing.Size(175, 186);
+            this.optionsMenu.Size = new System.Drawing.Size(180, 186);
             // 
             // connectorMenuItem
             // 
@@ -178,6 +180,15 @@
             this.appMenuItem.Name = "appMenuItem";
             this.appMenuItem.Size = new System.Drawing.Size(174, 22);
             this.appMenuItem.Text = "iFlag vX.Y";
+            // 
+            // gitMenuItem
+            // 
+            this.gitMenuItem.Image = global::iFlag.Properties.Resources.githubLogo;
+            this.gitMenuItem.Name = "gitMenuItem";
+            this.gitMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.gitMenuItem.Text = "a Free Open Source.";
+            this.gitMenuItem.ToolTipText = "Suggest, collaborate, improve!";
+            this.gitMenuItem.Click += new System.EventHandler(this.gitMenuItem_Click);
             // 
             // optionsButton
             // 
@@ -311,6 +322,7 @@
         private System.Windows.Forms.Label flagLabel;
         private System.Windows.Forms.ToolStripMenuItem appMenuItem;
         private System.Windows.Forms.ToolStripSeparator optionsMenuSeparator;
+        private System.Windows.Forms.ToolStripMenuItem gitMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modulesMenuItem;
         private System.Windows.Forms.ToolStripMenuItem flagsModuleMenuItem;
         private System.Windows.Forms.ToolStripMenuItem startLightsModuleMenuItem;
