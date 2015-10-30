@@ -65,8 +65,8 @@
             this.optionsMenuSeparator,
             this.appMenuItem});
             this.optionsMenu.Name = "optionsMenu";
-            this.optionsMenu.Size = new System.Drawing.Size(155, 92);
-            // 
+            this.optionsMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.optionsMenu.Size = new System.Drawing.Size(175, 186);
             // 
             // connectorMenuItem
             // 
@@ -173,9 +173,9 @@
             // 
             // optionsButton
             // 
-            this.optionsButton.Location = new System.Drawing.Point(214, 8);
+            this.optionsButton.Location = new System.Drawing.Point(0, 0);
             this.optionsButton.Name = "optionsButton";
-            this.optionsButton.Size = new System.Drawing.Size(59, 23);
+            this.optionsButton.Size = new System.Drawing.Size(55, 39);
             this.optionsButton.TabIndex = 1;
             this.optionsButton.Text = "Options";
             this.optionsButton.UseVisualStyleBackColor = true;
@@ -195,7 +195,7 @@
             // 
             // commLabel
             // 
-            this.commLabel.Margin = new System.Windows.Forms.Padding(41, 3, 0, 2);
+            this.commLabel.Margin = new System.Windows.Forms.Padding(53, 3, 0, 2);
             this.commLabel.Name = "commLabel";
             this.commLabel.Size = new System.Drawing.Size(78, 17);
             this.commLabel.Text = "Connecting...";
@@ -206,7 +206,7 @@
             this.hardwareLight.ForeColor = System.Drawing.Color.White;
             this.hardwareLight.Location = new System.Drawing.Point(1, 39);
             this.hardwareLight.Name = "hardwareLight";
-            this.hardwareLight.Size = new System.Drawing.Size(41, 20);
+            this.hardwareLight.Size = new System.Drawing.Size(53, 20);
             this.hardwareLight.TabIndex = 3;
             this.hardwareLight.Text = "Matrix";
             this.hardwareLight.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
