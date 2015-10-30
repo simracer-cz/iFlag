@@ -44,6 +44,7 @@
             this.optionsMenuSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.appMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.forumThreadMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsButton = new System.Windows.Forms.Button();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.commLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -67,7 +68,8 @@
             this.alwaysOnTopMenuItem,
             this.optionsMenuSeparator,
             this.appMenuItem,
-            this.gitMenuItem});
+            this.gitMenuItem,
+            this.forumThreadMenuItem});
             this.optionsMenu.Name = "optionsMenu";
             this.optionsMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.optionsMenu.Size = new System.Drawing.Size(180, 186);
@@ -80,8 +82,8 @@
             this.connectorRightMenuItem,
             this.connectorBottomMenuItem});
             this.connectorMenuItem.Name = "connectorMenuItem";
-            this.connectorMenuItem.Size = new System.Drawing.Size(174, 22);
             this.connectorMenuItem.Text = "USB facing...";
+            this.connectorMenuItem.Size = new System.Drawing.Size(179, 22);
             // 
             // connectorTopMenuItem
             // 
@@ -125,7 +127,7 @@
             this.flagsModuleMenuItem,
             this.startLightsModuleMenuItem});
             this.modulesMenuItem.Name = "modulesMenuItem";
-            this.modulesMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.modulesMenuItem.Size = new System.Drawing.Size(179, 22);
             this.modulesMenuItem.Text = "Flag Modules";
             // 
             // flagsModuleMenuItem
@@ -134,7 +136,7 @@
             this.flagsModuleMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.flagsModuleMenuItem.Enabled = false;
             this.flagsModuleMenuItem.Name = "flagsModuleMenuItem";
-            this.flagsModuleMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.flagsModuleMenuItem.Size = new System.Drawing.Size(138, 22);
             this.flagsModuleMenuItem.Text = "Racing flags";
             this.flagsModuleMenuItem.ToolTipText = "Show racing flags. Mandatory";
             // 
@@ -142,7 +144,7 @@
             // 
             this.startLightsModuleMenuItem.CheckOnClick = true;
             this.startLightsModuleMenuItem.Name = "startLightsModuleMenuItem";
-            this.startLightsModuleMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.startLightsModuleMenuItem.Size = new System.Drawing.Size(138, 22);
             this.startLightsModuleMenuItem.Text = "Start lights";
             this.startLightsModuleMenuItem.ToolTipText = "Show start lights during start of a race *EXPERIMENTAL";
             // 
@@ -152,8 +154,8 @@
             this.demoMenuItem.CheckOnClick = true;
             this.demoMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.demoMenuItem.Name = "demoMenuItem";
-            this.demoMenuItem.Size = new System.Drawing.Size(174, 22);
             this.demoMenuItem.Text = "Demo mode";
+            this.demoMenuItem.Size = new System.Drawing.Size(179, 22);
             this.demoMenuItem.ToolTipText = "Only when not in iRacing session. Cycles some of the flags for amusement";
             this.demoMenuItem.CheckStateChanged += new System.EventHandler(this.demoMenuItem_CheckStateChanged);
             // 
@@ -163,7 +165,7 @@
             this.alwaysOnTopMenuItem.CheckOnClick = true;
             this.alwaysOnTopMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.alwaysOnTopMenuItem.Name = "alwaysOnTopMenuItem";
-            this.alwaysOnTopMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.alwaysOnTopMenuItem.Size = new System.Drawing.Size(179, 22);
             this.alwaysOnTopMenuItem.Text = "Always on Top";
             this.alwaysOnTopMenuItem.ToolTipText = "Keep this window on top of other windows";
             this.alwaysOnTopMenuItem.CheckStateChanged += new System.EventHandler(this.alwaysOnTopMenuItem_CheckStateChanged);
@@ -171,14 +173,14 @@
             // optionsMenuSeparator
             // 
             this.optionsMenuSeparator.Name = "optionsMenuSeparator";
-            this.optionsMenuSeparator.Size = new System.Drawing.Size(171, 6);
+            this.optionsMenuSeparator.Size = new System.Drawing.Size(176, 6);
             // 
             // appMenuItem
             // 
             this.appMenuItem.Enabled = false;
             this.appMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.appMenuItem.Name = "appMenuItem";
-            this.appMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.appMenuItem.Size = new System.Drawing.Size(179, 22);
             this.appMenuItem.Text = "iFlag vX.Y";
             // 
             // gitMenuItem
@@ -189,6 +191,15 @@
             this.gitMenuItem.Text = "a Free Open Source.";
             this.gitMenuItem.ToolTipText = "Suggest, collaborate, improve!";
             this.gitMenuItem.Click += new System.EventHandler(this.gitMenuItem_Click);
+            // 
+            // forumThreadMenuItem
+            // 
+            this.forumThreadMenuItem.Enabled = false;
+            this.forumThreadMenuItem.Image = global::iFlag.Properties.Resources.iRacingLogo;
+            this.forumThreadMenuItem.Name = "forumThreadMenuItem";
+            this.forumThreadMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.forumThreadMenuItem.Text = "Forum Thread";
+            this.forumThreadMenuItem.ToolTipText = "Sorry, not yet..";
             // 
             // optionsButton
             // 
@@ -322,6 +333,7 @@
         private System.Windows.Forms.Label flagLabel;
         private System.Windows.Forms.ToolStripMenuItem appMenuItem;
         private System.Windows.Forms.ToolStripSeparator optionsMenuSeparator;
+        private System.Windows.Forms.ToolStripMenuItem forumThreadMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gitMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modulesMenuItem;
         private System.Windows.Forms.ToolStripMenuItem flagsModuleMenuItem;

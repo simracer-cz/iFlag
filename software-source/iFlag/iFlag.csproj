@@ -99,6 +99,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\iRacingLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\githubLogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
