@@ -58,6 +58,7 @@
             // optionsMenu
             // 
             this.optionsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.connectorMenuItem,
             this.modulesMenuItem,
             this.demoMenuItem,
             this.alwaysOnTopMenuItem,
@@ -75,40 +76,43 @@
             this.connectorRightMenuItem,
             this.connectorBottomMenuItem});
             this.connectorMenuItem.Name = "connectorMenuItem";
-            this.connectorMenuItem.Size = new System.Drawing.Size(154, 22);
-            this.connectorMenuItem.Text = "USB Connector";
-            this.connectorMenuItem.ToolTipText = "Configure here how is your Arduino unit assembly oriented";
+            this.connectorMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.connectorMenuItem.Text = "USB facing...";
             // 
             // connectorTopMenuItem
             // 
             this.connectorTopMenuItem.CheckOnClick = true;
             this.connectorTopMenuItem.Name = "connectorTopMenuItem";
-            this.connectorTopMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.connectorTopMenuItem.Text = "Top";
+            this.connectorTopMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.connectorTopMenuItem.Text = "Up";
+            this.connectorTopMenuItem.ToolTipText = "Choose when the USB connector of your Arduino faces UP";
             this.connectorTopMenuItem.Click += new System.EventHandler(this.connectorMenuItem_Click);
             // 
             // connectorLeftMenuItem
             // 
             this.connectorLeftMenuItem.CheckOnClick = true;
             this.connectorLeftMenuItem.Name = "connectorLeftMenuItem";
-            this.connectorLeftMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.connectorLeftMenuItem.Size = new System.Drawing.Size(105, 22);
             this.connectorLeftMenuItem.Text = "Left";
+            this.connectorLeftMenuItem.ToolTipText = "Choose when the USB connector of your Arduino faces LEFT";
             this.connectorLeftMenuItem.Click += new System.EventHandler(this.connectorMenuItem_Click);
             // 
             // connectorRightMenuItem
             // 
             this.connectorRightMenuItem.CheckOnClick = true;
             this.connectorRightMenuItem.Name = "connectorRightMenuItem";
-            this.connectorRightMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.connectorRightMenuItem.Size = new System.Drawing.Size(105, 22);
             this.connectorRightMenuItem.Text = "Right";
+            this.connectorRightMenuItem.ToolTipText = "Choose when the USB connector of your Arduino faces RIGHT";
             this.connectorRightMenuItem.Click += new System.EventHandler(this.connectorMenuItem_Click);
             // 
             // connectorBottomMenuItem
             // 
             this.connectorBottomMenuItem.CheckOnClick = true;
             this.connectorBottomMenuItem.Name = "connectorBottomMenuItem";
-            this.connectorBottomMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.connectorBottomMenuItem.Text = "Bottom";
+            this.connectorBottomMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.connectorBottomMenuItem.Text = "Down";
+            this.connectorBottomMenuItem.ToolTipText = "Choose when the USB connector of your Arduino faces DOWN";
             this.connectorBottomMenuItem.Click += new System.EventHandler(this.connectorMenuItem_Click);
             // 
             // modulesMenuItem
