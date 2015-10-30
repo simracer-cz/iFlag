@@ -8,6 +8,7 @@ namespace iFlag
         uint flagOnDisplay = 47652875;            // Currently displayed flag; initiated with "random" number
 
                                                   // Special purpose system-level "flags"
+        const uint STARTUP_GREETING = 6666;
         const uint NO_FLAG = 7777;
         const uint ORIENTATION_CHECK = 8888;
 
@@ -34,6 +35,7 @@ namespace iFlag
         {
             if (flagID == NO_FLAG) return flag("", SIMPLE_FLAG, new byte[] { COLOR_BLACK, COLOR_BLACK }, SLOW);
             else if (flagID == ORIENTATION_CHECK) return flag("Letter \"F\" check!", F_FLAG, new byte[] { COLOR_BLACK, COLOR_GREEN }, SLOW);
+            else if (flagID == STARTUP_GREETING) return flag("Let's go!", F_FLAG, new byte[] { COLOR_BLACK, COLOR_GREEN }, SLOW);
             else return false;
         }
 

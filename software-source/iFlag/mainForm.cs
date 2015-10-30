@@ -15,6 +15,7 @@ namespace iFlag
         String edition = "";
 
         bool simConnected;
+        bool greeted;                             // Whether the startup greeting has happened
 
         public mainForm()
         {
@@ -84,6 +85,11 @@ namespace iFlag
         {
             if (deviceConnected)
             {
+                if (!greeted)
+                {
+                    greeted = true;
+                    showSystemFlag(STARTUP_GREETING);
+                }
                 hardwareLight.BackColor = Color.FromName("ForestGreen");
                 commLabel.Text = "v" + firmwareVersionMajor + "." + firmwareVersionMinor + " @" + port;
             }
