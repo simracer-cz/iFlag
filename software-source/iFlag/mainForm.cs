@@ -21,11 +21,8 @@ namespace iFlag
         {
             InitializeComponent();
 
-            // Put version number into the window title
-            this.Text += " v" + major + "." + minor;
-
-            // And special edition string if applicable
             if (edition != "") this.Text += edition;
+            flagLabel.Text = appMenuItem.Text = "iFlag v" + major + "." + minor;
 
             startCommunication();
             startSDK();

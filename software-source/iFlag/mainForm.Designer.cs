@@ -37,6 +37,8 @@
             this.connectorLeftMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectorRightMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectorBottomMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionsMenuSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.appMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsButton = new System.Windows.Forms.Button();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.commLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -53,7 +55,7 @@
             // 
             this.optionsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.alwaysOnTopMenuItem,
-            this.connectorMenuItem});
+            this.appMenuItem});
             this.optionsMenu.Name = "optionsMenu";
             this.optionsMenu.Size = new System.Drawing.Size(155, 92);
             // 
@@ -111,6 +113,14 @@
             this.connectorBottomMenuItem.Size = new System.Drawing.Size(152, 22);
             this.connectorBottomMenuItem.Text = "Bottom";
             this.connectorBottomMenuItem.Click += new System.EventHandler(this.connectorMenuItem_Click);
+            // 
+            // appMenuItem
+            // 
+            this.appMenuItem.Enabled = false;
+            this.appMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.appMenuItem.Name = "appMenuItem";
+            this.appMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.appMenuItem.Text = "iFlag vX.Y";
             // 
             // optionsButton
             // 
@@ -228,6 +238,8 @@
         private System.Windows.Forms.ToolStripMenuItem connectorRightMenuItem;
         private System.Windows.Forms.ToolStripMenuItem connectorBottomMenuItem;
         private System.Windows.Forms.Label flagLabel;
+        private System.Windows.Forms.ToolStripMenuItem appMenuItem;
+        private System.Windows.Forms.ToolStripSeparator optionsMenuSeparator;
     }
 }
 
