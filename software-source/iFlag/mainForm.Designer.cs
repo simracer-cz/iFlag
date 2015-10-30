@@ -58,6 +58,7 @@
             this.optionsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.modulesMenuItem,
             this.alwaysOnTopMenuItem,
+            this.optionsMenuSeparator,
             this.appMenuItem});
             this.optionsMenu.Name = "optionsMenu";
             this.optionsMenu.Size = new System.Drawing.Size(155, 92);
@@ -138,6 +139,11 @@
             this.alwaysOnTopMenuItem.Text = "Always on Top";
             this.alwaysOnTopMenuItem.ToolTipText = "Keep this window on top of other windows";
             this.alwaysOnTopMenuItem.CheckStateChanged += new System.EventHandler(this.alwaysOnTopMenuItem_CheckStateChanged);
+            // 
+            // optionsMenuSeparator
+            // 
+            this.optionsMenuSeparator.Name = "optionsMenuSeparator";
+            this.optionsMenuSeparator.Size = new System.Drawing.Size(171, 6);
             // 
             // appMenuItem
             // 
