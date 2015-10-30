@@ -43,6 +43,7 @@ namespace iFlag
             this.WindowState = Settings.Default.WindowState;
             this.TopMost = this.alwaysOnTopMenuItem.Checked = Settings.Default.WindowTopMost;
             this.demoMenuItem.Checked = Settings.Default.DemoMode;
+            this.startLightsModuleMenuItem.Checked = Settings.Default.ShowStartLights;
 
             connectorSide = Settings.Default.UsbConnector;
             switch (connectorSide)
@@ -65,6 +66,7 @@ namespace iFlag
             if (this.WindowState == FormWindowState.Normal) Settings.Default.WindowLocation = this.Location;
             Settings.Default.WindowTopMost = this.TopMost;
             Settings.Default.DemoMode = this.demoMenuItem.Checked;
+            Settings.Default.ShowStartLights = this.startLightsModuleMenuItem.Checked;
             Settings.Default.UsbConnector = connectorSide;
             storeCommunication();
             Settings.Default.Save();

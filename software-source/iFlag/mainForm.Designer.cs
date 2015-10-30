@@ -38,6 +38,7 @@
             this.connectorBottomMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modulesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flagsModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.startLightsModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.demoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alwaysOnTopMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsMenuSeparator = new System.Windows.Forms.ToolStripSeparator();
@@ -136,6 +137,13 @@
             this.flagsModuleMenuItem.Text = "Racing flags";
             this.flagsModuleMenuItem.ToolTipText = "Show racing flags. Mandatory";
             // 
+            // startLightsModuleMenuItem
+            // 
+            this.startLightsModuleMenuItem.CheckOnClick = true;
+            this.startLightsModuleMenuItem.Name = "startLightsModuleMenuItem";
+            this.startLightsModuleMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.startLightsModuleMenuItem.Text = "Start lights";
+            this.startLightsModuleMenuItem.ToolTipText = "Show start lights during start of a race *EXPERIMENTAL";
             // 
             // demoMenuItem
             // 
@@ -306,6 +314,7 @@
         private System.Windows.Forms.ToolStripSeparator optionsMenuSeparator;
         private System.Windows.Forms.ToolStripMenuItem modulesMenuItem;
         private System.Windows.Forms.ToolStripMenuItem flagsModuleMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem startLightsModuleMenuItem;
     }
 }
 

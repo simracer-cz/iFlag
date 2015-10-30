@@ -46,6 +46,7 @@ namespace iFlag
 
                 if (matchSystemFlags(flagOnDisplay)) return broadcastMatrix();
                 else if (matchRacingFlags(flagOnDisplay)) return broadcastMatrix();
+                else if (matchStartingFlags(flagOnDisplay)) return broadcastMatrix();
             }
             return false;
         }
@@ -72,6 +73,19 @@ namespace iFlag
             else if (Convert.ToBoolean(flagID & irsdk_startHidden)) return flag("None", SIMPLE_FLAG, new byte[] { COLOR_BLACK, COLOR_BLACK }, SLOW);
             else if (Convert.ToBoolean(flagID & irsdk_oneLapToGreen)) return flag("One To Green", INVERTED_FLAG, new byte[] { COLOR_BLACK, COLOR_GREEN }, SLOW);
                  return false;
+        }
+
+                                                  // Try to match given flag ID against extra flag constants
+                                                  // serving as a starting lights for both standing
+                                                  // and rolling starts
+        private bool matchStartingFlags(uint flagID)
+        {
+            if (!this.startLightsModuleMenuItem.Checked) return false;
+
+                 if (Convert.ToBoolean(flagID & irsdk_startReady)) return flag("Startlights: Ready!", HALF_FLAG, new byte[] { COLOR_RED, COLOR_BLACK }, FAST);
+            else if (Convert.ToBoolean(flagID & irsdk_startSet)) return flag("Startlights: Set!", SIMPLE_FLAG, new byte[] { COLOR_RED, COLOR_RED }, SLOW);
+            else if (Convert.ToBoolean(flagID & irsdk_startGo)) return flag("Startlights: Go!", SIMPLE_FLAG, new byte[] { COLOR_GREEN, COLOR_GREEN }, FAST);
+            else return false;
         }
 
                                                   // Ruleset of "flags" or flag signals used for system purposes

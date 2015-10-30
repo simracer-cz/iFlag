@@ -94,5 +94,17 @@ namespace iFlag.Properties {
                 this["DemoMode"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ShowStartLights {
+            get {
+                return ((bool)(this["ShowStartLights"]));
+            }
+            set {
+                this["ShowStartLights"] = value;
+            }
+        }
     }
 }
