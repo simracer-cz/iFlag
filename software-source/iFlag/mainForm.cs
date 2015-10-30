@@ -24,12 +24,15 @@ namespace iFlag
             if (edition != "") this.Text += edition;
             flagLabel.Text = appMenuItem.Text = "iFlag v" + major + "." + minor;
 
+                                                  // Initialize flag modules
             startCommunication();
             startSDK();
             startMatrix();
             startFlags();
         }
 
+                                                  // When the window opens,
+                                                  // restore persistent user options.
         private void mainForm_Load(object sender, EventArgs e)
         {
             this.Location = Settings.Default.WindowLocation;
@@ -48,6 +51,8 @@ namespace iFlag
             restoreCommunication();
         }
 
+                                                  // When the window closes,
+                                                  // make sure to save all persistent user options.
         private void mainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             showFlag(NO_FLAG);
@@ -59,11 +64,14 @@ namespace iFlag
             Settings.Default.Save();
         }
 
+                                                  // When the window moves,
+                                                  // make its new position persistent.
         private void mainForm_Move(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Normal) Settings.Default.WindowLocation = this.Location;
         }
 
+                                                  // GUI
         private void optionsButton_Click(object sender, EventArgs e)
         {
             optionsMenu.Show(Cursor.Position);
@@ -74,10 +82,10 @@ namespace iFlag
             Settings.Default.WindowTopMost = this.TopMost = this.alwaysOnTopMenuItem.Checked;
         }
 
-        // Visually indicates the serial connection alive state
-        // by changin color of the "Matrix" indicator
-        // in the lower left corner of the main form
-        //
+                                                  // Visually indicates the serial connection alive state
+                                                  // by changin color of the "Matrix" indicator
+                                                  // in the lower left corner of the main form
+                                                  //
         private void indicateConnection()
         {
             if (deviceConnected)
@@ -99,6 +107,9 @@ namespace iFlag
             detectSDK();
         }
 
+                                                  // Visually indicates a running iRacing session
+                                                  // in which demo mode gets disabled and telemetry update
+                                                  // gets enabled
         private void indicateSimConnected(bool connected)
         {
             if (connected && !simConnected)
