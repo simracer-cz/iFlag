@@ -66,30 +66,30 @@ namespace iFlag
             flagOnDisplay = NO_FLAG;
             showFlag(flag);
         }
-                                                  // Flag patterns
 
+                                                  // Transforms the given pattern string
+                                                  // into a three-dimensional byte array of color indexes
+                                                  // which further get replaced by an actual color
+        static private byte[,,] pattern(String flagPattern)
+        {
+            byte[,,] patternMatrix = new byte[2, 8, 8];
+            String[] patternSplit = flagPattern.Split();
+            int pixel;
+            for (int frame = 0; frame < 2; frame++)
+            for (int pixelX = 0; pixelX < 8; pixelX++)
+            for (int pixelY = 0; pixelY < 8; pixelY++)
+            {
+                int pixelFrame = (frame == 1 && patternSplit.Length == 16) ? 1 : 0;
+                pixel = Convert.ToInt32(patternSplit[pixelY + pixelFrame * 8][pixelX]) - 48;
+                patternMatrix[frame, pixelY, pixelX] = Convert.ToByte(pixel);
+            }
+            return patternMatrix;
+        }
 
-        byte[, ,] SIMPLE_FLAG = new byte[,,] { {
-          { 0, 0, 0, 0, 0, 0, 0, 0 },
-          { 0, 0, 0, 0, 0, 0, 0, 0 },
-          { 0, 0, 0, 0, 0, 0, 0, 0 },
-          { 0, 0, 0, 1, 1, 0, 0, 0 },
-          { 0, 0, 0, 1, 1, 0, 0, 0 },
-          { 0, 0, 0, 0, 0, 0, 0, 0 },
-          { 0, 0, 0, 0, 0, 0, 0, 0 },
-          { 0, 0, 0, 0, 0, 0, 0, 0 }
-        } };
+                                                  // Graphical patterns, often easily reusable
+                                                  // geometric primitives
+        byte[,,] SIMPLE_FLAG =            pattern("00000000 00000000 00000000 00011000 00011000 00000000 00000000 00000000");
 
-        byte[, ,] F_FLAG = new byte[,,] { {
-          { 1, 1, 1, 1, 1, 1, 1, 1 },
-          { 1, 1, 0, 0, 0, 0, 1, 1 },
-          { 1, 1, 0, 1, 1, 1, 1, 1 },
-          { 1, 1, 0, 0, 0, 0, 1, 1 },
-          { 1, 1, 0, 1, 1, 1, 1, 1 },
-          { 1, 1, 0, 1, 1, 1, 1, 1 },
-          { 1, 1, 0, 1, 1, 1, 1, 1 },
-          { 1, 1, 1, 1, 1, 1, 1, 1 }
-        } };
-
+        byte[,,] F_FLAG =                 pattern("11111111 11000011 11011111 11000011 11011111 11011111 11011111 11111111");
     }
 }
