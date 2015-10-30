@@ -31,12 +31,12 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
             this.optionsMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.alwaysOnTopMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectorMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectorTopMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectorLeftMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectorRightMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectorBottomMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.alwaysOnTopMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsMenuSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.appMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsButton = new System.Windows.Forms.Button();
@@ -58,16 +58,6 @@
             this.appMenuItem});
             this.optionsMenu.Name = "optionsMenu";
             this.optionsMenu.Size = new System.Drawing.Size(155, 92);
-            // 
-            // alwaysOnTopMenuItem
-            // 
-            this.alwaysOnTopMenuItem.Checked = true;
-            this.alwaysOnTopMenuItem.CheckOnClick = true;
-            this.alwaysOnTopMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.alwaysOnTopMenuItem.Name = "alwaysOnTopMenuItem";
-            this.alwaysOnTopMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.alwaysOnTopMenuItem.Text = "Always on Top";
-            this.alwaysOnTopMenuItem.CheckStateChanged += new System.EventHandler(this.alwaysOnTopMenuItem_CheckStateChanged);
             // 
             // 
             // connectorMenuItem
@@ -113,6 +103,17 @@
             this.connectorBottomMenuItem.Size = new System.Drawing.Size(152, 22);
             this.connectorBottomMenuItem.Text = "Bottom";
             this.connectorBottomMenuItem.Click += new System.EventHandler(this.connectorMenuItem_Click);
+            // 
+            // alwaysOnTopMenuItem
+            // 
+            this.alwaysOnTopMenuItem.Checked = true;
+            this.alwaysOnTopMenuItem.CheckOnClick = true;
+            this.alwaysOnTopMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.alwaysOnTopMenuItem.Name = "alwaysOnTopMenuItem";
+            this.alwaysOnTopMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.alwaysOnTopMenuItem.Text = "Always on Top";
+            this.alwaysOnTopMenuItem.ToolTipText = "Keep this window on top of other windows";
+            this.alwaysOnTopMenuItem.CheckStateChanged += new System.EventHandler(this.alwaysOnTopMenuItem_CheckStateChanged);
             // 
             // appMenuItem
             // 
