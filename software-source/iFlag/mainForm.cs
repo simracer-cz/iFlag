@@ -10,8 +10,12 @@ namespace iFlag
     public partial class mainForm : Form
     {
         // Version
-        const byte major = 0;
-        const byte minor = 52;
+        const byte major = 0;                     // Major version number of this software 
+        const byte minor = 52;                    // Minor version number
+
+                                                  // In case of special occasions releases,
+                                                  // this is what holds the edition string,
+                                                  // which features in the window title
         String edition = "";
 
         bool simConnected;
