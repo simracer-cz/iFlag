@@ -36,6 +36,8 @@
             this.connectorLeftMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectorRightMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectorBottomMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modulesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.flagsModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alwaysOnTopMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsMenuSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.appMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,6 +56,7 @@
             // optionsMenu
             // 
             this.optionsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.modulesMenuItem,
             this.alwaysOnTopMenuItem,
             this.appMenuItem});
             this.optionsMenu.Name = "optionsMenu";
@@ -103,6 +106,27 @@
             this.connectorBottomMenuItem.Size = new System.Drawing.Size(152, 22);
             this.connectorBottomMenuItem.Text = "Bottom";
             this.connectorBottomMenuItem.Click += new System.EventHandler(this.connectorMenuItem_Click);
+            // 
+            // modulesMenuItem
+            // 
+            this.modulesMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.flagsModuleMenuItem,
+            this.pitsModuleMenuItem,
+            this.startLightsModuleMenuItem});
+            this.modulesMenuItem.Name = "modulesMenuItem";
+            this.modulesMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.modulesMenuItem.Text = "Flag Modules";
+            // 
+            // flagsModuleMenuItem
+            // 
+            this.flagsModuleMenuItem.Checked = true;
+            this.flagsModuleMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.flagsModuleMenuItem.Enabled = false;
+            this.flagsModuleMenuItem.Name = "flagsModuleMenuItem";
+            this.flagsModuleMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.flagsModuleMenuItem.Text = "Racing flags";
+            this.flagsModuleMenuItem.ToolTipText = "Show racing flags. Mandatory";
+            // 
             // 
             // alwaysOnTopMenuItem
             // 
@@ -241,6 +265,8 @@
         private System.Windows.Forms.Label flagLabel;
         private System.Windows.Forms.ToolStripMenuItem appMenuItem;
         private System.Windows.Forms.ToolStripSeparator optionsMenuSeparator;
+        private System.Windows.Forms.ToolStripMenuItem modulesMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem flagsModuleMenuItem;
     }
 }
 
