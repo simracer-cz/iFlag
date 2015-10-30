@@ -137,6 +137,7 @@ namespace iFlag
 
                 demoMenuItem.Enabled = false;
                 demoTimer.Enabled = false;
+                updateTimer.Enabled = true;
             }
             else if (!connected && simConnected)
             {
@@ -144,6 +145,7 @@ namespace iFlag
 
                 demoMenuItem.Enabled = true;
                 demoTimer.Enabled = true;
+                updateTimer.Enabled = false;
             }
             simConnected = connected;
         }

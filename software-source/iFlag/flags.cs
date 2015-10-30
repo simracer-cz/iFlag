@@ -122,6 +122,34 @@ namespace iFlag
             showFlag(flag);
         }
 
+                                                  // Relentlessly queries the iRacing SDK's real time telemetry
+                                                  // for flags and other data and displays the signals
+                                                  // when appropriate
+        private void updateTimer_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                if (sdk.IsConnected())
+                {
+                    bool onTrack = !Convert.ToBoolean(sdk.GetData("IsReplayPlaying"));
+                    if (onTrack)
+                    {
+                        uint flag = Convert.ToUInt32(sdk.GetData("SessionFlags"));
+                        showFlag(flag);
+                    }
+                    else
+                    {
+                        showFlag(NO_FLAG);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("FLAG UPDATE FAILED");
+                Console.WriteLine(ex);
+            }
+        }
+
                                                   // Transforms the given pattern string
                                                   // into a three-dimensional byte array of color indexes
                                                   // which further get replaced by an actual color

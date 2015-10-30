@@ -49,6 +49,7 @@
             this.timeoutTimer = new System.Windows.Forms.Timer(this.components);
             this.connectTimer = new System.Windows.Forms.Timer(this.components);
             this.simLight = new System.Windows.Forms.Label();
+            this.updateTimer = new System.Windows.Forms.Timer(this.components);
             this.demoTimer = new System.Windows.Forms.Timer(this.components);
             this.flagLabel = new System.Windows.Forms.Label();
             this.optionsMenu.SuspendLayout();
@@ -233,6 +234,11 @@
             this.simLight.Text = "iRacing";
             this.simLight.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // updateTimer
+            // 
+            this.updateTimer.Interval = 50;
+            this.updateTimer.Tick += new System.EventHandler(this.updateTimer_Tick);
+            // 
             // demoTimer
             // 
             this.demoTimer.Enabled = true;
@@ -287,6 +293,7 @@
         private System.Windows.Forms.Timer timeoutTimer;
         private System.Windows.Forms.Timer connectTimer;
         private System.Windows.Forms.Label simLight;
+        private System.Windows.Forms.Timer updateTimer;
         private System.Windows.Forms.Timer demoTimer;
         private System.Windows.Forms.ToolStripMenuItem demoMenuItem;
         private System.Windows.Forms.ToolStripMenuItem connectorMenuItem;
