@@ -121,7 +121,6 @@
             // 
             this.modulesMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.flagsModuleMenuItem,
-            this.pitsModuleMenuItem,
             this.startLightsModuleMenuItem});
             this.modulesMenuItem.Name = "modulesMenuItem";
             this.modulesMenuItem.Size = new System.Drawing.Size(174, 22);
