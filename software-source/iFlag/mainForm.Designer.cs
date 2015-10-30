@@ -44,6 +44,7 @@
             this.timeoutTimer = new System.Windows.Forms.Timer(this.components);
             this.connectTimer = new System.Windows.Forms.Timer(this.components);
             this.simLight = new System.Windows.Forms.Label();
+            this.flagLabel = new System.Windows.Forms.Label();
             this.optionsMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -173,11 +174,22 @@
             this.simLight.Text = "iRacing";
             this.simLight.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // flagLabel
+            // 
+            this.flagLabel.AutoSize = true;
+            this.flagLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.flagLabel.Location = new System.Drawing.Point(61, 9);
+            this.flagLabel.Name = "flagLabel";
+            this.flagLabel.Size = new System.Drawing.Size(39, 18);
+            this.flagLabel.TabIndex = 5;
+            this.flagLabel.Text = "iFlag";
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(281, 60);
+            this.Controls.Add(this.flagLabel);
             this.Controls.Add(this.simLight);
             this.Controls.Add(this.hardwareLight);
             this.Controls.Add(this.statusStrip);
@@ -215,6 +227,7 @@
         private System.Windows.Forms.ToolStripMenuItem connectorLeftMenuItem;
         private System.Windows.Forms.ToolStripMenuItem connectorRightMenuItem;
         private System.Windows.Forms.ToolStripMenuItem connectorBottomMenuItem;
+        private System.Windows.Forms.Label flagLabel;
     }
 }
 

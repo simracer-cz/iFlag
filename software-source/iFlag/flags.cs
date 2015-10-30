@@ -70,6 +70,7 @@ namespace iFlag
                                                   // (^^ this might be eventually going into a file in the future.)
         public bool flag(string flagName, byte[, ,] pattern, byte[] color, bool speed)
         {
+            flagLabel.Text = flagName;
             Console.WriteLine(DateTime.Now + " " + flagName);
             flagToMatrix(flagName, pattern, color, speed);
             return true;
