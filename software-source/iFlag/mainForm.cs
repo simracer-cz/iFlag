@@ -42,6 +42,7 @@ namespace iFlag
             this.Location = Settings.Default.WindowLocation;
             this.WindowState = Settings.Default.WindowState;
             this.TopMost = this.alwaysOnTopMenuItem.Checked = Settings.Default.WindowTopMost;
+            this.demoMenuItem.Checked = Settings.Default.DemoMode;
 
             connectorSide = Settings.Default.UsbConnector;
             switch (connectorSide)
@@ -63,6 +64,7 @@ namespace iFlag
             Settings.Default.WindowState = this.WindowState;
             if (this.WindowState == FormWindowState.Normal) Settings.Default.WindowLocation = this.Location;
             Settings.Default.WindowTopMost = this.TopMost;
+            Settings.Default.DemoMode = this.demoMenuItem.Checked;
             Settings.Default.UsbConnector = connectorSide;
             storeCommunication();
             Settings.Default.Save();
@@ -79,6 +81,19 @@ namespace iFlag
         private void optionsButton_Click(object sender, EventArgs e)
         {
             optionsMenu.Show(Cursor.Position);
+        }
+
+        private void demoTimer_Tick(object sender, EventArgs e)
+        {
+            showDemoFlag();
+        }
+
+        private void demoMenuItem_CheckStateChanged(object sender, EventArgs e)
+        {
+            Settings.Default.DemoMode = this.demoMenuItem.Checked;
+            demoTimer.Stop();
+            demoTimer.Start();
+            showDemoFlag();
         }
 
         private void alwaysOnTopMenuItem_CheckStateChanged(object sender, EventArgs e)
@@ -119,10 +134,16 @@ namespace iFlag
             if (connected && !simConnected)
             {
                 simLight.BackColor = Color.FromName("ForestGreen");
+
+                demoMenuItem.Enabled = false;
+                demoTimer.Enabled = false;
             }
             else if (!connected && simConnected)
             {
                 simLight.BackColor = Color.FromName("Red");
+
+                demoMenuItem.Enabled = true;
+                demoTimer.Enabled = true;
             }
             simConnected = connected;
         }

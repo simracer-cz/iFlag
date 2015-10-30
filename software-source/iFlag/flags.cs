@@ -6,6 +6,25 @@ namespace iFlag
     public partial class mainForm : Form
     {
         uint flagOnDisplay = 47652875;            // Currently displayed flag; initiated with "random" number
+        int demoFlagIndex;                        // Current demo flag index in a list of falgs to cycle through
+
+                                                  // Subset of flags for the demo sequence
+        uint[] demoFlags = {
+            irsdk_green,
+            irsdk_checkered,
+            irsdk_yellowWaving,
+            irsdk_caution,
+            irsdk_red,
+            irsdk_white,
+            irsdk_blue,
+            irsdk_debris,
+            irsdk_disqualify,
+            irsdk_repair,
+            irsdk_furled,
+        };
+        uint[] noDemoFlags = {
+            NO_FLAG,
+        };
 
                                                   // Special purpose system-level "flags"
         const uint STARTUP_GREETING = 6666;
@@ -76,6 +95,13 @@ namespace iFlag
             return true;
         }
 
+                                                  // Advances the demo flag picking cycle
+        private bool showDemoFlag()
+        {
+            uint[] flags = demoMenuItem.Checked ? demoFlags : noDemoFlags;
+            if (demoFlagIndex++ >= flags.Length) demoFlagIndex = 1;
+            return showFlag(flags[demoFlagIndex - 1]);
+        }
 
                                                   // Takes a moment to ensure a system flag
                                                   // gets displayed long enough before it gets overruled

@@ -38,6 +38,7 @@
             this.connectorBottomMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modulesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flagsModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.demoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alwaysOnTopMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsMenuSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.appMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,6 +49,7 @@
             this.timeoutTimer = new System.Windows.Forms.Timer(this.components);
             this.connectTimer = new System.Windows.Forms.Timer(this.components);
             this.simLight = new System.Windows.Forms.Label();
+            this.demoTimer = new System.Windows.Forms.Timer(this.components);
             this.flagLabel = new System.Windows.Forms.Label();
             this.optionsMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -57,6 +59,7 @@
             // 
             this.optionsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.modulesMenuItem,
+            this.demoMenuItem,
             this.alwaysOnTopMenuItem,
             this.optionsMenuSeparator,
             this.appMenuItem});
@@ -128,6 +131,17 @@
             this.flagsModuleMenuItem.Text = "Racing flags";
             this.flagsModuleMenuItem.ToolTipText = "Show racing flags. Mandatory";
             // 
+            // 
+            // demoMenuItem
+            // 
+            this.demoMenuItem.Checked = true;
+            this.demoMenuItem.CheckOnClick = true;
+            this.demoMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.demoMenuItem.Name = "demoMenuItem";
+            this.demoMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.demoMenuItem.Text = "Demo mode";
+            this.demoMenuItem.ToolTipText = "Only when not in iRacing session. Cycles some of the flags for amusement";
+            this.demoMenuItem.CheckStateChanged += new System.EventHandler(this.demoMenuItem_CheckStateChanged);
             // 
             // alwaysOnTopMenuItem
             // 
@@ -215,6 +229,12 @@
             this.simLight.Text = "iRacing";
             this.simLight.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // demoTimer
+            // 
+            this.demoTimer.Enabled = true;
+            this.demoTimer.Interval = 5000;
+            this.demoTimer.Tick += new System.EventHandler(this.demoTimer_Tick);
+            // 
             // flagLabel
             // 
             this.flagLabel.AutoSize = true;
@@ -263,6 +283,8 @@
         private System.Windows.Forms.Timer timeoutTimer;
         private System.Windows.Forms.Timer connectTimer;
         private System.Windows.Forms.Label simLight;
+        private System.Windows.Forms.Timer demoTimer;
+        private System.Windows.Forms.ToolStripMenuItem demoMenuItem;
         private System.Windows.Forms.ToolStripMenuItem connectorMenuItem;
         private System.Windows.Forms.ToolStripMenuItem connectorTopMenuItem;
         private System.Windows.Forms.ToolStripMenuItem connectorLeftMenuItem;
