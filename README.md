@@ -22,9 +22,9 @@ _iFlag_ is __gratis__, but you need to buy the hardware and as with every "kit"
 you will have to do some work yourself to get it up and running. Take these steps:
 
 
-1. [ Get And Assemble __Hardware__ ](hardware/README.md)
-2. [ Flash The Hardware __Firmware__ ](firmware/README.md)
-3. [ Install And Run __Software__ ](software/README.md)
+1. [ Get And Assemble __Hardware__ ](hardware)
+2. [ Flash The Hardware __Firmware__ ](firmware)
+3. [ Install And Run __Software__ ](software)
 
 
 License
