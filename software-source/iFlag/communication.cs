@@ -22,6 +22,7 @@ namespace iFlag
 
                                                   // Serial commands, which match the v0.15 firmware
                                                   // set of instructions, so don't change.
+        byte[] COMMAND_RESET        = new byte[8] { 0xFF, 0xFF, 0xA9, 0x00, 0x00, 0x00, 0x00, 0x00 };
         byte[] COMMAND_DRAW         = new byte[8] { 0xFF, 0xFF, 0xA0, 0x00, 0x00, 0x00, 0x00, 0x00 };
         byte[] COMMAND_BLINK_FAST   = new byte[8] { 0xFF, 0xFF, 0xA1, 0x04, 0x00, 0x00, 0x00, 0x00 };
         byte[] COMMAND_BLINK_SLOW   = new byte[8] { 0xFF, 0xFF, 0xA1, 0x02, 0x00, 0x00, 0x00, 0x00 };
