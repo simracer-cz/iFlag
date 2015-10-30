@@ -125,7 +125,6 @@ namespace iFlag
 
         private void connectorMenuItem_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(((ToolStripMenuItem)sender).Name);
             switch (((ToolStripMenuItem)sender).Name)
             {
                 case "connectorBottomMenuItem": connectorSide = 0x00; break;
