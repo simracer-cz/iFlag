@@ -26,9 +26,35 @@ namespace iFlag
                 flagOnDisplay = flagID;
 
                 if (matchSystemFlags(flagOnDisplay)) return broadcastMatrix();
+                else if (matchRacingFlags(flagOnDisplay)) return broadcastMatrix();
             }
             return false;
         }
+
+                                                  // Try to match given flag ID against racing flag constants
+        private bool matchRacingFlags(uint flagID)
+        {
+                 if (Convert.ToBoolean(flagID & irsdk_crossed)
+                  || Convert.ToBoolean(flagID & irsdk_disqualify)) return flag("Disqualify flag", CROSSED_FLAG, new byte[] { COLOR_BLACK, COLOR_WHITE }, FAST);
+            else if (Convert.ToBoolean(flagID & irsdk_green)) return flag("Green flag", SIMPLE_FLAG, new byte[] { COLOR_GREEN, COLOR_GREEN }, FAST);
+            else if (Convert.ToBoolean(flagID & irsdk_yellow)) return flag("Yellow flag", FLASHING_FLAG, new byte[] { COLOR_BLACK, COLOR_YELLOW }, FAST);
+            else if (Convert.ToBoolean(flagID & irsdk_red)) return flag("Red flag", FLASHING_FLAG, new byte[] { COLOR_BLACK, COLOR_RED }, SLOW);
+            else if (Convert.ToBoolean(flagID & irsdk_blue)) return flag("Blue flag", DIAGONAL_STRIPE_FLAG, new byte[] { COLOR_BLUE, COLOR_YELLOW }, SLOW);
+            else if (Convert.ToBoolean(flagID & irsdk_debris)) return flag("Debris flag", STRIPPED_FLAG, new byte[] { COLOR_YELLOW, COLOR_RED }, FAST);
+            else if (Convert.ToBoolean(flagID & irsdk_yellowWaving)) return flag("Yellow Waving flag", WAVING_FLAG, new byte[] { COLOR_BLACK, COLOR_YELLOW }, FAST);
+            else if (Convert.ToBoolean(flagID & irsdk_repair)) return flag("Meat Ball flag", MEATBALL_FLAG, new byte[] { COLOR_BLACK, COLOR_ORANGE }, SLOW);
+            else if (Convert.ToBoolean(flagID & irsdk_black)) return flag("Black flag", INVERTED_FLAG, new byte[] { COLOR_BLACK, COLOR_WHITE }, SLOW);
+            else if (Convert.ToBoolean(flagID & irsdk_furled)) return flag("Furled Black flag", FURLED_FLAG, new byte[] { COLOR_BLACK, COLOR_WHITE, COLOR_BLACK }, FAST);
+            else if (Convert.ToBoolean(flagID & irsdk_checkered)) return flag("Checkered flag", CHECKERED_FLAG, new byte[] { COLOR_BLACK, COLOR_WHITE }, SLOW);
+            else if (Convert.ToBoolean(flagID & irsdk_white)) return flag("White flag", SIMPLE_FLAG, new byte[] { COLOR_WHITE, COLOR_BLACK }, SLOW);
+            else if (Convert.ToBoolean(flagID & irsdk_greenHeld)
+                  || Convert.ToBoolean(flagID & irsdk_caution)
+                  || Convert.ToBoolean(flagID & irsdk_cautionWaving)) return flag("Caution flag", SAFETYCAR_FLAG, new byte[] { COLOR_BLACK, COLOR_YELLOW, COLOR_WHITE }, SLOW);
+            else if (Convert.ToBoolean(flagID & irsdk_startHidden)) return flag("None", SIMPLE_FLAG, new byte[] { COLOR_BLACK, COLOR_BLACK }, SLOW);
+            else if (Convert.ToBoolean(flagID & irsdk_oneLapToGreen)) return flag("One To Green", INVERTED_FLAG, new byte[] { COLOR_BLACK, COLOR_GREEN }, SLOW);
+                 return false;
+        }
+
                                                   // Ruleset of "flags" or flag signals used for system purposes
                                                   // Returns true if flag matched, false otherwise.
         private bool matchSystemFlags(uint flagID)
@@ -91,6 +117,29 @@ namespace iFlag
                                                   // Graphical patterns, often easily reusable
                                                   // geometric primitives
         byte[,,] SIMPLE_FLAG =            pattern("00000000 00000000 00000000 00011000 00011000 00000000 00000000 00000000");
+        byte[,,] SQUARE_FLAG =            pattern("00000000 00000000 00111100 00111100 00111100 00111100 00000000 00000000");
+        byte[,,] HALF_FLAG =              pattern("00000000 00000000 00000000 00000000 11111111 11111111 11111111 11111111");
+        byte[,,] FURLED_FLAG =            pattern("11111111 01222221 00122221 00012221 00001221 00000121 00000011 00000001 " +
+                                                  "00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000");
+        byte[,,] INVERTED_FLAG =          pattern("11111111 10000001 10000001 10000001 10000001 10000001 10000001 11111111 " +
+                                                  "00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000");
+        byte[,,] FLASHING_FLAG =          pattern("11111111 11111111 11111111 11111111 11111111 11111111 11111111 11111111 " +
+                                                  "00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000");
+        byte[,,] WAVING_FLAG =            pattern("00001111 00001111 00001111 00001111 00001111 00001111 00001111 00001111 " +
+                                                  "11110000 11110000 11110000 11110000 11110000 11110000 11110000 11110000");
+        byte[,,] DOUBLE_WAVING_FLAG =     pattern("11110000 11110000 11110000 11110000 00001111 00001111 00001111 00001111 " +
+                                                  "00001111 00001111 00001111 00001111 11110000 11110000 11110000 11110000");
+        byte[,,] CHECKERED_FLAG =         pattern("11001100 11001100 00110011 00110011 11001100 11001100 00110011 00110011 " +
+                                                  "00110011 00110011 11001100 11001100 00110011 00110011 11001100 11001100");
+        byte[,,] STRIPPED_FLAG =          pattern("11001100 11001100 11001100 11001100 11001100 11001100 11001100 11001100 " +
+                                                  "00110011 00110011 00110011 00110011 00110011 00110011 00110011 00110011");
+        byte[,,] CIRCLE_FLAG =            pattern("00111100 01122110 11222211 12222221 12222221 11222211 01122110 00111100");
+        byte[,,] CROSSED_FLAG =           pattern("11000011 11100111 01111110 00111100 00111100 01111110 11100111 11000011");
+        byte[,,] DIAGONAL_STRIPE_FLAG =   pattern("00000011 00000111 00001110 00011100 00111000 01110000 11100000 11000000");
+        byte[,,] MEATBALL_FLAG =          pattern("00000000 00011000 00111100 01111110 01111110 00111100 00011000 00000000 " +
+                                                  "00000000 00000000 00011000 00111100 00111100 00011000 00000000 00000000");
+        byte[,,] SAFETYCAR_FLAG =         pattern("01110222 11112222 11002200 11102200 01112200 00112200 11112222 11100222 " +
+                                                  "02220111 22221111 22001100 22201100 02221100 00221100 22221111 22200111");
 
         byte[,,] F_FLAG =                 pattern("11111111 11000011 11011111 11000011 11011111 11011111 11011111 11111111");
     }
