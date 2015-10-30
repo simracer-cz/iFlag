@@ -32,7 +32,7 @@ After you've successfully completed these steps, you should see a self test rout
 Next Step
 ---------
 
-With the device alive the next step is to install [ _iFlag_ Software ](../software/README.md) to your computer.
+With the device alive the next step is to copy [ _iFlag_ Software ](../software) to your computer and run it.
 
 
 ---
