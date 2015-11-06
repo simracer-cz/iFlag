@@ -5,20 +5,19 @@ iFlag Firmware
 
 To activate the Arduino board, you will need to use Arduino IDE to compile the firmware and flash the Arduino UNO's memory with it, so that the blank generic board becomes an _iFlag_ board capable of displaying instructions send to it.
 
-1. Install __Arduino IDE__
-  - Get it from [ https://www.arduino.cc/en/Main/Software ](https://www.arduino.cc/en/Main/Software). It's free!
+1. Install __Arduino IDE__:
+  - Download it from [ https://www.arduino.cc/en/Main/Software ](https://www.arduino.cc/en/Main/Software). It's free!
   - Run the installer and follow its instructions and confirm installation of every device driver it prompts to.
-  - Open `firmware.ino` in the installed IDE.
-2. Install __Colorduino Library__
-  - Get it in `firmware/libraries/Colorduino`.
+  - Open `firmware/iFlag/iFlag.ino` in the installed IDE.
+2. Install __Colorduino Library__:
   - Choose _"Add Library"_ from _Sketch_ > _Import Library_ menu of the IDE.
-  - Select `Colorduino` folder and hit OK.
+  - Select `firmware/libraries/Colorduino` folder and hit OK.
 4. Connect the Arduino board to the USB port.
   - Choose _"Arduino UNO"_ from _Tools_ > _Board_ menu of the IDE.
   - Choose the actual port from _Tools_ > _Port_ menu of the IDE.
 5. Click on _"Upload"_ button in the IDE toolbar on the top (it's the second from the left).
 
-![Arduino IDE GUI](ide-screenshot.png)
+![Arduino IDE GUI](screenshot.png)
 
 These steps will cause the source code to compile and get uploaded to the Arduino board which will permanently flash its memory with it.
 
