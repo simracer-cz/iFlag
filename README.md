@@ -39,7 +39,7 @@ License
 Thanks To
 ---------
 
-Andy Morgan for helping me with testing, Steve Meyers for encouragement and all iRacing members for support.
+Andy Morgan for help with field testing, Steve Myers for encouragement and all iRacing members for support.
 
 
 ---
