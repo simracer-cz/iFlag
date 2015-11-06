@@ -18,9 +18,9 @@ To activate the Arduino board, you will need to use Arduino IDE to compile the f
   - Choose the actual port from _Tools_ > _Port_ menu of the IDE.
 5. Click on _"Upload"_ button in the IDE toolbar on the top (it's the second from the left).
 
-These steps will cause the source code to compile and get uploaded to the Arduino board which will permanently flash its memory with it.
-
 ![Arduino IDE GUI](ide-screenshot.png)
+
+These steps will cause the source code to compile and get uploaded to the Arduino board which will permanently flash its memory with it.
 
 
 Self Test
