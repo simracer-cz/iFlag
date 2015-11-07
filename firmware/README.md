@@ -6,7 +6,7 @@ iFlag Firmware
 To activate the Arduino board, you will need to use Arduino IDE to compile the firmware and flash the Arduino UNO's memory with it, so that the blank generic board becomes an _iFlag_ board capable of displaying instructions send to it.
 
 1. Install __Arduino IDE__:
-  - Download it from [ https://www.arduino.cc/en/Main/Software ](https://www.arduino.cc/en/Main/Software). It's free!
+  - Download it from [Arduino official website](https://www.arduino.cc/en/Main/Software). It's free!
   - Run the installer and follow its instructions and confirm installation of every device driver it prompts to.
   - Open `firmware/iFlag/iFlag.ino` in the installed IDE.
 2. Install __Colorduino Library__:
@@ -34,12 +34,12 @@ After you've successfully completed these steps, you should see a self test rout
 Next Step
 ---------
 
-With the device alive the next step is to copy [ _iFlag_ Software ](../software) to your computer and run it.
+With the device alive the next step is to copy [_iFlag_ Software](../software) to your computer and run it.
 
 
 ---
 © 2015
-[ Petr.Vostřel.cz ](http://petr.vostrel.cz),
-[ simracer.cz ](http://simracer.cz),
-[ 4xracing.co.uk ](http://4xracing.co.uk)
+[Petr.Vostřel.cz](http://petr.vostrel.cz),
+[simracer.cz](http://simracer.cz),
+[4xracing.co.uk](http://4xracing.co.uk)
 
