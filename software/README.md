@@ -51,3 +51,15 @@ When not inside iRacing session, _iFlag_ can either light down and silently wait
 As usual. Whether to keep the window on top of all other windows.
 
 
+Next Step
+---------
+
+Well, that's it, there is no next step! Go enjoy your brand new _iFlag_ light panel :)
+
+
+---
+© 2015
+[Petr.Vostřel.cz](http://petr.vostrel.cz),
+[simracer.cz](http://simracer.cz),
+[4xracing.co.uk](http://4xracing.co.uk)
+
