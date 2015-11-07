@@ -3,7 +3,7 @@ iFlag
 
 > **i**Racing **F**lag **L**ight **A**lert **G**adget
 
-Electronic race marshalling light board for [iRacing.com](http://iracing.com) simulation.
+Race marshalling light board for [iRacing.com](http://iracing.com) simulation.
 LED matrix displays racing flags in a truly noticable periferal vision fashion
 making it literally impossible to miss any flag like yellow, blue or safetycar flags.
 Additionaly includes optional useful signals like start lights on the grid and more.
