@@ -6,7 +6,11 @@ iFlag Software
 _iFlag_ software translates provides the interconnection of iRacing and the matrix. It continuously listens for iRacing session and other signals, processes them and issues commands telling the device exactly what to display
 on the LED matrix.
 
-The software doesn't come with any installer, it is only an EXE you run. Copy the `software/iFlag` folder to your harddrive anywhere you like (except Program Files folders) and run it from there. It is useful to make a shortcut in Startup items to have iFlag ready as soon as you start the computer.
+So far _iFlag_ doesn't come with any installer, it is only an EXE you run.
+
+__Copy the `software/iFlag` folder to anywhere you like on your harddrive, except Program Files folder(s), and run it from there.__ It is useful to make a shortcut in Startup items to have iFlag ready as soon as you start the computer.
+
+_iFlag_ requires .NET Framework 4 installed on your computer. Get it for free from [Microsoft](https://www.microsoft.com/en-us/download/details.aspx?id=17718).
 
 ![Screenshot of the software window](screenshot.png)
 
