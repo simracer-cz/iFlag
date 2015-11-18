@@ -204,12 +204,12 @@
             // 
             // forumThreadMenuItem
             // 
-            this.forumThreadMenuItem.Enabled = false;
             this.forumThreadMenuItem.Image = global::iFlag.Properties.Resources.iRacingLogo;
             this.forumThreadMenuItem.Name = "forumThreadMenuItem";
             this.forumThreadMenuItem.Size = new System.Drawing.Size(179, 22);
             this.forumThreadMenuItem.Text = "Forum Thread";
-            this.forumThreadMenuItem.ToolTipText = "Sorry, not yet..";
+            this.forumThreadMenuItem.ToolTipText = "Place to discuss";
+            this.forumThreadMenuItem.Click += new System.EventHandler(this.forumThreadMenuItem_Click);
             // 
             // optionsButton
             // 
