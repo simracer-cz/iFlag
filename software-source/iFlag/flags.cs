@@ -30,6 +30,10 @@ namespace iFlag
         const uint STARTUP_GREETING = 6666;
         const uint NO_FLAG = 7777;
         const uint ORIENTATION_CHECK = 8888;
+        const uint PIT_LIMIT = 9999;
+        const uint PIT_HOLD = 9998;
+        const uint PIT_RELEASE = 9997;
+        const uint PIT_DONE = 9996;
 
         private void startFlags()
         {
@@ -45,6 +49,7 @@ namespace iFlag
                 flagOnDisplay = flagID;
 
                 if (matchSystemFlags(flagOnDisplay)) return broadcastMatrix();
+                else if (matchPitFlags(flagOnDisplay)) return broadcastMatrix();
                 else if (matchRacingFlags(flagOnDisplay)) return broadcastMatrix();
                 else if (matchStartingFlags(flagOnDisplay)) return broadcastMatrix();
             }
@@ -85,6 +90,19 @@ namespace iFlag
                  if (Convert.ToBoolean(flagID & irsdk_startReady)) return flag("Startlights: Ready!", HALF_FLAG, new byte[] { COLOR_RED, COLOR_BLACK }, FAST);
             else if (Convert.ToBoolean(flagID & irsdk_startSet)) return flag("Startlights: Set!", SIMPLE_FLAG, new byte[] { COLOR_RED, COLOR_RED }, SLOW);
             else if (Convert.ToBoolean(flagID & irsdk_startGo)) return flag("Startlights: Go!", SIMPLE_FLAG, new byte[] { COLOR_GREEN, COLOR_GREEN }, FAST);
+            else return false;
+        }
+
+                                                  // Try to match given flag ID against extra flag constants
+                                                  // significant when on the pit lane or in the pit stall
+        private bool matchPitFlags(uint flagID)
+        {
+            if (!this.pitsModuleMenuItem.Checked) return false;
+
+            if (flagID == PIT_HOLD) return flag("Hold!", SQUARE_FLAG, new byte[] { COLOR_BLACK, COLOR_RED }, FAST);
+            else if (flagID == PIT_RELEASE) return flag("Go!", SQUARE_FLAG, new byte[] { COLOR_BLACK, COLOR_BLUE }, FAST);
+            else if (flagID == PIT_DONE) return flag("All done. Go!", SQUARE_FLAG, new byte[] { COLOR_BLACK, COLOR_GREEN }, FAST);
+            else if (flagID == PIT_LIMIT) return flag("Pit limit!", CIRCLE_FLAG, new byte[] { COLOR_BLACK, COLOR_RED, COLOR_BLACK }, FAST);
             else return false;
         }
 
