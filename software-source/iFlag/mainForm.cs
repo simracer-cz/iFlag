@@ -19,6 +19,7 @@ namespace iFlag
         String edition = "";
 
         string repositoryURL = "https://github.com/simracer-cz/iFlag";
+        string forumThreadURL = "http://members.iracing.com/jforum/posts/list/0/3341549.page";
 
         bool simConnected;
         bool greeted;                             // Whether the startup greeting has happened
@@ -91,6 +92,11 @@ namespace iFlag
         private void gitMenuItem_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start(repositoryURL);
+        }
+
+        private void forumThreadMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(forumThreadURL);
         }
 
         private void demoTimer_Tick(object sender, EventArgs e)
