@@ -71,7 +71,6 @@
             this.gitMenuItem,
             this.forumThreadMenuItem});
             this.optionsMenu.Name = "optionsMenu";
-            this.optionsMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.optionsMenu.Size = new System.Drawing.Size(180, 186);
             // 
             // connectorMenuItem
