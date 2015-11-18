@@ -27,13 +27,13 @@ namespace iFlag
         };
 
                                                   // Special purpose system-level "flags"
-        const uint STARTUP_GREETING = 6666;
-        const uint NO_FLAG = 7777;
-        const uint ORIENTATION_CHECK = 8888;
-        const uint PIT_LIMIT = 9999;
-        const uint PIT_HOLD = 9998;
-        const uint PIT_RELEASE = 9997;
-        const uint PIT_DONE = 9996;
+        const long STARTUP_GREETING = 6666;
+        const long NO_FLAG = 7777;
+        const long ORIENTATION_CHECK = 8888;
+        const long PIT_LIMIT = 9999;
+        const long PIT_HOLD = 9998;
+        const long PIT_RELEASE = 9997;
+        const long PIT_DONE = 9996;
 
         private void startFlags()
         {
@@ -95,7 +95,7 @@ namespace iFlag
 
                                                   // Try to match given flag ID against extra flag constants
                                                   // significant when on the pit lane or in the pit stall
-        private bool matchPitFlags(uint flagID)
+        private bool matchPitFlags(long flagID)
         {
             if (!this.pitsModuleMenuItem.Checked) return false;
 
