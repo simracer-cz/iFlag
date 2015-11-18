@@ -20,6 +20,9 @@
     <Setting Name="DemoMode" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="ShowPitLights" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
     <Setting Name="ShowStartLights" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>

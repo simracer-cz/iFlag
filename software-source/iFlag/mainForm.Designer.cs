@@ -38,6 +38,7 @@
             this.connectorBottomMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modulesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flagsModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pitsModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startLightsModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.demoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alwaysOnTopMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,6 +72,7 @@
             this.gitMenuItem,
             this.forumThreadMenuItem});
             this.optionsMenu.Name = "optionsMenu";
+            this.optionsMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.optionsMenu.Size = new System.Drawing.Size(180, 186);
             // 
             // connectorMenuItem
@@ -124,6 +126,7 @@
             // 
             this.modulesMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.flagsModuleMenuItem,
+            this.pitsModuleMenuItem,
             this.startLightsModuleMenuItem});
             this.modulesMenuItem.Name = "modulesMenuItem";
             this.modulesMenuItem.Size = new System.Drawing.Size(179, 22);
@@ -138,6 +141,14 @@
             this.flagsModuleMenuItem.Size = new System.Drawing.Size(138, 22);
             this.flagsModuleMenuItem.Text = "Racing flags";
             this.flagsModuleMenuItem.ToolTipText = "Show racing flags. Mandatory";
+            // 
+            // pitsModuleMenuItem
+            // 
+            this.pitsModuleMenuItem.CheckOnClick = true;
+            this.pitsModuleMenuItem.Name = "pitsModuleMenuItem";
+            this.pitsModuleMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.pitsModuleMenuItem.Text = "Pit signals";
+            this.pitsModuleMenuItem.ToolTipText = "Show pit speed limit and pit stop lights *EXPERIMENTAL";
             // 
             // startLightsModuleMenuItem
             // 
@@ -336,6 +347,7 @@
         private System.Windows.Forms.ToolStripMenuItem gitMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modulesMenuItem;
         private System.Windows.Forms.ToolStripMenuItem flagsModuleMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pitsModuleMenuItem;
         private System.Windows.Forms.ToolStripMenuItem startLightsModuleMenuItem;
     }
 }

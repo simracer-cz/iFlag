@@ -98,6 +98,18 @@ namespace iFlag.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ShowPitLights {
+            get {
+                return ((bool)(this["ShowPitLights"]));
+            }
+            set {
+                this["ShowPitLights"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool ShowStartLights {
             get {
                 return ((bool)(this["ShowStartLights"]));
