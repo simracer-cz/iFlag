@@ -9,8 +9,8 @@ making it literally impossible to miss any flag like yellow, blue or safetycar f
 Additionaly includes optional useful signals like start lights on the grid and more.
 
 Demonstration youtube video : http://youtu.be/n8sdxkuALDg
+![Demo](hardware/demo.gif)
 
-[![iFlag Demo Mode footage](http://img.youtube.com/vi/n8sdxkuALDg/0.jpg)](http://www.youtube.com/watch?v=n8sdxkuALDg)
 
 See [iRacing.com Forum Thread](http://members.iracing.com/FORUMLINK) for more.
 
