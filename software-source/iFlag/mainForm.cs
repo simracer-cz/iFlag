@@ -11,7 +11,7 @@ namespace iFlag
     {
         // Version
         const byte major = 0;                     // Major version number of this software 
-        const byte minor = 55;                    // Minor version number
+        const byte minor = 56;                    // Minor version number
 
                                                   // In case of special occasions releases,
                                                   // this is what holds the edition string,
