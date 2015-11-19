@@ -1,18 +1,19 @@
 iFlag
 =====
 
-> **i**Racing **F**lags **L**ight **A**lert **G**izmo
+> **i**Racing **F**lashing **L**ight **A**wareness **G**uard
 
-Race marshalling light board for [iRacing.com](http://iracing.com) simulation.
+Race marshalling light board for [iRacing.com](http://iracing.com) motorsport simulation.
 Arduino-based LED matrix displays racing flags in a truly noticable periferal vision fashion
 making it literally impossible to miss any flag like yellow, blue or safetycar flags.
 Additionaly includes optional useful signals like start lights on the grid and more.
 
-Demonstration youtube video : http://youtu.be/n8sdxkuALDg
 ![Demo](hardware/demo.gif)
 
+Watch [Demonstration youtube video](http://youtu.be/n8sdxkuALDg)
+and see [iRacing.com Forum Thread](http://members.iracing.com/jforum/posts/list/0/3341549.page) for more.
 
-See [iRacing.com Forum Thread](http://members.iracing.com/FORUMLINK) for more.
+
 
 
 Getting Started
@@ -39,7 +40,7 @@ License
 Thanks To
 ---------
 
-4X Racing's Andy Morgan for help with field testing, iRacing's Steve Myers for his encouragement and all iRacing members for support.
+4X Racing's Andy Morgan for help with field testing, iRacing's David Tucker for his technical expertise and Steve Myers for his encouragement and all iRacing members for support.
 
 
 ---
