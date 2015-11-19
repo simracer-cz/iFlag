@@ -5,11 +5,11 @@ namespace iFlag
 {
     public partial class mainForm : Form
     {
-        uint flagOnDisplay = 47652875;            // Currently displayed flag; initiated with "random" number
+        long flagOnDisplay = 47652875;            // Currently displayed flag; initiated with "random" number
         int demoFlagIndex;                        // Current demo flag index in a list of falgs to cycle through
 
                                                   // Subset of flags for the demo sequence
-        uint[] demoFlags = {
+        long[] demoFlags = {
             irsdk_green,
             irsdk_checkered,
             irsdk_yellowWaving,
@@ -22,14 +22,14 @@ namespace iFlag
             irsdk_repair,
             irsdk_furled,
         };
-        uint[] noDemoFlags = {
+        long[] noDemoFlags = {
             NO_FLAG,
         };
 
                                                   // Special purpose system-level "flags"
-        const uint STARTUP_GREETING = 6666;
-        const uint NO_FLAG = 7777;
-        const uint ORIENTATION_CHECK = 8888;
+        const long STARTUP_GREETING = 6666;
+        const long NO_FLAG = 7777;
+        const long ORIENTATION_CHECK = 8888;
 
         private void startFlags()
         {
@@ -38,21 +38,21 @@ namespace iFlag
                                                   // Accepts a flag identifier number
                                                   // and matches it against a bank of known flags/signals
                                                   // Returns true if matched, false otherwise.
-        private bool showFlag(uint flagID)
+        private bool showFlag(long flagID)
         {
             if (flagID != flagOnDisplay)
             {
                 flagOnDisplay = flagID;
 
                 if (matchSystemFlags(flagOnDisplay)) return broadcastMatrix();
-                else if (matchRacingFlags(flagOnDisplay)) return broadcastMatrix();
                 else if (matchStartingFlags(flagOnDisplay)) return broadcastMatrix();
+                else if (matchRacingFlags(flagOnDisplay)) return broadcastMatrix();
             }
             return false;
         }
 
                                                   // Try to match given flag ID against racing flag constants
-        private bool matchRacingFlags(uint flagID)
+        private bool matchRacingFlags(long flagID)
         {
                  if (Convert.ToBoolean(flagID & irsdk_crossed)
                   || Convert.ToBoolean(flagID & irsdk_disqualify)) return flag("Disqualify flag", CROSSED_FLAG, new byte[] { COLOR_BLACK, COLOR_WHITE }, FAST);
@@ -78,7 +78,7 @@ namespace iFlag
                                                   // Try to match given flag ID against extra flag constants
                                                   // serving as a starting lights for both standing
                                                   // and rolling starts
-        private bool matchStartingFlags(uint flagID)
+        private bool matchStartingFlags(long flagID)
         {
             if (!this.startLightsModuleMenuItem.Checked) return false;
 
@@ -90,7 +90,7 @@ namespace iFlag
 
                                                   // Ruleset of "flags" or flag signals used for system purposes
                                                   // Returns true if flag matched, false otherwise.
-        private bool matchSystemFlags(uint flagID)
+        private bool matchSystemFlags(long flagID)
         {
             if (flagID == NO_FLAG) return flag("---", SIMPLE_FLAG, new byte[] { COLOR_BLACK, COLOR_BLACK }, SLOW);
             else if (flagID == ORIENTATION_CHECK) return flag("Letter \"F\" check!", F_FLAG, new byte[] { COLOR_BLACK, COLOR_GREEN }, SLOW);
@@ -112,7 +112,7 @@ namespace iFlag
                                                   // Advances the demo flag picking cycle
         private bool showDemoFlag()
         {
-            uint[] flags = demoMenuItem.Checked ? demoFlags : noDemoFlags;
+            long[] flags = demoMenuItem.Checked ? demoFlags : noDemoFlags;
             if (demoFlagIndex++ >= flags.Length) demoFlagIndex = 1;
             return showFlag(flags[demoFlagIndex - 1]);
         }
@@ -120,7 +120,7 @@ namespace iFlag
                                                   // Takes a moment to ensure a system flag
                                                   // gets displayed long enough before it gets overruled
                                                   // by timeouts
-        private void showSystemFlag(uint flag = ORIENTATION_CHECK)
+        private void showSystemFlag(long flag = ORIENTATION_CHECK)
         {
             if (demoTimer.Enabled)
             {
@@ -148,7 +148,7 @@ namespace iFlag
                     bool onTrack = !Convert.ToBoolean(sdk.GetData("IsReplayPlaying"));
                     if (onTrack)
                     {
-                        uint flag = Convert.ToUInt32(sdk.GetData("SessionFlags"));
+                        long flag = Convert.ToInt64(sdk.GetData("SessionFlags"));
                         showFlag(flag);
                     }
                     else
