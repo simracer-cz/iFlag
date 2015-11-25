@@ -1,6 +1,7 @@
 iFlag Documentation
 ===================
 
+* [Communication Protocol](SerialProtocol.md)
 * [Signals Listing](Signals.md)
 * [Patterns Listing](Patterns.md)
 
