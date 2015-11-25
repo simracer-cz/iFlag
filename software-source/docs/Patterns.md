@@ -34,6 +34,7 @@ Pattern Frames
 | Pattern                   | Frames                                | Used For |
 | ------------------------- | --------------------------------------| ------- |
 | `CHECKERED_FLAG`          | ![](patterns/checkered.gif)           | Checkered flag |
+| `CIRCLE_FLAG`             | ![](patterns/circle.gif)              | Pit speed limit signal |
 | `CROSSED_FLAG`            | ![](patterns/crossed.gif)             | Disqualified |
 | `DIAGONAL_STRIPE_FLAG`    | ![](patterns/diagonal-stripe.gif)     | Blue flag |
 | `DOUBLE_WAVING_FLAG`      | ![](patterns/double-waving.gif)       | (N/A) |
@@ -47,6 +48,7 @@ Pattern Frames
 | `SC_FLAG`                 | ![](patterns/sc.gif)                  | Full course caution |
 | `SIMPLE_FLAG`             | ![](patterns/simple.gif)              | White flag, Start lights: Set!, All green flags |
 | `STATUS_FLAG`             | ![](patterns/status.gif)              | (N/A) |
+| `SQUARE_FLAG`             | ![](patterns/square.gif)              | Pit signals |
 | `STRIPPED_FLAG`           | ![](patterns/stripped.gif)            | Debris flag |
 | `WAVING_FLAG`             | ![](patterns/waving.gif)              | Yellow flag |
 

@@ -48,6 +48,16 @@ These can be enabled or disabled in _iFlag_ options menu.
 | ![](signals/green.gif)           | Go, go, go! | Clearly, this represents all green start lights on. | `SIMPLE` |
 
 
+### Pit Stop Signals
+
+| Visual                                                                | Signal   | Description | Flag primitive |
+| --------------------------------------------------------------------- | -------- | ----------- | -------------- |
+| ![](signals/pits-speedlimit.gif) | Pit speed limit |  | `CIRCLE` |
+| ![](signals/pits-hold.gif)       | Hold! |  | `SQUARE` |
+| ![](signals/pits-go.gif)         | Go! |  | `SQUARE` |
+| ![](signals/pits-gogogo.gif)     | Go, go, go! |  | `SQUARE` |
+
+
 
 Miscelanous
 -----------
