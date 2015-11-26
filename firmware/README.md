@@ -1,7 +1,7 @@
 iFlag Firmware
 ==============
 
-	v0.16
+	v0.17
 
 To activate the Arduino board, you will need to use Arduino IDE to compile the firmware and flash the Arduino UNO's memory with it, so that the blank generic board becomes an _iFlag_ board capable of displaying instructions send to it.
 

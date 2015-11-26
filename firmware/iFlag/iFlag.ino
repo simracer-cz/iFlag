@@ -20,7 +20,7 @@
 
 // Version
 byte major = 0;
-byte minor = 16;
+byte minor = 17;
 
 // Communication
 #define DEVICE_ID      0xD2
@@ -47,13 +47,13 @@ byte colors[ 16 ][ 3 ]=
     {   0, 255, 255 },   // 0x06 | teal
     { 255,   0, 255 },   // 0x07 | purple
     { 255,  33,   0 },   // 0x08 | orange
-    {   0,   0,   0 },   // 0x09 |
-    {  55,  55,  55 },   // 0x10 | dim white
-    {  55,   0,   0 },   // 0x11 | dim red
+    {  55,  55,  55 },   // 0x09 | dim white
+    {  55,   0,   0 },   // 0x10 | dim red
+    {   0,  55,   0 },   // 0x11 | dim green
     {   0,   0,  55 },   // 0x12 | dim blue
-    {   0,   0,   0 },   // 0x13 |
-    {   0,   0,   0 },   // 0x14 |
-    {   0,   0,   0 }    // 0x15 |
+    {  55,  55,   0 },   // 0x13 | dim yellow
+    {   0,  55,  55 },   // 0x14 | dim teal
+    {  55,   0,  55 },   // 0x15 | dim purple
 };
 byte brightness[ 3 ] = { 63, 63, 63 }; // 0-63 RGB
 byte blinker;
