@@ -5,6 +5,7 @@ iFlag Documentation
 * [Signals Listing](Signals.md)
 * [Patterns Listing](Patterns.md)
 * [Colors Table](Colors.md)
+* [External Power](Power.md)
 
 
 ---
