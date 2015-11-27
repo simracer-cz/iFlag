@@ -9,6 +9,8 @@ Providing an external DC power ensures enough voltage for the matrix to shine (l
 What Adapter?
 -------------
 
+First and foremost, the voltage is limited by what the Arduino board is rated for. Genuine Arduino UNO can withstand 12V, but various cheaper clones have various voltage limits. So do your research on the ratings of your clone, if you bought one, and do respect the limit.
+
 The overall power consumtion of the unit sits only at around 200mA with all LED chips at full brightness white and around 100mA at with all LEDs completely off. Bench measurements show that to get a uncompromised color quality, mainly to get the white to be white, you need a little more than the 7V required by Arduino alone.
 
 For _iFlag_ use DC adapter of following rating:
