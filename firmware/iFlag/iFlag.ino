@@ -70,7 +70,7 @@ void setup()
 
     // Power cycle the Uno couple of times for solid matrix brightness uniformity
     byte powerCycles= EEPROM.read( 0x00 );
-    if ( powerCycles < 2 || powerCycles == 255 )
+    if ( powerCycles < 3 || powerCycles == 255 )
     {
         EEPROM.write( 0x00, powerCycles + 1 );
         resetFunc();
