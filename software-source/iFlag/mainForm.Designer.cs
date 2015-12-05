@@ -269,7 +269,6 @@
             // 
             // demoTimer
             // 
-            this.demoTimer.Enabled = true;
             this.demoTimer.Interval = 5000;
             this.demoTimer.Tick += new System.EventHandler(this.demoTimer_Tick);
             // 
