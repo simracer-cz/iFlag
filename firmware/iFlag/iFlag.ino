@@ -55,7 +55,7 @@ byte colors[ 16 ][ 3 ]=
     {   0,  55,  55 },   // 0x14 | dim teal
     {  55,   0,  55 },   // 0x15 | dim purple
 };
-byte brightness[ 3 ] = { 63, 63, 63 }; // 0-63 RGB
+byte balance[ 3 ] = { 63, 63, 63 }; // 0-63 RGB
 byte blinker;
 byte blink_speed= 0;
 
@@ -66,7 +66,7 @@ void setup()
 {
     // Setup the LED matrix
     Colorduino.Init();
-    Colorduino.SetWhiteBal( brightness );
+    Colorduino.SetWhiteBal( balance );
 
     // Power cycle the Uno couple of times for solid matrix brightness uniformity
     byte powerCycles= EEPROM.read( 0x00 );
