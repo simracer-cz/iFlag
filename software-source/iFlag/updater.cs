@@ -1,6 +1,7 @@
 using System;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Drawing;
 
 namespace iFlag
 {
@@ -23,6 +24,9 @@ namespace iFlag
                                                   // with the firmware distributed along the software
         private void updateFirmware()
         {
+            hardwareLight.BackColor = Color.FromName("Blue");
+            commLabel.Text = "Programming with v" + firmwareMajor + "." + firmwareMinor + "...";
+
             SP.Close();
             deviceConnected = false;
             connectTimer.Enabled = false;

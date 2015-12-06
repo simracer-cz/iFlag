@@ -132,8 +132,6 @@ namespace iFlag
             {
                 if (!deviceUpdated())
                 {
-                    hardwareLight.BackColor = Color.FromName("Blue");
-                    commLabel.Text = "Panel upgraded to v" + firmwareMajor + "." + firmwareMinor;
                     updateFirmware();
                 }
                 else
