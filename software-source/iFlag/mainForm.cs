@@ -13,6 +13,10 @@ namespace iFlag
         const byte major = 0;                     // Major version number of this software 
         const byte minor = 56;                    // Minor version number
 
+        // Embedded firmware version
+        const byte firmwareMajor = 0;             // Major version number of the firmware payload
+        const byte firmwareMinor = 17;            // Minor version number
+
                                                   // In case of special occasions releases,
                                                   // this is what holds the edition string,
                                                   // which features in the window title
@@ -126,14 +130,23 @@ namespace iFlag
         {
             if (deviceConnected)
             {
-                if (!greeted)
+                if (!deviceUpdated())
                 {
-                    greeted = true;
-                    showSystemFlag(STARTUP_GREETING);
-                    demoTimer.Enabled = true;
+                    hardwareLight.BackColor = Color.FromName("Blue");
+                    commLabel.Text = "Panel upgraded to v" + firmwareMajor + "." + firmwareMinor;
+                    updateFirmware();
                 }
-                hardwareLight.BackColor = Color.FromName("ForestGreen");
-                commLabel.Text = "v" + firmwareVersionMajor + "." + firmwareVersionMinor + " @" + port;
+                else
+                {
+                    if (!greeted)
+                    {
+                        greeted = true;
+                        showSystemFlag(STARTUP_GREETING);
+                        demoTimer.Enabled = true;
+                    }
+                    hardwareLight.BackColor = Color.FromName("ForestGreen");
+                    commLabel.Text = "v" + firmwareVersionMajor + "." + firmwareVersionMinor + " @" + port;
+                }
             }
             else
             {

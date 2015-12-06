@@ -185,6 +185,7 @@ namespace iFlag
                 Console.WriteLine("TIMEOUT DISCONNECT");
                 deviceConnected = false;
                 indicateConnection();
+                connectTimer.Enabled = true;
             }
         }
     }
