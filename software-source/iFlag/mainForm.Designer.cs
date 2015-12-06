@@ -39,6 +39,11 @@
             this.modulesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flagsModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startLightsModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.brightnessMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fullBrightnessMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.highBrightnessMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mediumBrightnessMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lowBrightnessMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.demoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alwaysOnTopMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsMenuSeparator = new System.Windows.Forms.ToolStripSeparator();
@@ -64,6 +69,7 @@
             this.optionsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.connectorMenuItem,
             this.modulesMenuItem,
+            this.brightnessMenuItem,
             this.demoMenuItem,
             this.alwaysOnTopMenuItem,
             this.optionsMenuSeparator,
@@ -146,6 +152,49 @@
             this.startLightsModuleMenuItem.Size = new System.Drawing.Size(138, 22);
             this.startLightsModuleMenuItem.Text = "Start lights";
             this.startLightsModuleMenuItem.ToolTipText = "Show start lights during start of a race *EXPERIMENTAL";
+            // 
+            // brightnessMenuItem
+            // 
+            this.brightnessMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fullBrightnessMenuItem,
+            this.highBrightnessMenuItem,
+            this.mediumBrightnessMenuItem,
+            this.lowBrightnessMenuItem});
+            this.brightnessMenuItem.Name = "brightnessMenuItem";
+            this.brightnessMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.brightnessMenuItem.Text = "Brightness";
+            // 
+            // fullBrightnessMenuItem
+            // 
+            this.fullBrightnessMenuItem.CheckOnClick = true;
+            this.fullBrightnessMenuItem.Name = "fullBrightnessMenuItem";
+            this.fullBrightnessMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.fullBrightnessMenuItem.Text = "Full";
+            this.fullBrightnessMenuItem.Click += new System.EventHandler(this.brightnessMenuItem_Click);
+            // 
+            // highBrightnessMenuItem
+            // 
+            this.highBrightnessMenuItem.CheckOnClick = true;
+            this.highBrightnessMenuItem.Name = "highBrightnessMenuItem";
+            this.highBrightnessMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.highBrightnessMenuItem.Text = "High";
+            this.highBrightnessMenuItem.Click += new System.EventHandler(this.brightnessMenuItem_Click);
+            // 
+            // mediumBrightnessMenuItem
+            // 
+            this.mediumBrightnessMenuItem.CheckOnClick = true;
+            this.mediumBrightnessMenuItem.Name = "mediumBrightnessMenuItem";
+            this.mediumBrightnessMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.mediumBrightnessMenuItem.Text = "Medium";
+            this.mediumBrightnessMenuItem.Click += new System.EventHandler(this.brightnessMenuItem_Click);
+            // 
+            // lowBrightnessMenuItem
+            // 
+            this.lowBrightnessMenuItem.CheckOnClick = true;
+            this.lowBrightnessMenuItem.Name = "lowBrightnessMenuItem";
+            this.lowBrightnessMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.lowBrightnessMenuItem.Text = "Low";
+            this.lowBrightnessMenuItem.Click += new System.EventHandler(this.brightnessMenuItem_Click);
             // 
             // demoMenuItem
             // 
@@ -337,6 +386,11 @@
         private System.Windows.Forms.ToolStripMenuItem modulesMenuItem;
         private System.Windows.Forms.ToolStripMenuItem flagsModuleMenuItem;
         private System.Windows.Forms.ToolStripMenuItem startLightsModuleMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem brightnessMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mediumBrightnessMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fullBrightnessMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem highBrightnessMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lowBrightnessMenuItem;
     }
 }
 

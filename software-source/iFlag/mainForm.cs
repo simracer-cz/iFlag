@@ -57,6 +57,15 @@ namespace iFlag
                 case 0x03: connectorTopMenuItem.Checked = true; break;
             }
 
+            matrixLuma = Settings.Default.MatrixLuma;
+            switch (matrixLuma)
+            {
+                case 25: lowBrightnessMenuItem.Checked = true; break;
+                case 50: mediumBrightnessMenuItem.Checked = true; break;
+                case 75: highBrightnessMenuItem.Checked = true; break;
+                case 100: fullBrightnessMenuItem.Checked = true; break;
+            }
+
             restoreCommunication();
         }
 
@@ -71,6 +80,7 @@ namespace iFlag
             Settings.Default.DemoMode = this.demoMenuItem.Checked;
             Settings.Default.ShowStartLights = this.startLightsModuleMenuItem.Checked;
             Settings.Default.UsbConnector = connectorSide;
+            Settings.Default.MatrixLuma = matrixLuma;
             storeCommunication();
             Settings.Default.Save();
         }
@@ -183,6 +193,24 @@ namespace iFlag
 
             Settings.Default.UsbConnector = connectorSide;
             showSystemFlag(ORIENTATION_CHECK);
+        }
+
+        private void brightnessMenuItem_Click(object sender, EventArgs e)
+        {
+            switch (((ToolStripMenuItem)sender).Name)
+            {
+                case "fullBrightnessMenuItem":    matrixLuma = 100; break;
+                case "highBrightnessMenuItem":    matrixLuma = 75; break;
+                case "mediumBrightnessMenuItem":  matrixLuma = 50; break;
+                case "lowBrightnessMenuItem":     matrixLuma = 25; break;
+            }
+            fullBrightnessMenuItem.Checked = false;
+            highBrightnessMenuItem.Checked = false;
+            mediumBrightnessMenuItem.Checked = false;
+            lowBrightnessMenuItem.Checked = false;
+            ((ToolStripMenuItem)sender).Checked = true;
+
+            Settings.Default.MatrixLuma = matrixLuma;
         }
     }
 }
