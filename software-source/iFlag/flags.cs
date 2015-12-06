@@ -31,6 +31,8 @@ namespace iFlag
         const long NO_FLAG = 7777;
         const long ORIENTATION_CHECK = 8888;
 
+        long clearFlag = NO_FLAG;
+
         private void startFlags()
         {
         }
@@ -109,6 +111,12 @@ namespace iFlag
             return true;
         }
 
+        public bool clearedFlag(string flagName, byte[, ,] pattern, byte[] color, bool speed)
+        {
+            clearFlag = irsdk_green;
+            return flag(flagName, pattern, color, speed);
+        }
+
                                                   // Advances the demo flag picking cycle
         private bool showDemoFlag()
         {
@@ -149,7 +157,18 @@ namespace iFlag
                     if (onTrack)
                     {
                         long flag = Convert.ToInt64(sdk.GetData("SessionFlags"));
-                        showFlag(flag);
+                        if (flag != irsdk_noFlag)
+                        {
+                            showFlag(flag);
+                        }
+                        else
+                        {
+                            if (clearFlag != NO_FLAG && !clearTimer.Enabled)
+                            {
+                                clearTimer.Start();
+                            }
+                            showFlag(clearFlag);
+                        }
                     }
                     else
                     {
@@ -162,6 +181,12 @@ namespace iFlag
                 Console.WriteLine("FLAG UPDATE FAILED");
                 Console.WriteLine(ex);
             }
+        }
+
+        private void clearTimer_Tick(object sender, EventArgs e)
+        {
+            clearTimer.Stop();
+            clearFlag = NO_FLAG;
         }
 
                                                   // Transforms the given pattern string

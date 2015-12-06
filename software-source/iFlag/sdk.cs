@@ -35,6 +35,11 @@ namespace iFlag
         const long irsdk_startSet = 0x40000000;
         const long irsdk_startGo = 0x80000000;
         
+        // This value is so funky, I'd better make a comment on it.
+        // It is a value of SDK's SessionFlags for no flags at all.
+        // Am guessing it is just a random number, similar to `flagOnDisplay` here.
+        const long irsdk_noFlag = 268697600;
+
         private void startSDK()
         {
         }

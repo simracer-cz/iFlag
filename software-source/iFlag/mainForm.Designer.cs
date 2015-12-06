@@ -55,6 +55,7 @@
             this.updateTimer = new System.Windows.Forms.Timer(this.components);
             this.demoTimer = new System.Windows.Forms.Timer(this.components);
             this.flagLabel = new System.Windows.Forms.Label();
+            this.clearTimer = new System.Windows.Forms.Timer(this.components);
             this.optionsMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -283,6 +284,11 @@
             this.flagLabel.TabIndex = 5;
             this.flagLabel.Text = "iFlag";
             // 
+            // clearTimer
+            // 
+            this.clearTimer.Interval = 3000;
+            this.clearTimer.Tick += new System.EventHandler(this.clearTimer_Tick);
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -337,6 +343,7 @@
         private System.Windows.Forms.ToolStripMenuItem modulesMenuItem;
         private System.Windows.Forms.ToolStripMenuItem flagsModuleMenuItem;
         private System.Windows.Forms.ToolStripMenuItem startLightsModuleMenuItem;
+        private System.Windows.Forms.Timer clearTimer;
     }
 }
 
