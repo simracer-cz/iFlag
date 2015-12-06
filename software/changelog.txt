@@ -1,6 +1,7 @@
 Changelog
 =========
 
+v0.59 - Brightness option in the menu
 v0.58 - Yellow and furled black are now cleared with green
 v0.57 - Built-in firmware upload and firmware auto update
 v0.56 - Variable overflow causing the green start light issue fixed

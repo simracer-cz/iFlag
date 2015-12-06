@@ -30,6 +30,7 @@ namespace iFlag
         const long STARTUP_GREETING = 6666;
         const long NO_FLAG = 7777;
         const long ORIENTATION_CHECK = 8888;
+        const long LUMA_CHECK = 8887;
 
         long clearFlag = NO_FLAG;
 
@@ -97,6 +98,7 @@ namespace iFlag
             if (flagID == NO_FLAG) return flag("---", SIMPLE_FLAG, new byte[] { COLOR_BLACK, COLOR_BLACK }, SLOW);
             else if (flagID == ORIENTATION_CHECK) return flag("Letter \"F\" check!", F_FLAG, new byte[] { COLOR_BLACK, COLOR_GREEN }, SLOW);
             else if (flagID == STARTUP_GREETING) return flag("Let's go!", F_FLAG, new byte[] { COLOR_BLACK, COLOR_GREEN }, SLOW);
+            else if (flagID == LUMA_CHECK) return flag("Brightness set.", SIMPLE_FLAG, new byte[] { COLOR_WHITE, COLOR_WHITE }, SLOW);
             else return false;
         }
 

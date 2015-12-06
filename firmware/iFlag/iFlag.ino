@@ -20,7 +20,7 @@
 
 // Version
 byte major = 0;
-byte minor = 17;
+byte minor = 18;
 
 // Communication
 #define DEVICE_ID      0xD2
@@ -28,6 +28,7 @@ byte minor = 17;
 #define COMMAND_BYTE   0xFF
 #define DRAW_COMMAND   0xA0
 #define BLINK_COMMAND  0xA1
+#define LUMA_COMMAND   0xA2
 #define RESET_COMMAND  0xA9
 #define PING_COMMAND   0xB0
 int dataX;
@@ -55,7 +56,14 @@ byte colors[ 16 ][ 3 ]=
     {   0,  55,  55 },   // 0x14 | dim teal
     {  55,   0,  55 },   // 0x15 | dim purple
 };
-byte brightness[ 3 ] = { 63, 63, 63 }; // 0-63 RGB
+byte balance[ 3 ] = { 31, 63, 63 }; // 0-63 RGB
+                                    // Red is toned down to half here to limit the effects of its inevitable light
+                                    // strength dominance due to physical custruction differences between all three
+                                    // color chips in the matrix LED
+                                    // `31` is actually the only non-flickery value other than the full `63`
+
+byte luma = 100;                    // 0-100 % Luminosity level 
+
 byte blinker;
 byte blink_speed= 0;
 
@@ -66,7 +74,7 @@ void setup()
 {
     // Setup the LED matrix
     Colorduino.Init();
-    Colorduino.SetWhiteBal( brightness );
+    Colorduino.SetWhiteBal( balance );
 
     // Power cycle the Uno couple of times for solid matrix brightness uniformity
     byte powerCycles= EEPROM.read( 0x00 );
@@ -128,9 +136,9 @@ void serialEvent(){
                 Colorduino.SetPixel(
                     dataX + i,              // X
                     dataY,                  // Y
-                    colors[ dataP ][ 0 ],   // R
-                    colors[ dataP ][ 1 ],   // G
-                    colors[ dataP ][ 2 ]    // B
+                    round(luma * colors[ dataP ][ 0 ] / 100),   // R
+                    round(luma * colors[ dataP ][ 1 ] / 100),   // G
+                    round(luma * colors[ dataP ][ 2 ] / 100)    // B
                 );
             }
         }
@@ -156,6 +164,10 @@ void serialEvent(){
 
                 case RESET_COMMAND:
                     resetFunc();
+                    break;
+
+                case LUMA_COMMAND:
+                    luma = command[ 2 ];
                     break;
             }
         }
