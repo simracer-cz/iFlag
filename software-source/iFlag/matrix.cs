@@ -39,6 +39,11 @@ namespace iFlag
         {
         }
 
+        private void setMatrixLuma()
+        {
+            COMMAND_LUMA[3] = matrixLuma;
+            SP_SendData(COMMAND_LUMA);
+        }
                                                   // Translates the flag pattern to color data
                                                   // and feeds then to the matrix buffer
                                                   // to be broadcasted right away.

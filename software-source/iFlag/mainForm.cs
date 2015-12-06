@@ -211,6 +211,8 @@ namespace iFlag
             ((ToolStripMenuItem)sender).Checked = true;
 
             Settings.Default.MatrixLuma = matrixLuma;
+            setMatrixLuma();
+            showSystemFlag(LUMA_CHECK);
         }
     }
 }
