@@ -36,6 +36,7 @@ namespace iFlag
             startSDK();
             startMatrix();
             startFlags();
+            startUpdater();
         }
 
                                                   // When the window opens,

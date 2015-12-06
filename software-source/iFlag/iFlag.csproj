@@ -90,6 +90,10 @@
       <DependentUpon>mainForm.cs</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="updater.cs">
+      <DependentUpon>mainForm.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="mainForm.resx">
