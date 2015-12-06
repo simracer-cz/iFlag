@@ -57,6 +57,7 @@
             this.demoTimer = new System.Windows.Forms.Timer(this.components);
             this.flagLabel = new System.Windows.Forms.Label();
             this.initiationTimer = new System.Windows.Forms.Timer(this.components);
+            this.clearTimer = new System.Windows.Forms.Timer(this.components);
             this.optionsMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -299,6 +300,10 @@
             this.initiationTimer.Enabled = true;
             this.initiationTimer.Interval = 30000;
             this.initiationTimer.Tick += new System.EventHandler(this.initiationTimer_Tick);
+            // clearTimer
+            // 
+            this.clearTimer.Interval = 3000;
+            this.clearTimer.Tick += new System.EventHandler(this.clearTimer_Tick);
             // 
             // mainForm
             // 
@@ -356,6 +361,7 @@
         private System.Windows.Forms.ToolStripMenuItem startLightsModuleMenuItem;
         private System.Windows.Forms.ToolStripMenuItem initiateBoardMenuItem;
         private System.Windows.Forms.Timer initiationTimer;
+        private System.Windows.Forms.Timer clearTimer;
     }
 }
 

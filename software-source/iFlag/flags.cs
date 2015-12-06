@@ -31,6 +31,8 @@ namespace iFlag
         const long NO_FLAG = 7777;
         const long ORIENTATION_CHECK = 8888;
 
+        long clearFlag = NO_FLAG;
+
         private void startFlags()
         {
         }
@@ -57,14 +59,14 @@ namespace iFlag
                  if (Convert.ToBoolean(flagID & irsdk_crossed)
                   || Convert.ToBoolean(flagID & irsdk_disqualify)) return flag("Disqualify flag", CROSSED_FLAG, new byte[] { COLOR_BLACK, COLOR_WHITE }, FAST);
             else if (Convert.ToBoolean(flagID & irsdk_green)) return flag("Green flag", SIMPLE_FLAG, new byte[] { COLOR_GREEN, COLOR_GREEN }, FAST);
-            else if (Convert.ToBoolean(flagID & irsdk_yellow)) return flag("Yellow flag", FLASHING_FLAG, new byte[] { COLOR_BLACK, COLOR_YELLOW }, FAST);
+            else if (Convert.ToBoolean(flagID & irsdk_yellow)) return clearedFlag("Yellow flag", FLASHING_FLAG, new byte[] { COLOR_BLACK, COLOR_YELLOW }, FAST);
             else if (Convert.ToBoolean(flagID & irsdk_red)) return flag("Red flag", FLASHING_FLAG, new byte[] { COLOR_BLACK, COLOR_RED }, SLOW);
             else if (Convert.ToBoolean(flagID & irsdk_blue)) return flag("Blue flag", DIAGONAL_STRIPE_FLAG, new byte[] { COLOR_BLUE, COLOR_YELLOW }, SLOW);
             else if (Convert.ToBoolean(flagID & irsdk_debris)) return flag("Debris flag", STRIPPED_FLAG, new byte[] { COLOR_YELLOW, COLOR_RED }, FAST);
-            else if (Convert.ToBoolean(flagID & irsdk_yellowWaving)) return flag("Yellow Waving flag", WAVING_FLAG, new byte[] { COLOR_BLACK, COLOR_YELLOW }, FAST);
+            else if (Convert.ToBoolean(flagID & irsdk_yellowWaving)) return clearedFlag("Yellow Waving flag", WAVING_FLAG, new byte[] { COLOR_BLACK, COLOR_YELLOW }, FAST);
             else if (Convert.ToBoolean(flagID & irsdk_repair)) return flag("Meat Ball flag", MEATBALL_FLAG, new byte[] { COLOR_BLACK, COLOR_ORANGE }, SLOW);
             else if (Convert.ToBoolean(flagID & irsdk_black)) return flag("Black flag", INVERTED_FLAG, new byte[] { COLOR_BLACK, COLOR_WHITE }, SLOW);
-            else if (Convert.ToBoolean(flagID & irsdk_furled)) return flag("Furled Black flag", FURLED_FLAG, new byte[] { COLOR_BLACK, COLOR_WHITE, COLOR_BLACK }, FAST);
+            else if (Convert.ToBoolean(flagID & irsdk_furled)) return clearedFlag("Furled Black flag", FURLED_FLAG, new byte[] { COLOR_BLACK, COLOR_WHITE, COLOR_BLACK }, FAST);
             else if (Convert.ToBoolean(flagID & irsdk_checkered)) return flag("Checkered flag", CHECKERED_FLAG, new byte[] { COLOR_BLACK, COLOR_WHITE }, SLOW);
             else if (Convert.ToBoolean(flagID & irsdk_white)) return flag("White flag", SIMPLE_FLAG, new byte[] { COLOR_WHITE, COLOR_BLACK }, SLOW);
             else if (Convert.ToBoolean(flagID & irsdk_greenHeld)
@@ -109,6 +111,12 @@ namespace iFlag
             return true;
         }
 
+        public bool clearedFlag(string flagName, byte[, ,] pattern, byte[] color, bool speed)
+        {
+            clearFlag = irsdk_green;
+            return flag(flagName, pattern, color, speed);
+        }
+
                                                   // Advances the demo flag picking cycle
         private bool showDemoFlag()
         {
@@ -149,7 +157,18 @@ namespace iFlag
                     if (onTrack)
                     {
                         long flag = Convert.ToInt64(sdk.GetData("SessionFlags"));
-                        showFlag(flag);
+                        if (flag != irsdk_noFlag)
+                        {
+                            showFlag(flag);
+                        }
+                        else
+                        {
+                            if (clearFlag != NO_FLAG && !clearTimer.Enabled)
+                            {
+                                clearTimer.Start();
+                            }
+                            showFlag(clearFlag);
+                        }
                     }
                     else
                     {
@@ -162,6 +181,12 @@ namespace iFlag
                 Console.WriteLine("FLAG UPDATE FAILED");
                 Console.WriteLine(ex);
             }
+        }
+
+        private void clearTimer_Tick(object sender, EventArgs e)
+        {
+            clearTimer.Stop();
+            clearFlag = NO_FLAG;
         }
 
                                                   // Transforms the given pattern string
