@@ -42,7 +42,37 @@ namespace iFlag
             process.StartInfo = info;
             process.Start();
             process.WaitForExit();
+            Console.WriteLine(info.Arguments);
             Console.WriteLine(process.ExitCode);
+        }
+
+                                                  // If iFlag doesn't find the hardware within 30seconds
+                                                  // it will assume, that a brand new Arduino board is plugged in
+                                                  // and will activate a otherwise invisible options menu item
+                                                  // allowing the user to initialize the board. Last known port
+                                                  // in the list is used in that cae
+        private void initiationTimer_Tick(object sender, EventArgs e)
+        {
+            port = ports[ports.Length - 1];
+            
+            if (!deviceConnected && port != "COM1")
+            {
+                initiationTimer.Stop();
+                initiateBoardMenuItem.Visible = true;
+                initiateBoardMenuItem.Text += port;
+            }
+            else
+            {
+                startCommunication();
+            }
+        }
+
+        private void initiateBoardMenuItem_Click(object sender, EventArgs e)
+        {
+            initiateBoardMenuItem.Visible = false;
+            port = ports[ports.Length - 1];
+            updateFirmware();
+            connectTimer.Enabled = true;
         }
     }
 }

@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
             this.optionsMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.initiateBoardMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectorMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectorTopMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectorLeftMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,6 +56,7 @@
             this.updateTimer = new System.Windows.Forms.Timer(this.components);
             this.demoTimer = new System.Windows.Forms.Timer(this.components);
             this.flagLabel = new System.Windows.Forms.Label();
+            this.initiationTimer = new System.Windows.Forms.Timer(this.components);
             this.optionsMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -62,6 +64,7 @@
             // optionsMenu
             // 
             this.optionsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.initiateBoardMenuItem,
             this.connectorMenuItem,
             this.modulesMenuItem,
             this.demoMenuItem,
@@ -72,6 +75,15 @@
             this.forumThreadMenuItem});
             this.optionsMenu.Name = "optionsMenu";
             this.optionsMenu.Size = new System.Drawing.Size(180, 186);
+            // 
+            // initiateBoardMenuItem
+            // 
+            this.initiateBoardMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.initiateBoardMenuItem.Name = "initiateBoardMenuItem";
+            this.initiateBoardMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.initiateBoardMenuItem.Text = "Initialize Board at ";
+            this.initiateBoardMenuItem.Visible = false;
+            this.initiateBoardMenuItem.Click += new System.EventHandler(this.initiateBoardMenuItem_Click);
             // 
             // connectorMenuItem
             // 
@@ -282,6 +294,12 @@
             this.flagLabel.TabIndex = 5;
             this.flagLabel.Text = "iFlag";
             // 
+            // initiationTimer
+            // 
+            this.initiationTimer.Enabled = true;
+            this.initiationTimer.Interval = 30000;
+            this.initiationTimer.Tick += new System.EventHandler(this.initiationTimer_Tick);
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -336,6 +354,8 @@
         private System.Windows.Forms.ToolStripMenuItem modulesMenuItem;
         private System.Windows.Forms.ToolStripMenuItem flagsModuleMenuItem;
         private System.Windows.Forms.ToolStripMenuItem startLightsModuleMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem initiateBoardMenuItem;
+        private System.Windows.Forms.Timer initiationTimer;
     }
 }
 

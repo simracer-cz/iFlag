@@ -1,5 +1,6 @@
 Changelog
 =========
 
+v0.57 - Built-in firmware upload and firmware auto update
 v0.56 - Variable overflow causing the green start light issue fixed
 v0.55 - First ever release
