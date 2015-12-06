@@ -32,7 +32,7 @@ License
 Thanks To
 ---------
 
-4X Racing's Andy Morgan for help with field testing, iRacing's David Tucker for his technical expertise and Steve Myers for his encouragement and all iRacing members for support.
+4X Racing's Andy Morgan for help with track testing, iRacing's David Tucker for his technical expertise and Steve Myers for his encouragement and all iRacing members for support.
 
 
 ---
