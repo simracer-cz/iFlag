@@ -71,7 +71,7 @@ You can also put the unit into an enclosure of your choice.
 Next Step
 ---------
 
-With the unit completely assembled the next step is to upload [_iFlag_ Firmware](../firmware) to it.
+With the unit completely assembled, you only need to install [_iFlag_ Software](../software).
 
 
 ---
