@@ -70,12 +70,6 @@ You can also put the unit into an enclosure of your choice.
 Or buy a [FiTECH](http://www.fi-tech-net) enclosure from Carsten Filmer.
 
 
-Next Step
----------
-
-With the unit completely assembled, you only need to install [_iFlag_ Software](../software).
-
-
 ---
 © 2015
 [Petr.Vostřel.cz](http://petr.vostrel.cz),
