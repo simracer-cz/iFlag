@@ -91,8 +91,6 @@ void setup()
         );
         delay( 1000 );
     }
-
-    Colorduino.SetPixel( 0, 0, 0xFF, 0x99, 0x00 );
 } 
 
 void loop() 
