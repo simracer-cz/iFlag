@@ -20,7 +20,7 @@
 
 // Version
 byte major = 0;
-byte minor = 18;
+byte minor = 19;
 
 // Communication
 #define DEVICE_ID      0xD2
