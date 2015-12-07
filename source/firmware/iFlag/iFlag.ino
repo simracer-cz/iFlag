@@ -76,18 +76,6 @@ void setup()
     Colorduino.Init();
     Colorduino.SetWhiteBal( balance );
 
-    // Power cycle the Uno couple of times for solid matrix brightness uniformity
-    byte powerCycles= EEPROM.read( 0x00 );
-    if ( powerCycles < 3 || powerCycles == 255 )
-    {
-        EEPROM.write( 0x00, powerCycles + 1 );
-        resetFunc();
-    }
-    else
-    {
-        EEPROM.write( 0x00, 0 );
-    }
-
     // Communications port
     Serial.begin( 9600 );
     Serial.println( "##### iFlags v"+String(major)+"."+String(minor)+" Hello!" );
