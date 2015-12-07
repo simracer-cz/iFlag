@@ -120,11 +120,11 @@ void serialEvent(){
                 dataP = Serial.read();      // (00-FE) four color pixels
 
                 Colorduino.SetPixel(
-                    dataX + i,              // X
-                    dataY,                  // Y
-                    round(luma * colors[ dataP ][ 0 ] / 100),   // R
-                    round(luma * colors[ dataP ][ 1 ] / 100),   // G
-                    round(luma * colors[ dataP ][ 2 ] / 100)    // B
+                    dataX + i,                           // X
+                    dataY,                               // Y
+                    luma * colors[ dataP ][ 0 ] / 100,   // R
+                    luma * colors[ dataP ][ 1 ] / 100,   // G
+                    luma * colors[ dataP ][ 2 ] / 100    // B
                 );
             }
         }
