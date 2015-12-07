@@ -67,6 +67,8 @@ You can also put the unit into an enclosure of your choice.
 
 ![Enclosure mount](mount-enclosure.jpg)
 
+Or buy a [FiTECH](http://www.fi-tech-net) enclosure from Carsten Filmer.
+
 
 Next Step
 ---------
