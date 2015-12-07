@@ -67,11 +67,7 @@ You can also put the unit into an enclosure of your choice.
 
 ![Enclosure mount](mount-enclosure.jpg)
 
-
-Next Step
----------
-
-With the unit completely assembled the next step is to upload [_iFlag_ Firmware](../firmware) to it.
+Or buy a [FiTECH](http://www.fi-tech-net) enclosure from Carsten Filmer.
 
 
 ---

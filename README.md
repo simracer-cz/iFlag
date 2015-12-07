@@ -14,18 +14,10 @@ Watch [Demonstration youtube video](http://youtu.be/n8sdxkuALDg)
 and see [iRacing.com Forum Thread](http://members.iracing.com/jforum/posts/list/0/3341549.page) for more.
 
 
-
-
 Getting Started
 ---------------
 
-_iFlag_ is __gratis__, but you need to buy the hardware and as with every "kit"
-you will have to do some work yourself to get it up and running. Take these steps:
-
-
-1. [Get And Assemble __Hardware__](hardware)
-2. [Flash The Hardware __Firmware__](firmware)
-3. [Install And Run __Software__](software)
+_iFlag_ software is __gratis__, you just [get the __Hardware__](hardware) and [install the __Software__](software), in this order.
 
 
 License
@@ -40,7 +32,7 @@ License
 Thanks To
 ---------
 
-4X Racing's Andy Morgan for help with field testing, iRacing's David Tucker for his technical expertise and Steve Myers for his encouragement and all iRacing members for support.
+4X Racing's Andy Morgan for help with track testing, iRacing's David Tucker for his technical expertise and Steve Myers for his encouragement and all iRacing members for support.
 
 
 ---

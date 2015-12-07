@@ -1,7 +1,7 @@
-software-source/iFlag/obj
-software-source/iFlag/bin
-software-source/iFlag/publish
-software-source/iFlag/iFlag.sln
-software-source/iFlag/iFlag.suo
-software-source/iFlag/iFlag.csproj.user
-software-source/iFlag/iFlag.userprefs
+source/software/iFlag/obj
+source/software/iFlag/bin
+source/software/iFlag/publish
+source/software/iFlag/iFlag.sln
+source/software/iFlag/iFlag.suo
+source/software/iFlag/iFlag.csproj.user
+source/software/iFlag/iFlag.userprefs

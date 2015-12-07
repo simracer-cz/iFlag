@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
             this.optionsMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.initiateBoardMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectorMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectorTopMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectorLeftMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,6 +40,11 @@
             this.modulesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flagsModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startLightsModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.brightnessMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fullBrightnessMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.highBrightnessMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mediumBrightnessMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lowBrightnessMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.demoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alwaysOnTopMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsMenuSeparator = new System.Windows.Forms.ToolStripSeparator();
@@ -55,6 +61,8 @@
             this.updateTimer = new System.Windows.Forms.Timer(this.components);
             this.demoTimer = new System.Windows.Forms.Timer(this.components);
             this.flagLabel = new System.Windows.Forms.Label();
+            this.initiationTimer = new System.Windows.Forms.Timer(this.components);
+            this.clearTimer = new System.Windows.Forms.Timer(this.components);
             this.optionsMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -62,8 +70,10 @@
             // optionsMenu
             // 
             this.optionsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.initiateBoardMenuItem,
             this.connectorMenuItem,
             this.modulesMenuItem,
+            this.brightnessMenuItem,
             this.demoMenuItem,
             this.alwaysOnTopMenuItem,
             this.optionsMenuSeparator,
@@ -72,6 +82,15 @@
             this.forumThreadMenuItem});
             this.optionsMenu.Name = "optionsMenu";
             this.optionsMenu.Size = new System.Drawing.Size(180, 186);
+            // 
+            // initiateBoardMenuItem
+            // 
+            this.initiateBoardMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.initiateBoardMenuItem.Name = "initiateBoardMenuItem";
+            this.initiateBoardMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.initiateBoardMenuItem.Text = "Initialize Board at ";
+            this.initiateBoardMenuItem.Visible = false;
+            this.initiateBoardMenuItem.Click += new System.EventHandler(this.initiateBoardMenuItem_Click);
             // 
             // connectorMenuItem
             // 
@@ -146,6 +165,49 @@
             this.startLightsModuleMenuItem.Size = new System.Drawing.Size(138, 22);
             this.startLightsModuleMenuItem.Text = "Start lights";
             this.startLightsModuleMenuItem.ToolTipText = "Show start lights during start of a race *EXPERIMENTAL";
+            // 
+            // brightnessMenuItem
+            // 
+            this.brightnessMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fullBrightnessMenuItem,
+            this.highBrightnessMenuItem,
+            this.mediumBrightnessMenuItem,
+            this.lowBrightnessMenuItem});
+            this.brightnessMenuItem.Name = "brightnessMenuItem";
+            this.brightnessMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.brightnessMenuItem.Text = "Brightness";
+            // 
+            // fullBrightnessMenuItem
+            // 
+            this.fullBrightnessMenuItem.CheckOnClick = true;
+            this.fullBrightnessMenuItem.Name = "fullBrightnessMenuItem";
+            this.fullBrightnessMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.fullBrightnessMenuItem.Text = "Full";
+            this.fullBrightnessMenuItem.Click += new System.EventHandler(this.brightnessMenuItem_Click);
+            // 
+            // highBrightnessMenuItem
+            // 
+            this.highBrightnessMenuItem.CheckOnClick = true;
+            this.highBrightnessMenuItem.Name = "highBrightnessMenuItem";
+            this.highBrightnessMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.highBrightnessMenuItem.Text = "High";
+            this.highBrightnessMenuItem.Click += new System.EventHandler(this.brightnessMenuItem_Click);
+            // 
+            // mediumBrightnessMenuItem
+            // 
+            this.mediumBrightnessMenuItem.CheckOnClick = true;
+            this.mediumBrightnessMenuItem.Name = "mediumBrightnessMenuItem";
+            this.mediumBrightnessMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.mediumBrightnessMenuItem.Text = "Medium";
+            this.mediumBrightnessMenuItem.Click += new System.EventHandler(this.brightnessMenuItem_Click);
+            // 
+            // lowBrightnessMenuItem
+            // 
+            this.lowBrightnessMenuItem.CheckOnClick = true;
+            this.lowBrightnessMenuItem.Name = "lowBrightnessMenuItem";
+            this.lowBrightnessMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.lowBrightnessMenuItem.Text = "Low";
+            this.lowBrightnessMenuItem.Click += new System.EventHandler(this.brightnessMenuItem_Click);
             // 
             // demoMenuItem
             // 
@@ -269,7 +331,6 @@
             // 
             // demoTimer
             // 
-            this.demoTimer.Enabled = true;
             this.demoTimer.Interval = 5000;
             this.demoTimer.Tick += new System.EventHandler(this.demoTimer_Tick);
             // 
@@ -282,6 +343,16 @@
             this.flagLabel.Size = new System.Drawing.Size(39, 18);
             this.flagLabel.TabIndex = 5;
             this.flagLabel.Text = "iFlag";
+            // 
+            // initiationTimer
+            // 
+            this.initiationTimer.Enabled = true;
+            this.initiationTimer.Interval = 30000;
+            this.initiationTimer.Tick += new System.EventHandler(this.initiationTimer_Tick);
+            // clearTimer
+            // 
+            this.clearTimer.Interval = 3000;
+            this.clearTimer.Tick += new System.EventHandler(this.clearTimer_Tick);
             // 
             // mainForm
             // 
@@ -337,6 +408,14 @@
         private System.Windows.Forms.ToolStripMenuItem modulesMenuItem;
         private System.Windows.Forms.ToolStripMenuItem flagsModuleMenuItem;
         private System.Windows.Forms.ToolStripMenuItem startLightsModuleMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem initiateBoardMenuItem;
+        private System.Windows.Forms.Timer initiationTimer;
+        private System.Windows.Forms.Timer clearTimer;
+        private System.Windows.Forms.ToolStripMenuItem brightnessMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mediumBrightnessMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fullBrightnessMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem highBrightnessMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lowBrightnessMenuItem;
     }
 }
 

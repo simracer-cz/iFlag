@@ -16,6 +16,10 @@ namespace iFlag
                                                   // USB connector sticks out. Persistent user option.
         byte connectorSide = Settings.Default.UsbConnector;
 
+                                                  // This defines the luminosity value of the matrix colors.
+                                                  // Persistent user option.
+        byte matrixLuma = Settings.Default.MatrixLuma;
+
                                                   // Indexes of colors usable in flag patterns, which
                                                   // match the v0.15 firmware palette, so don't change.
         const byte COLOR_BLACK = 0;
@@ -35,6 +39,11 @@ namespace iFlag
         {
         }
 
+        private void setMatrixLuma()
+        {
+            COMMAND_LUMA[3] = matrixLuma;
+            SP_SendData(COMMAND_LUMA);
+        }
                                                   // Translates the flag pattern to color data
                                                   // and feeds then to the matrix buffer
                                                   // to be broadcasted right away.

@@ -106,5 +106,17 @@ namespace iFlag.Properties {
                 this["ShowStartLights"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public byte MatrixLuma {
+            get {
+                return ((byte)(this["MatrixLuma"]));
+            }
+            set {
+                this["MatrixLuma"] = value;
+            }
+        }
     }
 }

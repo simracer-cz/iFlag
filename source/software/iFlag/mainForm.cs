@@ -11,7 +11,11 @@ namespace iFlag
     {
         // Version
         const byte major = 0;                     // Major version number of this software 
-        const byte minor = 56;                    // Minor version number
+        const byte minor = 60;                    // Minor version number
+
+        // Embedded firmware version
+        const byte firmwareMajor = 0;             // Major version number of the firmware payload
+        const byte firmwareMinor = 19;            // Minor version number
 
                                                   // In case of special occasions releases,
                                                   // this is what holds the edition string,
@@ -36,6 +40,7 @@ namespace iFlag
             startSDK();
             startMatrix();
             startFlags();
+            startUpdater();
         }
 
                                                   // When the window opens,
@@ -57,6 +62,15 @@ namespace iFlag
                 case 0x03: connectorTopMenuItem.Checked = true; break;
             }
 
+            matrixLuma = Settings.Default.MatrixLuma;
+            switch (matrixLuma)
+            {
+                case 10: lowBrightnessMenuItem.Checked = true; break;
+                case 25: mediumBrightnessMenuItem.Checked = true; break;
+                case 60: highBrightnessMenuItem.Checked = true; break;
+                case 100: fullBrightnessMenuItem.Checked = true; break;
+            }
+
             restoreCommunication();
         }
 
@@ -71,6 +85,7 @@ namespace iFlag
             Settings.Default.DemoMode = this.demoMenuItem.Checked;
             Settings.Default.ShowStartLights = this.startLightsModuleMenuItem.Checked;
             Settings.Default.UsbConnector = connectorSide;
+            Settings.Default.MatrixLuma = matrixLuma;
             storeCommunication();
             Settings.Default.Save();
         }
@@ -125,13 +140,21 @@ namespace iFlag
         {
             if (deviceConnected)
             {
-                if (!greeted)
+                if (!deviceUpdated())
                 {
-                    greeted = true;
-                    showSystemFlag(STARTUP_GREETING);
+                    updateFirmware();
                 }
-                hardwareLight.BackColor = Color.FromName("ForestGreen");
-                commLabel.Text = "v" + firmwareVersionMajor + "." + firmwareVersionMinor + " @" + port;
+                else
+                {
+                    if (!greeted)
+                    {
+                        greeted = true;
+                        showSystemFlag(STARTUP_GREETING);
+                        demoTimer.Enabled = true;
+                    }
+                    hardwareLight.BackColor = Color.FromName("ForestGreen");
+                    commLabel.Text = "v" + firmwareVersionMajor + "." + firmwareVersionMinor + " @" + port;
+                }
             }
             else
             {
@@ -183,6 +206,26 @@ namespace iFlag
 
             Settings.Default.UsbConnector = connectorSide;
             showSystemFlag(ORIENTATION_CHECK);
+        }
+
+        private void brightnessMenuItem_Click(object sender, EventArgs e)
+        {
+            switch (((ToolStripMenuItem)sender).Name)
+            {
+                case "fullBrightnessMenuItem":    matrixLuma = 100; break;
+                case "highBrightnessMenuItem":    matrixLuma = 60; break;
+                case "mediumBrightnessMenuItem":  matrixLuma = 25; break;
+                case "lowBrightnessMenuItem":     matrixLuma = 10; break;
+            }
+            fullBrightnessMenuItem.Checked = false;
+            highBrightnessMenuItem.Checked = false;
+            mediumBrightnessMenuItem.Checked = false;
+            lowBrightnessMenuItem.Checked = false;
+            ((ToolStripMenuItem)sender).Checked = true;
+
+            Settings.Default.MatrixLuma = matrixLuma;
+            setMatrixLuma();
+            showSystemFlag(LUMA_CHECK);
         }
     }
 }
