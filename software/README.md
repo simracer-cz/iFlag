@@ -54,7 +54,7 @@ The visual features of _iFlag_ are coupled into modules, which can be turned on 
 
 ### Brightness
 
-_iFlag_ allows you to set the LED "brightness" to __Full__, __High__, __Medium__ and __Low__. For your information the itself hardware doesn't have any brightness control capability whatsoever, so this works by using darker shades of the colors, which often involve visible flickering inherent in the hardware.
+_iFlag_ allows you to set the LED brightness to __Full__, __High__, __Medium__ and __Low__.
 
 
 ### Demo Mode

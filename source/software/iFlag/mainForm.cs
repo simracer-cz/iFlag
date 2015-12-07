@@ -65,9 +65,9 @@ namespace iFlag
             matrixLuma = Settings.Default.MatrixLuma;
             switch (matrixLuma)
             {
-                case 25: lowBrightnessMenuItem.Checked = true; break;
-                case 50: mediumBrightnessMenuItem.Checked = true; break;
-                case 75: highBrightnessMenuItem.Checked = true; break;
+                case 10: lowBrightnessMenuItem.Checked = true; break;
+                case 25: mediumBrightnessMenuItem.Checked = true; break;
+                case 60: highBrightnessMenuItem.Checked = true; break;
                 case 100: fullBrightnessMenuItem.Checked = true; break;
             }
 
@@ -213,9 +213,9 @@ namespace iFlag
             switch (((ToolStripMenuItem)sender).Name)
             {
                 case "fullBrightnessMenuItem":    matrixLuma = 100; break;
-                case "highBrightnessMenuItem":    matrixLuma = 75; break;
-                case "mediumBrightnessMenuItem":  matrixLuma = 50; break;
-                case "lowBrightnessMenuItem":     matrixLuma = 25; break;
+                case "highBrightnessMenuItem":    matrixLuma = 60; break;
+                case "mediumBrightnessMenuItem":  matrixLuma = 25; break;
+                case "lowBrightnessMenuItem":     matrixLuma = 10; break;
             }
             fullBrightnessMenuItem.Checked = false;
             highBrightnessMenuItem.Checked = false;
