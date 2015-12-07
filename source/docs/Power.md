@@ -1,47 +1,27 @@
 Power
 =====
 
-The light performance of the matrix is voltage-dependent, where higher is better. USB power while having enough punch (mA), it is only 5V, which is not enough to properly feed the matrix. Low voltage like that causes the LED chips to "starve", which results in their reduced brightness. Less demanding chip colors like red will perform better when under-powered and this manifest itself with a red-ish hue color shift usually clearly visible on signals like a white flag for example.
 
-Providing an external DC power ensures enough voltage for the matrix to shine (literaly!).
+There are no measurable or visible gains in using an external power source of any voltage or amperage.
+The unit consumes 260mA at peak brightness, so USB port capable of providing stable 400mA is good enough
+for the job alone and often far more reliable than the external power circuit.
 
-
-What Adapter?
--------------
-
-First and foremost, the voltage is limited by what the Arduino board is rated for. Genuine Arduino UNO can withstand 12V, but various cheaper clones have various voltage limits. So do your research on the ratings of your clone, if you bought one, and do respect the limit.
-
-The overall power consumtion of the unit sits only at around 200mA with all LED chips at full brightness white and around 100mA at with all LEDs completely off. Bench measurements show that to get a uncompromised color quality, mainly to get the white to be white, you need a little more than the 7V required by Arduino alone.
-
-For _iFlag_ use DC adapter of following rating:
-
-| Adapter Parameter  | Absolute Minimum        | Recommended |
-| ------------------ | ----------------------- | ----------- |
-| Voltage (U)        |                      9V |   10V - 12V |
-| Max Current (I)    |                   200mA |       300mA |
-| Connector Plug     |             5.0 x 2.1mm |       _N/A_ |
-| Polarity           | `+` inside, `-` outside |       _N/A_ |
-
-__Pay attention to the connector polarity!__
-
-
-Adapters of these ratings can often be salvaged out of discarded electronics like modems, toys, steering wheels...
-
+All in all, do not use any external power source and simply ignore the DC jack plug of the Arduino.
 
 
 Power Consumption
 -----------------
 
-Following table contains bench measurements of power draw on various voltages made to determine an adequate voltage range for the _iFlag_ device.
+Following table is for illustration purposes only. It contains bench measurements of power draw on various voltages and has been measured on Funduino Uno clone.
 
-| DC Voltage | Full Draw | Idle Draw | White white? |
-| ---------- | --------- | --------- | -------------|
-| 7V         |     110mA |      85mA | NO (red)     |
-| 8V         |     145mA |      99mA | NO (orange)  |
-| 9V         |     180mA |      99mA | YES (barely) |
-| 10V        |     190mA |      99mA | YES          |
-| 11V        |     200mA |      99mA | YES          |
-| 12V        |     205mA |      99mA | YES          |
+| DC Voltage | Full Draw | Idle Draw |
+| ---------- | --------- | --------- |
+| 7V         |     260mA |      85mA |
+| 8V         |     260mA |      99mA |
+| 9V         |     260mA |      99mA |
+| 10V        |     260mA |      99mA |
+| 11V        |     260mA |      99mA |
+| 12V        |     260mA |      99mA |
 
 
 ---
