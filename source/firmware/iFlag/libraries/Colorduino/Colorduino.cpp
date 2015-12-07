@@ -110,7 +110,6 @@ ISR(TIMER2_OVF_vect)          //Timer2  Service
  // 125KHz / 195 = 641.026Hz / 8 rows = 80.128Hz refresh rate
   //  TCNT2 = 100;
   TCNT2 = 61;
-  close_all_lines;  
   Colorduino.run();
   Colorduino.open_line(Colorduino.line);
   if (++Colorduino.line > 7) Colorduino.line = 0;
@@ -164,6 +163,8 @@ void ColorduinoObject::run()
       LED_SCL_SET;
     }
     pixel++;
+    if(x>=ColorduinoScreenWidth-2)
+    close_all_lines;
   }
   LED_LAT_SET;
   LED_LAT_CLR;
