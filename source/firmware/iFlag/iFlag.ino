@@ -109,7 +109,7 @@ void serialEvent(){
     while ( Serial.available() && Serial.peek() != PACKET_BYTE ) Serial.read();
     if ( Serial.available() >= 8 && Serial.read() == PACKET_BYTE )
     {
-        if ( Serial.peek() != PACKET_BYTE ) // Stream
+        if ( Serial.peek() != COMMAND_BYTE ) // Stream
         {
             dataX = Serial.read();          // (00-07) LED X
             dataY = Serial.read();          // (00-07) LED Y
