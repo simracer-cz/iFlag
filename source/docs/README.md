@@ -4,8 +4,8 @@ The Documentation
 =================
 
 * [Communication Protocol](SerialProtocol.md)
-* [Signals Listing](Signals.md)
-* [Patterns Listing](Patterns.md)
+* [Signals Table](Signals.md)
+* [Patterns Table](Patterns.md)
 * [Colors Table](Colors.md)
 * [External Power](Power.md)
 
