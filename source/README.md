@@ -1,4 +1,4 @@
-![iFlag logo](resources/logo/SVG/logo-full.svg)
+![iFlag logo](http://simracer.cz/iracing/iFlag-logo/logo-full.svg)
 
 The Open Source
 ===============

@@ -1,4 +1,4 @@
-![iFlag logo](source/resources/logo/SVG/logo-full.svg)
+![iFlag logo](http://simracer.cz/iracing/iFlag-logo/logo-full.svg)
 
 > **i**Racing **F**lashing **L**ight **A**wareness **G**uard
 
