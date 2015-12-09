@@ -1,6 +1,7 @@
 Changelog
 =========
 
+v0.61 - New icon
 v0.60 - Non-uniform colors issue fixed
 v0.59 - Brightness option in the menu
 v0.58 - Yellow and furled black are now cleared with green

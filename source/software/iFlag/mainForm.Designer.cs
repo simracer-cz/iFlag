@@ -81,7 +81,7 @@
             this.gitMenuItem,
             this.forumThreadMenuItem});
             this.optionsMenu.Name = "optionsMenu";
-            this.optionsMenu.Size = new System.Drawing.Size(180, 186);
+            this.optionsMenu.Size = new System.Drawing.Size(180, 208);
             // 
             // initiateBoardMenuItem
             // 
@@ -349,6 +349,7 @@
             this.initiationTimer.Enabled = true;
             this.initiationTimer.Interval = 30000;
             this.initiationTimer.Tick += new System.EventHandler(this.initiationTimer_Tick);
+            // 
             // clearTimer
             // 
             this.clearTimer.Interval = 3000;
