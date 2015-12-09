@@ -36,6 +36,7 @@ namespace iFlag
 
         private void startFlags()
         {
+            flagOnDisplay = NO_FLAG;
         }
 
                                                   // Accepts a flag identifier number
