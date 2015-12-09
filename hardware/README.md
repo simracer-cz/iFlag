@@ -53,9 +53,7 @@ Assembled unit will look like this:
 Connection
 ----------
 
-Use regular USB cable to connect the _iFlag_ device to your computer. This cable will provide data as well as power to the flag and it is the only required cable you really need.
-
-That being said, you can optionally also use the DC power plug on Arduino to provide dedicated 7-12 V DC power, which will reward you with improved color and brightness performance.
+Use regular USB cable to connect the _iFlag_ device to your computer. This cable will provide data as well as more than enough power to the flag and it is the only required cable you really need. You do not need any external power supply. But you definitely can use one, with proper rating for your Arduino board (usually 7V - 9V).
 
 
 Mounting
