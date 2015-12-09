@@ -5,7 +5,7 @@ The Logo
 
 _iFlag_ sports a relatively simple monochromatic logo made up of a simplified visual representation of a dot matrix style display with the dots making up a shape of a flag on a short pole. The actual color of the logo is not defined and could be any, but always only one single color. On dark backgrounds the logo should appear in a light tone.
 
-![iFlag logo](SVG/logo.svg)
+![iFlag logo](http://simracer.cz/iracing/iFlag-logo/logo.svg)
 
 Get in
 [SVG](SVG/logo.svg),
@@ -16,7 +16,7 @@ or
 
 Combination with the wording "iFLAG" makes the full variant of the logo:
 
-![iFlag logo](SVG/logo-full.svg)
+![iFlag logo](http://simracer.cz/iracing/iFlag-logo/logo-full.svg)
 
 Get in
 [SVG](SVG/logo-full.svg),
@@ -27,7 +27,7 @@ or
 
 Whenever the text wording is desired, but the form factor doesn't allow to use the full logo, a compact variant can be used:
 
-![iFlag logo](SVG/logo-compact.svg)
+![iFlag logo](http://simracer.cz/iracing/iFlag-logo/logo-compact.svg)
 
 Get in
 [SVG](SVG/logo-compact.svg),
