@@ -1,5 +1,7 @@
-iFlag Software Open Source
-==========================
+![iFlag logo](resources/logo/SVG/logo-full.svg)
+
+The Open Source
+===============
 
 __This folder is for developers only. Fragile mortals run away now.. ;)__
 

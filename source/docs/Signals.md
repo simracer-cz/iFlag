@@ -1,3 +1,5 @@
+![iFlag logo](../resources/logo/SVG/logo-full.svg)
+
 Signals
 =======
 _as defined in [flags.cs](../iFlag/flags.cs)_

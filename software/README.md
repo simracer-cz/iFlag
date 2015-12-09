@@ -1,5 +1,7 @@
-iFlag Software
-==============
+![iFlag logo](../source/resources/logo/SVG/logo-full.svg)
+
+The Software
+============
 
 	v0.60 (v0.19)
 

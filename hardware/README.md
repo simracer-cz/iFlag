@@ -1,5 +1,7 @@
-iFlag Hardware
-==============
+![iFlag logo](../source/resources/logo/SVG/logo-full.svg)
+
+The Hardware
+============
 
 	v1
 

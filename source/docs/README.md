@@ -1,5 +1,7 @@
-iFlag Documentation
-===================
+![iFlag logo](../resources/logo/SVG/logo-full.svg)
+
+The Documentation
+=================
 
 * [Communication Protocol](SerialProtocol.md)
 * [Signals Listing](Signals.md)

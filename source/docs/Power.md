@@ -1,3 +1,5 @@
+![iFlag logo](../resources/logo/SVG/logo-full.svg)
+
 Power
 =====
 

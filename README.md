@@ -1,5 +1,4 @@
-iFlag
-=====
+![iFlag logo](source/resources/logo/SVG/logo-full.svg)
 
 > **i**Racing **F**lashing **L**ight **A**wareness **G**uard
 
