@@ -3,7 +3,7 @@
 > **i**Racing **F**lashing **L**ight **A**wareness **G**uard
 
 Race marshalling light board for [iRacing.com](http://iracing.com) motorsport simulation.
-Arduino-based LED matrix displays racing flags in a truly noticable periferal vision fashion
+Arduino-based LED matrix displays racing flags in a truly noticable peripheral vision fashion
 making it literally impossible to miss any flag like yellow, blue or safetycar flags.
 Additionaly includes optional useful signals like start lights on the grid and more.
 
