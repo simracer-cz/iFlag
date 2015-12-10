@@ -20,7 +20,7 @@
 
 // Version
 byte major = 0;
-byte minor = 19;
+byte minor = 20;
 
 // Communication
 #define DEVICE_ID      0xD2
@@ -56,7 +56,7 @@ byte colors[ 16 ][ 3 ]=
     {   0,  55,  55 },   // 0x14 | dim teal
     {  55,   0,  55 },   // 0x15 | dim purple
 };
-byte balance[ 3 ] = { 36, 63, 63 }; // 0-63 RGB
+byte balance[ 3 ] = { 36, 45, 63 }; // 0-63 RGB
                                     // Red is toned down to half here to limit the effects of its inevitable light
                                     // strength dominance due to physical custruction differences between all three
                                     // color chips in the matrix LED
