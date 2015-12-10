@@ -22,18 +22,22 @@ namespace iFlag
 
                                                   // Indexes of colors usable in flag patterns, which
                                                   // match the v0.15 firmware palette, so don't change.
-        const byte COLOR_BLACK = 0;
-        const byte COLOR_WHITE = 1;
-        const byte COLOR_RED = 2;
-        const byte COLOR_GREEN = 3;
-        const byte COLOR_BLUE = 4;
-        const byte COLOR_YELLOW = 5;
-        const byte COLOR_TEAL = 6;
-        const byte COLOR_PURPLE = 7;
-        const byte COLOR_ORANGE = 8;
-        const byte COLOR_DIM_WHITE = 10;
-        const byte COLOR_DIM_RED = 11;
-        const byte COLOR_DIM_BLUE = 12;
+        const byte COLOR_BLACK =         0;
+        const byte COLOR_WHITE =         1;
+        const byte COLOR_RED =           2;
+        const byte COLOR_GREEN =         3;
+        const byte COLOR_BLUE =          4;
+        const byte COLOR_YELLOW =        5;
+        const byte COLOR_TEAL =          6;
+        const byte COLOR_PURPLE =        7;
+        const byte COLOR_ORANGE =        8;
+        const byte COLOR_DIM_WHITE =     9;
+        const byte COLOR_DIM_RED =      10;
+        const byte COLOR_DIM_GREEN =    11;
+        const byte COLOR_DIM_BLUE =     12;
+        const byte COLOR_DIM_YELLOW =   13;
+        const byte COLOR_DIM_TEAL =     14;
+        const byte COLOR_DIM_PURPLE =   15;
 
         private void startMatrix()
         {
