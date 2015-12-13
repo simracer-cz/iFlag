@@ -11,7 +11,7 @@ namespace iFlag
     {
         // Version
         const byte major = 0;                     // Major version number of this software 
-        const byte minor = 62;                    // Minor version number
+        const byte minor = 63;                    // Minor version number
 
         // Embedded firmware version
         const byte firmwareMajor = 0;             // Major version number of the firmware payload
@@ -47,7 +47,17 @@ namespace iFlag
                                                   // restore persistent user options.
         private void mainForm_Load(object sender, EventArgs e)
         {
-            this.Location = Settings.Default.WindowLocation;
+            if (!Settings.Default.WindowLocation.IsEmpty)
+            {
+                this.Location = Settings.Default.WindowLocation;
+            }
+            else
+            {
+                System.Drawing.Point screenCenter = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Location;
+                screenCenter.X += System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width / 2 - this.Width / 2;
+                screenCenter.Y += System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height / 2 - this.Height / 2;
+                this.Location = screenCenter;
+            }
             this.WindowState = Settings.Default.WindowState;
             this.TopMost = this.alwaysOnTopMenuItem.Checked = Settings.Default.WindowTopMost;
             this.demoMenuItem.Checked = Settings.Default.DemoMode;

@@ -1,6 +1,7 @@
 Changelog
 =========
 
+v0.63 - Less guesswork with window's initial position
 v0.62 - Improved white balance
 v0.61 - New icon
 v0.60 - Non-uniform colors issue fixed
