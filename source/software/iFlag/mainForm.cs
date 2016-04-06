@@ -195,6 +195,7 @@ namespace iFlag
                 demoMenuItem.Enabled = true;
                 demoTimer.Enabled = true;
                 updateTimer.Enabled = false;
+                sessionDetected = false;
             }
             simConnected = connected;
         }

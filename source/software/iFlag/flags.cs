@@ -156,6 +156,8 @@ namespace iFlag
             {
                 if (sdk.IsConnected())
                 {
+                    getSessionDetails();
+
                     bool onTrack = (bool)sdk.GetData("IsOnTrack");
                     long flag = Convert.ToInt64(sdk.GetData("SessionFlags"));
 
