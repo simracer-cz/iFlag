@@ -156,26 +156,12 @@ namespace iFlag
             {
                 if (sdk.IsConnected())
                 {
-                    bool onTrack = !Convert.ToBoolean(sdk.GetData("IsReplayPlaying"));
-                    if (onTrack)
+                    bool onTrack = (bool)sdk.GetData("IsOnTrack");
+                    long flag = Convert.ToInt64(sdk.GetData("SessionFlags"));
+
+                    if (onTrack || Convert.ToBoolean(flag & irsdk_checkered))
                     {
-                        long flag = Convert.ToInt64(sdk.GetData("SessionFlags"));
-                        if (flag != irsdk_noFlag)
-                        {
-                            showFlag(flag);
-                        }
-                        else
-                        {
-                            if (clearFlag != NO_FLAG && !clearTimer.Enabled)
-                            {
-                                clearTimer.Start();
-                            }
-                            showFlag(clearFlag);
-                        }
-                    }
-                    else
-                    {
-                        showFlag(NO_FLAG);
+                        flagsEveryTick(flag);
                     }
                 }
             }
@@ -183,6 +169,26 @@ namespace iFlag
             {
                 Console.WriteLine("FLAG UPDATE FAILED");
                 Console.WriteLine(ex);
+            }
+        }
+
+                                                  // Displays the actual flag signal returning `true` when
+                                                  // a change has been picked up. Also clears certain flags
+                                                  // such as yellows with a green flag.
+        private bool flagsEveryTick(long flag)
+        {
+
+            if (flag != irsdk_noFlag)
+            {
+                return showFlag(flag);
+            }
+            else
+            {
+                if (clearFlag != NO_FLAG && !clearTimer.Enabled)
+                {
+                    clearTimer.Start();
+                }
+                return showFlag(clearFlag);
             }
         }
 
