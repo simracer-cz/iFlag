@@ -142,6 +142,7 @@ namespace iFlag
                                     }
                                     deviceConnected = true;
                                     lastPingTime = DateTime.Now;
+                                    initiationTimer.Stop();
                                 }
                                 break;
                         }
@@ -187,6 +188,7 @@ namespace iFlag
                 deviceConnected = false;
                 indicateConnection();
                 connectTimer.Enabled = true;
+                initiationTimer.Start();
             }
         }
     }
