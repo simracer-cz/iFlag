@@ -9,6 +9,9 @@ namespace iFlag
     {
         bool sessionDetected;
         int carID;
+        string trackCategory;
+        bool trackCategoryRoad;
+        bool trackCategoryOval;
 
         private void startSession()
         {
@@ -30,6 +33,12 @@ namespace iFlag
                     Match carIdxMatch = Regex.Match(sessionInfo, @"(?<=DriverCarIdx: )\d+");
                     carID = int.Parse(carIdxMatch.Value);
                     Console.WriteLine("Car ID: {0}", carID);
+
+                    Match category = Regex.Match(sessionInfo, @"(?<=Category: )(Road|Oval)");
+                    trackCategory = category.Value;
+                    trackCategoryRoad = trackCategory == "Road";
+                    trackCategoryOval = trackCategory == "Oval";
+                    Console.WriteLine("Track category: {0}", trackCategory);
                 }
             }
         }
