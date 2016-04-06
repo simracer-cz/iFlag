@@ -2,7 +2,7 @@
 
 Patterns
 ========
-_as defined in [flags.cs](../iFlag/flags.cs)_
+_as defined in [patterns.cs](../iFlag/patterns.cs)_
 
 A complete alphabetical list of patterns, which get conbined with color index information and timing to form a [visual signal](Signals.md).
 Many of them are capable of more than they are used for and there are also few patterns, which are currently not being used at all.
