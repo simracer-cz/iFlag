@@ -40,13 +40,13 @@ Pattern Frames
 | `DIAGONAL_STRIPE_FLAG`    | ![](patterns/diagonal-stripe.gif)     | Blue flag |
 | `DOUBLE_WAVING_FLAG`      | ![](patterns/double-waving.gif)       | (N/A) |
 | `F_FLAG`                  | ![](patterns/f.gif)                   | Greeting, Orientation check pattern |
-| `FLASHING_FLAG`           | ![](patterns/flashing.gif)            | Red flag |
+| `FLASHING_FLAG`           | ![](patterns/flashing.gif)            | Red flag, Full course caution (oval) |
 | `FURLED_FLAG`             | ![](patterns/furled.gif)              | Furled black flag |
 | `HALF_FLAG`               | ![](patterns/half.gif)                | Start lights: Ready! |
 | `INVERTED_FLAG`           | ![](patterns/inverted.gif)            | Black flag, One lap to green |
 | `IRACING_LOGO_FLAG`       | ![](patterns/iracing.gif)             | (N/A) |
 | `MEATBALL_FLAG`           | ![](patterns/meatball.gif)            | Meat ball flag |
-| `SC_FLAG`                 | ![](patterns/sc.gif)                  | Full course caution |
+| `SC_FLAG`                 | ![](patterns/sc.gif)                  | Full course caution (road) |
 | `SIMPLE_FLAG`             | ![](patterns/simple.gif)              | White flag, Start lights: Set!, All green flags |
 | `STATUS_FLAG`             | ![](patterns/status.gif)              | (N/A) |
 | `STRIPPED_FLAG`           | ![](patterns/stripped.gif)            | Debris flag |
