@@ -66,6 +66,7 @@
             this.flagLabel = new System.Windows.Forms.Label();
             this.initiationTimer = new System.Windows.Forms.Timer(this.components);
             this.clearTimer = new System.Windows.Forms.Timer(this.components);
+            this.updateLinkLabel = new System.Windows.Forms.LinkLabel();
             this.optionsMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -383,11 +384,29 @@
             this.clearTimer.Interval = 3000;
             this.clearTimer.Tick += new System.EventHandler(this.clearTimer_Tick);
             // 
+            // updateLinkLabel
+            // 
+            this.updateLinkLabel.AutoSize = true;
+            this.updateLinkLabel.BackColor = System.Drawing.Color.Black;
+            this.updateLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.updateLinkLabel.LinkColor = System.Drawing.Color.Gold;
+            this.updateLinkLabel.Location = new System.Drawing.Point(175, -1);
+            this.updateLinkLabel.Name = "updateLinkLabel";
+            this.updateLinkLabel.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
+            this.updateLinkLabel.Size = new System.Drawing.Size(106, 14);
+            this.updateLinkLabel.TabIndex = 6;
+            this.updateLinkLabel.TabStop = true;
+            this.updateLinkLabel.Text = "**Update available!**";
+            this.updateLinkLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.updateLinkLabel.Visible = false;
+            this.updateLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.updateLinkLabel_LinkClicked);
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(281, 60);
+            this.Controls.Add(this.updateLinkLabel);
             this.Controls.Add(this.flagLabel);
             this.Controls.Add(this.simLight);
             this.Controls.Add(this.hardwareLight);
@@ -445,6 +464,7 @@
         private System.Windows.Forms.ToolStripMenuItem fullBrightnessMenuItem;
         private System.Windows.Forms.ToolStripMenuItem highBrightnessMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lowBrightnessMenuItem;
+        private System.Windows.Forms.LinkLabel updateLinkLabel;
         private System.Windows.Forms.ToolStripMenuItem updatesMenuItem;
         private System.Windows.Forms.ToolStripMenuItem stableUpdatesMenuItem;
         private System.Windows.Forms.ToolStripMenuItem experimentalUpdatesMenuItem;

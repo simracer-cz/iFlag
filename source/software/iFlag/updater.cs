@@ -155,6 +155,35 @@ namespace iFlag
             return !softwareUpdated();
         }
 
+                                                  // Handles the actual update instructions process
+                                                  // after user has clicked on the "Updates Available" link.
+                                                  // It presents user with a dialog detailing the versions
+                                                  // and changes. When user proceeds, it then offers
+                                                  // detailed instructions on how to perform the manual update.
+        private void updateLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            string dialogText = "";
+            dialogText += "Download iFLAG v" + updateVersion + "? ";
+            dialogText += "You now have v" + version + "\n\n";
+            dialogText += "Change log:\n" + updateChanges;
+
+            if ( DialogResult.OK == MessageBox.Show( dialogText, "iFLAG Update", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) )
+            {
+                dialogText = "";
+                dialogText += "iFLAG will now be closed and project home on github will be open.\n\n";
+                dialogText += "On the page click the [DOWNLOAD ZIP] button.\n\n";
+                dialogText += "1. Download & extract\n";
+                dialogText += "2. Overwrite your `iFlag\\` folder with the one from the ZIP.\n";
+                dialogText += "3. Enjoy :)";
+
+                if (DialogResult.OK == MessageBox.Show( dialogText, "Update Install Instructions", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) )
+                {
+                    System.Diagnostics.Process.Start(updateDownloadURL);
+                    Application.Exit();
+                }
+            }
+        }
+
                                                   // Asynchronously handles the software update check
                                                   // and adjusts the main UI based on its findings
         private void UpdateWorkerThread()  
