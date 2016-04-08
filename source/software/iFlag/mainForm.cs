@@ -81,6 +81,13 @@ namespace iFlag
                 case 100: fullBrightnessMenuItem.Checked = true; break;
             }
 
+            updatesLevel = Settings.Default.Updates;
+            switch (updatesLevel)
+            {
+                case "stable": this.stableUpdatesMenuItem.Checked = true; break;
+                case "experimental": this.experimentalUpdatesMenuItem.Checked = true; break;
+            }
+
             restoreCommunication();
         }
 
@@ -96,6 +103,7 @@ namespace iFlag
             Settings.Default.ShowStartLights = this.startLightsModuleMenuItem.Checked;
             Settings.Default.UsbConnector = connectorSide;
             Settings.Default.MatrixLuma = matrixLuma;
+            Settings.Default.Updates = updatesLevel;
             storeCommunication();
             Settings.Default.Save();
         }
@@ -237,6 +245,20 @@ namespace iFlag
             Settings.Default.MatrixLuma = matrixLuma;
             setMatrixLuma();
             showSystemFlag(LUMA_CHECK);
+        }
+
+        private void updatesModeMenuItem_Click(object sender, EventArgs e)
+        {
+            switch (((ToolStripMenuItem)sender).Name)
+            {
+                case "stableUpdatesMenuItem": updatesLevel = "stable"; break;
+                case "experimentalUpdatesMenuItem": updatesLevel = "experimental"; break;
+            }
+            stableUpdatesMenuItem.Checked = false;
+            experimentalUpdatesMenuItem.Checked = false;
+            ((ToolStripMenuItem)sender).Checked = true;
+
+            Settings.Default.Updates = updatesLevel;
         }
     }
 }

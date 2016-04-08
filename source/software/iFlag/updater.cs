@@ -8,6 +8,9 @@ namespace iFlag
     public partial class mainForm : Form
     {
 
+                                                  // Stores current software updates level of involvement
+        string updatesLevel = Settings.Default.Updates;
+
         private void startUpdater()
         {
         }

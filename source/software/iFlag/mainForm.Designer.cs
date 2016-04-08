@@ -51,6 +51,9 @@
             this.appMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.forumThreadMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updatesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stableUpdatesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.experimentalUpdatesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsButton = new System.Windows.Forms.Button();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.commLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -79,7 +82,8 @@
             this.optionsMenuSeparator,
             this.appMenuItem,
             this.gitMenuItem,
-            this.forumThreadMenuItem});
+            this.forumThreadMenuItem,
+            this.updatesMenuItem});
             this.optionsMenu.Name = "optionsMenu";
             this.optionsMenu.Size = new System.Drawing.Size(180, 208);
             // 
@@ -262,6 +266,30 @@
             this.forumThreadMenuItem.ToolTipText = "Place to discuss";
             this.forumThreadMenuItem.Click += new System.EventHandler(this.forumThreadMenuItem_Click);
             // 
+            // updatesMenuItem
+            // 
+            this.updatesMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.stableUpdatesMenuItem,
+            this.experimentalUpdatesMenuItem});
+            this.updatesMenuItem.Name = "updatesMenuItem";
+            this.updatesMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.updatesMenuItem.Text = "Updates";
+            this.updatesMenuItem.ToolTipText = "Automatically check for which updates? Happens on app startup only";
+            // 
+            // stableUpdatesMenuItem
+            // 
+            this.stableUpdatesMenuItem.Name = "stableUpdatesMenuItem";
+            this.stableUpdatesMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.stableUpdatesMenuItem.Text = "Stable (recommended)";
+            this.stableUpdatesMenuItem.Click += new System.EventHandler(this.updatesModeMenuItem_Click);
+            // 
+            // experimentalUpdatesMenuItem
+            // 
+            this.experimentalUpdatesMenuItem.Name = "experimentalUpdatesMenuItem";
+            this.experimentalUpdatesMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.experimentalUpdatesMenuItem.Text = "Experimental";
+            this.experimentalUpdatesMenuItem.Click += new System.EventHandler(this.updatesModeMenuItem_Click);
+            // 
             // optionsButton
             // 
             this.optionsButton.Location = new System.Drawing.Point(0, 0);
@@ -417,6 +445,9 @@
         private System.Windows.Forms.ToolStripMenuItem fullBrightnessMenuItem;
         private System.Windows.Forms.ToolStripMenuItem highBrightnessMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lowBrightnessMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem updatesMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem stableUpdatesMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem experimentalUpdatesMenuItem;
     }
 }
 
