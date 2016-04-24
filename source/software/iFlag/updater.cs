@@ -1,10 +1,10 @@
 using System;
-using System.Windows.Forms;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
-using System.Xml;
 using System.Threading;
-using System.ComponentModel;
+using System.Windows.Forms;
+using System.Xml;
 
 namespace iFlag
 {
@@ -14,7 +14,6 @@ namespace iFlag
                                                   // Stores current software updates level of involvement
         string updatesLevel = Settings.Default.Updates;
         string updateVersion = null;              // Version string of the update (if detected)
-        string updateDownloadURL = "";            // URL to the update download
         string updateChanges = "";                // Copy of the changelog
 
         string version = major + "." + minor;     // Current app version as a string
@@ -114,8 +113,7 @@ namespace iFlag
             XmlTextReader reader;
             try
             {
-                string xmlURL = updateURL + "." + updatesLevel + ".xml";
-                reader = new XmlTextReader(xmlURL);
+                reader = new XmlTextReader(updateURL);
                 reader.MoveToContent();
                 string elementName = "";
                 if (reader.NodeType == XmlNodeType.Element && reader.Name == "iflag")
@@ -128,16 +126,31 @@ namespace iFlag
                         {
                             if (reader.NodeType == XmlNodeType.Text && reader.HasValue)
                             {
-                                switch (elementName)
+                                switch (updatesLevel)
                                 {
-                                    case "version":
-                                        updateVersion = reader.Value;
+                                    case "stable":
+                                        switch (elementName)
+                                        {
+                                            case "stable-version":
+                                                updateVersion = reader.Value;
+                                                break;
+                                            case "stable-changelog":
+                                                updateChanges = reader.Value;
+                                                break;
+                                        }
                                         break;
-                                    case "url":
-                                        updateDownloadURL = reader.Value;
-                                        break;
-                                    case "changelog":
-                                        updateChanges = reader.Value;
+
+                                    case "experimental":
+                                        switch (elementName)
+                                        {
+                                            case "experimental-version":
+                                                updateVersion = reader.Value;
+                                                break;
+                                            case "stable-changelog":
+                                            case "experimental-changelog":
+                                                updateChanges = reader.Value + updateChanges;
+                                                break;
+                                        }
                                         break;
                                 }
                             }
@@ -163,24 +176,18 @@ namespace iFlag
         private void updateLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             string dialogText = "";
-            dialogText += "Download iFLAG v" + updateVersion + "? ";
-            dialogText += "You now have v" + version + "\n\n";
+            dialogText += "Your iFLAG will be updated to " + updateVersion + " (from " + updateVersion + ")\n\n";
             dialogText += "Change log:\n" + updateChanges;
 
             if ( DialogResult.OK == MessageBox.Show( dialogText, "iFLAG Update", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) )
             {
-                dialogText = "";
-                dialogText += "iFLAG will now be closed and project home on github will be open.\n\n";
-                dialogText += "On the page click the [DOWNLOAD ZIP] button.\n\n";
-                dialogText += "1. Download & extract\n";
-                dialogText += "2. Overwrite your `iFlag\\` folder with the one from the ZIP.\n";
-                dialogText += "3. Enjoy :)";
-
-                if (DialogResult.OK == MessageBox.Show( dialogText, "Update Install Instructions", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) )
-                {
-                    System.Diagnostics.Process.Start(updateDownloadURL);
-                    Application.Exit();
-                }
+                Process process = new Process();
+                ProcessStartInfo info = new ProcessStartInfo();
+                info.FileName = "updater.exe";
+                info.Arguments = string.Format("{0} {1} {2} {3} {4}", version, updateURL, updatesLevel, this.Location.X, this.Location.Y);
+                process.StartInfo = info;
+                process.Start();
+                Application.Exit();
             }
         }
 
