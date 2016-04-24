@@ -176,15 +176,15 @@ namespace iFlag
         private void updateLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             string dialogText = "";
-            dialogText += "Your iFLAG will be updated to " + updateVersion + " (from " + updateVersion + ")\n\n";
-            dialogText += "Change log:\n" + updateChanges;
+            dialogText += string.Format("Your iFLAG will be updated to {0} (from v{1})\n\n", updateVersion, version);
+            dialogText += string.Format("Change log:\n{0}", updateChanges);
 
             if ( DialogResult.OK == MessageBox.Show( dialogText, "iFLAG Update", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) )
             {
                 Process process = new Process();
                 ProcessStartInfo info = new ProcessStartInfo();
                 info.FileName = "updater.exe";
-                info.Arguments = string.Format("{0} {1} {2} {3} {4}", version, updateURL, updatesLevel, this.Location.X, this.Location.Y);
+                info.Arguments = string.Format("v{0} {1} {2} {3}", version, updateVersion, this.Location.X, this.Location.Y);
                 process.StartInfo = info;
                 process.Start();
                 Application.Exit();
