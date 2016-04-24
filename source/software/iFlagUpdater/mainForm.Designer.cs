@@ -39,6 +39,7 @@
             this.Name = "mainForm";
             this.Text = "iFLAG Update Progress";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.mainForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
