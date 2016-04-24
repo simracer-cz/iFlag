@@ -87,6 +87,7 @@ namespace iFlag
             {
                 case "stable": this.stableUpdatesMenuItem.Checked = true; break;
                 case "experimental": this.experimentalUpdatesMenuItem.Checked = true; break;
+                case "none": this.noUpdatesMenuItem.Checked = true; break;
             }
 
             restoreCommunication();
@@ -255,7 +256,9 @@ namespace iFlag
             {
                 case "stableUpdatesMenuItem": updatesLevel = "stable"; break;
                 case "experimentalUpdatesMenuItem": updatesLevel = "experimental"; break;
+                case "noUpdatesMenuItem": updatesLevel = "none"; break;
             }
+            noUpdatesMenuItem.Checked = false;
             stableUpdatesMenuItem.Checked = false;
             experimentalUpdatesMenuItem.Checked = false;
             ((ToolStripMenuItem)sender).Checked = true;

@@ -73,8 +73,16 @@ namespace iFlag
                                                   // Runs a separate thread, which will check for app updates
         private void updateSoftware()
         {
-            updateSoftwareThread = new Thread(UpdateWorkerThread);
-            updateSoftwareThread.Start();  
+            if (updatesLevel == "none")
+            {
+                updateLinkLabel.Hide();
+                upToDateLabel.Hide();
+            }
+            else
+            {
+                updateSoftwareThread = new Thread(UpdateWorkerThread);
+                updateSoftwareThread.Start();  
+            }
         }
 
                                                   // If iFlag doesn't find the hardware within 30seconds
