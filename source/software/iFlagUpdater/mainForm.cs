@@ -10,15 +10,19 @@ namespace iFlagUpdater
 {
     public partial class mainForm : Form
     {
-        string appFilename = "iFlag.exe";
-        int[] windowLocation = { 0, 0 };
-        string version = "";
-        string updateVersion = "";
+        string appFilename = "iFlag.exe";         // The EXE to run to after the update
+        string version = "";                      // Current version
+        string updateVersion = "";                // Version to which to update
+        int[] windowLocation = { 0, 0 };          // Stores position of iFLAG window received in aeguments
 
+                                                  // GIT repository location and path
         string updateRepository = "https://github.com/simracer-cz/iFlag";
         string updateRepositoryFormat = "{0}/blob/{1}/software/iFlag/{2}?raw=true";
+
+                                                  // Temporary filename for the downloaded file
         string updateDownloadFormat = "{0}.update";
-        string[] updateFiles = {
+
+        string[] updateFiles = {                  // List of paths to update
           "iFlag.exe",
           "iFlag.exe.config",
           "iFlag.pdb",
@@ -113,11 +117,16 @@ namespace iFlagUpdater
             }
         }
 
+                                                  // Handler called by every file download finish
+                                                  // creating a loop which downloads the files
+                                                  // one after another.
         private void downloadComplete(object sender, AsyncCompletedEventArgs e)
         {
             performUpdate();
         }
 
+                                                  // Handler called every time the download progresses
+                                                  // setting up the progress bar value.
         private void progressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             int steps = updateFiles.Length + 1;
@@ -127,11 +136,13 @@ namespace iFlagUpdater
             progressBar.Value = percentage;
         }
 
+                                                  // Delayed return to the main iflag.exe app.
         private void returnToApp()
         {
             finishTimer.Start();
         }
 
+                                                  // Immediate return to the main iflag.exe app.
         private void returnToAppNow()
         {
             Process process = new Process();
@@ -142,6 +153,7 @@ namespace iFlagUpdater
             Application.Exit();
         }
 
+                                                  // Triggered 2 seconds after the timer was started.
         private void finishTimer_Tick(object sender, EventArgs e)
         {
             returnToAppNow();
