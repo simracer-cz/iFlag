@@ -69,6 +69,7 @@ namespace iFlagUpdater
 
                     WebClient webClient = new WebClient();
                     webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(downloadComplete);
+                    webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(progressChanged);
                     webClient.DownloadFileAsync(new Uri(url), @file);
                 }
                 catch (Exception)
@@ -80,6 +81,15 @@ namespace iFlagUpdater
         private void downloadComplete(object sender, AsyncCompletedEventArgs e)
         {
             performUpdate();
+        }
+
+        private void progressChanged(object sender, DownloadProgressChangedEventArgs e)
+        {
+            int steps = updateFiles.Length + 1;
+            int segment = 100 / steps;
+            int percentage = updatedCount * segment + e.ProgressPercentage / steps;
+
+            progressBar.Value = percentage;
         }
 
         private void returnToAppNow()
