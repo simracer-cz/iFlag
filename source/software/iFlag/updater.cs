@@ -6,6 +6,8 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
 
+using iFlag.Properties;
+
 namespace iFlag
 {
     public partial class mainForm : Form
@@ -23,7 +25,6 @@ namespace iFlag
 
         private void startUpdater()
         {
-            updateSoftware();
         }
 
                                                   // Checks if expected and actual firmware versions match,

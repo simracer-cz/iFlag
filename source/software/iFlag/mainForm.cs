@@ -170,6 +170,7 @@ namespace iFlag
                         greeted = true;
                         showSystemFlag(STARTUP_GREETING);
                         demoTimer.Enabled = true;
+                        updateSoftware();
                     }
                     hardwareLight.BackColor = Color.FromName("ForestGreen");
                     commLabel.Text = "v" + firmwareVersionMajor + "." + firmwareVersionMinor + " @" + port;
