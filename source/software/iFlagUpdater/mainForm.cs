@@ -77,6 +77,8 @@ namespace iFlagUpdater
                     MessageBox.Show("Sorry, update download failed.");
                     returnToAppNow();
                 }
+            }
+        }
 
         private void downloadComplete(object sender, AsyncCompletedEventArgs e)
         {
