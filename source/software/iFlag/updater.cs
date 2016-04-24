@@ -18,7 +18,8 @@ namespace iFlag
         string updateVersion = null;              // Version string of the update (if detected)
         string updateChanges = "";                // Copy of the changelog
 
-        string version = major + "." + minor;     // Current app version as a string
+                                                  // Current app version string `vX.Y`
+        string version = string.Format("v{0}.{1}", major, minor);
 
         private Thread updateSoftwareThread;      // To not hold up the startup, check for updates
                                                   // is done in a separate thread
@@ -177,7 +178,7 @@ namespace iFlag
         private void updateLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             string dialogText = "";
-            dialogText += string.Format("Your iFLAG will be updated to {0} (from v{1})\n\n", updateVersion, version);
+            dialogText += string.Format("Your iFLAG will be updated to {0} (from {1})\n\n", updateVersion, version);
             dialogText += string.Format("Change log:\n{0}", updateChanges);
 
             if ( DialogResult.OK == MessageBox.Show( dialogText, "iFLAG Update", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) )
@@ -185,7 +186,7 @@ namespace iFlag
                 Process process = new Process();
                 ProcessStartInfo info = new ProcessStartInfo();
                 info.FileName = "updater.exe";
-                info.Arguments = string.Format("v{0} {1} {2} {3}", version, updateVersion, this.Location.X, this.Location.Y);
+                info.Arguments = string.Format("{0} {1} {2} {3}", version, updateVersion, this.Location.X, this.Location.Y);
                 process.StartInfo = info;
                 process.Start();
                 Application.Exit();
