@@ -7,25 +7,22 @@ namespace iFlagUpdater
 {
     public partial class mainForm : Form
     {
-        string updatesLevel = "";
-        string updateURL = "";
-
         int[] windowLocation = { 0, 0 };
         string version = "";
+        string updateVersion = "";
 
         public mainForm(string[] args)
         {
-            if (args.Length != 5)
+            if (args.Length != 4)
             {
                 Application.Exit();
                 return;
             }
 
             version = args[0];
-            updateURL = args[1];
-            updatesLevel = args[2];
-            windowLocation[0] = Convert.ToInt32(args[3]);
-            windowLocation[1] = Convert.ToInt32(args[4]);
+            updateVersion = args[1];
+            windowLocation[0] = Convert.ToInt32(args[2]);
+            windowLocation[1] = Convert.ToInt32(args[3]);
 
             InitializeComponent();
         }
