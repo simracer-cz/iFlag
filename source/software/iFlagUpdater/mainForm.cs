@@ -29,32 +29,37 @@ namespace iFlagUpdater
 
         public mainForm(string[] args)
         {
-            if (args.Length != 4)
+            if (args.Length == 4)
             {
-                Application.Exit();
-                return;
+                version = args[0];
+                updateVersion = args[1];
+                windowLocation[0] = Convert.ToInt32(args[2]);
+                windowLocation[1] = Convert.ToInt32(args[3]);
             }
 
-            version = args[0];
-            updateVersion = args[1];
-            windowLocation[0] = Convert.ToInt32(args[2]);
-            windowLocation[1] = Convert.ToInt32(args[3]);
-
             InitializeComponent();
-            performUpdate();
         }
 
                                                   // When the window opens,
                                                   // set its location the same as caller's app
         private void mainForm_Load(object sender, EventArgs e)
         {
-            System.Drawing.Point place = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Location;
-            place.X += windowLocation[0];
-            place.Y += windowLocation[1];
-            this.Location = place;
+            if (version != "")
+            {
+                System.Drawing.Point place = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Location;
+                place.X += windowLocation[0];
+                place.Y += windowLocation[1];
+                this.Location = place;
 
-            beforeLabel.Text = version;
-            afterLabel.Text = updateVersion;
+                beforeLabel.Text = version;
+                afterLabel.Text = updateVersion;
+
+                performUpdate();
+            }
+            else
+            {
+                Application.Exit();
+            }
         }
 
                                                   // Gets called repeatedly for each update files list entry.
