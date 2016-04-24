@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.IO;
 using System.Net;
 using System.Windows.Forms;
 
@@ -57,6 +58,8 @@ namespace iFlagUpdater
                                                   // Gets called repeatedly for each update files list entry.
                                                   // It downloads new versions of files and stores then
                                                   // as *.update files while keeping count.
+                                                  // When all downloading is complete, the intermittent
+                                                  // *.update files overwrite the main app ones.
         private void performUpdate(){
             if (updatedCount < updateFiles.Length)
             {
@@ -75,6 +78,24 @@ namespace iFlagUpdater
                 catch (Exception)
                 {
                     MessageBox.Show("Sorry, update download failed.");
+                    returnToAppNow();
+                }
+            }
+            else
+            {
+                try
+                {
+                    for (int i = 0; i < updateFiles.Length; i++)
+                    {
+                        string filename = updateFiles[i];
+                        FileInfo file = new FileInfo(string.Format(updateDownloadFormat, filename));
+                        file.CopyTo(filename, true);
+                        file.Delete();
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Sorry, update of local files failed.");
                     returnToAppNow();
                 }
             }
