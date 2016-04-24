@@ -208,10 +208,12 @@ namespace iFlag
             if (CheckSoftwareVersion())
             {
                 this.InvokeEx(f => f.updateLinkLabel.Show());
+                this.InvokeEx(f => f.upToDateLabel.Hide());
             }
             else
             {
                 this.InvokeEx(f => f.updateLinkLabel.Hide());
+                this.InvokeEx(f => f.upToDateLabel.Show());
             }
         }
     }

@@ -68,6 +68,7 @@
             this.initiationTimer = new System.Windows.Forms.Timer(this.components);
             this.clearTimer = new System.Windows.Forms.Timer(this.components);
             this.updateLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.upToDateLabel = new System.Windows.Forms.Label();
             this.optionsMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -399,22 +400,34 @@
             this.updateLinkLabel.BackColor = System.Drawing.Color.Black;
             this.updateLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.updateLinkLabel.LinkColor = System.Drawing.Color.Gold;
-            this.updateLinkLabel.Location = new System.Drawing.Point(175, -1);
+            this.updateLinkLabel.Location = new System.Drawing.Point(178, -1);
             this.updateLinkLabel.Name = "updateLinkLabel";
             this.updateLinkLabel.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
-            this.updateLinkLabel.Size = new System.Drawing.Size(106, 14);
+            this.updateLinkLabel.Size = new System.Drawing.Size(103, 14);
             this.updateLinkLabel.TabIndex = 6;
             this.updateLinkLabel.TabStop = true;
-            this.updateLinkLabel.Text = "**Update available!**";
+            this.updateLinkLabel.Text = "**Update available**";
             this.updateLinkLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.updateLinkLabel.Visible = false;
             this.updateLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.updateLinkLabel_LinkClicked);
+            // 
+            // upToDateLabel
+            // 
+            this.upToDateLabel.AutoSize = true;
+            this.upToDateLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.upToDateLabel.Location = new System.Drawing.Point(225, 0);
+            this.upToDateLabel.Name = "upToDateLabel";
+            this.upToDateLabel.Size = new System.Drawing.Size(57, 13);
+            this.upToDateLabel.TabIndex = 8;
+            this.upToDateLabel.Text = "Up-to-date";
+            this.upToDateLabel.Visible = false;
             // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(281, 60);
+            this.Controls.Add(this.upToDateLabel);
             this.Controls.Add(this.updateLinkLabel);
             this.Controls.Add(this.flagLabel);
             this.Controls.Add(this.simLight);
@@ -478,6 +491,7 @@
         private System.Windows.Forms.ToolStripMenuItem stableUpdatesMenuItem;
         private System.Windows.Forms.ToolStripMenuItem experimentalUpdatesMenuItem;
         private System.Windows.Forms.ToolStripMenuItem noUpdatesMenuItem;
+        private System.Windows.Forms.Label upToDateLabel;
     }
 }
 
