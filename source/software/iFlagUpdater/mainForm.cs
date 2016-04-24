@@ -35,6 +35,9 @@ namespace iFlagUpdater
             place.X += windowLocation[0];
             place.Y += windowLocation[1];
             this.Location = place;
+
+            beforeLabel.Text = version;
+            afterLabel.Text = updateVersion;
         }
     }
 }
