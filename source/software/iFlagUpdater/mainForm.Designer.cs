@@ -32,6 +32,7 @@
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.afterLabel = new System.Windows.Forms.Label();
             this.beforeLabel = new System.Windows.Forms.Label();
+            this.finishTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // progressBar
@@ -61,6 +62,11 @@
             this.beforeLabel.Text = "";
             this.beforeLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // finishTimer
+            // 
+            this.finishTimer.Interval = 2000;
+            this.finishTimer.Tick += new System.EventHandler(this.finishTimer_Tick);
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -83,6 +89,7 @@
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Label afterLabel;
         private System.Windows.Forms.Label beforeLabel;
+        private System.Windows.Forms.Timer finishTimer;
     }
 }
 

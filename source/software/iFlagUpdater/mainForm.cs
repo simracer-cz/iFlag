@@ -86,13 +86,18 @@ namespace iFlagUpdater
             {
                 try
                 {
+                    int progressAt = progressBar.Value;
+                    int progressStep = (100 - progressAt) / updateFiles.Length;
                     for (int i = 0; i < updateFiles.Length; i++)
                     {
                         string filename = updateFiles[i];
                         FileInfo file = new FileInfo(string.Format(updateDownloadFormat, filename));
                         file.CopyTo(filename, true);
                         file.Delete();
+                        progressBar.Value = progressAt + (i + 1) * progressStep;
                     }
+                    progressBar.Value = 100;
+                    returnToApp();
                 }
                 catch (Exception)
                 {
@@ -116,6 +121,11 @@ namespace iFlagUpdater
             progressBar.Value = percentage;
         }
 
+        private void returnToApp()
+        {
+            finishTimer.Start();
+        }
+
         private void returnToAppNow()
         {
             Process process = new Process();
@@ -124,6 +134,11 @@ namespace iFlagUpdater
             process.StartInfo = info;
             process.Start();
             Application.Exit();
+        }
+
+        private void finishTimer_Tick(object sender, EventArgs e)
+        {
+            returnToAppNow();
         }
     }
 }
