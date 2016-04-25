@@ -41,7 +41,8 @@ namespace iFlag
                                                   // Returns `true` when software is up to date.
         private bool softwareUpdated()
         {
-            return updateVersion == null || version == updateVersion;
+            return updateVersion == null
+                || updateVersion == version;
         }
 
                                                   // Uses embedded `avrdude` tool to flash the device's memory
