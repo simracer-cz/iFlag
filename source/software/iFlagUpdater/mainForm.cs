@@ -17,7 +17,7 @@ namespace iFlagUpdater
 
                                                   // GIT repository location and path
         string updateRepository = "https://github.com/simracer-cz/iFlag";
-        string updateRepositoryFormat = "{0}/blob/{1}/software/iFlag/{2}?raw=true";
+        string updateRepositoryFormat = "{0}/raw/{1}/software/iFlag/{2}";
 
                                                   // Temporary filename for the downloaded file
         string updateDownloadFormat = "{0}.update";
