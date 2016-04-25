@@ -73,16 +73,8 @@ namespace iFlag
                                                   // Runs a separate thread, which will check for app updates
         private void updateSoftware()
         {
-            if (updatesLevel == "none")
-            {
-                updateLinkLabel.Hide();
-                upToDateLabel.Hide();
-            }
-            else
-            {
-                updateSoftwareThread = new Thread(UpdateWorkerThread);
-                updateSoftwareThread.Start();  
-            }
+            updateSoftwareThread = new Thread(UpdateWorkerThread);
+            updateSoftwareThread.Start();  
         }
 
                                                   // If iFlag doesn't find the hardware within 30seconds
@@ -204,17 +196,45 @@ namespace iFlag
                                                   // Asynchronously handles the software update check
                                                   // and adjusts the main UI based on its findings
         private void UpdateWorkerThread()  
-        {  
-            if (CheckSoftwareVersion())
+        {
+            if (updatesLevel != "none")
             {
-                this.InvokeEx(f => f.updateLinkLabel.Show());
-                this.InvokeEx(f => f.upToDateLabel.Hide());
+                if (CheckSoftwareVersion())
+                {
+                    this.InvokeEx(f => f.indicateUpdatesAvailable());
+                }
+                else
+                {
+                    this.InvokeEx(f => f.indicateNoUpdates());
+                }
             }
             else
             {
-                this.InvokeEx(f => f.updateLinkLabel.Hide());
-                this.InvokeEx(f => f.upToDateLabel.Show());
+                this.InvokeEx(f => f.indicateUpdatesOff());
             }
+        }
+
+        private void indicateUpdatesAvailable()
+        {
+            updateLinkLabel.Text = "**Update available**";
+            updateLinkLabel.LinkColor = Color.FromName("Gold");
+            updateLinkLabel.BackColor = Color.FromName("Black");
+            updateLinkLabel.Location = new Point(this.Width - updateLinkLabel.Width - 5, updateLinkLabel.Location.Y);
+            updateLinkLabel.Show();
+        }
+
+        private void indicateNoUpdates()
+        {
+            updateLinkLabel.Text = "Up-to-date";
+            updateLinkLabel.LinkColor = Color.FromName("Gray");
+            updateLinkLabel.BackColor = Color.FromName("Transparent");
+            updateLinkLabel.Location = new Point(this.Width - updateLinkLabel.Width - 5, updateLinkLabel.Location.Y);
+            updateLinkLabel.Show();
+        }
+
+        private void indicateUpdatesOff()
+        {
+            updateLinkLabel.Hide();
         }
     }
 }
