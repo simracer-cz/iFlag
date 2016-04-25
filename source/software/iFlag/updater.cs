@@ -178,18 +178,28 @@ namespace iFlag
         private void updateLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             string dialogText = "";
-            dialogText += string.Format("Your iFLAG will be updated to {0} (from {1})\n\n", updateVersion, version);
-            dialogText += string.Format("Change log:\n{0}", updateChanges);
-
-            if ( DialogResult.OK == MessageBox.Show( dialogText, "iFLAG Update", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) )
+            if (updateVersion == version)
             {
-                Process process = new Process();
-                ProcessStartInfo info = new ProcessStartInfo();
-                info.FileName = "updater.exe";
-                info.Arguments = string.Format("{0} {1} {2} {3}", version, updateVersion, this.Location.X, this.Location.Y);
-                process.StartInfo = info;
-                process.Start();
-                Application.Exit();
+                dialogText += string.Format("Your iFLAG {0} ({1}) is up-to-date.\n\n", version, updatesLevel);
+                dialogText += string.Format("Change log:\n{0}", updateChanges);
+                MessageBox.Show( dialogText, "iFLAG Version", MessageBoxButtons.OK, MessageBoxIcon.Information );
+            }
+            else
+            {
+                dialogText += string.Format("Your iFLAG {0} ({1}) will be updated to {2}\n\n", version, updatesLevel, updateVersion);
+                dialogText += string.Format("Change log:\n{0}\n", updateChanges);
+                dialogText += string.Format("Perform the update?");
+
+                if ( DialogResult.OK == MessageBox.Show( dialogText, "Update iFLAG?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) )
+                {
+                    Process process = new Process();
+                    ProcessStartInfo info = new ProcessStartInfo();
+                    info.FileName = "updater.exe";
+                    info.Arguments = string.Format("{0} {1} {2} {3}", version, updateVersion, this.Location.X, this.Location.Y);
+                    process.StartInfo = info;
+                    process.Start();
+                    Application.Exit();
+                }
             }
         }
 
