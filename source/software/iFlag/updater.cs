@@ -117,6 +117,7 @@ namespace iFlag
                 reader = new XmlTextReader(updateURL);
                 reader.MoveToContent();
                 string elementName = "";
+                updateChanges = "";
                 if (reader.NodeType == XmlNodeType.Element && reader.Name == "iflag")
                 {
                     while (reader.Read())
