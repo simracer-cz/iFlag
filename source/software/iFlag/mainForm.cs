@@ -83,11 +83,14 @@ namespace iFlag
             }
 
             updatesLevel = Settings.Default.Updates;
-            switch (updatesLevel)
+            if (updatesLevel == "stable" || updatesLevel == "experimental")
             {
-                case "stable": this.stableUpdatesMenuItem.Checked = true; break;
-                case "experimental": this.experimentalUpdatesMenuItem.Checked = true; break;
-                case "none": this.noUpdatesMenuItem.Checked = true; break;
+                this.updatesEnabledMenuItem.Checked = true;
+
+                if (updatesLevel == "experimental")
+                {
+                    this.updatesExperimentalMenuItem.Checked = true;
+                }
             }
 
             restoreCommunication();
@@ -250,19 +253,36 @@ namespace iFlag
             showSystemFlag(LUMA_CHECK);
         }
 
-        private void updatesModeMenuItem_Click(object sender, EventArgs e)
+        private void updatesEnabledMenuItem_Click(object sender, EventArgs e)
         {
-            switch (((ToolStripMenuItem)sender).Name)
+            if (updatesEnabledMenuItem.Checked)
             {
-                case "stableUpdatesMenuItem": updatesLevel = "stable"; break;
-                case "experimentalUpdatesMenuItem": updatesLevel = "experimental"; break;
-                case "noUpdatesMenuItem": updatesLevel = "none"; break;
+                updatesEnabledMenuItem.Checked = false;
+                updatesExperimentalMenuItem.Enabled = false;
+                updatesLevel = "none";
             }
-            noUpdatesMenuItem.Checked = false;
-            stableUpdatesMenuItem.Checked = false;
-            experimentalUpdatesMenuItem.Checked = false;
-            ((ToolStripMenuItem)sender).Checked = true;
+            else
+            {
+                updatesEnabledMenuItem.Checked = true;
+                updatesExperimentalMenuItem.Enabled = true;
+                updatesLevel = updatesExperimentalMenuItem.Checked ? "experimental" : "stable";
+            }
+            Settings.Default.Updates = updatesLevel;
+            updateSoftware();
+        }
 
+        private void updatesExperimentalMenuItem_Click(object sender, EventArgs e)
+        {
+            if (updatesExperimentalMenuItem.Checked)
+            {
+                updatesExperimentalMenuItem.Checked = false;
+                updatesLevel = "stable";
+            }
+            else
+            {
+                updatesExperimentalMenuItem.Checked = true;
+                updatesLevel = "experimental";
+            }
             Settings.Default.Updates = updatesLevel;
             updateSoftware();
         }

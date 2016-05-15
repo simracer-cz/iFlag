@@ -52,9 +52,8 @@
             this.gitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.forumThreadMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updatesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.stableUpdatesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.experimentalUpdatesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.noUpdatesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updatesEnabledMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updatesExperimentalMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsButton = new System.Windows.Forms.Button();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.commLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -87,7 +86,7 @@
             this.forumThreadMenuItem,
             this.updatesMenuItem});
             this.optionsMenu.Name = "optionsMenu";
-            this.optionsMenu.Size = new System.Drawing.Size(180, 208);
+            this.optionsMenu.Size = new System.Drawing.Size(180, 252);
             // 
             // initiateBoardMenuItem
             // 
@@ -271,34 +270,27 @@
             // updatesMenuItem
             // 
             this.updatesMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.stableUpdatesMenuItem,
-            this.experimentalUpdatesMenuItem,
-            this.noUpdatesMenuItem});
+            this.updatesEnabledMenuItem,
+            this.updatesExperimentalMenuItem});
             this.updatesMenuItem.Name = "updatesMenuItem";
             this.updatesMenuItem.Size = new System.Drawing.Size(179, 22);
-            this.updatesMenuItem.Text = "Check Updates";
-            this.updatesMenuItem.ToolTipText = "Automatically check for which updates? Happens on app startup only";
+            this.updatesMenuItem.Text = "Updates";
+            this.updatesMenuItem.ToolTipText = "Check for app version updates on startup";
             // 
-            // stableUpdatesMenuItem
+            // updatesEnabledMenuItem
             // 
-            this.stableUpdatesMenuItem.Name = "stableUpdatesMenuItem";
-            this.stableUpdatesMenuItem.Size = new System.Drawing.Size(195, 22);
-            this.stableUpdatesMenuItem.Text = "Stable (recommended)";
-            this.stableUpdatesMenuItem.Click += new System.EventHandler(this.updatesModeMenuItem_Click);
+            this.updatesEnabledMenuItem.Name = "updatesEnabledMenuItem";
+            this.updatesEnabledMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.updatesEnabledMenuItem.Text = "Enabled";
+            this.updatesEnabledMenuItem.Click += new System.EventHandler(this.updatesEnabledMenuItem_Click);
             // 
-            // experimentalUpdatesMenuItem
+            // updatesExperimentalMenuItem
             // 
-            this.experimentalUpdatesMenuItem.Name = "experimentalUpdatesMenuItem";
-            this.experimentalUpdatesMenuItem.Size = new System.Drawing.Size(195, 22);
-            this.experimentalUpdatesMenuItem.Text = "Experimental";
-            this.experimentalUpdatesMenuItem.Click += new System.EventHandler(this.updatesModeMenuItem_Click);
-            // 
-            // noUpdatesMenuItem
-            // 
-            this.noUpdatesMenuItem.Name = "noUpdatesMenuItem";
-            this.noUpdatesMenuItem.Size = new System.Drawing.Size(195, 22);
-            this.noUpdatesMenuItem.Text = "None";
-            this.noUpdatesMenuItem.Click += new System.EventHandler(this.updatesModeMenuItem_Click);
+            this.updatesExperimentalMenuItem.Name = "updatesExperimentalMenuItem";
+            this.updatesExperimentalMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.updatesExperimentalMenuItem.Text = "Experimental";
+            this.updatesExperimentalMenuItem.ToolTipText = "At your own risk!";
+            this.updatesExperimentalMenuItem.Click += new System.EventHandler(this.updatesExperimentalMenuItem_Click);
             // 
             // optionsButton
             // 
@@ -475,9 +467,8 @@
         private System.Windows.Forms.ToolStripMenuItem lowBrightnessMenuItem;
         private System.Windows.Forms.LinkLabel updateLinkLabel;
         private System.Windows.Forms.ToolStripMenuItem updatesMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem stableUpdatesMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem experimentalUpdatesMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem noUpdatesMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem updatesEnabledMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem updatesExperimentalMenuItem;
     }
 }
 
