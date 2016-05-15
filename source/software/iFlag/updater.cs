@@ -187,7 +187,7 @@ namespace iFlag
             }
             else
             {
-                dialogText += string.Format("Your iFLAG {0} ({1}) will be updated to {2}\n\n", version, updatesLevel, updateVersion);
+                dialogText += string.Format("If you agree,\nyour iFLAG {0} will be updated to {1} ({2})\n\n", version, updateVersion, updatesLevel);
                 dialogText += string.Format("Change log:\n{0}\n", updateChanges);
                 dialogText += string.Format("Perform the update?");
 
