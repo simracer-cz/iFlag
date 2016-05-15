@@ -5,3 +5,9 @@ source/software/iFlag/iFlag.sln
 source/software/iFlag/iFlag.suo
 source/software/iFlag/iFlag.csproj.user
 source/software/iFlag/iFlag.userprefs
+
+source/software/iFlagUpdater/obj
+source/software/iFlagUpdater/bin
+source/software/iFlagUpdater/publish
+source/software/iFlagUpdater/iFlagUpdater.csproj.user
+source/software/iFlagUpdater/iFlagUpdater.userprefs

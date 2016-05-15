@@ -51,6 +51,9 @@
             this.appMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.forumThreadMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updatesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updatesEnabledMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updatesExperimentalMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsButton = new System.Windows.Forms.Button();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.commLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -63,6 +66,7 @@
             this.flagLabel = new System.Windows.Forms.Label();
             this.initiationTimer = new System.Windows.Forms.Timer(this.components);
             this.clearTimer = new System.Windows.Forms.Timer(this.components);
+            this.updateLinkLabel = new System.Windows.Forms.LinkLabel();
             this.optionsMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -79,9 +83,10 @@
             this.optionsMenuSeparator,
             this.appMenuItem,
             this.gitMenuItem,
-            this.forumThreadMenuItem});
+            this.forumThreadMenuItem,
+            this.updatesMenuItem});
             this.optionsMenu.Name = "optionsMenu";
-            this.optionsMenu.Size = new System.Drawing.Size(180, 208);
+            this.optionsMenu.Size = new System.Drawing.Size(180, 252);
             // 
             // initiateBoardMenuItem
             // 
@@ -262,6 +267,31 @@
             this.forumThreadMenuItem.ToolTipText = "Place to discuss";
             this.forumThreadMenuItem.Click += new System.EventHandler(this.forumThreadMenuItem_Click);
             // 
+            // updatesMenuItem
+            // 
+            this.updatesMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.updatesEnabledMenuItem,
+            this.updatesExperimentalMenuItem});
+            this.updatesMenuItem.Name = "updatesMenuItem";
+            this.updatesMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.updatesMenuItem.Text = "Updates";
+            this.updatesMenuItem.ToolTipText = "Check for app version updates on startup";
+            // 
+            // updatesEnabledMenuItem
+            // 
+            this.updatesEnabledMenuItem.Name = "updatesEnabledMenuItem";
+            this.updatesEnabledMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.updatesEnabledMenuItem.Text = "Enabled";
+            this.updatesEnabledMenuItem.Click += new System.EventHandler(this.updatesEnabledMenuItem_Click);
+            // 
+            // updatesExperimentalMenuItem
+            // 
+            this.updatesExperimentalMenuItem.Name = "updatesExperimentalMenuItem";
+            this.updatesExperimentalMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.updatesExperimentalMenuItem.Text = "Experimental";
+            this.updatesExperimentalMenuItem.ToolTipText = "At your own risk!";
+            this.updatesExperimentalMenuItem.Click += new System.EventHandler(this.updatesExperimentalMenuItem_Click);
+            // 
             // optionsButton
             // 
             this.optionsButton.Location = new System.Drawing.Point(0, 0);
@@ -355,11 +385,29 @@
             this.clearTimer.Interval = 3000;
             this.clearTimer.Tick += new System.EventHandler(this.clearTimer_Tick);
             // 
+            // updateLinkLabel
+            // 
+            this.updateLinkLabel.AutoSize = true;
+            this.updateLinkLabel.BackColor = System.Drawing.Color.Black;
+            this.updateLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.updateLinkLabel.LinkColor = System.Drawing.Color.Gold;
+            this.updateLinkLabel.Location = new System.Drawing.Point(226, -1);
+            this.updateLinkLabel.Name = "updateLinkLabel";
+            this.updateLinkLabel.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
+            this.updateLinkLabel.Size = new System.Drawing.Size(56, 14);
+            this.updateLinkLabel.TabIndex = 6;
+            this.updateLinkLabel.TabStop = true;
+            this.updateLinkLabel.Text = "Updates...";
+            this.updateLinkLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.updateLinkLabel.Visible = false;
+            this.updateLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.updateLinkLabel_LinkClicked);
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(281, 60);
+            this.Controls.Add(this.updateLinkLabel);
             this.Controls.Add(this.flagLabel);
             this.Controls.Add(this.simLight);
             this.Controls.Add(this.hardwareLight);
@@ -417,6 +465,10 @@
         private System.Windows.Forms.ToolStripMenuItem fullBrightnessMenuItem;
         private System.Windows.Forms.ToolStripMenuItem highBrightnessMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lowBrightnessMenuItem;
+        private System.Windows.Forms.LinkLabel updateLinkLabel;
+        private System.Windows.Forms.ToolStripMenuItem updatesMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem updatesEnabledMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem updatesExperimentalMenuItem;
     }
 }
 

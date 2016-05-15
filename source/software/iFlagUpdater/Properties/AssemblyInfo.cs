@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("iFlag")]
-[assembly: AssemblyDescription("Light flags for iRacing")]
+[assembly: AssemblyTitle("iFlagUpdater")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("vostrobotech")]
-[assembly: AssemblyProduct("iFlag")]
+[assembly: AssemblyProduct("iFlagUpdater")]
 [assembly: AssemblyCopyright("© 2015-2016 Petr Vostrel")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("dc0cf015-5325-4665-87d1-420d9b682e37")]
+[assembly: Guid("a558901f-377a-43cf-b00f-b20457eecf14")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.63.0.0")]
-[assembly: AssemblyFileVersion("0.65.0.0")]
+[assembly: AssemblyVersion("0.1.0.0")]
+[assembly: AssemblyFileVersion("0.1.0.0")]

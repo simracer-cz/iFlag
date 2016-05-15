@@ -10,8 +10,7 @@ namespace iFlag
     public partial class mainForm : Form
     {
         // Version
-        const byte major = 0;                     // Major version number of this software 
-        const byte minor = 64;                    // Minor version number
+        const string version = "v0.65";
 
         // Embedded firmware version
         const byte firmwareMajor = 0;             // Major version number of the firmware payload
@@ -20,10 +19,11 @@ namespace iFlag
                                                   // In case of special occasions releases,
                                                   // this is what holds the edition string,
                                                   // which features in the window title
-        String edition = "";
+        const string edition = "";
 
         string repositoryURL = "https://github.com/simracer-cz/iFlag";
         string forumThreadURL = "http://members.iracing.com/jforum/posts/list/0/3341549.page";
+        string updateURL = "http://simracer.cz/iflag/version.xml";
 
         bool simConnected;
         bool greeted;                             // Whether the startup greeting has happened
@@ -32,8 +32,8 @@ namespace iFlag
         {
             InitializeComponent();
 
-            if (edition != "") this.Text += edition;
-            flagLabel.Text = appMenuItem.Text = "iFlag v" + major + "." + minor;
+            this.Text = String.Format("iFlag {0}", edition);
+            flagLabel.Text = appMenuItem.Text = String.Format("iFlag {0}", version);
 
                                                   // Initialize flag modules
             startCommunication();
@@ -81,6 +81,17 @@ namespace iFlag
                 case 100: fullBrightnessMenuItem.Checked = true; break;
             }
 
+            updatesLevel = Settings.Default.Updates;
+            if (updatesLevel == "stable" || updatesLevel == "experimental")
+            {
+                this.updatesEnabledMenuItem.Checked = true;
+
+                if (updatesLevel == "experimental")
+                {
+                    this.updatesExperimentalMenuItem.Checked = true;
+                }
+            }
+
             restoreCommunication();
         }
 
@@ -96,6 +107,7 @@ namespace iFlag
             Settings.Default.ShowStartLights = this.startLightsModuleMenuItem.Checked;
             Settings.Default.UsbConnector = connectorSide;
             Settings.Default.MatrixLuma = matrixLuma;
+            Settings.Default.Updates = updatesLevel;
             storeCommunication();
             Settings.Default.Save();
         }
@@ -161,6 +173,7 @@ namespace iFlag
                         greeted = true;
                         showSystemFlag(STARTUP_GREETING);
                         demoTimer.Enabled = true;
+                        updateSoftware();
                     }
                     hardwareLight.BackColor = Color.FromName("ForestGreen");
                     commLabel.Text = "v" + firmwareVersionMajor + "." + firmwareVersionMinor + " @" + port;
@@ -237,6 +250,40 @@ namespace iFlag
             Settings.Default.MatrixLuma = matrixLuma;
             setMatrixLuma();
             showSystemFlag(LUMA_CHECK);
+        }
+
+        private void updatesEnabledMenuItem_Click(object sender, EventArgs e)
+        {
+            if (updatesEnabledMenuItem.Checked)
+            {
+                updatesEnabledMenuItem.Checked = false;
+                updatesExperimentalMenuItem.Enabled = false;
+                updatesLevel = "none";
+            }
+            else
+            {
+                updatesEnabledMenuItem.Checked = true;
+                updatesExperimentalMenuItem.Enabled = true;
+                updatesLevel = updatesExperimentalMenuItem.Checked ? "experimental" : "stable";
+            }
+            Settings.Default.Updates = updatesLevel;
+            updateSoftware();
+        }
+
+        private void updatesExperimentalMenuItem_Click(object sender, EventArgs e)
+        {
+            if (updatesExperimentalMenuItem.Checked)
+            {
+                updatesExperimentalMenuItem.Checked = false;
+                updatesLevel = "stable";
+            }
+            else
+            {
+                updatesExperimentalMenuItem.Checked = true;
+                updatesLevel = "experimental";
+            }
+            Settings.Default.Updates = updatesLevel;
+            updateSoftware();
         }
     }
 }
