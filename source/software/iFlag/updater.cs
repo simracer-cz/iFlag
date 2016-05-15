@@ -1,12 +1,26 @@
 using System;
-using System.Windows.Forms;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
+using System.Threading;
+using System.Windows.Forms;
+using System.Xml;
+
+using iFlag.Properties;
 
 namespace iFlag
 {
     public partial class mainForm : Form
     {
+
+                                                  // Stores current software updates level of involvement
+        string updatesLevel = Settings.Default.Updates;
+        string updateVersion = null;              // Version string of the update (if detected)
+        bool updateServiceWorking = false;
+        string updateChanges = "";                // Copy of the changelog
+
+        private Thread updateSoftwareThread;      // To not hold up the startup, check for updates
+                                                  // is done in a separate thread
 
         private void startUpdater()
         {
@@ -18,6 +32,15 @@ namespace iFlag
         {
             return firmwareVersionMajor == firmwareMajor
                 && firmwareVersionMinor == firmwareMinor;
+        }
+
+                                                  // Checks if currently installed version match the latest
+                                                  // update available on selected updates level.
+                                                  // Returns `true` when software is up to date.
+        private bool softwareUpdated()
+        {
+            return updateVersion == null
+                || updateVersion == version;
         }
 
                                                   // Uses embedded `avrdude` tool to flash the device's memory
@@ -44,6 +67,13 @@ namespace iFlag
             process.WaitForExit();
             Console.WriteLine(info.Arguments);
             Console.WriteLine(process.ExitCode);
+        }
+
+                                                  // Runs a separate thread, which will check for app updates
+        private void updateSoftware()
+        {
+            updateSoftwareThread = new Thread(UpdateWorkerThread);
+            updateSoftwareThread.Start();  
         }
 
                                                   // If iFlag doesn't find the hardware within 30seconds
@@ -74,5 +104,172 @@ namespace iFlag
             updateFirmware();
             connectTimer.Enabled = true;
         }
+
+                                                  // Jumps on the internet to retreive a XML version file for
+                                                  // selected updates level, reads the version information inside
+                                                  // and stores these data into vars for later use.
+                                                  // Returns `true` when there is an update.
+        private bool CheckSoftwareVersion()
+        {
+            XmlTextReader reader;
+            try
+            {
+                reader = new XmlTextReader(updateURL);
+                reader.MoveToContent();
+                string elementName = "";
+                updateChanges = "";
+                if (reader.NodeType == XmlNodeType.Element && reader.Name == "iflag")
+                {
+                    while (reader.Read())
+                    {
+                        if (reader.NodeType == XmlNodeType.Element)
+                            elementName = reader.Name;
+                        else
+                        {
+                            if (reader.NodeType == XmlNodeType.Text && reader.HasValue)
+                            {
+                                switch (updatesLevel)
+                                {
+                                    case "stable":
+                                        switch (elementName)
+                                        {
+                                            case "stable-version":
+                                                updateVersion = reader.Value;
+                                                updateServiceWorking = true;
+                                                break;
+                                            case "stable-changelog":
+                                                updateChanges = reader.Value;
+                                                break;
+                                        }
+                                        break;
+
+                                    case "experimental":
+                                        switch (elementName)
+                                        {
+                                            case "experimental-version":
+                                                updateVersion = reader.Value;
+                                                updateServiceWorking = true;
+                                                break;
+                                            case "stable-changelog":
+                                            case "experimental-changelog":
+                                                updateChanges = reader.Value + updateChanges;
+                                                break;
+                                        }
+                                        break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+            }
+            finally
+            {
+                //if (reader != null) reader.Close();
+            }
+            return !softwareUpdated();
+        }
+
+                                                  // Handles the actual update instructions process
+                                                  // after user has clicked on the "Updates Available" link.
+                                                  // It presents user with a dialog detailing the versions
+                                                  // and changes. When user proceeds, it then offers
+                                                  // detailed instructions on how to perform the manual update.
+        private void updateLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            string dialogText = "";
+            if (updateVersion == version)
+            {
+                dialogText += string.Format("Your iFLAG {0} ({1}) is up-to-date.\n\n", version, updatesLevel);
+                dialogText += string.Format("Change log:\n{0}", updateChanges);
+                MessageBox.Show( dialogText, "iFLAG Version", MessageBoxButtons.OK, MessageBoxIcon.Information );
+            }
+            else
+            {
+                dialogText += string.Format("If you agree,\nyour iFLAG {0} will be updated to {1} ({2})\n\n", version, updateVersion, updatesLevel);
+                dialogText += string.Format("Change log:\n{0}\n", updateChanges);
+                dialogText += string.Format("Perform the update?");
+
+                if ( DialogResult.OK == MessageBox.Show( dialogText, "Update iFLAG?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) )
+                {
+                    Process process = new Process();
+                    ProcessStartInfo info = new ProcessStartInfo();
+                    info.FileName = "updater.exe";
+                    info.Arguments = string.Format("{0} {1} {2} {3}", version, updateVersion, this.Location.X, this.Location.Y);
+                    process.StartInfo = info;
+                    process.Start();
+                    Application.Exit();
+                }
+            }
+        }
+
+                                                  // Asynchronously handles the software update check
+                                                  // and adjusts the main UI based on its findings
+        private void UpdateWorkerThread()  
+        {
+            if (updatesLevel != "none")
+            {
+                if (CheckSoftwareVersion())
+                {
+                    this.InvokeEx(f => f.indicateUpdatesAvailable());
+                }
+                else
+                {
+                    this.InvokeEx(f => f.indicateNoUpdates());
+                }
+            }
+            else
+            {
+                this.InvokeEx(f => f.indicateUpdatesOff());
+            }
+        }
+
+        private void indicateUpdatesAvailable()
+        {
+            updateLinkLabel.Text = "**Update available**";
+            updateLinkLabel.LinkColor = Color.FromName("Gold");
+            updateLinkLabel.BackColor = Color.FromName("Black");
+            updateLinkLabel.Location = new Point(this.Width - updateLinkLabel.Width - 5, updateLinkLabel.Location.Y);
+            updateLinkLabel.Show();
+        }
+
+        private void indicateNoUpdates()
+        {
+            if (!updateServiceWorking)
+            {
+                indicateUpdatesOff();
+                return;
+            }
+
+            updateLinkLabel.Text = "Up-to-date";
+            updateLinkLabel.LinkColor = Color.FromName("Gray");
+            updateLinkLabel.BackColor = Color.FromName("Transparent");
+            updateLinkLabel.Location = new Point(this.Width - updateLinkLabel.Width - 5, updateLinkLabel.Location.Y);
+            updateLinkLabel.Show();
+        }
+
+        private void indicateUpdatesOff()
+        {
+            updateLinkLabel.Hide();
+        }
     }
+}
+
+                                                  // This bit below is needed to overcome the thread lock-in
+                                                  // and perform actions on the main Form in the main thread
+public static class ISynchronizeInvokeExtensions
+{
+  public static void InvokeEx<T>(this T @this, Action<T> action) where T : ISynchronizeInvoke
+  {
+    if (@this.InvokeRequired)
+    {
+      @this.Invoke(action, new object[] { @this });
+    }
+    else
+    {
+      action(@this);
+    }
+  }
 }

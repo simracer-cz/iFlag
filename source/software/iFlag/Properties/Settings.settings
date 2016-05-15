@@ -26,5 +26,8 @@
     <Setting Name="MatrixLuma" Type="System.Byte" Scope="User">
       <Value Profile="(Default)">100</Value>
     </Setting>
+    <Setting Name="Updates" Type="System.String" Scope="User">
+      <Value Profile="(Default)">stable</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

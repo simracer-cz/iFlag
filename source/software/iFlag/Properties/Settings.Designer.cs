@@ -118,5 +118,17 @@ namespace iFlag.Properties {
                 this["MatrixLuma"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("stable")]
+        public string Updates {
+            get {
+                return ((string)(this["Updates"]));
+            }
+            set {
+                this["Updates"] = value;
+            }
+        }
     }
 }
