@@ -10,8 +10,7 @@ namespace iFlag
     public partial class mainForm : Form
     {
         // Version
-        const byte major = 0;                     // Major version number of this software 
-        const byte minor = 64;                    // Minor version number
+        const string version = "v0.64";
 
         // Embedded firmware version
         const byte firmwareMajor = 0;             // Major version number of the firmware payload
@@ -34,7 +33,7 @@ namespace iFlag
             InitializeComponent();
 
             if (edition != "") this.Text += edition;
-            flagLabel.Text = appMenuItem.Text = "iFlag v" + major + "." + minor;
+            flagLabel.Text = appMenuItem.Text = String.Format("iFlag {0}", version);
 
                                                   // Initialize flag modules
             startCommunication();

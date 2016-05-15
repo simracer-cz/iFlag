@@ -19,9 +19,6 @@ namespace iFlag
         bool updateServiceWorking = false;
         string updateChanges = "";                // Copy of the changelog
 
-                                                  // Current app version string `vX.Y`
-        string version = string.Format("v{0}.{1}", major, minor);
-
         private Thread updateSoftwareThread;      // To not hold up the startup, check for updates
                                                   // is done in a separate thread
 
