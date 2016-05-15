@@ -19,7 +19,7 @@ namespace iFlag
                                                   // In case of special occasions releases,
                                                   // this is what holds the edition string,
                                                   // which features in the window title
-        String edition = "";
+        const string edition = "";
 
         string repositoryURL = "https://github.com/simracer-cz/iFlag";
         string forumThreadURL = "http://members.iracing.com/jforum/posts/list/0/3341549.page";
@@ -32,7 +32,7 @@ namespace iFlag
         {
             InitializeComponent();
 
-            if (edition != "") this.Text += edition;
+            this.Text = String.Format("iFlag {0}", edition);
             flagLabel.Text = appMenuItem.Text = String.Format("iFlag {0}", version);
 
                                                   // Initialize flag modules
