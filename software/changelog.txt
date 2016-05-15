@@ -1,6 +1,7 @@
 Changelog
 =========
 
+v0.64 - Track type sensitive caution flag
 v0.63 - Less guesswork with window's initial position
 v0.62 - Improved white balance
 v0.61 - New icon

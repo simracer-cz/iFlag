@@ -82,7 +82,7 @@ Ping packets are similar to regular data packets with the difference that they c
 
 
 ---
-© 2015
+© 2015-2016
 [Petr.Vostřel.cz](http://petr.vostrel.cz),
 [simracer.cz](http://simracer.cz),
 [4xracing.co.uk](http://4xracing.co.uk)

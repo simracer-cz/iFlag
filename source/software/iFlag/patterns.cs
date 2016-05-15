@@ -36,5 +36,7 @@ namespace iFlag
         byte[,,] STATUS_FLAG =            pattern("00000000 00000000 00000000 00000000 00000000 00000000 00000000 10000002");
         byte[,,] IRACING_LOGO_FLAG =      pattern("01111110 11333331 12111311 12211131 12211331 12211331 12211331 01111110");
 
+        byte[,,] CAUTION_FLAG; // actual value is either FLASHING_FLAG or SAFETYCAR_FLAG based on session track type
+
     }
 }

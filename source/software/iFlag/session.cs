@@ -39,6 +39,8 @@ namespace iFlag
                     trackCategoryRoad = trackCategory == "Road";
                     trackCategoryOval = trackCategory == "Oval";
                     Console.WriteLine("Track category: {0}", trackCategory);
+
+                    CAUTION_FLAG = trackCategoryOval ? FLASHING_FLAG : SAFETYCAR_FLAG;
                 }
             }
         }

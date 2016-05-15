@@ -3,7 +3,7 @@
 The Software
 ============
 
-	v0.63 (v0.20)
+	v0.64 (v0.20)
 
 _iFlag_ software translates provides the interconnection of iRacing and the matrix. It continuously listens for iRacing session and other signals, processes them and issues commands telling the device exactly what to display
 on the LED matrix.
@@ -70,7 +70,7 @@ As usual. Whether to keep the window on top of all other windows.
 
 
 ---
-© 2015
+© 2015-2016
 [Petr.Vostřel.cz](http://petr.vostrel.cz),
 [simracer.cz](http://simracer.cz),
 [4xracing.co.uk](http://4xracing.co.uk)

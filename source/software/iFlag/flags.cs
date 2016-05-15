@@ -37,6 +37,7 @@ namespace iFlag
         private void startFlags()
         {
             flagOnDisplay = NO_FLAG;
+            CAUTION_FLAG = SAFETYCAR_FLAG;
         }
 
                                                   // Accepts a flag identifier number
@@ -72,8 +73,8 @@ namespace iFlag
             else if (Convert.ToBoolean(flagID & irsdk_checkered)) return flag("Checkered flag", CHECKERED_FLAG, new byte[] { COLOR_BLACK, COLOR_WHITE }, SLOW);
             else if (Convert.ToBoolean(flagID & irsdk_white)) return flag("White flag", SIMPLE_FLAG, new byte[] { COLOR_DIM_WHITE, COLOR_BLACK }, SLOW);
             else if (Convert.ToBoolean(flagID & irsdk_greenHeld)
-                  || Convert.ToBoolean(flagID & irsdk_caution)
-                  || Convert.ToBoolean(flagID & irsdk_cautionWaving)) return flag("Caution flag", SAFETYCAR_FLAG, new byte[] { COLOR_BLACK, COLOR_YELLOW, COLOR_WHITE }, SLOW);
+                  || Convert.ToBoolean(flagID & irsdk_caution)) return flag("Caution flag", CAUTION_FLAG, new byte[] { COLOR_BLACK, COLOR_YELLOW, COLOR_WHITE }, SLOW);
+            else if (Convert.ToBoolean(flagID & irsdk_cautionWaving)) return flag("Waving caution flag", CAUTION_FLAG, new byte[] { COLOR_BLACK, COLOR_YELLOW, COLOR_WHITE }, SLOW);
             else if (Convert.ToBoolean(flagID & irsdk_startHidden)) return flag("None", SIMPLE_FLAG, new byte[] { COLOR_BLACK, COLOR_BLACK }, SLOW);
             else if (Convert.ToBoolean(flagID & irsdk_oneLapToGreen)) return flag("One To Green", INVERTED_FLAG, new byte[] { COLOR_BLACK, COLOR_GREEN }, SLOW);
                  return false;
