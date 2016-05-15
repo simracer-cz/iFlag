@@ -16,6 +16,7 @@ namespace iFlag
                                                   // Stores current software updates level of involvement
         string updatesLevel = Settings.Default.Updates;
         string updateVersion = null;              // Version string of the update (if detected)
+        bool updateServiceWorking = false;
         string updateChanges = "";                // Copy of the changelog
 
                                                   // Current app version string `vX.Y`
@@ -136,6 +137,7 @@ namespace iFlag
                                         {
                                             case "stable-version":
                                                 updateVersion = reader.Value;
+                                                updateServiceWorking = true;
                                                 break;
                                             case "stable-changelog":
                                                 updateChanges = reader.Value;
@@ -148,6 +150,7 @@ namespace iFlag
                                         {
                                             case "experimental-version":
                                                 updateVersion = reader.Value;
+                                                updateServiceWorking = true;
                                                 break;
                                             case "stable-changelog":
                                             case "experimental-changelog":
@@ -236,6 +239,12 @@ namespace iFlag
 
         private void indicateNoUpdates()
         {
+            if (!updateServiceWorking)
+            {
+                indicateUpdatesOff();
+                return;
+            }
+
             updateLinkLabel.Text = "Up-to-date";
             updateLinkLabel.LinkColor = Color.FromName("Gray");
             updateLinkLabel.BackColor = Color.FromName("Transparent");
