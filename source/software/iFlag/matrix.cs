@@ -92,6 +92,11 @@ namespace iFlag
             blinkSpeed = speed;
         }
 
+        public void flagToMatrix(byte[, ,] pattern, byte[] color)
+        {
+            flagToMatrix(pattern, color, blinkSpeed);
+        }
+
                                                   // Processes the matrix pixels into data packets
                                                   // and sends them out through the USB connection
         private bool broadcastMatrix()

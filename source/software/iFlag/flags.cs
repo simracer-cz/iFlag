@@ -33,6 +33,15 @@ namespace iFlag
         const long ORIENTATION_CHECK = 8888;
         const long LUMA_CHECK = 8887;
 
+        const int SPOTTER_OVERLAY = 100;
+        const int SPOTTER_OFF =               SPOTTER_OVERLAY + irsdk_LROff;
+        const int SPOTTER_CLEAR =             SPOTTER_OVERLAY + irsdk_LRClear;
+        const int SPOTTER_CAR_LEFT =          SPOTTER_OVERLAY + irsdk_LRCarLeft;
+        const int SPOTTER_CAR_RIGHT =         SPOTTER_OVERLAY + irsdk_LRCarRight;
+        const int SPOTTER_CARS_LEFT_RIGHT =   SPOTTER_OVERLAY + irsdk_LRCarLeftRight;
+        const int SPOTTER_CARS_LEFT =         SPOTTER_OVERLAY + irsdk_LR2CarsLeft;
+        const int SPOTTER_CARS_RIGHT =        SPOTTER_OVERLAY + irsdk_LR2CarsRight;
+
         long clearFlag = NO_FLAG;
 
         private void startFlags()
@@ -133,7 +142,20 @@ namespace iFlag
                                                   // Returns true if matched, false otherwise.
         private bool matchOverlays(long overlayID)
         {
-            return false;
+            return matchSpotterOverlay(overlayID)
+                || false;
+        }
+
+                                                  // Try to match given overlay ID
+                                                  // against signals from the spotter
+        private bool matchSpotterOverlay(long overlayID)
+        {
+            if (!this.spotterOverlayModuleMenuItem.Checked) return false;
+
+                 if (overlayID == SPOTTER_CAR_LEFT || overlayID == SPOTTER_CARS_LEFT) return overlay(WARN_L_OVERLAY, new byte[] { COLOR_BLACK, COLOR_PURPLE });
+            else if (overlayID == SPOTTER_CAR_RIGHT || overlayID == SPOTTER_CARS_RIGHT) return overlay(WARN_R_OVERLAY, new byte[] { COLOR_BLACK, COLOR_PURPLE });
+            else if (overlayID == SPOTTER_CARS_LEFT_RIGHT) return overlay(WARN_LR_OVERLAY, new byte[] { COLOR_BLACK, COLOR_PURPLE });
+            else return false;
         }
 
                                                   // Pour the specified flag into the matrix awaiting boradcast
@@ -151,6 +173,13 @@ namespace iFlag
         {
             clearFlag = irsdk_green;
             return flag(flagName, pattern, color, speed);
+        }
+
+                                                  // ...
+        public bool overlay(byte[, ,] pattern, byte[] color)
+        {
+            flagToMatrix(pattern, color);
+            return true;
         }
 
                                                   // Advances the demo flag picking cycle
@@ -193,10 +222,11 @@ namespace iFlag
 
                     bool onTrack = (bool)sdk.GetData("IsOnTrack");
                     long flag = Convert.ToInt64(sdk.GetData("SessionFlags"));
+                    int spotter = (int)sdk.GetData("CarLeftRight") + SPOTTER_OVERLAY;
 
                     if (onTrack || Convert.ToBoolean(flag & irsdk_checkered))
                     {
-                        flagsEveryTick(flag);
+                        flagsEveryTick(flag, spotter);
                     }
                 }
             }
@@ -210,12 +240,12 @@ namespace iFlag
                                                   // Displays the actual flag signal returning `true` when
                                                   // a change has been picked up. Also clears certain flags
                                                   // such as yellows with a green flag.
-        private bool flagsEveryTick(long flag)
+        private bool flagsEveryTick(long flag, int overlay)
         {
 
             if (flag != irsdk_noFlag)
             {
-                return showFlag(flag);
+                return showFlag(flag, overlay);
             }
             else
             {
@@ -223,7 +253,7 @@ namespace iFlag
                 {
                     clearTimer.Start();
                 }
-                return showFlag(clearFlag);
+                return showFlag(clearFlag, overlay);
             }
         }
 
