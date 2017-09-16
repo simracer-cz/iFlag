@@ -13,14 +13,14 @@
 //   2. Colorduino Library for Arduino IDE (https://github.com/lincomatic/Colorduino)
 //   3. iFlag host software (https://github.com/simracer-cz/iFlag)
 //
-// (c) 2015-2016 Petr.Vostrel.cz
+// (c) 2015-2017 Petr.Vostrel.cz
 
 #include <Colorduino.h>
 #include <EEPROM.h>
 
 // Version
 byte major = 0;
-byte minor = 20;
+byte minor = 21;
 
 // Communication
 #define DEVICE_ID      0xD2
@@ -77,7 +77,7 @@ void setup()
 
     // Communications port
     Serial.begin( 9600 );
-    Serial.println( "##### iFlags v"+String(major)+"."+String(minor)+" Hello!" );
+    Serial.println( "##### iFLAG v"+String(major)+"."+String(minor)+" Hello!" );
 
     // Color cycle the matrix to test out
     byte test[] = { 0x05, 0x06, 0x07, 0x01, 0x00 };

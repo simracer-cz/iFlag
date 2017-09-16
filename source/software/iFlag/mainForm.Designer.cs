@@ -329,7 +329,7 @@
             this.hardwareLight.Name = "hardwareLight";
             this.hardwareLight.Size = new System.Drawing.Size(53, 20);
             this.hardwareLight.TabIndex = 3;
-            this.hardwareLight.Text = "Matrix";
+            this.hardwareLight.Text = "iFLAG";
             this.hardwareLight.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // timeoutTimer
@@ -370,9 +370,9 @@
             this.flagLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.flagLabel.Location = new System.Drawing.Point(61, 9);
             this.flagLabel.Name = "flagLabel";
-            this.flagLabel.Size = new System.Drawing.Size(39, 18);
+            this.flagLabel.Size = new System.Drawing.Size(49, 18);
             this.flagLabel.TabIndex = 5;
-            this.flagLabel.Text = "iFlag";
+            this.flagLabel.Text = "iFLAG";
             // 
             // initiationTimer
             // 
@@ -418,7 +418,7 @@
             this.MaximizeBox = false;
             this.Name = "mainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "iFlag";
+            this.Text = "iFLAG";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.mainForm_FormClosing);
             this.Load += new System.EventHandler(this.mainForm_Load);
             this.Move += new System.EventHandler(this.mainForm_Move);
