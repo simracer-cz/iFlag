@@ -100,6 +100,7 @@ namespace iFlag
         private void mainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             showFlag(NO_FLAG);
+
             Settings.Default.WindowState = this.WindowState;
             if (this.WindowState == FormWindowState.Normal) Settings.Default.WindowLocation = this.Location;
             Settings.Default.WindowTopMost = this.TopMost;
@@ -108,8 +109,9 @@ namespace iFlag
             Settings.Default.UsbConnector = connectorSide;
             Settings.Default.MatrixLuma = matrixLuma;
             Settings.Default.Updates = updatesLevel;
-            storeCommunication();
             Settings.Default.Save();
+
+            storeCommunication();
         }
 
                                                   // When the window moves,
