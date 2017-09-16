@@ -54,6 +54,7 @@ namespace iFlag
         public void flagToMatrix(byte[, ,] pattern, byte[] color, bool speed)
         {
             int matrixX = 0, matrixY = 0;
+            byte colorIndex = 0;
 
             for (int y = 0; y < 8; y++)
                 for (int x = 0; x < 8; x++)
@@ -80,10 +81,12 @@ namespace iFlag
                             matrixY = 8 - x - 1;
                             break;
                     }
-                    matrix[0, x, y] = color[pattern[0, matrixX, matrixY]];
+                    colorIndex = pattern[0, matrixX, matrixY];
+                    if (colorIndex != 9) matrix[0, x, y] = color[colorIndex];
                                                   // For single-frame patterns the second frame of the matrix
                                                   // is a clone of the first one.
-                    matrix[1, x, y] = color[pattern[pattern.Length >= 128 ? 1 : 0, matrixX, matrixY]];
+                    colorIndex = pattern[pattern.Length >= 128 ? 1 : 0, matrixX, matrixY];
+                    if (colorIndex != 9) matrix[1, x, y] = color[colorIndex];
                 }
 
             blinkSpeed = speed;
