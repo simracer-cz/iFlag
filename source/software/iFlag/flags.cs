@@ -6,6 +6,7 @@ namespace iFlag
     public partial class mainForm : Form
     {
         long flagOnDisplay = 47652875;            // Currently displayed flag; initiated with "random" number
+        long overlayOnDisplay = 0;                // ...
         int demoFlagIndex;                        // Current demo flag index in a list of falgs to cycle through
 
                                                   // Subset of flags for the demo sequence
@@ -42,15 +43,18 @@ namespace iFlag
 
                                                   // Accepts a flag identifier number
                                                   // and matches it against a bank of known flags/signals
+                                                  // and their eventual overlays
                                                   // Returns true if matched, false otherwise.
-        private bool showFlag(long flagID)
+        private bool showFlag(long flagID, int overlayID)
         {
-            if (flagID != flagOnDisplay)
             bool matched = false;
 
+            if (flagID != flagOnDisplay || overlayID != overlayOnDisplay)
             {
                 flagOnDisplay = flagID;
+                overlayOnDisplay = overlayID;
                 matched = matchFlags(flagID);
+                matchOverlays(overlayID);
             }
 
             if (matched)
@@ -60,7 +64,12 @@ namespace iFlag
             return matched;
         }
 
-                                                  // Attempt to match the given flag ID
+        private bool showFlag(long flagID)
+        {
+            return showFlag(flagID, 0);
+        }
+
+                                                  // Try to match the given flag ID
                                                   // with one of the flag modules
                                                   // Returns true if matched, false otherwise.
         private bool matchFlags(long flagID)
@@ -117,6 +126,14 @@ namespace iFlag
             else if (flagID == STARTUP_GREETING) return flag("Let's go!", F_FLAG, new byte[] { COLOR_BLACK, COLOR_GREEN }, SLOW);
             else if (flagID == LUMA_CHECK) return flag("Brightness set.", SIMPLE_FLAG, new byte[] { COLOR_WHITE, COLOR_WHITE }, SLOW);
             else return false;
+        }
+
+                                                  // Try to match the given overlay ID
+                                                  // with one of the overlay modules
+                                                  // Returns true if matched, false otherwise.
+        private bool matchOverlays(long overlayID)
+        {
+            return false;
         }
 
                                                   // Pour the specified flag into the matrix awaiting boradcast
