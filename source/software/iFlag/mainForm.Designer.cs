@@ -67,8 +67,12 @@
             this.initiationTimer = new System.Windows.Forms.Timer(this.components);
             this.clearTimer = new System.Windows.Forms.Timer(this.components);
             this.updateLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.multiFlagMessage = new System.Windows.Forms.Panel();
+            this.multiFlagMessageLabel = new System.Windows.Forms.Label();
+            this.multiFlagMessageDismissButton = new System.Windows.Forms.Button();
             this.optionsMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
+            this.multiFlagMessage.SuspendLayout();
             this.SuspendLayout();
             // 
             // optionsMenu
@@ -402,11 +406,44 @@
             this.updateLinkLabel.Visible = false;
             this.updateLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.updateLinkLabel_LinkClicked);
             // 
+            // multiFlagMessage
+            // 
+            this.multiFlagMessage.BackColor = System.Drawing.Color.SteelBlue;
+            this.multiFlagMessage.Controls.Add(this.multiFlagMessageDismissButton);
+            this.multiFlagMessage.Controls.Add(this.multiFlagMessageLabel);
+            this.multiFlagMessage.Location = new System.Drawing.Point(0, 0);
+            this.multiFlagMessage.Name = "multiFlagMessage";
+            this.multiFlagMessage.Size = new System.Drawing.Size(282, 61);
+            this.multiFlagMessage.TabIndex = 7;
+            this.multiFlagMessage.Visible = false;
+            // 
+            // multiFlagMessageLabel
+            // 
+            this.multiFlagMessageLabel.BackColor = System.Drawing.Color.Transparent;
+            this.multiFlagMessageLabel.ForeColor = System.Drawing.Color.White;
+            this.multiFlagMessageLabel.Location = new System.Drawing.Point(4, 1);
+            this.multiFlagMessageLabel.Name = "multiFlagMessageLabel";
+            this.multiFlagMessageLabel.Size = new System.Drawing.Size(166, 58);
+            this.multiFlagMessageLabel.TabIndex = 0;
+            this.multiFlagMessageLabel.Text = "Are you seriously about to run more than 1 iFLAG at once?\r\nAt your own risk?";
+            this.multiFlagMessageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // multiFlagMessageDismissButton
+            // 
+            this.multiFlagMessageDismissButton.Location = new System.Drawing.Point(176, 12);
+            this.multiFlagMessageDismissButton.Name = "multiFlagMessageDismissButton";
+            this.multiFlagMessageDismissButton.Size = new System.Drawing.Size(93, 39);
+            this.multiFlagMessageDismissButton.TabIndex = 1;
+            this.multiFlagMessageDismissButton.Text = "YES! Exactly what I want :)";
+            this.multiFlagMessageDismissButton.UseVisualStyleBackColor = true;
+            this.multiFlagMessageDismissButton.Click += new System.EventHandler(this.multiFlagMessageDismissButton_Click);
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(281, 60);
+            this.Controls.Add(this.multiFlagMessage);
             this.Controls.Add(this.updateLinkLabel);
             this.Controls.Add(this.flagLabel);
             this.Controls.Add(this.simLight);
@@ -424,6 +461,7 @@
             this.Move += new System.EventHandler(this.mainForm_Move);
             this.optionsMenu.ResumeLayout(false);
             this.statusStrip.ResumeLayout(false);
+            this.multiFlagMessage.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -469,6 +507,9 @@
         private System.Windows.Forms.ToolStripMenuItem updatesMenuItem;
         private System.Windows.Forms.ToolStripMenuItem updatesEnabledMenuItem;
         private System.Windows.Forms.ToolStripMenuItem updatesExperimentalMenuItem;
+        private System.Windows.Forms.Panel multiFlagMessage;
+        private System.Windows.Forms.Label multiFlagMessageLabel;
+        private System.Windows.Forms.Button multiFlagMessageDismissButton;
     }
 }
 

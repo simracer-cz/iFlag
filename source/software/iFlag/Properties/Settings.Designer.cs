@@ -130,5 +130,17 @@ namespace iFlag.Properties {
                 this["Updates"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AllowMultiple {
+            get {
+                return ((bool)(this["AllowMultiple"]));
+            }
+            set {
+                this["AllowMultiple"] = value;
+            }
+        }
     }
 }
