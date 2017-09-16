@@ -26,6 +26,7 @@ Blue        | `2`
 Yellow      | `3`
 Cyan        | `4` *
 Magenta     | `5` *
+Black       | `9`
 
 \* Not used yet
 
@@ -51,6 +52,9 @@ Pattern Frames
 | `STATUS`             | ![](patterns/status.gif)              | (N/A) |
 | `STRIPPED`           | ![](patterns/stripped.gif)            | Debris flag |
 | `WAVING`             | ![](patterns/waving.gif)              | Yellow flag |
+| `WARN_L`             | ![](patterns/warn-left.gif)           | Car(s) left spotter warning |
+| `WARN_R`             | ![](patterns/warn-right.gif)          | Car(s) right spotter warning |
+| `WARN_LR`            | ![](patterns/warn-left-right.gif)     | Cars left abd right spotter warning |
 
 
 
