@@ -111,7 +111,7 @@ namespace iFlag
         {
             flagLabel.Text = flagName;
             Console.WriteLine(DateTime.Now + " " + flagName);
-            flagToMatrix(flagName, pattern, color, speed);
+            flagToMatrix(pattern, color, speed);
             return true;
         }
 
