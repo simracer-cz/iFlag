@@ -12,8 +12,8 @@ Mandatory
 
 ### Racing Flags
 
-| Visual                                                                | Signal   | Description ([wikipedia](https://en.wikipedia.org/wiki/Racings)) | Flag primitive |
-| --------------------------------------------------------------------- | -------- | ----------- | -------- |
+| Visual                           | Signal   | Description ([wikipedia](https://en.wikipedia.org/wiki/Racings)) | Flag primitive |
+| -------------------------------- | -------- | ----------- | -------- |
 | ![](signals/green.gif)           | Green flag | The green flag signals a clear track to race on. | `SIMPLE` |
 | ![](signals/red.gif)             | Red flag | The red flag means the race is stopped. | `FLASHING` |
 | ![](signals/blue.gif)            | Blue flag | This flag encourages a driver to move aside to allow faster traffic to pass. | `DIAGONAL_STRIPE` |
@@ -29,8 +29,8 @@ Mandatory
 
 ### Safety Car Procedure
 
-| Visual                                                                | Signal   | Description | Flag primitive |
-| --------------------------------------------------------------------- | -------- | ----------- | -------------- |
+| Visual                           | Signal   | Description | Flag primitive |
+| -------------------------------- | -------- | ----------- | -------------- |
 | ![](signals/sc-road.gif)         | Full course caution flag (road) | Full course caution on road track types | `SAFETYCAR` |
 | ![](signals/sc-oval.gif)         | Full course caution flag (oval) | Full course caution on oval track types | `FLASHING` |
 | ![](signals/one-to-green.gif)    | One Lap to Green | | `INVERTED` |
@@ -44,8 +44,8 @@ These can be enabled or disabled in _iFlag_ options menu.
 
 ### Race Start Lights
 
-| Visual                                                                | Signal   | Description | Flag primitive |
-| --------------------------------------------------------------------- | -------- | ----------- | -------------- |
+| Visual                           | Signal   | Description | Flag primitive |
+| -------------------------------- | -------- | ----------- | -------------- |
 | ![](signals/start-ready.gif)     | Ready! | This represents all start lights off. | `HALF` |
 | ![](signals/start-set.gif)       | Set! | This represents all red start lights on. | `SIMPLE` |
 | ![](signals/green.gif)           | Go, go, go! | Clearly, this represents all green start lights on. | `SIMPLE` |
@@ -56,14 +56,14 @@ Miscelanous
 -----------
 These are used for various system purposes.
 
-| Visual                                                                | Signal   | Description | Flag primitive |
-| --------------------------------------------------------------------- | -------- | ----------- | -------------- |
+| Visual                           | Signal   | Description | Flag primitive |
+| -------------------------------- | -------- | ----------- | -------------- |
 | ![](signals/f.gif)               | "F flag" | Displayed as greeting on iFlag startup. It is also used as a check pattern displayed when setting board orientation in the options menu. | `F` |
 | ![](signals/iracing.gif)         | iRacing logo | This is actually not used for anything yet..  | `IRACING_LOGO` |
 
 
 ---
-© 2015-2016
+© 2015-2017
 [Petr.Vostřel.cz](http://petr.vostrel.cz),
 [simracer.cz](http://simracer.cz),
 [4xracing.co.uk](http://4xracing.co.uk)

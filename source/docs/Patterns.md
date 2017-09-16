@@ -24,8 +24,8 @@ Red         | `0`
 Green       | `1`
 Blue        | `2`
 Yellow      | `3`
-Cyan        | `4` (N/A)
-Magenta     | `5` (N/A)
+Cyan        | `4` *
+Magenta     | `5` *
 
 \* Not used yet
 
@@ -33,29 +33,29 @@ Magenta     | `5` (N/A)
 Pattern Frames
 --------------
 
-| Pattern                   | Frames                                | Used For |
-| ------------------------- | --------------------------------------| ------- |
-| `CHECKERED_FLAG`          | ![](patterns/checkered.gif)           | Checkered flag |
-| `CROSSED_FLAG`            | ![](patterns/crossed.gif)             | Disqualified |
-| `DIAGONAL_STRIPE_FLAG`    | ![](patterns/diagonal-stripe.gif)     | Blue flag |
-| `DOUBLE_WAVING_FLAG`      | ![](patterns/double-waving.gif)       | (N/A) |
-| `F_FLAG`                  | ![](patterns/f.gif)                   | Greeting, Orientation check pattern |
-| `FLASHING_FLAG`           | ![](patterns/flashing.gif)            | Red flag, Full course caution (oval) |
-| `FURLED_FLAG`             | ![](patterns/furled.gif)              | Furled black flag |
-| `HALF_FLAG`               | ![](patterns/half.gif)                | Start lights: Ready! |
-| `INVERTED_FLAG`           | ![](patterns/inverted.gif)            | Black flag, One lap to green |
-| `IRACING_LOGO_FLAG`       | ![](patterns/iracing.gif)             | (N/A) |
-| `MEATBALL_FLAG`           | ![](patterns/meatball.gif)            | Meat ball flag |
-| `SC_FLAG`                 | ![](patterns/sc.gif)                  | Full course caution (road) |
-| `SIMPLE_FLAG`             | ![](patterns/simple.gif)              | White flag, Start lights: Set!, All green flags |
-| `STATUS_FLAG`             | ![](patterns/status.gif)              | (N/A) |
-| `STRIPPED_FLAG`           | ![](patterns/stripped.gif)            | Debris flag |
-| `WAVING_FLAG`             | ![](patterns/waving.gif)              | Yellow flag |
+| Pattern              | Frames                                | Used For |
+| -------------------- | --------------------------------------| ------- |
+| `CHECKERED`          | ![](patterns/checkered.gif)           | Checkered flag |
+| `CROSSED`            | ![](patterns/crossed.gif)             | Disqualified |
+| `DIAGONAL_STRIPE`    | ![](patterns/diagonal-stripe.gif)     | Blue flag |
+| `DOUBLE_WAVING`      | ![](patterns/double-waving.gif)       | (N/A) |
+| `F`                  | ![](patterns/f.gif)                   | Greeting, Orientation check pattern |
+| `FLASHING`           | ![](patterns/flashing.gif)            | Red flag, Full course caution (oval) |
+| `FURLED`             | ![](patterns/furled.gif)              | Furled black flag |
+| `HALF`               | ![](patterns/half.gif)                | Start lights: Ready! |
+| `INVERTED`           | ![](patterns/inverted.gif)            | Black flag, One lap to green |
+| `IRACING_LOGO`       | ![](patterns/iracing.gif)             | (N/A) |
+| `MEATBALL`           | ![](patterns/meatball.gif)            | Meat ball flag |
+| `SC`                 | ![](patterns/sc.gif)                  | Full course caution (road) |
+| `SIMPLE`             | ![](patterns/simple.gif)              | White flag, Start lights: Set!, All green flags |
+| `STATUS`             | ![](patterns/status.gif)              | (N/A) |
+| `STRIPPED`           | ![](patterns/stripped.gif)            | Debris flag |
+| `WAVING`             | ![](patterns/waving.gif)              | Yellow flag |
 
 
 
 ---
-© 2015-2016
+© 2015-2017
 [Petr.Vostřel.cz](http://petr.vostrel.cz),
 [simracer.cz](http://simracer.cz),
 [4xracing.co.uk](http://4xracing.co.uk)
