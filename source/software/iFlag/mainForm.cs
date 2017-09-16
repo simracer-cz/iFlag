@@ -98,6 +98,11 @@ namespace iFlag
             }
 
             restoreCommunication();
+
+            if (processNo > 1)
+            {
+                multiFlagMessage.Show();
+            }
         }
 
                                                   // When the window closes,
