@@ -46,14 +46,29 @@ namespace iFlag
         private bool showFlag(long flagID)
         {
             if (flagID != flagOnDisplay)
+            bool matched = false;
+
             {
                 flagOnDisplay = flagID;
-
-                if (matchSystemFlags(flagOnDisplay)) return broadcastMatrix();
-                else if (matchStartingFlags(flagOnDisplay)) return broadcastMatrix();
-                else if (matchRacingFlags(flagOnDisplay)) return broadcastMatrix();
+                matched = matchFlags(flagID);
             }
-            return false;
+
+            if (matched)
+            {
+                broadcastMatrix();
+            }
+            return matched;
+        }
+
+                                                  // Attempt to match the given flag ID
+                                                  // with one of the flag modules
+                                                  // Returns true if matched, false otherwise.
+        private bool matchFlags(long flagID)
+        {
+            return matchSystemFlags(flagID)
+                || matchStartingFlags(flagID)
+                || matchRacingFlags(flagID)
+                || false;
         }
 
                                                   // Try to match given flag ID against racing flag constants
