@@ -99,7 +99,7 @@ namespace iFlag
 
             restoreCommunication();
 
-            if (processNo > 1)
+            if (!Settings.Default.AllowMultiple && processNo > 1)
             {
                 multiFlagMessage.Show();
             }
@@ -294,6 +294,13 @@ namespace iFlag
             }
             Settings.Default.Updates = updatesLevel;
             updateSoftware();
+        }
+
+        private void multiFlagMessageDismissButton_Click(object sender, EventArgs e)
+        {
+            multiFlagMessage.Hide();
+            Settings.Default.AllowMultiple = true;
+            Settings.Default.Save();
         }
     }
 }
