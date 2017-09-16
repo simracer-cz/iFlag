@@ -14,19 +14,10 @@ namespace iFlag
         [STAThread]
         static void Main() 
         {
-           using(Mutex mutex = new Mutex(false, "iFlag"))
-           {
-              if(!mutex.WaitOne(0, false))
-              {
-                 //MessageBox.Show("Process already running");
-                 return;
-              }
-           
-              GC.Collect();                
-              Application.EnableVisualStyles();
-              Application.SetCompatibleTextRenderingDefault(false);
-              Application.Run(new mainForm());
-           }
+            GC.Collect();
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new mainForm());
         }
     }
 }
