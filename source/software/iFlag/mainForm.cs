@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 using iFlag.Properties;
 
@@ -28,11 +29,15 @@ namespace iFlag
         bool simConnected;
         bool greeted;                             // Whether the startup greeting has happened
 
+        int processNo;                            // Number of the currently running order (1 to X)
+
         public mainForm()
         {
+            processNo = Process.GetProcessesByName("iFlag").Length + 1;
+
             InitializeComponent();
 
-            this.Text = String.Format("iFlag {0}", edition);
+            this.Text = String.Format("iFLAG{1} {0}", edition, processNo > 1 ? "#" + processNo : "");
             flagLabel.Text = appMenuItem.Text = String.Format("iFlag {0}", version);
 
                                                   // Initialize flag modules
