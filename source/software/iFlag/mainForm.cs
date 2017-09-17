@@ -33,7 +33,7 @@ namespace iFlag
 
         public mainForm()
         {
-            processNo = Process.GetProcessesByName("iFlag").Length + 1;
+            processNo = Process.GetProcessesByName("iFlag").Length;
 
             InitializeComponent();
 
