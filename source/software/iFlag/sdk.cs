@@ -40,6 +40,15 @@ namespace iFlag
         // Am guessing it is just a random number, similar to `flagOnDisplay` here.
         const long irsdk_noFlag = 268697600;
 
+        // iRacing CarLeftRight signal constants
+        const int irsdk_LROff = 0; 
+        const int irsdk_LRClear = 1;
+        const int irsdk_LRCarLeft = 2;
+        const int irsdk_LRCarRight = 3;
+        const int irsdk_LRCarLeftRight = 4;
+        const int irsdk_LR2CarsLeft = 5;
+        const int irsdk_LR2CarsRight = 6;
+
         private void startSDK()
         {
         }

@@ -39,6 +39,7 @@
             this.connectorBottomMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modulesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flagsModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.spotterOverlayModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startLightsModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.brightnessMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fullBrightnessMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -152,10 +153,11 @@
             // 
             this.modulesMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.flagsModuleMenuItem,
+            this.spotterOverlayModuleMenuItem,
             this.startLightsModuleMenuItem});
             this.modulesMenuItem.Name = "modulesMenuItem";
             this.modulesMenuItem.Size = new System.Drawing.Size(179, 22);
-            this.modulesMenuItem.Text = "Flag Modules";
+            this.modulesMenuItem.Text = "Modules";
             // 
             // flagsModuleMenuItem
             // 
@@ -166,6 +168,14 @@
             this.flagsModuleMenuItem.Size = new System.Drawing.Size(138, 22);
             this.flagsModuleMenuItem.Text = "Racing flags";
             this.flagsModuleMenuItem.ToolTipText = "Show racing flags. Mandatory";
+            // 
+            // spotterCallsModuleMenuItem
+            // 
+            this.spotterOverlayModuleMenuItem.CheckOnClick = true;
+            this.spotterOverlayModuleMenuItem.Name = "spotterCallsModuleMenuItem";
+            this.spotterOverlayModuleMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.spotterOverlayModuleMenuItem.Text = "Spotter calls";
+            this.spotterOverlayModuleMenuItem.ToolTipText = "Show spotter\'s traffic calls *EXPERIMENTAL";
             // 
             // startLightsModuleMenuItem
             // 
@@ -495,6 +505,7 @@
         private System.Windows.Forms.ToolStripMenuItem modulesMenuItem;
         private System.Windows.Forms.ToolStripMenuItem flagsModuleMenuItem;
         private System.Windows.Forms.ToolStripMenuItem startLightsModuleMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem spotterOverlayModuleMenuItem;
         private System.Windows.Forms.ToolStripMenuItem initiateBoardMenuItem;
         private System.Windows.Forms.Timer initiationTimer;
         private System.Windows.Forms.Timer clearTimer;
