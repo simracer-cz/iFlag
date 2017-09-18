@@ -16,8 +16,9 @@
     v0.55 - First ever release
   </stable-changelog>
 
-  <experimental-version>v0.66</experimental-version>
+  <experimental-version>v0.67</experimental-version>
   <experimental-changelog>
+    v0.67 - New spotter module
     v0.66 - Multiple instances
   </experimental-changelog>
 
