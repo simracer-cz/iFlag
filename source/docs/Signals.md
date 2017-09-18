@@ -57,7 +57,7 @@ These can be enabled or disabled in _iFlag_ options menu.
 | -------------------------------- | -------- | ----------- | -------------- |
 | ![](signals/warn-left.gif)       | Car(s) left! | Spotter warning about one or more cars with overlap on the left side | `WARN_L` |
 | ![](signals/warn-right.gif)      | Car(s) right! | Spotter warning about one or more cars with overlap on the right side | `WARN_R` |
-| ![](signals/warn-left.gif)       | Cars left and right! | Spotter warning about cars with overlap on both sides of the vehicle | `WARN_LR` |
+| ![](signals/warn-left-right.gif) | Cars left and right! | Spotter warning about cars with overlap on both sides of the vehicle | `WARN_LR` |
 
 
 
