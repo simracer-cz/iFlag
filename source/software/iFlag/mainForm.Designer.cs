@@ -169,12 +169,12 @@
             this.flagsModuleMenuItem.Text = "Racing flags";
             this.flagsModuleMenuItem.ToolTipText = "Show racing flags. Mandatory";
             // 
-            // spotterCallsModuleMenuItem
+            // spotterOverlayModuleMenuItem
             // 
             this.spotterOverlayModuleMenuItem.CheckOnClick = true;
-            this.spotterOverlayModuleMenuItem.Name = "spotterCallsModuleMenuItem";
+            this.spotterOverlayModuleMenuItem.Name = "spotterOverlayModuleMenuItem";
             this.spotterOverlayModuleMenuItem.Size = new System.Drawing.Size(138, 22);
-            this.spotterOverlayModuleMenuItem.Text = "Spotter calls";
+            this.spotterOverlayModuleMenuItem.Text = "Spotter";
             this.spotterOverlayModuleMenuItem.ToolTipText = "Show spotter\'s traffic calls *EXPERIMENTAL";
             // 
             // startLightsModuleMenuItem
