@@ -13,11 +13,11 @@ namespace iFlagUpdater
         string appFilename = "iFlag.exe";         // The EXE to run to after the update
         string version = "";                      // Current version
         string updateVersion = "";                // Version to which to update
-        int[] windowLocation = { 0, 0 };          // Stores position of iFLAG window received in aeguments
 
                                                   // GIT repository location and path
         string updateRepository = "https://github.com/simracer-cz/iFlag";
         string updateRepositoryFormat = "{0}/raw/{1}/software/iFlag/{2}";
+        int[] windowLocation = { 0, 0 };          // Stores position of iFLAG window received in arguments
 
                                                   // Temporary filename for the downloaded file
         string updateDownloadFormat = "{0}.update";
