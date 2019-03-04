@@ -102,7 +102,10 @@ namespace iFlagUpdater
                     {
                         string filename = updateFiles[i];
                         FileInfo file = new FileInfo(string.Format(updateDownloadFormat, filename));
-                        file.CopyTo(filename, true);
+                        if (file.Length > 0)
+                        {
+                            file.CopyTo(filename, true);
+                        }
                         file.Delete();
                         progressBar.Value = progressAt + (i + 1) * progressStep;
                     }
