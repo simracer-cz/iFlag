@@ -59,7 +59,6 @@ Pattern Frames
 
 
 ---
-© 2015-2017
+© 2015-2019
 [Petr.Vostřel.cz](http://petr.vostrel.cz),
-[simracer.cz](http://simracer.cz),
-[4xracing.co.uk](http://4xracing.co.uk)
+[simracer.cz](http://simracer.cz)

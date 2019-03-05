@@ -9,8 +9,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("Light flags for iRacing")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("vostrobotech")]
-[assembly: AssemblyCopyright("© 2015-2016 Petr Vostrel")]
 [assembly: AssemblyProduct("iFLAG")]
+[assembly: AssemblyCopyright("© 2015-2019 Petr Vostrel")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
