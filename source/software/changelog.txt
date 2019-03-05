@@ -1,3 +1,4 @@
+v0.70 - Easier visible spotter warnings
 v0.69 - SC flag only in road course sessions
 v0.68 - Software update recovery from Github fail
 v0.67 - New spotter module
