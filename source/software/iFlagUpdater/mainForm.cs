@@ -13,6 +13,7 @@ namespace iFlagUpdater
         string appFilename = "iFlag.exe";         // The EXE to run to after the update
         string version = "";                      // Current version
         string updateVersion = "";                // Version to which to update
+        string updateLevel = "";
 
         int[] windowLocation = { 0, 0 };          // Stores position of iFLAG window received in arguments
 
@@ -36,13 +37,14 @@ namespace iFlagUpdater
 
         public mainForm(string[] args)
         {
-            if (args.Length == 5)
+            if (args.Length == 6)
             {
                 version = args[0];
                 updateVersion = args[1];
                 windowLocation[0] = Convert.ToInt32(args[2]);
                 windowLocation[1] = Convert.ToInt32(args[3]);
-                updateURL = args[2];
+                updateLevel = args[4];
+                updateURL = args[5];
             }
 
             InitializeComponent();

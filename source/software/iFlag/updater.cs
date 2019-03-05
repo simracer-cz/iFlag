@@ -18,6 +18,7 @@ namespace iFlag
         string updateVersion = null;              // Version string of the update (if detected)
         bool updateServiceWorking = false;
         string updateChanges = "";                // Copy of the changelog
+        string updateURL = "";
 
         private Thread updateSoftwareThread;      // To not hold up the startup, check for updates
                                                   // is done in a separate thread
@@ -114,7 +115,7 @@ namespace iFlag
             XmlTextReader reader;
             try
             {
-                reader = new XmlTextReader(updateURL);
+                reader = new XmlTextReader(updatesURL);
                 reader.MoveToContent();
                 string elementName = "";
                 updateChanges = "";
@@ -140,6 +141,9 @@ namespace iFlag
                                             case "stable-changelog":
                                                 updateChanges = reader.Value;
                                                 break;
+                                            case "stable-url":
+                                                updateURL = reader.Value;
+                                                break;
                                         }
                                         break;
 
@@ -153,6 +157,9 @@ namespace iFlag
                                             case "stable-changelog":
                                             case "experimental-changelog":
                                                 updateChanges = reader.Value + updateChanges;
+                                                break;
+                                            case "experimental-url":
+                                                updateURL = reader.Value;
                                                 break;
                                         }
                                         break;
@@ -197,7 +204,7 @@ namespace iFlag
                     Process process = new Process();
                     ProcessStartInfo info = new ProcessStartInfo();
                     info.FileName = "updater.exe";
-                    info.Arguments = string.Format("{0} {1} {2} {3}", version, updateVersion, this.Location.X, this.Location.Y);
+                    info.Arguments = string.Format("{0} {1} {2} {3} {4} {5}", version, updateVersion, this.Location.X, this.Location.Y, updatesLevel, updateURL);
                     process.StartInfo = info;
                     process.Start();
                     Application.Exit();

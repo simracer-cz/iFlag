@@ -24,7 +24,7 @@ namespace iFlag
 
         string repositoryURL = "https://github.com/simracer-cz/iFlag";
         string forumThreadURL = "http://members.iracing.com/jforum/posts/list/0/3341549.page";
-        string updateURL = "http://simracer.cz/iflag/version.xml";
+        string updatesURL = "http://simracer.cz/iflag/updates.xml";
 
         bool simConnected;
         bool greeted;                             // Whether the startup greeting has happened
