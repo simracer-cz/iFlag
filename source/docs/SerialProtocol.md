@@ -10,16 +10,16 @@ Data Stream Packets
 
 The image data come in 8 bytes long packets. These travel in one way only with the device always on the receiving end. Each of the packed defines X and Y coordinates relative to top left corner and color palette indexes for 4 pixels of the LED matrix.
 
-| # | Component           | Meaning       | Description |
-| - | ------------------- | ------------- | ----------- |
-| 1 | Packet leading byte | `0xFF`        |
-| 2 | Column              | `0x00`-`0x07` |
-| 3 | Row                 | `0x00`-`0x07` |
-| 4 | Pixel #1            | `0x00`-`0xFE` | Left-most of the four pixels
-| 5 | Pixel #2            | `0x00`-`0xFE` |
-| 6 | Pixel #3            | `0x00`-`0xFE` |
-| 7 | Pixel #4            | `0x00`-`0xFE` | Right-most of the four
-| 8 | Empty               | `0x00`        |
+| # | Component           | Meaning       | Description |
+| - | ------------------- | ------------- | ----------- |
+| 1 | Packet leading byte | `0xFF`        |
+| 2 | Column              | `0x00`-`0x07` |
+| 3 | Row                 | `0x00`-`0x07` |
+| 4 | Pixel #1            | `0x00`-`0xFE` | Left-most of the four pixels |
+| 5 | Pixel #2            | `0x00`-`0xFE` |
+| 6 | Pixel #3            | `0x00`-`0xFE` |
+| 7 | Pixel #4            | `0x00`-`0xFE` | Right-most of the four |
+| 8 | Empty               | `0x00`        |
 
 One matrix visual consists of 16 such packets and are followed by a command packet, which instructs the hardware to do something with the buffered data.
 
