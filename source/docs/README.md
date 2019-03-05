@@ -1,4 +1,4 @@
-![iFlag logo](http://simracer.cz/iracing/iFlag-logo/logo-full.svg)
+![iFLAG logo](http://simracer.cz/iracing/iFlag-logo/logo-full.svg)
 
 The Documentation
 =================

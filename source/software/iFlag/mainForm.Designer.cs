@@ -261,7 +261,7 @@
             this.appMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.appMenuItem.Name = "appMenuItem";
             this.appMenuItem.Size = new System.Drawing.Size(179, 22);
-            this.appMenuItem.Text = "iFlag vX.Y";
+            this.appMenuItem.Text = "iFLAG vX.Y";
             // 
             // gitMenuItem
             // 

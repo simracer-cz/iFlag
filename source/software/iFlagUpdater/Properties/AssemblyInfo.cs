@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("iFlagUpdater")]
+[assembly: AssemblyTitle("iFLAGUpdater")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("vostrobotech")]
-[assembly: AssemblyProduct("iFlagUpdater")]
 [assembly: AssemblyCopyright("© 2015-2016 Petr Vostrel")]
+[assembly: AssemblyProduct("iFLAGUpdater")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

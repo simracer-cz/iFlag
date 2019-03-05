@@ -1,11 +1,11 @@
-![iFlag logo](http://simracer.cz/iracing/iFlag-logo/logo-full.svg)
+![iFLAG logo](http://simracer.cz/iracing/iFlag-logo/logo-full.svg)
 
 The Open Source
 ===============
 
 __This folder is for developers only. Fragile mortals run away now.. ;)__
 
-_iFlag_ has been developed as a learning excercise with absolutely no commercial intentions. The software is a .NET Windows Forms application developed in MS Visual C# 2010 Express and features a C++ firmware developed with Arduino IDE. It has been released under GNU GPLv2 open source license.
+_iFLAG_ has been developed as a learning excercise with absolutely no commercial intentions. The software is a .NET Windows Forms application developed in MS Visual C# 2010 Express and features a C++ firmware developed with Arduino IDE. It has been released under GNU GPLv2 open source license.
 
 [Documentation](docs)
 

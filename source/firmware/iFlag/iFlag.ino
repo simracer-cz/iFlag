@@ -1,5 +1,5 @@
 //
-// iFlag LED Matrix Firmware
+// iFLAG LED Matrix Firmware
 // =========================
 // https://github.com/simracer-cz/iFlag
 //
@@ -11,7 +11,7 @@
 // Software needed:
 //   1. Arduino IDE (http://www.arduino.cc/en/Main/Software)
 //   2. Colorduino Library for Arduino IDE (https://github.com/lincomatic/Colorduino)
-//   3. iFlag host software (https://github.com/simracer-cz/iFlag)
+//   3. iFLAG host software (https://github.com/simracer-cz/iFlag)
 //
 // (c) 2015-2017 Petr.Vostrel.cz
 

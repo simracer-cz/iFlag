@@ -1,4 +1,4 @@
-![iFlag logo](http://simracer.cz/iracing/iFlag-logo/logo-full.svg)
+![iFLAG logo](http://simracer.cz/iracing/iFlag-logo/logo-full.svg)
 
 Serial Protocol
 ===============
@@ -59,9 +59,9 @@ Resets the board at once.
 ### Software-bound Commands
 
 - __PING__ (`B0`)
-The device continuously sends pings to the software to let it know about the iFlag presence. The PING command 
+The device continuously sends pings to the software to let it know about the _iFLAG_ presence. The PING command 
 
-Ping packets are similar to regular data packets with the difference that they contain device type identifier (`D2` for _iFlag_) and firmware version data in them for the purpose of software/firmware synchronization. This is its structure:
+Ping packets are similar to regular data packets with the difference that they contain device type identifier (`D2` for _iFLAG_) and firmware version data in them for the purpose of software/firmware synchronization. This is its structure:
 
 | # | Byte                | Meaning       | Description |
 | - | ------------------- | ------------- | ----------- |

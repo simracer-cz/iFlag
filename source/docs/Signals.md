@@ -1,10 +1,10 @@
-![iFlag logo](http://simracer.cz/iracing/iFlag-logo/logo-full.svg)
+![iFLAG logo](http://simracer.cz/iracing/iFlag-logo/logo-full.svg)
 
 Signals
 =======
 _as defined in [flags.cs](../iFlag/flags.cs)_
 
-A complete list of signals and other visual features of _iFlag_.
+A complete list of signals and other visual features of _iFLAG_.
 
 
 Mandatory
@@ -40,7 +40,7 @@ Mandatory
 
 Optional
 --------
-These can be enabled or disabled in _iFlag_ options menu.
+These can be enabled or disabled in _iFLAG_ options menu.
 
 ### Race Start Lights
 
@@ -67,7 +67,7 @@ These are used for various system purposes.
 
 | Visual                           | Signal   | Description | Flag primitive |
 | -------------------------------- | -------- | ----------- | -------------- |
-| ![](signals/f.gif)               | "F flag" | Displayed as greeting on iFlag startup. It is also used as a check pattern displayed when setting board orientation in the options menu. | `F` |
+| ![](signals/f.gif)               | "F flag" | Displayed as greeting on _iFLAG_ startup. It is also used as a check pattern displayed when setting board orientation in the options menu. | `F` |
 | ![](signals/iracing.gif)         | iRacing logo | This is actually not used for anything yet..  | `IRACING_LOGO` |
 
 
