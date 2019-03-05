@@ -10,8 +10,6 @@ namespace iFlag
         bool sessionDetected;
         int carID;
         string trackCategory;
-        bool trackCategoryRoad;
-        bool trackCategoryOval;
 
         private void startSession()
         {
