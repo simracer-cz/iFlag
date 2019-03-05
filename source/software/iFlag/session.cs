@@ -36,11 +36,10 @@ namespace iFlag
 
                     Match category = Regex.Match(sessionInfo, @"(?<=Category: )(Road|Oval)");
                     trackCategory = category.Value;
-                    trackCategoryRoad = trackCategory == "Road";
-                    trackCategoryOval = trackCategory == "Oval";
                     Console.WriteLine("Track category: {0}", trackCategory);
 
-                    CAUTION_FLAG = trackCategoryOval ? FLASHING_FLAG : SAFETYCAR_FLAG;
+                    CAUTION_FLAG = trackCategory == "Road" ? SAFETYCAR_FLAG : FLASHING_FLAG;
+
                 }
             }
         }

@@ -31,8 +31,8 @@ Mandatory
 
 | Visual                           | Signal   | Description | Flag primitive |
 | -------------------------------- | -------- | ----------- | -------------- |
-| ![](signals/sc-road.gif)         | Full course caution flag (road) | Full course caution on road track types | `SAFETYCAR` |
-| ![](signals/sc-oval.gif)         | Full course caution flag (oval) | Full course caution on oval track types | `FLASHING` |
+| ![](signals/sc.gif)              | Full course caution flag (road) | Full course caution on road track types | `SAFETYCAR` |
+| ![](signals/caution.gif)         | Full course caution flag (other) | Full course caution on other track types | `FLASHING` |
 | ![](signals/one-to-green.gif)    | One Lap to Green | | `INVERTED` |
 | ![](signals/green.gif)           | Green, green, green! | The green flag signals end of the caution and restart of the race. | `SIMPLE` |
 
