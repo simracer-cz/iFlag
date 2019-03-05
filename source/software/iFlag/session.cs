@@ -12,6 +12,7 @@ namespace iFlag
         int carID;
         int paceCarID;
         string trackCategory;
+        float pitSpeedLimit;
 
         private void startSession()
         {
@@ -45,6 +46,14 @@ namespace iFlag
                     Match paceCarIdxMatch = Regex.Match(sessionInfo, @"(?<=PaceCarIdx: )[-0-9.]+");
                     paceCarID = int.Parse(paceCarIdxMatch.Value);
                     Console.WriteLine("Pace car ID: {0}", paceCarID);
+
+                    Match match = Regex.Match(sessionInfo, @"(?<=TrackPitSpeedLimit: )[0-9.]+ (k|m)ph");
+                    Match speedMatch = Regex.Match(match.Value, "[0-9.]+");
+                    Match speedUnits = Regex.Match(match.Value, "(k|m)ph");
+                    pitSpeedLimit = float.Parse(speedMatch.Value, CultureInfo.InvariantCulture);
+                    if (speedUnits.Value == "kph") pitSpeedLimit *= 0.277778F; // convert to m/s
+                    if (speedUnits.Value == "mph") pitSpeedLimit *= 1.609344F * 0.277778F; // convert to m/s
+                    Console.WriteLine("Pit speed limit: {0} ({1} m/s)", match.Value, pitSpeedLimit);
 
                     Match category = Regex.Match(sessionInfo, @"(?<=Category: )(Road|Oval)");
                     trackCategory = category.Value;
