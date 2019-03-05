@@ -30,7 +30,7 @@ namespace iFlagUpdater
           "iFlag.exe.config",
           "iFlag.pdb",
           "device/firmware.hex",
-          // "iRSDKSharp.dll",
+          "iRSDKSharp.dll",
         };
         int updatedCount;
 
