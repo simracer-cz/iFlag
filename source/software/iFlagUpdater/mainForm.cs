@@ -88,6 +88,7 @@ namespace iFlagUpdater
                     string file = string.Format(updateDownloadFormat, filename);
 
                     WebClient webClient = new WebClient();
+                    webClient.Headers.Add("User-Agent", string.Format("iFLAG/{0}/{1}", version, updateLevel));
                     webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(downloadComplete);
                     webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(progressChanged);
                     webClient.DownloadFileAsync(new Uri(url), @file);
