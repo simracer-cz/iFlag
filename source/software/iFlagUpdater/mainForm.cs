@@ -14,10 +14,13 @@ namespace iFlagUpdater
         string version = "";                      // Current version
         string updateVersion = "";                // Version to which to update
 
-                                                  // GIT repository location and path
-        string updateRepository = "https://github.com/simracer-cz/iFlag";
-        string updateRepositoryFormat = "{0}/raw/{1}/software/iFlag/{2}";
         int[] windowLocation = { 0, 0 };          // Stores position of iFLAG window received in arguments
+
+                                                  // Update location and path
+        string updateURL = "";
+        string updateURLFormat = "{0}/{1}";
+                                                  // {0} is `updateURL`
+                                                  // {1} is updated filename`
 
                                                   // Temporary filename for the downloaded file
         string updateDownloadFormat = "{0}.update";
@@ -33,12 +36,13 @@ namespace iFlagUpdater
 
         public mainForm(string[] args)
         {
-            if (args.Length == 4)
+            if (args.Length == 5)
             {
                 version = args[0];
                 updateVersion = args[1];
                 windowLocation[0] = Convert.ToInt32(args[2]);
                 windowLocation[1] = Convert.ToInt32(args[3]);
+                updateURL = args[2];
             }
 
             InitializeComponent();
@@ -48,7 +52,7 @@ namespace iFlagUpdater
                                                   // set its location the same as caller's app
         private void mainForm_Load(object sender, EventArgs e)
         {
-            if (version != "")
+            if (version != "" && updateVersion != "" && updateURL != "")
             {
                 System.Drawing.Point place = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Location;
                 place.X += windowLocation[0];
@@ -78,7 +82,7 @@ namespace iFlagUpdater
                 {
                     string filename = updateFiles[updatedCount];
                     updatedCount++;
-                    string url = string.Format(updateRepositoryFormat, updateRepository, updateVersion, filename);
+                    string url = string.Format(updateURLFormat, updateURL, filename);
                     string file = string.Format(updateDownloadFormat, filename);
 
                     WebClient webClient = new WebClient();
