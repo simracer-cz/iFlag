@@ -55,7 +55,7 @@ namespace iFlag
                     if (speedUnits.Value == "mph") pitSpeedLimit *= 1.609344F * 0.277778F; // convert to m/s
                     Console.WriteLine("Pit speed limit: {0} ({1} m/s)", match.Value, pitSpeedLimit);
 
-                    Match category = Regex.Match(sessionInfo, @"(?<=Category: )(Road|Oval)");
+                    Match category = Regex.Match(sessionInfo, @"(?<=Category: )[a-zA-Z ]+");
                     trackCategory = category.Value;
                     Console.WriteLine("Track category: {0}", trackCategory);
 
