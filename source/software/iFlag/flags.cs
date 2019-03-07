@@ -28,11 +28,6 @@ namespace iFlag
         };
 
                                                   // Special purpose system-level "flags"
-        const long STARTUP_GREETING = 6666;
-        const long NO_FLAG = 7777;
-        const long ORIENTATION_CHECK = 8888;
-        const long LUMA_CHECK = 8887;
-
         const int SPOTTER_OVERLAY = 100;
         const int SPOTTER_OFF =               SPOTTER_OVERLAY + irsdk_LROff;
         const int SPOTTER_CLEAR =             SPOTTER_OVERLAY + irsdk_LRClear;
@@ -41,6 +36,12 @@ namespace iFlag
         const int SPOTTER_CARS_LEFT_RIGHT =   SPOTTER_OVERLAY + irsdk_LRCarLeftRight;
         const int SPOTTER_CARS_LEFT =         SPOTTER_OVERLAY + irsdk_LR2CarsLeft;
         const int SPOTTER_CARS_RIGHT =        SPOTTER_OVERLAY + irsdk_LR2CarsRight;
+        const long STARTUP_GREETING =           -90;
+        const long ORIENTATION_CHECK =          -92;
+        const long LUMA_CHECK =                 -93;
+        
+        const long NO_FLAG =                    -100;
+
 
         long clearFlag = NO_FLAG;
 
@@ -92,6 +93,8 @@ namespace iFlag
                                                   // Try to match given flag ID against racing flag constants
         private bool matchRacingFlags(long flagID)
         {
+            if (flagID < 0) return 0;
+
                  if (Convert.ToBoolean(flagID & irsdk_crossed)
                   || Convert.ToBoolean(flagID & irsdk_disqualify)) return flag("Disqualify flag", CROSSED_FLAG, new byte[] { COLOR_BLACK, COLOR_WHITE }, FAST);
             else if (Convert.ToBoolean(flagID & irsdk_yellow)) return clearedFlag("Yellow flag", FLASHING_FLAG, new byte[] { COLOR_BLACK, COLOR_YELLOW }, FAST);
@@ -119,6 +122,7 @@ namespace iFlag
         private bool matchStartingFlags(long flagID)
         {
             if (!this.startLightsModuleMenuItem.Checked) return false;
+            if (flagID < 0) return 0;
 
                  if (Convert.ToBoolean(flagID & irsdk_startReady)) return flag("Startlights: Ready!", HALF_FLAG, new byte[] { COLOR_RED, COLOR_BLACK }, FAST);
             else if (Convert.ToBoolean(flagID & irsdk_startSet)) return flag("Startlights: Set!", SIMPLE_FLAG, new byte[] { COLOR_RED, COLOR_RED }, SLOW);
