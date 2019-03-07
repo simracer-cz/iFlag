@@ -41,6 +41,7 @@ namespace iFlag
 
         private void startMatrix()
         {
+            setMatrixLuma();
         }
 
         private void setMatrixLuma()

@@ -139,6 +139,7 @@ namespace iFlag
                                     {
                                         firmwareVersionMajor = major;
                                         firmwareVersionMinor = minor;
+                                        startMatrix();
                                     }
                                     deviceConnected = true;
                                     lastPingTime = DateTime.Now;
