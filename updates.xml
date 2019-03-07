@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <iflag>
 
-  <stable-version>v0.65</stable-version>
+  <stable-version>v0.71</stable-version>
+  <stable-url>http://simracer.cz/iflag/updates/stable</stable-url>
   <stable-changelog>
+    v0.71 - Board programming timeout fix
+    v0.70 - Easier visible spotter warnings
+    v0.69 - SC flag only in road course sessions
+    v0.68 - Software update recovery from Github fail
+    v0.67 - New spotter module
+    v0.66 - Multiple instances
     v0.65 - Semi-automatic software update
     v0.64 - Track type sensitive caution flag
     v0.63 - Less guesswork with window's initial position
@@ -16,10 +23,9 @@
     v0.55 - First ever release
   </stable-changelog>
 
-  <experimental-version>v0.67</experimental-version>
+  <experimental-version>v0.71</experimental-version>
+  <experimental-url>http://simracer.cz/iflag/updates/experimental</experimental-url>
   <experimental-changelog>
-    v0.67 - New spotter module
-    v0.66 - Multiple instances
   </experimental-changelog>
 
 </iflag>

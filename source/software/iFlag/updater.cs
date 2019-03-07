@@ -54,6 +54,7 @@ namespace iFlag
             SP.Close();
             deviceConnected = false;
             connectTimer.Enabled = false;
+            timeoutTimer.Enabled = false;
             demoTimer.Enabled = false;
             greeted = false; 
             tryPortIndex = 0;
@@ -103,6 +104,7 @@ namespace iFlag
             initiateBoardMenuItem.Visible = false;
             port = ports[ports.Length - 1];
             updateFirmware();
+            timeoutTimer.Enabled = true;
             connectTimer.Enabled = true;
         }
 
