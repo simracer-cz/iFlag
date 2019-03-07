@@ -177,7 +177,7 @@ namespace iFlag
                                                   // serial ports list.
         private void connectTimer_Tick(object sender, EventArgs e)
         {
-            attemptConnection();
+            startCommunication();
         }
 
                                                   // If connection gets broken for more than 1 second, drop it.
