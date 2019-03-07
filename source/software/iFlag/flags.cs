@@ -277,6 +277,12 @@ namespace iFlag
             clearFlag = NO_FLAG;
         }
 
+        private void durationTimer_Tick(object sender, EventArgs e)
+        {
+            durationTimer.Stop();
+            showFlag(NO_FLAG);
+        }
+
                                                   // Transforms the given pattern string
                                                   // into a three-dimensional byte array of color indexes
                                                   // which further get replaced by an actual color
