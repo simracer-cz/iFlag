@@ -67,6 +67,7 @@
             this.flagLabel = new System.Windows.Forms.Label();
             this.initiationTimer = new System.Windows.Forms.Timer(this.components);
             this.clearTimer = new System.Windows.Forms.Timer(this.components);
+            this.durationTimer = new System.Windows.Forms.Timer(this.components);
             this.updateLinkLabel = new System.Windows.Forms.LinkLabel();
             this.multiFlagMessage = new System.Windows.Forms.Panel();
             this.multiFlagMessageLabel = new System.Windows.Forms.Label();
@@ -399,6 +400,11 @@
             this.clearTimer.Interval = 3000;
             this.clearTimer.Tick += new System.EventHandler(this.clearTimer_Tick);
             // 
+            // durationTimer
+            // 
+            this.durationTimer.Interval = 2000;
+            this.durationTimer.Tick += new System.EventHandler(this.durationTimer_Tick);
+            // 
             // updateLinkLabel
             // 
             this.updateLinkLabel.AutoSize = true;
@@ -509,6 +515,7 @@
         private System.Windows.Forms.ToolStripMenuItem initiateBoardMenuItem;
         private System.Windows.Forms.Timer initiationTimer;
         private System.Windows.Forms.Timer clearTimer;
+        private System.Windows.Forms.Timer durationTimer;
         private System.Windows.Forms.ToolStripMenuItem brightnessMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mediumBrightnessMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fullBrightnessMenuItem;
