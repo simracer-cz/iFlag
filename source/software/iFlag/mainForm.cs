@@ -11,7 +11,7 @@ namespace iFlag
     public partial class mainForm : Form
     {
         // Version
-        const string version = "v0.72";
+        const string version = "v0.73";
 
         // Embedded firmware version
         const byte firmwareMajor = 0;             // Major version number of the firmware payload

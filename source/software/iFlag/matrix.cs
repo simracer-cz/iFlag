@@ -140,6 +140,8 @@ namespace iFlag
 
             if (broadcastable)
             {
+                Console.WriteLine("{0} {1}{2}", DateTime.Now, flagOnDisplayLabel, overlaysOnDisplayLabel);
+
                 SP_SendData(COMMAND_NOBLINK);
 
                 for (int frame = 0; frame < 2; frame++)

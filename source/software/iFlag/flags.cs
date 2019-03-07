@@ -192,8 +192,7 @@ namespace iFlag
                                                   // (^^ this might be eventually going into a file in the future.)
         public bool flag(string flagName, byte[, ,] pattern, byte[] color, bool speed)
         {
-            flagLabel.Text = flagName;
-            Console.WriteLine(DateTime.Now + " " + flagName);
+            flagOnDisplayLabel = flagName;
             patternToMatrix(ref flagMatrix, pattern, color, speed);
             return true;
         }
@@ -209,6 +208,7 @@ namespace iFlag
                                                   // (^^ this might be eventually going into a file in the future.)
         public int overlay(int overlayID, string overlayName, byte[, ,] pattern, byte[] color)
         {
+            overlaysOnDisplayLabel += String.Format(" +{0}", overlayName);
             patternToMatrix(ref overlayMatrix, pattern, color);
             return overlayID;
         }
