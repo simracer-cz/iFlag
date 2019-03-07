@@ -58,7 +58,7 @@ namespace iFlag
                                                   // Translates the flag pattern to color data
                                                   // and feeds then to the matrix buffer
                                                   // to be broadcasted right away.
-        public void flagToMatrix(byte[, ,] pattern, byte[] color, bool speed)
+        public void patternToMatrix(ref byte[, ,] matrix, byte[, ,] pattern, byte[] color, bool speed)
         {
             int matrixX = 0, matrixY = 0;
             byte colorIndex = 0;
@@ -99,9 +99,9 @@ namespace iFlag
             blinkSpeed = speed;
         }
 
-        public void flagToMatrix(byte[, ,] pattern, byte[] color)
+        public void patternToMatrix(ref byte[, ,] matrix, byte[, ,] pattern, byte[] color)
         {
-            flagToMatrix(pattern, color, blinkSpeed);
+            patternToMatrix(ref matrix, pattern, color, blinkSpeed);
         }
         
                                                   // This repopulates the matrixOverlay with NO_COLOR

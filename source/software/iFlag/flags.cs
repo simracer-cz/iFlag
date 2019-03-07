@@ -169,7 +169,7 @@ namespace iFlag
         {
             flagLabel.Text = flagName;
             Console.WriteLine(DateTime.Now + " " + flagName);
-            flagToMatrix(pattern, color, speed);
+            patternToMatrix(ref flagMatrix, pattern, color, speed);
             return true;
         }
 
@@ -182,7 +182,7 @@ namespace iFlag
                                                   // ...
         public bool overlay(byte[, ,] pattern, byte[] color)
         {
-            flagToMatrix(pattern, color);
+            patternToMatrix(ref overlayMatrix, pattern, color);
             return true;
         }
 
