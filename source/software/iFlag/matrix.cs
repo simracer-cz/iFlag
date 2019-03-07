@@ -7,7 +7,8 @@ namespace iFlag
 {
     public partial class mainForm : Form
     {
-        byte[, ,] matrix = new byte[2, 8, 8];     // The physical matrix buffer to hold the flag in
+        byte[, ,] matrix = new byte[2, 8, 8];           // Current combined matrix buffer
+        byte[, ,] deviceMatrix = new byte[2, 8, 8];     // Current combined matrix buffer on the device
         byte[, ,] flagMatrix = new byte[2, 8, 8];       // Current flag matrix buffer
         byte[, ,] overlayMatrix = new byte[2, 8, 8];    // Current overlay matrix buffer
         bool blinkSpeed;                          // Blinking speed of the pattern
@@ -119,6 +120,8 @@ namespace iFlag
                                                   // and sends them out through the USB connection
         private bool broadcastMatrix()
         {
+           bool broadcastable = false;
+
             for (int f = 0; f < 2; f++)
                 for (int y = 0; y < 8; y++)
                     for (int x = 0; x < 8; x++)
@@ -127,6 +130,16 @@ namespace iFlag
                         // Console.WriteLine("X{0} Y{1} F{2} O{3} M{4}", x, y, flagMatrix[f, x, y], overlayMatrix[f, x, y], matrix[f, x, y]);
                     }
 
+            for (int f = 0; f < 2 && !broadcastable; f++)
+                for (int y = 0; y < 8 && !broadcastable; y++)
+                    for (int x = 0; x < 8 && !broadcastable; x++)
+                    {
+                        broadcastable = matrix[f, x, y] != deviceMatrix[f, x, y];
+                        // Console.WriteLine("F{5} X{0} Y{1} M{2} MM{3} B{4}", x, y, matrix[f, x, y], deviceMatrix[f, x, y], broadcastable, f);
+                    }
+
+            if (broadcastable)
+            {
             SP_SendData(COMMAND_NOBLINK);
 
             for (int frame = 0; frame < 2; frame++)
@@ -134,6 +147,10 @@ namespace iFlag
                 for (int y = 0; y < 8; y++)
                     for (int x = 0; x < 8; x += 4)
                     {
+                        deviceMatrix[frame, x, y] = matrix[frame, x, y];
+                        deviceMatrix[frame, x + 1, y] = matrix[frame, x + 1, y];
+                        deviceMatrix[frame, x + 2, y] = matrix[frame, x + 2, y];
+                        deviceMatrix[frame, x + 3, y] = matrix[frame, x + 3, y];
                         SP_SendData(new byte[8] {
                             0xFF,                                        // FF
                             Convert.ToByte( x ),                         // 00..07
@@ -150,6 +167,7 @@ namespace iFlag
             }
 
             SP_SendData(COMMAND_DRAW);
+            } 
 
             return true;
         }
