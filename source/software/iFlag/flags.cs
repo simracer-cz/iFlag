@@ -5,9 +5,13 @@ namespace iFlag
 {
     public partial class mainForm : Form
     {
-        long flagOnDisplay = 47652875;            // Currently displayed flag; initiated with "random" number
-        long overlayOnDisplay = 0;                // ...
-        int demoFlagIndex;                        // Current demo flag index in a list of falgs to cycle through
+        bool flagOnDisplay = false;               // Flag currently on display
+        int overlaysOnDisplay = 0;
+
+        string flagOnDisplayLabel = "";
+        string overlaysOnDisplayLabel = "";
+
+        int demoFlagIndex;                        // Current demo flag index in a list of flags to cycle through
 
                                                   // Subset of flags for the demo sequence
         long[] demoFlags = {
@@ -28,20 +32,22 @@ namespace iFlag
         };
 
                                                   // Special purpose system-level "flags"
-        const int SPOTTER_OVERLAY = 100;
-        const int SPOTTER_OFF =               SPOTTER_OVERLAY + irsdk_LROff;
-        const int SPOTTER_CLEAR =             SPOTTER_OVERLAY + irsdk_LRClear;
-        const int SPOTTER_CAR_LEFT =          SPOTTER_OVERLAY + irsdk_LRCarLeft;
-        const int SPOTTER_CAR_RIGHT =         SPOTTER_OVERLAY + irsdk_LRCarRight;
-        const int SPOTTER_CARS_LEFT_RIGHT =   SPOTTER_OVERLAY + irsdk_LRCarLeftRight;
-        const int SPOTTER_CARS_LEFT =         SPOTTER_OVERLAY + irsdk_LR2CarsLeft;
-        const int SPOTTER_CARS_RIGHT =        SPOTTER_OVERLAY + irsdk_LR2CarsRight;
         const long STARTUP_GREETING =           -90;
         const long ORIENTATION_CHECK =          -92;
         const long LUMA_CHECK =                 -93;
         
         const long NO_FLAG =                    -100;
 
+        const int SPOTTER_OFF =                 irsdk_LROff;
+        const int SPOTTER_CLEAR =               irsdk_LRClear;
+        const int SPOTTER_CAR_LEFT =            irsdk_LRCarLeft;
+        const int SPOTTER_CAR_RIGHT =           irsdk_LRCarRight;
+        const int SPOTTER_CARS_LEFT_RIGHT =     irsdk_LRCarLeftRight;
+        const int SPOTTER_CARS_LEFT =           irsdk_LR2CarsLeft;
+        const int SPOTTER_CARS_RIGHT =          irsdk_LR2CarsRight;
+
+                                                  // Overlays bit field constants
+        const int if_spotterOverlay = 16;
 
         long clearFlag = NO_FLAG;
 
@@ -54,28 +60,44 @@ namespace iFlag
                                                   // and matches it against a bank of known flags/signals
                                                   // and their eventual overlays
                                                   // Returns true if matched, false otherwise.
-        private bool showFlag(long flagID, int overlayID)
+        private bool showFlag(long flagID)
         {
-            bool matched = false;
+            int overlaysMatched = 0;
+            bool broadcast = true;
 
-            if (flagID != flagOnDisplay || overlayID != overlayOnDisplay)
+            if (matchFlags(flagID))
             {
-                flagOnDisplay = flagID;
-                overlayOnDisplay = overlayID;
-                matched = matchFlags(flagID);
-                matchOverlays(overlayID);
+                flagOnDisplay = true;
+                flagLabel.Text = flagOnDisplayLabel;
+            }
+            else if (clearFlag != NO_FLAG)
+            {
+                flagOnDisplay = false;
+                broadcast = false;
+                if (!clearTimer.Enabled)
+                {
+                    clearTimer.Start();
+                    return showFlag(clearFlag);
+                }
+            }
+            else
+            {
+                flagOnDisplay = false;
+                matchSystemFlags(NO_FLAG);
             }
 
-            if (matched)
+            overlaysOnDisplayLabel = "";
+            overlaysMatched = matchOverlays();
+            if (overlaysMatched != overlaysOnDisplay)
+            {
+                overlaysOnDisplay = overlaysMatched;
+            }
+
+            if (broadcast)
             {
                 broadcastMatrix();
             }
-            return matched;
-        }
-
-        private bool showFlag(long flagID)
-        {
-            return showFlag(flagID, 0);
+            return broadcast;
         }
 
                                                   // Try to match the given flag ID
@@ -141,25 +163,28 @@ namespace iFlag
             else return false;
         }
 
-                                                  // Try to match the given overlay ID
-                                                  // with one of the overlay modules
-                                                  // Returns true if matched, false otherwise.
-        private bool matchOverlays(long overlayID)
+                                                  // Try to match the overlay modules
+                                                  // Returns bit field of matches.
+        private int matchOverlays()
         {
-            return matchSpotterOverlay(overlayID)
-                || false;
+            if (!sdk.IsConnected()) return 0;
+
+            return 0
+            + matchSpotterOverlay()
+            ;
         }
 
-                                                  // Try to match given overlay ID
-                                                  // against signals from the spotter
-        private bool matchSpotterOverlay(long overlayID)
+                                                  // Try to match signals from the spotter
+        private int matchSpotterOverlay()
         {
-            if (!this.spotterOverlayModuleMenuItem.Checked) return false;
+            if (!this.spotterOverlayModuleMenuItem.Checked) return 0;
 
-                 if (overlayID == SPOTTER_CAR_LEFT || overlayID == SPOTTER_CARS_LEFT) return overlay(WARN_L_OVERLAY, new byte[] { COLOR_BLACK, COLOR_PURPLE });
-            else if (overlayID == SPOTTER_CAR_RIGHT || overlayID == SPOTTER_CARS_RIGHT) return overlay(WARN_R_OVERLAY, new byte[] { COLOR_BLACK, COLOR_PURPLE });
-            else if (overlayID == SPOTTER_CARS_LEFT_RIGHT) return overlay(WARN_LR_OVERLAY, new byte[] { COLOR_BLACK, COLOR_PURPLE });
-            else return false;
+            int carLeftRight = (int)sdk.GetData("CarLeftRight");
+
+                 if (carLeftRight == SPOTTER_CAR_LEFT || carLeftRight == SPOTTER_CARS_LEFT) return overlay(if_spotterOverlay, "Left side!", WARN_L_OVERLAY, new byte[] { COLOR_BLACK, COLOR_PURPLE });
+            else if (carLeftRight == SPOTTER_CAR_RIGHT || carLeftRight == SPOTTER_CARS_RIGHT) return overlay(if_spotterOverlay, "Right side!", WARN_R_OVERLAY, new byte[] { COLOR_BLACK, COLOR_PURPLE });
+            else if (carLeftRight == SPOTTER_CARS_LEFT_RIGHT) return overlay(if_spotterOverlay, "Both sides!", WARN_LR_OVERLAY, new byte[] { COLOR_BLACK, COLOR_PURPLE });
+            else return 0;
         }
 
                                                   // Pour the specified flag into the matrix awaiting boradcast
@@ -179,11 +204,13 @@ namespace iFlag
             return flag(flagName, pattern, color, speed);
         }
 
-                                                  // ...
-        public bool overlay(byte[, ,] pattern, byte[] color)
+                                                  // Pour the specified overlay into the overlay matrix awaiting boradcast
+                                                  // logging the flags with time codes into console
+                                                  // (^^ this might be eventually going into a file in the future.)
+        public int overlay(int overlayID, string overlayName, byte[, ,] pattern, byte[] color)
         {
             patternToMatrix(ref overlayMatrix, pattern, color);
-            return true;
+            return overlayID;
         }
 
                                                   // Advances the demo flag picking cycle
@@ -234,14 +261,10 @@ namespace iFlag
                     getSessionDetails();
                     getCarDetails();
 
-                    bool onTrack = (bool)sdk.GetData("IsOnTrack");
-                    long flag = Convert.ToInt64(sdk.GetData("SessionFlags"));
-                    int spotter = (int)sdk.GetData("CarLeftRight") + SPOTTER_OVERLAY;
+                    long flagID = (long)Convert.ToInt64(sdk.GetData("SessionFlags"));
 
-                    if (onTrack || Convert.ToBoolean(flag & irsdk_checkered))
-                    {
-                        flagsEveryTick(flag, spotter);
-                    }
+                    resetOverlay();
+                    flagsEveryTick(flagID);
                 }
             }
             catch (Exception ex)
@@ -254,21 +277,9 @@ namespace iFlag
                                                   // Displays the actual flag signal returning `true` when
                                                   // a change has been picked up. Also clears certain flags
                                                   // such as yellows with a green flag.
-        private bool flagsEveryTick(long flag, int overlay)
+        private bool flagsEveryTick(long flagID)
         {
-
-            if (flag != irsdk_noFlag)
-            {
-                return showFlag(flag, overlay);
-            }
-            else
-            {
-                if (clearFlag != NO_FLAG && !clearTimer.Enabled)
-                {
-                    clearTimer.Start();
-                }
-                return showFlag(clearFlag, overlay);
-            }
+            return showFlag(flagID);
         }
 
         private void clearTimer_Tick(object sender, EventArgs e)
