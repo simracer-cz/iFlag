@@ -111,8 +111,8 @@ namespace iFlag
             else if (Convert.ToBoolean(flagID & irsdk_greenHeld)
                   || Convert.ToBoolean(flagID & irsdk_caution)) return flag("Caution flag", CAUTION_FLAG, new byte[] { COLOR_BLACK, COLOR_YELLOW, COLOR_WHITE }, SLOW);
             else if (Convert.ToBoolean(flagID & irsdk_cautionWaving)) return flag("Waving caution flag", CAUTION_FLAG, new byte[] { COLOR_BLACK, COLOR_YELLOW, COLOR_WHITE }, SLOW);
-            else if (Convert.ToBoolean(flagID & irsdk_startHidden)) return flag("None", SIMPLE_FLAG, new byte[] { COLOR_BLACK, COLOR_BLACK }, SLOW);
             else if (Convert.ToBoolean(flagID & irsdk_oneLapToGreen)) return flag("One To Green", INVERTED_FLAG, new byte[] { COLOR_BLACK, COLOR_GREEN }, SLOW);
+            // else if (Convert.ToBoolean(flagID & irsdk_startHidden)) return flag("None", SIMPLE_FLAG, new byte[] { COLOR_BLACK, COLOR_BLACK }, SLOW);
             else return false;
         }
 
