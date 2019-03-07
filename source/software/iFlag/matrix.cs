@@ -119,6 +119,14 @@ namespace iFlag
                                                   // and sends them out through the USB connection
         private bool broadcastMatrix()
         {
+            for (int f = 0; f < 2; f++)
+                for (int y = 0; y < 8; y++)
+                    for (int x = 0; x < 8; x++)
+                    {
+                        matrix[f, x, y] = overlayMatrix[f, x, y] == NO_COLOR ? flagMatrix[f, x, y] : overlayMatrix[f, x, y];
+                        // Console.WriteLine("X{0} Y{1} F{2} O{3} M{4}", x, y, flagMatrix[f, x, y], overlayMatrix[f, x, y], matrix[f, x, y]);
+                    }
+
             SP_SendData(COMMAND_NOBLINK);
 
             for (int frame = 0; frame < 2; frame++)
