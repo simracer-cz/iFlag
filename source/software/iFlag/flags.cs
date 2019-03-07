@@ -47,7 +47,6 @@ namespace iFlag
 
         private void startFlags()
         {
-            flagOnDisplay = NO_FLAG;
             CAUTION_FLAG = SAFETYCAR_FLAG;
         }
 
