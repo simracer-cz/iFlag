@@ -49,6 +49,13 @@ namespace iFlag
         const int irsdk_LR2CarsLeft = 5;
         const int irsdk_LR2CarsRight = 6;
 
+        // iRacing CarIdxTrackSurface signal constants
+        const int irsdk_NotInWorld = -1;
+        const int irsdk_OffTrack = 0;
+        const int irsdk_InPitStall = 1;
+        const int irsdk_AproachingPits = 2;
+        const int irsdk_OnTrack = 3;
+
         private void startSDK()
         {
         }
