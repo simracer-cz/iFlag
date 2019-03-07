@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <iflag>
 
-  <stable-version>v0.73</stable-version>
+  <stable-version>v0.74</stable-version>
   <stable-url>http://simracer.cz/iflag/updates/stable</stable-url>
   <stable-changelog>
+    v0.74 - Instructive rather than descriptive signal labels
     v0.73 - Overlay system overhaul to be more capable
     v0.72 - One Lap To Green racing flag fix
     v0.71 - Board programming timeout fix
@@ -25,7 +26,7 @@
     v0.55 - First ever release
   </stable-changelog>
 
-  <experimental-version>v0.73</experimental-version>
+  <experimental-version>v0.74</experimental-version>
   <experimental-url>http://simracer.cz/iflag/updates/experimental</experimental-url>
   <experimental-changelog>
   </experimental-changelog>

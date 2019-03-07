@@ -117,24 +117,24 @@ namespace iFlag
             if (flagID < 0) return false;
 
                  if (Convert.ToBoolean(flagID & irsdk_crossed)
-                  || Convert.ToBoolean(flagID & irsdk_disqualify)) return flag("Disqualify flag", CROSSED_FLAG, new byte[] { COLOR_BLACK, COLOR_WHITE }, FAST);
-            else if (Convert.ToBoolean(flagID & irsdk_yellow)) return clearedFlag("Yellow flag", FLASHING_FLAG, new byte[] { COLOR_BLACK, COLOR_YELLOW }, FAST);
-            else if (Convert.ToBoolean(flagID & irsdk_yellowWaving)) return clearedFlag("Yellow Waving flag", WAVING_FLAG, new byte[] { COLOR_BLACK, COLOR_YELLOW }, FAST);
-            else if (Convert.ToBoolean(flagID & irsdk_black)) return flag("Black flag", INVERTED_FLAG, new byte[] { COLOR_BLACK, COLOR_WHITE }, SLOW);
-            else if (Convert.ToBoolean(flagID & irsdk_furled)) return clearedFlag("Furled Black flag", FURLED_FLAG, new byte[] { COLOR_BLACK, COLOR_WHITE, COLOR_BLACK }, FAST);
-            else if (Convert.ToBoolean(flagID & irsdk_green)) return flag("Green flag", SIMPLE_FLAG, new byte[] { COLOR_GREEN, COLOR_GREEN }, FAST);
-            else if (Convert.ToBoolean(flagID & irsdk_red)) return flag("Red flag", FLASHING_FLAG, new byte[] { COLOR_BLACK, COLOR_RED }, SLOW);
-            else if (Convert.ToBoolean(flagID & irsdk_blue)) return flag("Blue flag", DIAGONAL_STRIPE_FLAG, new byte[] { COLOR_BLUE, COLOR_YELLOW }, SLOW);
-            else if (Convert.ToBoolean(flagID & irsdk_debris)) return flag("Debris flag", STRIPPED_FLAG, new byte[] { COLOR_YELLOW, COLOR_RED }, FAST);
-            else if (Convert.ToBoolean(flagID & irsdk_repair)) return flag("Too Damaged flag", MEATBALL_FLAG, new byte[] { COLOR_BLACK, COLOR_ORANGE }, SLOW);
-            else if (Convert.ToBoolean(flagID & irsdk_checkered)) return flag("Checkered flag", CHECKERED_FLAG, new byte[] { COLOR_BLACK, COLOR_WHITE }, SLOW);
-            else if (Convert.ToBoolean(flagID & irsdk_white)) return flag("White flag", SIMPLE_FLAG, new byte[] { COLOR_DIM_WHITE, COLOR_BLACK }, SLOW);
+                  || Convert.ToBoolean(flagID & irsdk_disqualify)) return flag("Disqualified", CROSSED_FLAG, new byte[] { COLOR_BLACK, COLOR_WHITE }, FAST);
+            else if (Convert.ToBoolean(flagID & irsdk_yellow)) return clearedFlag("Careful And No Overtaking!", FLASHING_FLAG, new byte[] { COLOR_BLACK, COLOR_YELLOW }, FAST);
+            else if (Convert.ToBoolean(flagID & irsdk_yellowWaving)) return clearedFlag("Careful And No Overtaking!", WAVING_FLAG, new byte[] { COLOR_BLACK, COLOR_YELLOW }, FAST);
+            else if (Convert.ToBoolean(flagID & irsdk_black)) return flag("Serve Stop And Go Penalty", INVERTED_FLAG, new byte[] { COLOR_BLACK, COLOR_WHITE }, SLOW);
+            else if (Convert.ToBoolean(flagID & irsdk_furled)) return clearedFlag("Serve Penalty", FURLED_FLAG, new byte[] { COLOR_BLACK, COLOR_WHITE, COLOR_BLACK }, FAST);
+            else if (Convert.ToBoolean(flagID & irsdk_green)) return flag("Green", SIMPLE_FLAG, new byte[] { COLOR_GREEN, COLOR_GREEN }, FAST);
+            else if (Convert.ToBoolean(flagID & irsdk_red)) return flag("Session Stopped", FLASHING_FLAG, new byte[] { COLOR_BLACK, COLOR_RED }, SLOW);
+            else if (Convert.ToBoolean(flagID & irsdk_blue)) return flag("Traffic Overtake Coming Up", DIAGONAL_STRIPE_FLAG, new byte[] { COLOR_BLUE, COLOR_YELLOW }, SLOW);
+            else if (Convert.ToBoolean(flagID & irsdk_debris)) return flag("Debris on the Track", STRIPPED_FLAG, new byte[] { COLOR_YELLOW, COLOR_RED }, FAST);
+            else if (Convert.ToBoolean(flagID & irsdk_repair)) return flag("Too Much Damage", MEATBALL_FLAG, new byte[] { COLOR_BLACK, COLOR_ORANGE }, SLOW);
+            else if (Convert.ToBoolean(flagID & irsdk_checkered)) return flag("Checkered Flag", CHECKERED_FLAG, new byte[] { COLOR_BLACK, COLOR_WHITE }, SLOW);
+            else if (Convert.ToBoolean(flagID & irsdk_white)) return flag("Last Lap", SIMPLE_FLAG, new byte[] { COLOR_DIM_WHITE, COLOR_BLACK }, SLOW);
             else if (Convert.ToBoolean(flagID & irsdk_greenHeld)
-                  || Convert.ToBoolean(flagID & irsdk_caution)) return flag("Caution flag", CAUTION_FLAG, new byte[] { COLOR_BLACK, COLOR_YELLOW, COLOR_WHITE }, SLOW);
-            else if (Convert.ToBoolean(flagID & irsdk_cautionWaving)) return flag("Waving caution flag", CAUTION_FLAG, new byte[] { COLOR_BLACK, COLOR_YELLOW, COLOR_WHITE }, SLOW);
+                  || Convert.ToBoolean(flagID & irsdk_caution)) return flag("Full Course Caution", CAUTION_FLAG, new byte[] { COLOR_BLACK, COLOR_YELLOW, COLOR_WHITE }, SLOW);
+            else if (Convert.ToBoolean(flagID & irsdk_cautionWaving)) return flag("Full Course Caution", CAUTION_FLAG, new byte[] { COLOR_BLACK, COLOR_YELLOW, COLOR_WHITE }, SLOW);
             // else if (Convert.ToBoolean(flagID & irsdk_startHidden)) return flag("None", SIMPLE_FLAG, new byte[] { COLOR_BLACK, COLOR_BLACK }, SLOW);
             else if (Convert.ToBoolean(flagID & irsdk_oneLapToGreen)
-                  && eventType == "Race") return flag("One To Green", INVERTED_FLAG, new byte[] { COLOR_BLACK, COLOR_GREEN }, SLOW);
+                  && eventType == "Race") return flag("One Lap To Green", INVERTED_FLAG, new byte[] { COLOR_BLACK, COLOR_GREEN }, SLOW);
             else return false;
         }
 

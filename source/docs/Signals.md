@@ -20,9 +20,9 @@ Mandatory
 | ![](signals/debris.gif)          | Debris flag | The red-striped yellow flag, also known as the "surface flag", indicates a potential traction hazard. | `STRIPPED` |
 | ![](signals/yellow.gif)          | Yellow flag | The yellow flag means local caution. | `WAVING` |
 | ![](signals/black.gif)           | Black flag | The black flag orders a particular driver into the pit area. | `INVERTED` |
-| ![](signals/crossed.gif)         | Disqualification | This flag signals a car is no longer being scored. | `CROSSED` |
-| ![](signals/furled-black.gif)    | Furled black flag | This flag indicates a penalty for bad conduct. | `FURLED` |
-| ![](signals/meatball.gif)        | Meat ball flag | This flag indicates an internal hazard in a participant's vehicle. | `MEATBALL` |
+| ![](signals/crossed.gif)         | Disqualify flag | This flag signals a car is no longer being scored. | `CROSSED` |
+| ![](signals/furled-black.gif)    | Furled Black flag | This flag indicates a penalty for bad conduct. | `FURLED` |
+| ![](signals/meatball.gif)        | Meat Ball flag | This flag indicates an internal hazard in a participant's vehicle. | `MEATBALL` |
 | ![](signals/white.gif)           | White flag | The white flag signals that the final lap is in progress. | `SIMPLE` |
 | ![](signals/checkered.gif)       | Checkered flag | The chequered flag is displayed at the start/finish line to indicate that the race is officially finished. | `CHECKERED` |
 
@@ -31,8 +31,8 @@ Mandatory
 
 | Visual                           | Signal   | Description | Flag primitive |
 | -------------------------------- | -------- | ----------- | -------------- |
-| ![](signals/sc.gif)              | Full course caution flag (road) | Full course caution on road track types | `SAFETYCAR` |
-| ![](signals/caution.gif)         | Full course caution flag (other) | Full course caution on other track types | `FLASHING` |
+| ![](signals/sc.gif)              | Caution flag (road) | Full course caution on road track types | `SAFETYCAR` |
+| ![](signals/caution.gif)         | Caution flag (other) | Full course caution on other track types | `FLASHING` |
 | ![](signals/one-to-green.gif)    | One Lap to Green | | `INVERTED` |
 | ![](signals/green.gif)           | Green, green, green! | The green flag signals end of the caution and restart of the race. | `SIMPLE` |
 
