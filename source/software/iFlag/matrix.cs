@@ -140,37 +140,36 @@ namespace iFlag
 
             if (broadcastable)
             {
-            SP_SendData(COMMAND_NOBLINK);
+                SP_SendData(COMMAND_NOBLINK);
 
-            for (int frame = 0; frame < 2; frame++)
-            {
-                for (int y = 0; y < 8; y++)
-                    for (int x = 0; x < 8; x += 4)
-                    {
-                        deviceMatrix[frame, x, y] = matrix[frame, x, y];
-                        deviceMatrix[frame, x + 1, y] = matrix[frame, x + 1, y];
-                        deviceMatrix[frame, x + 2, y] = matrix[frame, x + 2, y];
-                        deviceMatrix[frame, x + 3, y] = matrix[frame, x + 3, y];
-                        SP_SendData(new byte[8] {
-                            0xFF,                                        // FF
-                            Convert.ToByte( x ),                         // 00..07
-                            Convert.ToByte( y ),                         // 00..07
-                            Convert.ToByte( matrix[ frame, x, y ] ),     // 00..FE
-                            Convert.ToByte( matrix[ frame, x + 1, y ] ), // 00..FE
-                            Convert.ToByte( matrix[ frame, x + 2, y ] ), // 00..FE
-                            Convert.ToByte( matrix[ frame, x + 3, y ] ), // 00..FE
-                            0x00
-                        });
-                    }
-                if (frame == 0) SP_SendData(COMMAND_DRAW);
-                else SP_SendData(blinkSpeed ? COMMAND_BLINK_FAST : COMMAND_BLINK_SLOW);
-            }
+                for (int frame = 0; frame < 2; frame++)
+                {
+                    for (int y = 0; y < 8; y++)
+                        for (int x = 0; x < 8; x += 4)
+                        {
+                            deviceMatrix[frame, x, y] = matrix[frame, x, y];
+                            deviceMatrix[frame, x + 1, y] = matrix[frame, x + 1, y];
+                            deviceMatrix[frame, x + 2, y] = matrix[frame, x + 2, y];
+                            deviceMatrix[frame, x + 3, y] = matrix[frame, x + 3, y];
+                            SP_SendData(new byte[8] {
+                                0xFF,                                        // FF
+                                Convert.ToByte( x ),                         // 00..07
+                                Convert.ToByte( y ),                         // 00..07
+                                Convert.ToByte( matrix[ frame, x, y ] ),     // 00..FE
+                                Convert.ToByte( matrix[ frame, x + 1, y ] ), // 00..FE
+                                Convert.ToByte( matrix[ frame, x + 2, y ] ), // 00..FE
+                                Convert.ToByte( matrix[ frame, x + 3, y ] ), // 00..FE
+                                0x00
+                            });
+                        }
+                    if (frame == 0) SP_SendData(COMMAND_DRAW);
+                    else SP_SendData(blinkSpeed ? COMMAND_BLINK_FAST : COMMAND_BLINK_SLOW);
+                }
 
-            SP_SendData(COMMAND_DRAW);
+                SP_SendData(COMMAND_DRAW);
             } 
 
             return true;
         }
-
     }
 }
