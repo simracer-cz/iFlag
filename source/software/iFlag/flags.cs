@@ -68,7 +68,6 @@ namespace iFlag
             if (matchFlags(flagID))
             {
                 flagOnDisplay = true;
-                flagLabel.Text = flagOnDisplayLabel;
             }
             else if (clearFlag != NO_FLAG)
             {

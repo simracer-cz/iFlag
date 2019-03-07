@@ -11,7 +11,7 @@ namespace iFlag
     public partial class mainForm : Form
     {
         // Version
-        const string version = "v0.74";
+        const string version = "v0.75";
 
         // Embedded firmware version
         const byte firmwareMajor = 0;             // Major version number of the firmware payload
@@ -168,6 +168,20 @@ namespace iFlag
         private void alwaysOnTopMenuItem_CheckStateChanged(object sender, EventArgs e)
         {
             Settings.Default.WindowTopMost = this.TopMost = this.alwaysOnTopMenuItem.Checked;
+        }
+
+                                                  // Updates the text labels in the main window
+                                                  // with flag and overlay labels
+        private void updateSignalLabels()
+        {
+            flagLabel.Text = flagOnDisplayLabel;
+            overlayLabel.Text = overlaysOnDisplayLabel;
+
+            bool visible = overlaysOnDisplayLabel != "";
+            int locationY = visible ? 9 : 18;
+
+            flagLabel.Location = new System.Drawing.Point(61, locationY);
+            overlayLabel.Visible = visible;
         }
 
                                                   // Visually indicates the serial connection alive state

@@ -65,6 +65,7 @@
             this.updateTimer = new System.Windows.Forms.Timer(this.components);
             this.demoTimer = new System.Windows.Forms.Timer(this.components);
             this.flagLabel = new System.Windows.Forms.Label();
+            this.overlayLabel = new System.Windows.Forms.Label();
             this.initiationTimer = new System.Windows.Forms.Timer(this.components);
             this.clearTimer = new System.Windows.Forms.Timer(this.components);
             this.durationTimer = new System.Windows.Forms.Timer(this.components);
@@ -311,7 +312,7 @@
             // 
             this.optionsButton.Location = new System.Drawing.Point(0, 0);
             this.optionsButton.Name = "optionsButton";
-            this.optionsButton.Size = new System.Drawing.Size(55, 39);
+            this.optionsButton.Size = new System.Drawing.Size(55, 55);
             this.optionsButton.TabIndex = 1;
             this.optionsButton.Text = "Options";
             this.optionsButton.UseVisualStyleBackColor = true;
@@ -321,7 +322,7 @@
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.commLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 38);
+            this.statusStrip.Location = new System.Drawing.Point(0, 54);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.statusStrip.Size = new System.Drawing.Size(281, 22);
@@ -340,7 +341,7 @@
             // 
             this.hardwareLight.BackColor = System.Drawing.Color.Red;
             this.hardwareLight.ForeColor = System.Drawing.Color.White;
-            this.hardwareLight.Location = new System.Drawing.Point(1, 39);
+            this.hardwareLight.Location = new System.Drawing.Point(1, 55);
             this.hardwareLight.Name = "hardwareLight";
             this.hardwareLight.Size = new System.Drawing.Size(53, 20);
             this.hardwareLight.TabIndex = 3;
@@ -362,7 +363,7 @@
             // 
             this.simLight.BackColor = System.Drawing.Color.Red;
             this.simLight.ForeColor = System.Drawing.Color.White;
-            this.simLight.Location = new System.Drawing.Point(227, 39);
+            this.simLight.Location = new System.Drawing.Point(227, 55);
             this.simLight.Name = "simLight";
             this.simLight.Size = new System.Drawing.Size(53, 20);
             this.simLight.TabIndex = 4;
@@ -383,11 +384,23 @@
             // 
             this.flagLabel.AutoSize = true;
             this.flagLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.flagLabel.Location = new System.Drawing.Point(61, 9);
+            this.flagLabel.Location = new System.Drawing.Point(61, 18);
             this.flagLabel.Name = "flagLabel";
             this.flagLabel.Size = new System.Drawing.Size(49, 18);
             this.flagLabel.TabIndex = 5;
             this.flagLabel.Text = "iFLAG";
+            // 
+            // overlayLabel
+            // 
+            this.overlayLabel.AutoSize = true;
+            this.overlayLabel.BackColor = System.Drawing.Color.Transparent;
+            this.overlayLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.overlayLabel.Location = new System.Drawing.Point(61, 28);
+            this.overlayLabel.Name = "overlayLabel";
+            this.overlayLabel.Size = new System.Drawing.Size(16, 13);
+            this.overlayLabel.TabIndex = 8;
+            this.overlayLabel.Text = "---";
+            this.overlayLabel.Visible = false;
             // 
             // initiationTimer
             // 
@@ -429,7 +442,7 @@
             this.multiFlagMessage.Controls.Add(this.multiFlagMessageLabel);
             this.multiFlagMessage.Location = new System.Drawing.Point(0, 0);
             this.multiFlagMessage.Name = "multiFlagMessage";
-            this.multiFlagMessage.Size = new System.Drawing.Size(282, 61);
+            this.multiFlagMessage.Size = new System.Drawing.Size(282, 76);
             this.multiFlagMessage.TabIndex = 7;
             this.multiFlagMessage.Visible = false;
             // 
@@ -439,14 +452,14 @@
             this.multiFlagMessageLabel.ForeColor = System.Drawing.Color.White;
             this.multiFlagMessageLabel.Location = new System.Drawing.Point(4, 1);
             this.multiFlagMessageLabel.Name = "multiFlagMessageLabel";
-            this.multiFlagMessageLabel.Size = new System.Drawing.Size(166, 58);
+            this.multiFlagMessageLabel.Size = new System.Drawing.Size(166, 73);
             this.multiFlagMessageLabel.TabIndex = 0;
             this.multiFlagMessageLabel.Text = "Are you seriously about to run more than 1 iFLAG at once?\r\nAt your own risk?";
             this.multiFlagMessageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // multiFlagMessageDismissButton
             // 
-            this.multiFlagMessageDismissButton.Location = new System.Drawing.Point(176, 12);
+            this.multiFlagMessageDismissButton.Location = new System.Drawing.Point(176, 19);
             this.multiFlagMessageDismissButton.Name = "multiFlagMessageDismissButton";
             this.multiFlagMessageDismissButton.Size = new System.Drawing.Size(93, 39);
             this.multiFlagMessageDismissButton.TabIndex = 1;
@@ -458,10 +471,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(281, 60);
+            this.ClientSize = new System.Drawing.Size(281, 76);
             this.Controls.Add(this.multiFlagMessage);
             this.Controls.Add(this.updateLinkLabel);
             this.Controls.Add(this.flagLabel);
+            this.Controls.Add(this.overlayLabel);
             this.Controls.Add(this.simLight);
             this.Controls.Add(this.hardwareLight);
             this.Controls.Add(this.statusStrip);
@@ -504,6 +518,7 @@
         private System.Windows.Forms.ToolStripMenuItem connectorRightMenuItem;
         private System.Windows.Forms.ToolStripMenuItem connectorBottomMenuItem;
         private System.Windows.Forms.Label flagLabel;
+        private System.Windows.Forms.Label overlayLabel;
         private System.Windows.Forms.ToolStripMenuItem appMenuItem;
         private System.Windows.Forms.ToolStripSeparator optionsMenuSeparator;
         private System.Windows.Forms.ToolStripMenuItem forumThreadMenuItem;
