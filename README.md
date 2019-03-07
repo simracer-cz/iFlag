@@ -31,7 +31,7 @@ License
 Thanks To
 ---------
 
-Andy Morgan and Rich Jamison for help with track testing, iRacing's David Tucker for his technical expertise and Steve Myers for his encouragement and all iRacing members for support.
+Andy Morgan and Rich Jamison for help with track testing, Rich Jamison again for fixing stuff and supporting the community, Jeff Brown for his support, iRacing's David Tucker for his technical expertise and Steve Myers for his encouragement and all iRacing members for support.
 
 
 ---
