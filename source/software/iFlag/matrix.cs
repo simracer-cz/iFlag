@@ -8,6 +8,8 @@ namespace iFlag
     public partial class mainForm : Form
     {
         byte[, ,] matrix = new byte[2, 8, 8];     // The physical matrix buffer to hold the flag in
+        byte[, ,] flagMatrix = new byte[2, 8, 8];       // Current flag matrix buffer
+        byte[, ,] overlayMatrix = new byte[2, 8, 8];    // Current overlay matrix buffer
         bool blinkSpeed;                          // Blinking speed of the pattern
         const bool SLOW = false;                  // Symbol of slow blinking
         const bool FAST = true;                   // Symbol of fast blinking
@@ -22,6 +24,8 @@ namespace iFlag
 
                                                   // Indexes of colors usable in flag patterns, which
                                                   // match the v0.15 firmware palette, so don't change.
+        const byte NO_COLOR =          255;
+
         const byte COLOR_BLACK =         0;
         const byte COLOR_WHITE =         1;
         const byte COLOR_RED =           2;
@@ -41,6 +45,7 @@ namespace iFlag
 
         private void startMatrix()
         {
+            resetOverlay();
             setMatrixLuma();
         }
 
@@ -96,6 +101,18 @@ namespace iFlag
         public void flagToMatrix(byte[, ,] pattern, byte[] color)
         {
             flagToMatrix(pattern, color, blinkSpeed);
+        }
+        
+                                                  // This repopulates the matrixOverlay with NO_COLOR
+                                                  // rather than black populated by default
+        public void resetOverlay()
+        {
+            for (int f = 0; f < 2; f++)
+                for (int y = 0; y < 8; y++)
+                    for (int x = 0; x < 8; x++)
+                    {
+                        overlayMatrix[f, x, y] = NO_COLOR;
+                    }
         }
 
                                                   // Processes the matrix pixels into data packets
