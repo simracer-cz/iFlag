@@ -185,7 +185,7 @@ namespace iFlag
                     if (!greeted)
                     {
                         greeted = true;
-                        showSystemFlag(STARTUP_GREETING);
+                        showSystemFlag(STARTUP_GREETING, 3);
                         demoTimer.Enabled = true;
                         updateSoftware();
                     }

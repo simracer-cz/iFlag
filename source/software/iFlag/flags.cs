@@ -197,7 +197,7 @@ namespace iFlag
                                                   // Takes a moment to ensure a system flag
                                                   // gets displayed long enough before it gets overruled
                                                   // by timeouts
-        private void showSystemFlag(long flag = ORIENTATION_CHECK)
+        private void showSystemFlag(long flagID = ORIENTATION_CHECK, int durationSec = 2)
         {
             if (demoTimer.Enabled)
             {
@@ -207,10 +207,19 @@ namespace iFlag
             if (updateTimer.Enabled)
             {
                 updateTimer.Stop();
+            }
+            showFlag(flagID);
+
+            if (durationSec > 0)
+            {
+                durationTimer.Stop();
+                durationTimer.Interval = durationSec * 1000;
+                durationTimer.Start();
+            }
+            else
+            {
                 updateTimer.Start();
             }
-            flagOnDisplay = NO_FLAG;
-            showFlag(flag);
         }
 
                                                   // Relentlessly queries the iRacing SDK's real time telemetry
