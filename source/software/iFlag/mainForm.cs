@@ -45,6 +45,8 @@ namespace iFlag
             startSDK();
             startMatrix();
             startFlags();
+            startCar();
+            startSession();
             startUpdater();
         }
 
