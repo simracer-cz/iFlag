@@ -1,4 +1,4 @@
-![iFlag logo](http://simracer.cz/iracing/iFlag-logo/logo-full.svg)
+![iFLAG logo](http://simracer.cz/iracing/iFlag-logo/logo-full.svg)
 
 > **i**Racing **F**lashing **L**ight **A**wareness **G**uard
 
@@ -16,7 +16,7 @@ and see [iRacing.com Forum Thread](http://members.iracing.com/jforum/posts/list/
 Getting Started
 ---------------
 
-_iFlag_ software is __gratis__, you just [get the __Hardware__](hardware) and [install the __Software__](software), in this order.
+_iFLAG_ software is __gratis__, you just [get the __Hardware__](hardware) and [install the __Software__](software), in this order.
 
 
 License
@@ -31,12 +31,10 @@ License
 Thanks To
 ---------
 
-4X Racing's Andy Morgan for help with track testing, iRacing's David Tucker for his technical expertise and Steve Myers for his encouragement and all iRacing members for support.
+Andy Morgan and Rich Jamison for help with track testing, iRacing's David Tucker for his technical expertise and Steve Myers for his encouragement and all iRacing members for support.
 
 
 ---
-© 2015-2016
+© 2015-2019
 [Petr.Vostřel.cz](http://petr.vostrel.cz),
-[simracer.cz](http://simracer.cz),
-[4xracing.co.uk](http://4xracing.co.uk)
-
+[simracer.cz](http://simracer.cz)
