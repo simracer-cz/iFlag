@@ -9,6 +9,7 @@ namespace iFlag
     {
         bool sessionDetected;
         string sessionInfo;
+        string eventType;
         int carID;
         int paceCarID;
         string trackCategory;
@@ -58,6 +59,10 @@ namespace iFlag
                     Match category = Regex.Match(sessionInfo, @"(?<=Category: )[a-zA-Z ]+");
                     trackCategory = category.Value;
                     Console.WriteLine("Track category: {0}", trackCategory);
+
+                    Match eventTypeMatch = Regex.Match(sessionInfo, @"(?<=EventType: )[a-zA-Z ]+");
+                    eventType = eventTypeMatch.Value;
+                    Console.WriteLine("Event type: {0}", eventType);
 
                     CAUTION_FLAG = trackCategory == "Road" ? SAFETYCAR_FLAG : FLASHING_FLAG;
 
