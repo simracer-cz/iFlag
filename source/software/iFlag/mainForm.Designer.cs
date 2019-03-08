@@ -180,7 +180,7 @@
             this.spotterOverlayModuleMenuItem.Name = "spotterOverlayModuleMenuItem";
             this.spotterOverlayModuleMenuItem.Size = new System.Drawing.Size(152, 22);
             this.spotterOverlayModuleMenuItem.Text = "Spotter";
-            this.spotterOverlayModuleMenuItem.ToolTipText = "Show spotter\'s traffic calls *EXPERIMENTAL";
+            this.spotterOverlayModuleMenuItem.ToolTipText = "Show spotter\'s traffic calls";
             // 
             // startLightsModuleMenuItem
             // 
@@ -188,7 +188,7 @@
             this.startLightsModuleMenuItem.Name = "startLightsModuleMenuItem";
             this.startLightsModuleMenuItem.Size = new System.Drawing.Size(152, 22);
             this.startLightsModuleMenuItem.Text = "Start lights";
-            this.startLightsModuleMenuItem.ToolTipText = "Show start lights during start of a race *EXPERIMENTAL";
+            this.startLightsModuleMenuItem.ToolTipText = "Show start lights during start of a race";
             // 
             // incidentOverlayModuleMenuItem
             // 
