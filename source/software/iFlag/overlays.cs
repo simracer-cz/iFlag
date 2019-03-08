@@ -45,6 +45,8 @@ namespace iFlag
 
         private int matchIncidentOverlay()
         {
+            if (!this.incidentOverlayModuleMenuItem.Checked) return 0;
+
             newIncidentCount = (int)sdk.GetData("PlayerCarTeamIncidentCount");
             int incidentGain = newIncidentCount - incidentCount;
 
