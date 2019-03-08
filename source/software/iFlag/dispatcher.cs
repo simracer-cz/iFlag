@@ -135,7 +135,19 @@ namespace iFlag
                                                   // such as yellows with a green flag.
         private bool flagsEveryTick(long flagID)
         {
-            return showFlag(flagID);
+            if (locationSpecificFlags())
+            {
+                return false;
+            }
+            else
+            {
+                return showFlag(flagID);
+            }
+        }
+
+        private bool locationSpecificFlags()
+        {
+            return false;
         }
 
         private void clearTimer_Tick(object sender, EventArgs e)
