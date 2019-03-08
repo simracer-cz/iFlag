@@ -123,7 +123,7 @@ namespace iFlag
             Settings.Default.DemoMode = this.demoMenuItem.Checked;
             Settings.Default.ShowSpotterOverlay = this.spotterOverlayModuleMenuItem.Checked;
             Settings.Default.ShowStartLights = this.startLightsModuleMenuItem.Checked;
-            Settings.Default.ShowIncidentOverlay = this.incidentsOverlayModuleMenuItem.Checked;
+            Settings.Default.ShowIncidentOverlay = this.incidentOverlayModuleMenuItem.Checked;
             Settings.Default.UsbConnector = connectorSide;
             Settings.Default.MatrixLuma = matrixLuma;
             Settings.Default.Updates = updatesLevel;
