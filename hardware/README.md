@@ -1,11 +1,11 @@
-![iFlag logo](http://simracer.cz/iracing/iFlag-logo/logo-full.svg)
+![iFLAG logo](http://simracer.cz/iracing/iFlag-logo/logo-full.svg)
 
 The Hardware
 ============
 
 	v1
 
-_iFlag_ hardware-wise consists of three individual components, all of them also open source.
+_iFLAG_ hardware-wise consists of three individual components, all of them also open source.
 You should be able to source these parts locally, the following links are only illustrational.
 All three will cost you somewhere around $50 or $60 total.
 
@@ -53,7 +53,7 @@ Assembled unit will look like this:
 Connection
 ----------
 
-Use regular USB cable to connect the _iFlag_ device to your computer. This cable will provide data as well as more than enough power to the flag and it is the only required cable you really need. You do not need any external power supply. But you definitely can use one, with proper rating for your Arduino board (usually 7V - 9V).
+Use regular USB cable to connect the _iFLAG_ device to your computer. This cable will provide data as well as more than enough power to the flag and it is the only required cable you really need. You do not need any external power supply. But you definitely can use one, with proper rating for your Arduino board (usually 7V - 9V).
 
 
 Mounting
@@ -71,8 +71,7 @@ Or buy a [FiTECH](http://www.fi-tech-net) enclosure from Carsten Filmer.
 
 
 ---
-© 2015-2016
+© 2015-2019
 [Petr.Vostřel.cz](http://petr.vostrel.cz),
-[simracer.cz](http://simracer.cz),
-[4xracing.co.uk](http://4xracing.co.uk)
+[simracer.cz](http://simracer.cz)
 
