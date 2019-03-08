@@ -154,5 +154,17 @@ namespace iFlag.Properties {
                 this["AllowMultiple"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ShowIncidentOverlay {
+            get {
+                return ((bool)(this["ShowIncidentOverlay"]));
+            }
+            set {
+                this["ShowIncidentOverlay"] = value;
+            }
+        }
     }
 }

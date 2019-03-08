@@ -41,6 +41,7 @@
             this.flagsModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.spotterOverlayModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startLightsModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.incidentOverlayModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.brightnessMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fullBrightnessMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.highBrightnessMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,6 +69,7 @@
             this.overlayLabel = new System.Windows.Forms.Label();
             this.initiationTimer = new System.Windows.Forms.Timer(this.components);
             this.clearTimer = new System.Windows.Forms.Timer(this.components);
+            this.incidentTimer = new System.Windows.Forms.Timer(this.components);
             this.durationTimer = new System.Windows.Forms.Timer(this.components);
             this.updateLinkLabel = new System.Windows.Forms.LinkLabel();
             this.multiFlagMessage = new System.Windows.Forms.Panel();
@@ -93,7 +95,7 @@
             this.forumThreadMenuItem,
             this.updatesMenuItem});
             this.optionsMenu.Name = "optionsMenu";
-            this.optionsMenu.Size = new System.Drawing.Size(180, 252);
+            this.optionsMenu.Size = new System.Drawing.Size(180, 230);
             // 
             // initiateBoardMenuItem
             // 
@@ -156,7 +158,8 @@
             this.modulesMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.flagsModuleMenuItem,
             this.spotterOverlayModuleMenuItem,
-            this.startLightsModuleMenuItem});
+            this.startLightsModuleMenuItem,
+            this.incidentOverlayModuleMenuItem});
             this.modulesMenuItem.Name = "modulesMenuItem";
             this.modulesMenuItem.Size = new System.Drawing.Size(179, 22);
             this.modulesMenuItem.Text = "Modules";
@@ -167,7 +170,7 @@
             this.flagsModuleMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.flagsModuleMenuItem.Enabled = false;
             this.flagsModuleMenuItem.Name = "flagsModuleMenuItem";
-            this.flagsModuleMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.flagsModuleMenuItem.Size = new System.Drawing.Size(152, 22);
             this.flagsModuleMenuItem.Text = "Racing flags";
             this.flagsModuleMenuItem.ToolTipText = "Show racing flags. Mandatory";
             // 
@@ -175,7 +178,7 @@
             // 
             this.spotterOverlayModuleMenuItem.CheckOnClick = true;
             this.spotterOverlayModuleMenuItem.Name = "spotterOverlayModuleMenuItem";
-            this.spotterOverlayModuleMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.spotterOverlayModuleMenuItem.Size = new System.Drawing.Size(152, 22);
             this.spotterOverlayModuleMenuItem.Text = "Spotter";
             this.spotterOverlayModuleMenuItem.ToolTipText = "Show spotter\'s traffic calls *EXPERIMENTAL";
             // 
@@ -183,9 +186,17 @@
             // 
             this.startLightsModuleMenuItem.CheckOnClick = true;
             this.startLightsModuleMenuItem.Name = "startLightsModuleMenuItem";
-            this.startLightsModuleMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.startLightsModuleMenuItem.Size = new System.Drawing.Size(152, 22);
             this.startLightsModuleMenuItem.Text = "Start lights";
             this.startLightsModuleMenuItem.ToolTipText = "Show start lights during start of a race *EXPERIMENTAL";
+            // 
+            // incidentOverlayModuleMenuItem
+            // 
+            this.incidentOverlayModuleMenuItem.CheckOnClick = true;
+            this.incidentOverlayModuleMenuItem.Name = "incidentOverlayModuleMenuItem";
+            this.incidentOverlayModuleMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.incidentOverlayModuleMenuItem.Text = "Incidents";
+            this.incidentOverlayModuleMenuItem.ToolTipText = "Show a signal on number of incidents increase";
             // 
             // brightnessMenuItem
             // 
@@ -413,6 +424,11 @@
             this.clearTimer.Interval = 3000;
             this.clearTimer.Tick += new System.EventHandler(this.clearTimer_Tick);
             // 
+            // incidentTimer
+            // 
+            this.incidentTimer.Interval = 3000;
+            this.incidentTimer.Tick += new System.EventHandler(this.incidentTimer_Tick);
+            // 
             // durationTimer
             // 
             this.durationTimer.Interval = 2000;
@@ -527,10 +543,12 @@
         private System.Windows.Forms.ToolStripMenuItem flagsModuleMenuItem;
         private System.Windows.Forms.ToolStripMenuItem startLightsModuleMenuItem;
         private System.Windows.Forms.ToolStripMenuItem spotterOverlayModuleMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem incidentOverlayModuleMenuItem;
         private System.Windows.Forms.ToolStripMenuItem initiateBoardMenuItem;
         private System.Windows.Forms.Timer initiationTimer;
         private System.Windows.Forms.Timer clearTimer;
         private System.Windows.Forms.Timer durationTimer;
+        private System.Windows.Forms.Timer incidentTimer;
         private System.Windows.Forms.ToolStripMenuItem brightnessMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mediumBrightnessMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fullBrightnessMenuItem;

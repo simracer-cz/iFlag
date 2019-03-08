@@ -60,6 +60,13 @@ These can be enabled or disabled in _iFLAG_ options menu.
 | ![](signals/warn-left-right.gif) | Cars left and right! | Spotter warning about cars with overlap on both sides of the vehicle | `WARN_LR` |
 
 
+### Incident Overlay
+
+| Visual                           | Signal   | Description | Flag primitive |
+| -------------------------------- | -------- | ----------- | -------------- |
+| ![](signals/incident.gif)       | Incident (Xx) | Lights up for 3 seconds every incident count increases | `INCIDENT` |
+
+
 
 Miscelanous
 -----------

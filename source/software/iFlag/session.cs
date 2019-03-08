@@ -15,6 +15,9 @@ namespace iFlag
         string trackCategory;
         float pitSpeedLimit;
 
+        int incidentCount = 0;
+        int newIncidentCount = 0;
+
         private void startSession()
         {
         }
@@ -66,6 +69,7 @@ namespace iFlag
 
                     CAUTION_FLAG = trackCategory == "Road" ? SAFETYCAR_FLAG : FLASHING_FLAG;
 
+                    incidentCount = (int)sdk.GetData("PlayerCarTeamIncidentCount");
                 }
             }
         }

@@ -8,8 +8,11 @@ namespace iFlag
         int overlaysOnDisplay = 0;
         string overlaysOnDisplayLabel = "";
 
+        bool showIncidentOverlay;
+
                                                   // Overlays bit field constants
         const int if_spotterOverlay = 16;
+        const int if_incidentOverlay = 32;
 
         private void startOverlays()
         {
@@ -23,6 +26,7 @@ namespace iFlag
 
             return 0
             + matchSpotterOverlay()
+            + matchIncidentOverlay()
             ;
         }
 
@@ -39,6 +43,24 @@ namespace iFlag
             else return 0;
         }
 
+        private int matchIncidentOverlay()
+        {
+            newIncidentCount = (int)sdk.GetData("PlayerCarTeamIncidentCount");
+            int incidentGain = newIncidentCount - incidentCount;
+
+            if (newIncidentCount > incidentCount)
+            {
+                incidentCount = newIncidentCount;
+                showIncidentOverlay = true;
+                incidentTimer.Start();
+            }
+            if (showIncidentOverlay == true)
+            {
+                return overlay(if_incidentOverlay, String.Format("Incident({0}x)", incidentGain), INCIDENT_OVERLAY, new byte[] { COLOR_BLACK, COLOR_RED });
+            }
+            else return 0;
+        }
+
                                                   // Pour the specified overlay into the overlay matrix awaiting boradcast
                                                   // logging the flags with time codes into console
                                                   // (^^ this might be eventually going into a file in the future.)
@@ -47,6 +69,12 @@ namespace iFlag
             overlaysOnDisplayLabel += String.Format(" +{0}", overlayName);
             patternToMatrix(ref overlayMatrix, pattern, color);
             return overlayID;
+        }
+
+        private void incidentTimer_Tick(object sender, EventArgs e)
+        {
+            incidentTimer.Stop();
+            showIncidentOverlay = false;
         }
     }
 }

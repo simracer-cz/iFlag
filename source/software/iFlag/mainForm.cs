@@ -11,7 +11,7 @@ namespace iFlag
     public partial class mainForm : Form
     {
         // Version
-        const string version = "v0.75";
+        const string version = "v0.76";
 
         // Embedded firmware version
         const byte firmwareMajor = 0;             // Major version number of the firmware payload
@@ -72,6 +72,7 @@ namespace iFlag
             this.demoMenuItem.Checked = Settings.Default.DemoMode;
             this.spotterOverlayModuleMenuItem.Checked = Settings.Default.ShowSpotterOverlay;
             this.startLightsModuleMenuItem.Checked = Settings.Default.ShowStartLights;
+            this.incidentOverlayModuleMenuItem.Checked = Settings.Default.ShowIncidentOverlay;
 
             connectorSide = Settings.Default.UsbConnector;
             switch (connectorSide)
@@ -122,6 +123,7 @@ namespace iFlag
             Settings.Default.DemoMode = this.demoMenuItem.Checked;
             Settings.Default.ShowSpotterOverlay = this.spotterOverlayModuleMenuItem.Checked;
             Settings.Default.ShowStartLights = this.startLightsModuleMenuItem.Checked;
+            Settings.Default.ShowIncidentOverlay = this.incidentsOverlayModuleMenuItem.Checked;
             Settings.Default.UsbConnector = connectorSide;
             Settings.Default.MatrixLuma = matrixLuma;
             Settings.Default.Updates = updatesLevel;

@@ -44,6 +44,7 @@ Pattern Frames
 | `FLASHING`           | ![](patterns/flashing.gif)            | Red flag, Full course caution (oval) |
 | `FURLED`             | ![](patterns/furled.gif)              | Furled black flag |
 | `HALF`               | ![](patterns/half.gif)                | Start lights: Ready! |
+| `INCIDENT`           | ![](patterns/incident.gif)            | Incident notification |
 | `INVERTED`           | ![](patterns/inverted.gif)            | Black flag, One lap to green |
 | `IRACING_LOGO`       | ![](patterns/iracing.gif)             | (N/A) |
 | `MEATBALL`           | ![](patterns/meatball.gif)            | Meat ball flag |
