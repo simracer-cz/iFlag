@@ -86,7 +86,15 @@
       <DependentUpon>mainForm.cs</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="dispatcher.cs">
+      <DependentUpon>mainForm.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="flags.cs">
+      <DependentUpon>mainForm.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="overlays.cs">
       <DependentUpon>mainForm.cs</DependentUpon>
       <SubType>Form</SubType>
     </Compile>

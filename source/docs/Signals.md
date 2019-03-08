@@ -2,7 +2,7 @@
 
 Signals
 =======
-_as defined in [flags.cs](../iFlag/flags.cs)_
+_as defined in [flags.cs](../iFlag/flags.cs) and  [flags.cs](../iFlag/overlays.cs)_
 
 A complete list of signals and other visual features of _iFLAG_.
 
