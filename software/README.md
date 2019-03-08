@@ -5,8 +5,7 @@ The Software
 
 	v0.76 (v0.21)
 
-_iFLAG_ software translates provides the interconnection of iRacing and the matrix. It continuously listens for iRacing session and other signals, processes them and issues commands telling the device exactly what to display
-on the LED matrix.
+_iFLAG_ software provides the interconnection of iRacing and the matrix. It continuously listens for iRacing session and other signals, processes them and issues commands telling the device exactly what to display on the LED matrix.
 
 So far _iFLAG_ doesn't come with any installer, it is only an EXE you run. This means that you need to provide certain prerequisities yourself. Namely have this installed on your computer:
 - .NET Framework 4 - get it for free from [Microsoft](https://www.microsoft.com/en-us/download/details.aspx?id=17718).
