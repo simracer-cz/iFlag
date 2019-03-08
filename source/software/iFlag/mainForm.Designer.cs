@@ -171,7 +171,7 @@
             this.flagsModuleMenuItem.Enabled = false;
             this.flagsModuleMenuItem.Name = "flagsModuleMenuItem";
             this.flagsModuleMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.flagsModuleMenuItem.Text = "Racing flags";
+            this.flagsModuleMenuItem.Text = "Racing Flags";
             this.flagsModuleMenuItem.ToolTipText = "Show racing flags. Mandatory";
             // 
             // spotterOverlayModuleMenuItem
@@ -187,7 +187,7 @@
             this.startLightsModuleMenuItem.CheckOnClick = true;
             this.startLightsModuleMenuItem.Name = "startLightsModuleMenuItem";
             this.startLightsModuleMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.startLightsModuleMenuItem.Text = "Start lights";
+            this.startLightsModuleMenuItem.Text = "Start Lights";
             this.startLightsModuleMenuItem.ToolTipText = "Show start lights during start of a race";
             // 
             // incidentOverlayModuleMenuItem

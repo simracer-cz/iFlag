@@ -20,9 +20,9 @@ __Run iFlag.exe and connect the USB hardware__. Order doesn't matter. Read furth
 First Time Run
 --------------
 
-Fresh unprogrammed hardware only blinks and is not discoverable easily by _iFLAG_. However, it will give you its best guess on the actual serial port of the uninitialized hardware. In the options menu, new __"Initialize Board at port..." menu item__ will appear after 30 seconds of fruitless scanning. By using that, the "Matrix" indicator in the lower left corner will turn blue and your hardware will be flashed with the correct firmware version for the software.
+Fresh unprogrammed hardware only blinks and is not discoverable easily by _iFLAG_. However, it will give you its best guess on the actual serial port of the uninitialized hardware. In the options menu, new __"Initialize Board at port..." menu item__ will appear after 30 seconds of fruitless scanning. By using that, the "iFLAG" indicator in the lower left corner will turn blue and your hardware will be flashed with the correct firmware version for the software.
 
-Once the matrix is up to date, the "Matrix" indicator turns green  to indicate the hardware readiness and that you are ready to run.
+Once the matrix is up to date, the "iFLAG" indicator turns green to indicate the hardware readiness and that you are ready to run.
 
 
 Program Window
@@ -31,8 +31,8 @@ Program Window
 ![Screenshot of the software window](screenshot.png)
 
 * __Options__ button lets you specify a few _iFLAG_ settings explained further.
-* __"White flag"__ is the name of the currently shown flag/signal.
-* __Matrix__ visually indicates USB device connection status, green being connected and red otherwise, with connection details (device firmware version and port) to the right of it
+* __"Checkered Flag"__ is the instructional label of the currently shown flag/signal and overlays.
+* __iFLAG__ visually indicates USB device connection status, green being connected and red otherwise, with connection details (device firmware version and port) to the right of it
 * __iRacing__ visually indicates running iRacing session, green with iRacing launched and red otherwise.
 
 
