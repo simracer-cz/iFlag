@@ -186,7 +186,7 @@ namespace iFlag
             else return 0;
         }
 
-                                                  // Pour the specified flag into the matrix awaiting boradcast
+                                                  // Pour the specified flag into the flag matrix awaiting boradcast
                                                   // logging the flags with time codes into console
                                                   // (^^ this might be eventually going into a file in the future.)
         public bool flag(string flagName, byte[, ,] pattern, byte[] color, bool speed)
