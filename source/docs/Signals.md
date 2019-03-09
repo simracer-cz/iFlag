@@ -67,6 +67,13 @@ These can be enabled or disabled in _iFLAG_ options menu.
 | ![](signals/incident.gif)       | Incident (Xx) | Lights up for 3 seconds every incident count increases | `INCIDENT` |
 
 
+### Pit Exit Blue
+
+| Visual                           | Signal   | Description | Flag primitive |
+| -------------------------------- | -------- | ----------- | -------------- |
+| ![](signals/blue.gif)            | Blue flag | Shows on pit exit with faster car on track within 100 meter behind | `DIAGONAL_STRIPE` |
+
+
 
 Miscelanous
 -----------
