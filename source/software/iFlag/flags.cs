@@ -57,7 +57,7 @@ namespace iFlag
             else if (Convert.ToBoolean(flagID & irsdk_furled)) return clearedFlag("Serve Penalty", FURLED_FLAG, new byte[] { COLOR_BLACK, COLOR_WHITE, COLOR_BLACK }, FAST);
             else if (Convert.ToBoolean(flagID & irsdk_green)) return flag("Green", SIMPLE_FLAG, new byte[] { COLOR_GREEN, COLOR_GREEN }, FAST);
             else if (Convert.ToBoolean(flagID & irsdk_red)) return flag("Session Stopped", FLASHING_FLAG, new byte[] { COLOR_BLACK, COLOR_RED }, SLOW);
-            else if (Convert.ToBoolean(flagID & irsdk_blue)) return flag("Traffic Overtake Coming Up", DIAGONAL_STRIPE_FLAG, new byte[] { COLOR_BLUE, COLOR_YELLOW }, SLOW);
+            else if (Convert.ToBoolean(flagID & irsdk_blue)) return flag("Faster Car Approaching", DIAGONAL_STRIPE_FLAG, new byte[] { COLOR_BLUE, COLOR_YELLOW }, SLOW);
             else if (Convert.ToBoolean(flagID & irsdk_debris)) return flag("Debris on the Track", STRIPPED_FLAG, new byte[] { COLOR_YELLOW, COLOR_RED }, FAST);
             else if (Convert.ToBoolean(flagID & irsdk_repair)) return flag("Too Much Damage", MEATBALL_FLAG, new byte[] { COLOR_BLACK, COLOR_ORANGE }, SLOW);
             else if (Convert.ToBoolean(flagID & irsdk_checkered)) return flag("Checkered Flag", CHECKERED_FLAG, new byte[] { COLOR_BLACK, COLOR_WHITE }, SLOW);
