@@ -49,7 +49,9 @@ Since the LED matrix is totally symetrical it allows to be mounted in four diffe
 The visual features of _iFLAG_ are coupled into modules, which can be turned on and off individually inside this option submenu.
 
 * __Racing Flags__ - currently capable of reacting to iRacing session flag changes and displaying 14 different racing flags. This set is mandatory and can not be turned off.
+* __Spotter__ - displays spotter warning of cars next to you. Optional.
 * __Start Lights__ - starting procedure lights. Optional.
+* __Incidents__ - highlights an incident loss. Optional.
 * __Pit Exit Blue__ - shows blue flag on pit exit with faster car within 100 meters behind. Optional.
 * (__Pit Signals__) - coming soon...
 
