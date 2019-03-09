@@ -28,9 +28,10 @@
     v0.55 - First ever release
   </stable-changelog>
 
-  <experimental-version>v0.76</experimental-version>
+  <experimental-version>v0.77</experimental-version>
   <experimental-url>http://simracer.cz/iflag/updates/experimental</experimental-url>
   <experimental-changelog>
+    v0.77 - New pit exit traffic warning
   </experimental-changelog>
 
 </iflag>

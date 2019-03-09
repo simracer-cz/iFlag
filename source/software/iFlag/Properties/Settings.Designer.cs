@@ -166,5 +166,17 @@ namespace iFlag.Properties {
                 this["ShowIncidentOverlay"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ShowPitExitBlue {
+            get {
+                return ((bool)(this["ShowPitExitBlue"]));
+            }
+            set {
+                this["ShowPitExitBlue"] = value;
+            }
+        }
     }
 }

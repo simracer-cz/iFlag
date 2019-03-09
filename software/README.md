@@ -3,7 +3,7 @@
 The Software
 ============
 
-	v0.76 (v0.21)
+	v0.77 (v0.21)
 
 _iFLAG_ software provides the interconnection of iRacing and the matrix. It continuously listens for iRacing session and other signals, processes them and issues commands telling the device exactly what to display on the LED matrix.
 
@@ -50,6 +50,7 @@ The visual features of _iFLAG_ are coupled into modules, which can be turned on 
 
 * __Racing Flags__ - currently capable of reacting to iRacing session flag changes and displaying 14 different racing flags. This set is mandatory and can not be turned off.
 * __Start Lights__ - starting procedure lights. Optional.
+* __Pit Exit Blue__ - shows blue flag on pit exit with faster car within 100 meters behind. Optional.
 * (__Pit Signals__) - coming soon...
 
 

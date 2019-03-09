@@ -147,6 +147,28 @@ namespace iFlag
 
         private bool locationSpecificFlags()
         {
+            if (onPitExitRoad)
+            {
+                                                  // Shows blue flag warning when leaving pits with a car
+                                                  // on track within 20 meters behind
+                if (this.pitExitBlueModuleMenuItem.Checked)
+                {
+                    float distance;
+                    float range = (1 / trackLength * 100); // 100 meters in track percent
+
+                    for (int idx = 0; idx < 63; idx++)
+                    if (idx != carID && idx != paceCarID)
+                    {
+                        distance = carLapPct - carsLapPct[idx];
+
+                        if (distance > 0 && distance < range && carsTrackSurface[idx] == irsdk_OnTrack)
+                        {
+                            Console.WriteLine("distance:{0} range:{1}", distance, range);
+                            return showFlag(irsdk_blue);
+                        }
+                    }
+                }
+            }
             return false;
         }
 
