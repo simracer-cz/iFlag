@@ -61,7 +61,7 @@ The visual features of _iFLAG_ are coupled into modules, which can be turned on 
 _iFLAG_ allows you to set the LED brightness to __Full__, __High__, __Medium__ and __Low__.
 
 
-### Demo Mode
+### Demo Mode
 
 When not inside iRacing session, _iFLAG_ can either light down and silently wait for the next session or it can cycle through a demo sequence showcasing a subset of its flag signals. As this feature is flashy, you may become annoying, so you can switch it off eventually.
 
