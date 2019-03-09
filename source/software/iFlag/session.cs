@@ -13,6 +13,7 @@ namespace iFlag
         int carID;
         int paceCarID;
         string trackCategory;
+        float trackLength;
         float pitSpeedLimit;
 
         int incidentCount = 0;
@@ -35,7 +36,7 @@ namespace iFlag
                 {
                     sessionDetected = true;
 
-                    Match match;
+                    Match match, value, units;
 
                     match = Regex.Match(sessionInfo, @"(?<=SessionID: )\d+");
                     int sessionID = int.Parse(match.Value);
@@ -54,12 +55,20 @@ namespace iFlag
                     Console.WriteLine("Pace car ID: {0}", paceCarID);
 
                     match = Regex.Match(sessionInfo, @"(?<=TrackPitSpeedLimit: )[0-9.]+ (k|m)ph");
-                    Match speedMatch = Regex.Match(match.Value, "[0-9.]+");
-                    Match speedUnits = Regex.Match(match.Value, "(k|m)ph");
-                    pitSpeedLimit = float.Parse(speedMatch.Value, CultureInfo.InvariantCulture);
-                    if (speedUnits.Value == "kph") pitSpeedLimit *= 0.277778F; // convert to m/s
-                    if (speedUnits.Value == "mph") pitSpeedLimit *= 1.609344F * 0.277778F; // convert to m/s
+                    value = Regex.Match(match.Value, "[0-9.]+");
+                    units = Regex.Match(match.Value, "(k|m)ph");
+                    pitSpeedLimit = float.Parse(value.Value, CultureInfo.InvariantCulture);
+                    if (units.Value == "kph") pitSpeedLimit *= 0.277778F; // convert to m/s
+                    if (units.Value == "mph") pitSpeedLimit *= 1.609344F * 0.277778F; // convert to m/s
                     Console.WriteLine("Pit speed limit: {0} ({1} m/s)", match.Value, pitSpeedLimit);
+
+                    match = Regex.Match(sessionInfo, @"(?<=TrackLength: )[0-9.]+ (km|mi)");
+                    value = Regex.Match(match.Value, "[0-9.]+");
+                    units = Regex.Match(match.Value, "(km|mi)");
+                    trackLength = float.Parse(value.Value, CultureInfo.InvariantCulture);
+                    if (units.Value == "km") trackLength *= 1000; // convert to m
+                    if (units.Value == "mi") trackLength *= 1609.344F; // convert to m
+                    Console.WriteLine("Track length: {0} ({1} m)", match.Value, trackLength);
 
                     match = Regex.Match(sessionInfo, @"(?<=Category: )[a-zA-Z ]+");
                     trackCategory = match.Value;
