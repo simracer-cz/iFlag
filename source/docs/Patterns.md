@@ -38,7 +38,7 @@ Pattern Frames
 | -------------------- | --------------------------------------| ------- |
 | `CHECKERED`          | ![](patterns/checkered.gif)           | Checkered flag |
 | `CORNERS`            | ![](patterns/corners.gif)             | Pits closed |
-| `CROSSED`            | ![](patterns/crossed.gif)             | Disqualified |
+| `CROSSED`            | ![](patterns/crossed.gif)             | Disqualified, Entering Closed Pits! |
 | `DIAGONAL_STRIPE`    | ![](patterns/diagonal-stripe.gif)     | Blue flag |
 | `DOUBLE_WAVING`      | ![](patterns/double-waving.gif)       | (N/A) |
 | `F`                  | ![](patterns/f.gif)                   | Greeting, Orientation check pattern |
