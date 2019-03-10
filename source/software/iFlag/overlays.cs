@@ -43,6 +43,8 @@ namespace iFlag
             else return 0;
         }
 
+                                                  // Shows an incident overlay along with the incident count
+                                                  // in the UI message in case incident occurs
         private int matchIncidentOverlay()
         {
             if (!this.incidentOverlayModuleMenuItem.Checked) return 0;
