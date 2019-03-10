@@ -53,6 +53,7 @@ The visual features of _iFLAG_ are coupled into modules, which can be turned on 
 * __Start Lights__ - starting procedure lights. Optional.
 * __Incidents__ - highlights an incident loss. Optional.
 * __Pit Exit Blue__ - shows blue flag on pit exit with faster car within 100 meters behind. Optional.
+* __Closed Pits__ - shows signals in case pits are closed. Optional.
 * (__Pit Signals__) - coming soon...
 
 

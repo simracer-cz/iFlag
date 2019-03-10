@@ -28,9 +28,11 @@
     v0.55 - First ever release
   </stable-changelog>
 
-  <experimental-version>v0.77</experimental-version>
+  <experimental-version>v0.79</experimental-version>
   <experimental-url>http://simracer.cz/iflag/updates/experimental</experimental-url>
   <experimental-changelog>
+    v0.79 - New closed pits overlay module
+    v0.78 - Donate action in the menu
     v0.77 - New pit exit traffic warning
   </experimental-changelog>
 
