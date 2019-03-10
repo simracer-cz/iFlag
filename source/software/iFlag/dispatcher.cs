@@ -167,7 +167,6 @@ namespace iFlag
 
                         if (distance > 0 && distance < range && carsTrackSurface[idx] == irsdk_OnTrack)
                         {
-                            Console.WriteLine("distance:{0} range:{1}", distance, range);
                             return showFlag(irsdk_blue);
                         }
                     }
