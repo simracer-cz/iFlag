@@ -54,7 +54,14 @@ namespace iFlag
 
             if (!pitsOpen)
             {
-                return overlay(if_closedPitsOverlay, "Pits Closed", CORNERS_OVERLAY, new byte[] { COLOR_RED, COLOR_RED, COLOR_RED, COLOR_RED });
+                if (onPitEntryRoad)
+                {
+                    return overlay(if_closedPitsOverlay, "Entering Closed Pits!", CROSSED_FLAG, new byte[] { NO_COLOR, COLOR_RED, COLOR_BLACK });
+                }
+                else
+                {
+                    return overlay(if_closedPitsOverlay, "Pits Closed", CORNERS_OVERLAY, new byte[] { COLOR_RED, COLOR_RED, COLOR_RED, COLOR_RED });
+                }
             }
             return 0;
         }

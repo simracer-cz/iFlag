@@ -76,9 +76,10 @@ These can be enabled or disabled in _iFLAG_ options menu.
 
 ### Closed Pits
 
-| Visual                           | Signal   | Description | Flag primitive |
-| -------------------------------- | -------- | ----------- | -------------- |
-| ![](signals/closed-pits.gif)     | + Pits Closed | Shows when pits are closed | `CLOSED_PITS` |
+| Visual                                  | Signal   | Description | Flag primitive |
+| --------------------------------------- | -------- | ----------- | -------------- |
+| ![](signals/closed-pits.gif)            | + Pits Closed | Shows when pits are closed | `CORNERS` |
+| ![](signals/entering-closed-pits.gif)   | + Entering Closed Pits! | Warning on pit entry when pits are closed | `CROSSED` |
 
 
 
