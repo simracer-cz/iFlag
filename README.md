@@ -28,6 +28,14 @@ License
 - Author can not be held responsible for any case of hardware issues or possible damage caused by improper usage or by not following these instructions.
 
 
+Like It?
+--------
+
+Support and help _iFLAG_! [Find out how](docs/HowToHelp.md).
+
+[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=AXVXCF5T3M2GS&item_name=iFLAG&currency_code=USD&source=url)
+
+
 Thanks To
 ---------
 

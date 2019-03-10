@@ -9,6 +9,8 @@ The Documentation
 * [Colors Table](Colors.md)
 * [External Power](Power.md)
 
+* [Want to Help?](Contribute.md)
+
 
 ---
 © 2015-2019
