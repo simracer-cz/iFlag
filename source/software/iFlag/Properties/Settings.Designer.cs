@@ -178,5 +178,17 @@ namespace iFlag.Properties {
                 this["ShowPitExitBlue"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ShowClosedPitsOverlay {
+            get {
+                return ((bool)(this["ShowClosedPitsOverlay"]));
+            }
+            set {
+                this["ShowClosedPitsOverlay"] = value;
+            }
+        }
     }
 }

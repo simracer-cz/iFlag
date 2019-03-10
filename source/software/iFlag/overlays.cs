@@ -13,6 +13,7 @@ namespace iFlag
                                                   // Overlays bit field constants
         const int if_spotterOverlay = 16;
         const int if_incidentOverlay = 32;
+        const int if_closedPitsOverlay = 64;
 
         private void startOverlays()
         {
@@ -27,6 +28,7 @@ namespace iFlag
             return 0
             + matchSpotterOverlay()
             + matchIncidentOverlay()
+            + matchClosedPitsOverlay()
             ;
         }
 
@@ -41,6 +43,20 @@ namespace iFlag
             else if (carLeftRight == SPOTTER_CAR_RIGHT || carLeftRight == SPOTTER_CARS_RIGHT) return overlay(if_spotterOverlay, "Right side!", WARN_R_OVERLAY, new byte[] { COLOR_BLACK, COLOR_PURPLE });
             else if (carLeftRight == SPOTTER_CARS_LEFT_RIGHT) return overlay(if_spotterOverlay, "Both sides!", WARN_LR_OVERLAY, new byte[] { COLOR_BLACK, COLOR_PURPLE });
             else return 0;
+        }
+
+                                                  // Shows an overlay in case pits are closed
+        private int matchClosedPitsOverlay()
+        {
+            if (!this.closedPitsOverlayModuleMenuItem.Checked) return 0;
+
+            bool pitsOpen = (bool)sdk.GetData("PitsOpen");
+
+            if (!pitsOpen)
+            {
+                return overlay(if_closedPitsOverlay, "Pits Closed", CORNERS_OVERLAY, new byte[] { COLOR_RED, COLOR_RED, COLOR_RED, COLOR_RED });
+            }
+            return 0;
         }
 
                                                   // Shows an incident overlay along with the incident count

@@ -37,6 +37,7 @@ Pattern Frames
 | Pattern              | Frames                                | Used For |
 | -------------------- | --------------------------------------| ------- |
 | `CHECKERED`          | ![](patterns/checkered.gif)           | Checkered flag |
+| `CORNERS`            | ![](patterns/corners.gif)             | Pits closed |
 | `CROSSED`            | ![](patterns/crossed.gif)             | Disqualified |
 | `DIAGONAL_STRIPE`    | ![](patterns/diagonal-stripe.gif)     | Blue flag |
 | `DOUBLE_WAVING`      | ![](patterns/double-waving.gif)       | (N/A) |

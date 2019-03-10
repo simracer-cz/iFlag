@@ -41,6 +41,8 @@ namespace iFlag
 
         byte[,,] INCIDENT_OVERLAY =       pattern("01999910 11999911 99999999 99999999 99999999 99999999 11999911 01999910");
 
+        byte[,,] CORNERS_OVERLAY   =      pattern("09999991 99999999 99999999 99999999 99999999 99999999 99999999 29999993");
+
         byte[,,] CAUTION_FLAG; // actual value is either FLASHING_FLAG or SAFETYCAR_FLAG based on session track type
 
     }

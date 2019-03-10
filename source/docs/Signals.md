@@ -74,6 +74,13 @@ These can be enabled or disabled in _iFLAG_ options menu.
 | ![](signals/blue.gif)            | Blue flag | Shows on pit exit with faster car on track within 100 meter behind | `DIAGONAL_STRIPE` |
 
 
+### Closed Pits
+
+| Visual                           | Signal   | Description | Flag primitive |
+| -------------------------------- | -------- | ----------- | -------------- |
+| ![](signals/closed-pits.gif)     | + Pits Closed | Shows when pits are closed | `CLOSED_PITS` |
+
+
 
 Miscelanous
 -----------

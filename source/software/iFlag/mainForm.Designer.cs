@@ -43,6 +43,7 @@
             this.startLightsModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.incidentOverlayModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pitExitBlueModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closedPitsOverlayModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.brightnessMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fullBrightnessMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.highBrightnessMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -163,7 +164,8 @@
             this.spotterOverlayModuleMenuItem,
             this.startLightsModuleMenuItem,
             this.incidentOverlayModuleMenuItem,
-            this.pitExitBlueModuleMenuItem});
+            this.pitExitBlueModuleMenuItem,
+            this.closedPitsOverlayModuleMenuItem});
             this.modulesMenuItem.Name = "modulesMenuItem";
             this.modulesMenuItem.Size = new System.Drawing.Size(179, 22);
             this.modulesMenuItem.Text = "Modules";
@@ -209,6 +211,14 @@
             this.pitExitBlueModuleMenuItem.Size = new System.Drawing.Size(152, 22);
             this.pitExitBlueModuleMenuItem.Text = "Pit Exit Blue";
             this.pitExitBlueModuleMenuItem.ToolTipText = "Show blue flag on pit exit with fast car within 100 meters behind";
+            // 
+            // closedPitsOverlayModuleMenuItem
+            // 
+            this.closedPitsOverlayModuleMenuItem.CheckOnClick = true;
+            this.closedPitsOverlayModuleMenuItem.Name = "closedPitsOverlayModuleMenuItem";
+            this.closedPitsOverlayModuleMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.closedPitsOverlayModuleMenuItem.Text = "Pits Closed";
+            this.closedPitsOverlayModuleMenuItem.ToolTipText = "Show signal when pits are closed";
             // 
             // brightnessMenuItem
             // 
@@ -566,6 +576,7 @@
         private System.Windows.Forms.ToolStripMenuItem spotterOverlayModuleMenuItem;
         private System.Windows.Forms.ToolStripMenuItem incidentOverlayModuleMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pitExitBlueModuleMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem closedPitsOverlayModuleMenuItem;
         private System.Windows.Forms.ToolStripMenuItem initiateBoardMenuItem;
         private System.Windows.Forms.Timer initiationTimer;
         private System.Windows.Forms.Timer clearTimer;
