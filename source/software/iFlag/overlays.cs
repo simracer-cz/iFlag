@@ -68,7 +68,7 @@ namespace iFlag
                                                   // (^^ this might be eventually going into a file in the future.)
         public int overlay(int overlayID, string overlayName, byte[, ,] pattern, byte[] color)
         {
-            overlaysOnDisplayLabel += String.Format(" +{0}", overlayName);
+            overlaysOnDisplayLabel += String.Format("+ {0}", overlayName);
             patternToMatrix(ref overlayMatrix, pattern, color);
             return overlayID;
         }

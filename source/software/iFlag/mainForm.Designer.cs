@@ -426,7 +426,7 @@
             this.overlayLabel.AutoSize = true;
             this.overlayLabel.BackColor = System.Drawing.Color.Transparent;
             this.overlayLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.overlayLabel.Location = new System.Drawing.Point(61, 28);
+            this.overlayLabel.Location = new System.Drawing.Point(61, 31);
             this.overlayLabel.Name = "overlayLabel";
             this.overlayLabel.Size = new System.Drawing.Size(16, 13);
             this.overlayLabel.TabIndex = 8;

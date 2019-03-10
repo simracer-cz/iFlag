@@ -190,7 +190,7 @@ namespace iFlag
             overlayLabel.Text = overlaysOnDisplayLabel;
 
             bool visible = overlaysOnDisplayLabel != "";
-            int locationY = visible ? 9 : 18;
+            int locationY = visible ? 12 : 18;
 
             flagLabel.Location = new System.Drawing.Point(61, locationY);
             overlayLabel.Visible = visible;
