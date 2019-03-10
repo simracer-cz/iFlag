@@ -29,6 +29,7 @@ namespace iFlag
 
         bool simConnected;
         bool greeted;                             // Whether the startup greeting has happened
+        bool terminating;                         // Turns true when terminating this process/form
 
         int processNo;                            // Number of the currently running order (1 to X)
 
@@ -118,6 +119,8 @@ namespace iFlag
                                                   // make sure to save all persistent user options.
         private void mainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            terminating = true;
+            resetOverlay();
             showFlag(NO_FLAG);
 
             Settings.Default.WindowState = this.WindowState;

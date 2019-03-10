@@ -56,10 +56,14 @@ namespace iFlag
             }
 
             overlaysOnDisplayLabel = "";
-            overlaysMatched = matchOverlays();
-            if (overlaysMatched != overlaysOnDisplay)
+
+            if (!terminating)
             {
-                overlaysOnDisplay = overlaysMatched;
+                overlaysMatched = matchOverlays();
+                if (overlaysMatched != overlaysOnDisplay)
+                {
+                    overlaysOnDisplay = overlaysMatched;
+                }
             }
 
             if (broadcast)
