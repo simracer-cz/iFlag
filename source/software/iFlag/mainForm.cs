@@ -11,7 +11,7 @@ namespace iFlag
     public partial class mainForm : Form
     {
         // Version
-        const string version = "v0.77";
+        const string version = "v0.78";
 
         // Embedded firmware version
         const byte firmwareMajor = 0;             // Major version number of the firmware payload
@@ -25,6 +25,7 @@ namespace iFlag
         string repositoryURL = "https://github.com/simracer-cz/iFlag";
         string forumThreadURL = "http://members.iracing.com/jforum/posts/list/0/3341549.page";
         string updatesURL = "http://simracer.cz/iflag/updates.xml";
+        string donateURL = "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=AXVXCF5T3M2GS&item_name=iFLAG&currency_code=USD&source=url";
 
         bool simConnected;
         bool greeted;                             // Whether the startup greeting has happened
@@ -156,6 +157,11 @@ namespace iFlag
         private void forumThreadMenuItem_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start(forumThreadURL);
+        }
+
+        private void donateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(donateURL);
         }
 
         private void demoTimer_Tick(object sender, EventArgs e)

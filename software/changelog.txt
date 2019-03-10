@@ -1,6 +1,7 @@
 Changelog
 =========
 
+v0.78 - Donate action in the menu
 v0.77 - New pit exit traffic warning
 v0.76 - New incident notice overlay module
 v0.75 - Overlay labels display in the window

@@ -54,6 +54,7 @@
             this.appMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.forumThreadMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updatesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updatesEnabledMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updatesExperimentalMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -94,9 +95,10 @@
             this.appMenuItem,
             this.gitMenuItem,
             this.forumThreadMenuItem,
+            this.donateToolStripMenuItem,
             this.updatesMenuItem});
             this.optionsMenu.Name = "optionsMenu";
-            this.optionsMenu.Size = new System.Drawing.Size(180, 230);
+            this.optionsMenu.Size = new System.Drawing.Size(180, 252);
             // 
             // initiateBoardMenuItem
             // 
@@ -303,6 +305,14 @@
             this.forumThreadMenuItem.Text = "Forum Thread";
             this.forumThreadMenuItem.ToolTipText = "Place to discuss";
             this.forumThreadMenuItem.Click += new System.EventHandler(this.forumThreadMenuItem_Click);
+            // 
+            // donateToolStripMenuItem
+            // 
+            this.donateToolStripMenuItem.Image = global::iFlag.Properties.Resources.paypalLogo;
+            this.donateToolStripMenuItem.Name = "donateToolStripMenuItem";
+            this.donateToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.donateToolStripMenuItem.Text = "Donate! Thank you.";
+            this.donateToolStripMenuItem.Click += new System.EventHandler(this.donateToolStripMenuItem_Click);
             // 
             // updatesMenuItem
             // 
@@ -549,6 +559,7 @@
         private System.Windows.Forms.ToolStripSeparator optionsMenuSeparator;
         private System.Windows.Forms.ToolStripMenuItem forumThreadMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gitMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem donateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modulesMenuItem;
         private System.Windows.Forms.ToolStripMenuItem flagsModuleMenuItem;
         private System.Windows.Forms.ToolStripMenuItem startLightsModuleMenuItem;

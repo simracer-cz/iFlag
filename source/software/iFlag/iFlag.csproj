@@ -147,6 +147,9 @@
     <None Include="Resources\githubLogo.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\paypalLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="icon.ico" />
   </ItemGroup>
   <ItemGroup>
