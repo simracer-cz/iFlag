@@ -31,7 +31,7 @@ License
 Like It?
 --------
 
-Support and help _iFLAG_! [Find out how](source/docs/Contribute.md).
+Support and help _iFLAG_! [Find out how](source/docs/HowToHelp.md).
 
 [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=AXVXCF5T3M2GS&item_name=iFLAG&currency_code=USD&source=url)
 

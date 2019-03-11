@@ -9,7 +9,7 @@ The Documentation
 * [Colors Table](Colors.md)
 * [External Power](Power.md)
 
-* [Want to Help?](Contribute.md)
+* [Want to Help?](HowToHelp.md)
 
 
 ---
