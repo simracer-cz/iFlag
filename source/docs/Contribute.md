@@ -47,14 +47,20 @@ Activate __Experimental Updates__ in the Options
 to receive and test feature updates before
 anyone else on the stable non-experimental channel.
 Run the new feature(s) through its paces.
-If you spot anything not working as you would expect,
-please report to me via iRacing PM (Petr Vostrel) or by email (`petr at vostrel dot cz`).
 
 You can always deactivate these updates
 and the updater will restore the stable version for you.
 
 
-D. Help Test
+D. Report Bugs
+--------------
+
+If you spot anything not working as you would expect,
+please report to me via iRacing PM (Petr Vostrel) or by email (`petr at vostrel dot cz`).
+Thank you very much!
+
+
+E. Help Test
 ------------
 
 From time to time, some features and fixes need to be validated on the track and for that
@@ -65,7 +71,7 @@ If you'd like to __volunteer as a tester__, in exchange of pre-release software
 please get in touch with me via iRacing PM (Petr Vostrel) or by email (`petr at vostrel dot cz`).
 
 
-E. Help Code
+F. Help Code
 ------------
 
 As _iFLAG_ is an open source project,
