@@ -41,6 +41,7 @@ Pattern Frames
 | `CROSSED`            | ![](patterns/crossed.gif)             | Disqualified, Entering Closed Pits! |
 | `DIAGONAL_STRIPE`    | ![](patterns/diagonal-stripe.gif)     | Blue flag |
 | `DOUBLE_WAVING`      | ![](patterns/double-waving.gif)       | (N/A) |
+| `ENOUGH`             | ![](patterns/enough.gif)              | On speed limit |
 | `F`                  | ![](patterns/f.gif)                   | Greeting, Orientation check pattern |
 | `FLASHING`           | ![](patterns/flashing.gif)            | Red flag, Full course caution (oval) |
 | `FURLED`             | ![](patterns/furled.gif)              | Furled black flag |
@@ -53,6 +54,8 @@ Pattern Frames
 | `SIMPLE`             | ![](patterns/simple.gif)              | White flag, Start lights: Set!, All green flags |
 | `STATUS`             | ![](patterns/status.gif)              | (N/A) |
 | `STRIPPED`           | ![](patterns/stripped.gif)            | Debris flag |
+| `TOO_HIGH`           | ![](patterns/too-high.gif)            | Little below limit, Too Slow!, Way Too Slow! |
+| `TOO_LOW`            | ![](patterns/too-low.gif)             | Little over limit, Too Fast!, Way Too Fast! |
 | `WAVING`             | ![](patterns/waving.gif)              | Yellow flag |
 | `WARN_L`             | ![](patterns/warn-left.gif)           | Car(s) left spotter warning |
 | `WARN_R`             | ![](patterns/warn-right.gif)          | Car(s) right spotter warning |

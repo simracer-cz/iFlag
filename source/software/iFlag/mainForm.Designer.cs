@@ -44,6 +44,12 @@
             this.incidentOverlayModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pitExitBlueModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closedPitsOverlayModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pitSpeedLimitModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pitSpeedMapMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pitSpeedMapSafeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pitSpeedMapWideMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pitSpeedMapNarrowMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pitSpeedMapAggressiveMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.brightnessMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fullBrightnessMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.highBrightnessMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -99,7 +105,7 @@
             this.donateToolStripMenuItem,
             this.updatesMenuItem});
             this.optionsMenu.Name = "optionsMenu";
-            this.optionsMenu.Size = new System.Drawing.Size(180, 252);
+            this.optionsMenu.Size = new System.Drawing.Size(180, 274);
             // 
             // initiateBoardMenuItem
             // 
@@ -165,7 +171,8 @@
             this.startLightsModuleMenuItem,
             this.incidentOverlayModuleMenuItem,
             this.pitExitBlueModuleMenuItem,
-            this.closedPitsOverlayModuleMenuItem});
+            this.closedPitsOverlayModuleMenuItem,
+            this.pitSpeedLimitModuleMenuItem});
             this.modulesMenuItem.Name = "modulesMenuItem";
             this.modulesMenuItem.Size = new System.Drawing.Size(179, 22);
             this.modulesMenuItem.Text = "Modules";
@@ -176,7 +183,7 @@
             this.flagsModuleMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.flagsModuleMenuItem.Enabled = false;
             this.flagsModuleMenuItem.Name = "flagsModuleMenuItem";
-            this.flagsModuleMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.flagsModuleMenuItem.Size = new System.Drawing.Size(153, 22);
             this.flagsModuleMenuItem.Text = "Racing Flags";
             this.flagsModuleMenuItem.ToolTipText = "Show racing flags. Mandatory";
             // 
@@ -184,7 +191,7 @@
             // 
             this.spotterOverlayModuleMenuItem.CheckOnClick = true;
             this.spotterOverlayModuleMenuItem.Name = "spotterOverlayModuleMenuItem";
-            this.spotterOverlayModuleMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.spotterOverlayModuleMenuItem.Size = new System.Drawing.Size(153, 22);
             this.spotterOverlayModuleMenuItem.Text = "Spotter";
             this.spotterOverlayModuleMenuItem.ToolTipText = "Show spotter\'s traffic calls";
             // 
@@ -192,7 +199,7 @@
             // 
             this.startLightsModuleMenuItem.CheckOnClick = true;
             this.startLightsModuleMenuItem.Name = "startLightsModuleMenuItem";
-            this.startLightsModuleMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.startLightsModuleMenuItem.Size = new System.Drawing.Size(153, 22);
             this.startLightsModuleMenuItem.Text = "Start Lights";
             this.startLightsModuleMenuItem.ToolTipText = "Show start lights during start of a race";
             // 
@@ -200,7 +207,7 @@
             // 
             this.incidentOverlayModuleMenuItem.CheckOnClick = true;
             this.incidentOverlayModuleMenuItem.Name = "incidentOverlayModuleMenuItem";
-            this.incidentOverlayModuleMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.incidentOverlayModuleMenuItem.Size = new System.Drawing.Size(153, 22);
             this.incidentOverlayModuleMenuItem.Text = "Incidents";
             this.incidentOverlayModuleMenuItem.ToolTipText = "Show a signal on number of incidents increase";
             // 
@@ -208,7 +215,7 @@
             // 
             this.pitExitBlueModuleMenuItem.CheckOnClick = true;
             this.pitExitBlueModuleMenuItem.Name = "pitExitBlueModuleMenuItem";
-            this.pitExitBlueModuleMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pitExitBlueModuleMenuItem.Size = new System.Drawing.Size(153, 22);
             this.pitExitBlueModuleMenuItem.Text = "Pit Exit Blue";
             this.pitExitBlueModuleMenuItem.ToolTipText = "Show blue flag on pit exit with fast car within 100 meters behind";
             // 
@@ -216,9 +223,67 @@
             // 
             this.closedPitsOverlayModuleMenuItem.CheckOnClick = true;
             this.closedPitsOverlayModuleMenuItem.Name = "closedPitsOverlayModuleMenuItem";
-            this.closedPitsOverlayModuleMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.closedPitsOverlayModuleMenuItem.Size = new System.Drawing.Size(153, 22);
             this.closedPitsOverlayModuleMenuItem.Text = "Pits Closed";
             this.closedPitsOverlayModuleMenuItem.ToolTipText = "Show signal when pits are closed";
+            // 
+            // pitSpeedLimitModuleMenuItem
+            // 
+            this.pitSpeedLimitModuleMenuItem.CheckOnClick = true;
+            this.pitSpeedLimitModuleMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pitSpeedMapMenuItem});
+            this.pitSpeedLimitModuleMenuItem.Name = "pitSpeedLimitModuleMenuItem";
+            this.pitSpeedLimitModuleMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.pitSpeedLimitModuleMenuItem.Text = "Pit Speed Limit";
+            this.pitSpeedLimitModuleMenuItem.ToolTipText = "Show pit speed limit assistant signals";
+            // 
+            // pitSpeedMapMenuItem
+            // 
+            this.pitSpeedMapMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pitSpeedMapSafeMenuItem,
+            this.pitSpeedMapWideMenuItem,
+            this.pitSpeedMapNarrowMenuItem,
+            this.pitSpeedMapAggressiveMenuItem});
+            this.pitSpeedMapMenuItem.Name = "pitSpeedMapMenuItem";
+            this.pitSpeedMapMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pitSpeedMapMenuItem.Text = "Tolerance";
+            this.pitSpeedMapMenuItem.ToolTipText = "Adjust the signaling tolerance";
+            // 
+            // pitSpeedMapSafeMenuItem
+            // 
+            this.pitSpeedMapSafeMenuItem.CheckOnClick = true;
+            this.pitSpeedMapSafeMenuItem.Name = "pitSpeedMapSafeMenuItem";
+            this.pitSpeedMapSafeMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pitSpeedMapSafeMenuItem.Text = "Safe";
+            this.pitSpeedMapSafeMenuItem.ToolTipText = "Inside -1 to +0 kph range";
+            this.pitSpeedMapSafeMenuItem.Click += new System.EventHandler(this.pitSpeedMapMenuItem_Click);
+            // 
+            // pitSpeedMapWideMenuItem
+            // 
+            this.pitSpeedMapWideMenuItem.CheckOnClick = true;
+            this.pitSpeedMapWideMenuItem.Name = "pitSpeedMapWideMenuItem";
+            this.pitSpeedMapWideMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pitSpeedMapWideMenuItem.Text = "Wide";
+            this.pitSpeedMapWideMenuItem.ToolTipText = "Inside -1 to +1 kph range";
+            this.pitSpeedMapWideMenuItem.Click += new System.EventHandler(this.pitSpeedMapMenuItem_Click);
+            // 
+            // pitSpeedMapNarrowMenuItem
+            // 
+            this.pitSpeedMapNarrowMenuItem.CheckOnClick = true;
+            this.pitSpeedMapNarrowMenuItem.Name = "pitSpeedMapNarrowMenuItem";
+            this.pitSpeedMapNarrowMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pitSpeedMapNarrowMenuItem.Text = "Narrow";
+            this.pitSpeedMapNarrowMenuItem.ToolTipText = "Inside -0.5 to +0.5 kph range";
+            this.pitSpeedMapNarrowMenuItem.Click += new System.EventHandler(this.pitSpeedMapMenuItem_Click);
+            // 
+            // pitSpeedMapAggressiveMenuItem
+            // 
+            this.pitSpeedMapAggressiveMenuItem.CheckOnClick = true;
+            this.pitSpeedMapAggressiveMenuItem.Name = "pitSpeedMapAggressiveMenuItem";
+            this.pitSpeedMapAggressiveMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pitSpeedMapAggressiveMenuItem.Text = "Aggressive";
+            this.pitSpeedMapAggressiveMenuItem.ToolTipText = "Inside -0 and +1 kph range";
+            this.pitSpeedMapAggressiveMenuItem.Click += new System.EventHandler(this.pitSpeedMapMenuItem_Click);
             // 
             // brightnessMenuItem
             // 
@@ -338,14 +403,14 @@
             // updatesEnabledMenuItem
             // 
             this.updatesEnabledMenuItem.Name = "updatesEnabledMenuItem";
-            this.updatesEnabledMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.updatesEnabledMenuItem.Size = new System.Drawing.Size(142, 22);
             this.updatesEnabledMenuItem.Text = "Enabled";
             this.updatesEnabledMenuItem.Click += new System.EventHandler(this.updatesEnabledMenuItem_Click);
             // 
             // updatesExperimentalMenuItem
             // 
             this.updatesExperimentalMenuItem.Name = "updatesExperimentalMenuItem";
-            this.updatesExperimentalMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.updatesExperimentalMenuItem.Size = new System.Drawing.Size(142, 22);
             this.updatesExperimentalMenuItem.Text = "Experimental";
             this.updatesExperimentalMenuItem.ToolTipText = "At your own risk!";
             this.updatesExperimentalMenuItem.Click += new System.EventHandler(this.updatesExperimentalMenuItem_Click);
@@ -578,6 +643,12 @@
         private System.Windows.Forms.ToolStripMenuItem incidentOverlayModuleMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pitExitBlueModuleMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closedPitsOverlayModuleMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pitSpeedLimitModuleMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pitSpeedMapMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pitSpeedMapSafeMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pitSpeedMapWideMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pitSpeedMapNarrowMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pitSpeedMapAggressiveMenuItem;
         private System.Windows.Forms.ToolStripMenuItem initiateBoardMenuItem;
         private System.Windows.Forms.Timer initiationTimer;
         private System.Windows.Forms.Timer clearTimer;

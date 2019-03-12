@@ -82,6 +82,17 @@ These can be enabled or disabled in _iFLAG_ options menu.
 | ![](signals/entering-closed-pits.gif)   | + Entering Closed Pits! | Warning on pit entry when pits are closed | `CROSSED` |
 
 
+### Pit Speed Limit
+
+| Visual                                  | Signal   | Description | Flag primitive |
+| --------------------------------------- | -------- | ----------- | -------------- |
+| ![](signals/pit-speed-too-high.gif)     | Too fast! | Shows on pit entry & lane when coming in too hot | `TOO_HIGH` |
+| ![](signals/pit-speed-high.gif)         | Little over limit | Shows on pit entry & lane when coming in just slightly over the limit | `TOO_HIGH` |
+| ![](signals/pit-speed-enough.gif)       | On speed limit | Shows on pit entry & lane when coming in spot on speed limit | `ENOUGH` |
+| ![](signals/pit-speed-low.gif)          | Little below limit | Shows on pit entry & lane when coming in just slightly below the limit | `TOO_LOW` |
+| ![](signals/pit-speed-too-low.gif)      | Too slow! | Shows on pit entry & lane when coming in too cold | `TOO_LOW` |
+
+
 
 Miscelanous
 -----------

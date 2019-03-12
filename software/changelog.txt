@@ -1,6 +1,7 @@
 Changelog
 =========
 
+v0.80 - New pit speed limit assist module
 v0.79 - New closed pits overlay module
 v0.78 - Donate action in the menu
 v0.77 - New pit exit traffic warning

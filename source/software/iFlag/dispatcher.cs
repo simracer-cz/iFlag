@@ -20,7 +20,17 @@ namespace iFlag
         const int SPOTTER_CARS_LEFT =           irsdk_LR2CarsLeft;
         const int SPOTTER_CARS_RIGHT =          irsdk_LR2CarsRight;
 
+        const int WAY_BELOW_PIT_LIMIT =         -40;
+        const int BELOW_PIT_LIMIT =             -41;
+        const int LOW_ON_PIT_LIMIT =            -42;
+        const int ON_PIT_LIMIT =                -43;
+        const int HIGH_ON_PIT_LIMIT =           -44;
+        const int ABOVE_PIT_LIMIT =             -45;
+        const int WAY_ABOVE_PIT_LIMIT =         -46;
+
         long clearFlag = NO_FLAG;
+
+        string pitSpeedMap;                       // Holds currently selected pit speed limit module map
 
         private void startDispatcher()
         {
@@ -151,6 +161,29 @@ namespace iFlag
 
         private bool locationSpecificFlags()
         {
+            if (onPitEntryRoad || onPitRoad)
+            {
+                speed = (float)sdk.GetData("Speed");
+                if (speed > 1)
+                {
+                    double[] map;
+
+                         if (pitSpeedMap == "aggressive") map = new double[]{ -1.0, -0.5,  0.0, 1.0, 1.5, 2.0 };
+                    else if (pitSpeedMap == "narrow")     map = new double[]{ -1.5, -1.0, -0.5, 0.5, 1.0, 1.5 };
+                    else if (pitSpeedMap == "wide")       map = new double[]{ -2.0, -1.5, -1.0, 1.0, 1.5, 2.0 };
+                    else                                  map = new double[]{ -2.0, -1.5, -1.0, 0.0, 0.5, 1.0 }; // "safe"
+
+                    float speedDelta = speed - pitSpeedLimit;
+
+                    if (speedDelta < map[0] * kph) return showFlag(WAY_BELOW_PIT_LIMIT);
+                    if (speedDelta > map[5] * kph) return showFlag(WAY_ABOVE_PIT_LIMIT);
+                    if (speedDelta < map[1] * kph) return showFlag(BELOW_PIT_LIMIT);
+                    if (speedDelta > map[4] * kph) return showFlag(ABOVE_PIT_LIMIT);
+                    if (speedDelta < map[2] * kph) return showFlag(LOW_ON_PIT_LIMIT);
+                    if (speedDelta > map[3] * kph) return showFlag(HIGH_ON_PIT_LIMIT);
+                    if (speedDelta < map[3] * kph) return showFlag(ON_PIT_LIMIT);
+                }
+            }
             if (onPitExitRoad)
             {
                                                   // Shows blue flag warning when leaving pits with a car

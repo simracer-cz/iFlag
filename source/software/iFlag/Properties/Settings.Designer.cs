@@ -190,5 +190,29 @@ namespace iFlag.Properties {
                 this["ShowClosedPitsOverlay"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ShowPitSpeedLimit {
+            get {
+                return ((bool)(this["ShowPitSpeedLimit"]));
+            }
+            set {
+                this["ShowPitSpeedLimit"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("safe")]
+        public string PitSpeedMap {
+            get {
+                return ((string)(this["PitSpeedMap"]));
+            }
+            set {
+                this["PitSpeedMap"] = value;
+            }
+        }
     }
 }

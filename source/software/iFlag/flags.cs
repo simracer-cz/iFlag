@@ -41,6 +41,7 @@ namespace iFlag
         {
             return matchSystemFlags(flagID)
                 || matchStartingFlags(flagID)
+                || matchPitSpeedFlags(flagID)
                 || matchRacingFlags(flagID)
                 || false;
         }
@@ -83,6 +84,22 @@ namespace iFlag
                  if (Convert.ToBoolean(flagID & irsdk_startReady)) return flag("Startlights: Ready!", HALF_FLAG, new byte[] { COLOR_RED, COLOR_BLACK }, FAST);
             else if (Convert.ToBoolean(flagID & irsdk_startSet)) return flag("Startlights: Set!", SIMPLE_FLAG, new byte[] { COLOR_RED, COLOR_RED }, SLOW);
             else if (Convert.ToBoolean(flagID & irsdk_startGo)) return flag("Startlights: Go!", SIMPLE_FLAG, new byte[] { COLOR_GREEN, COLOR_GREEN }, FAST);
+            else return false;
+        }
+
+                                                  // Match against pit speed limit assistant flags
+                                                  // shown on pit entry and on the pit lane
+        private bool matchPitSpeedFlags(long flagID)
+        {
+            if (!this.pitSpeedLimitModuleMenuItem.Checked) return false;
+
+                 if (flagID == WAY_ABOVE_PIT_LIMIT) return flag("Pit speed: Way too fast!", TOO_HIGH_FLAG, new byte[] { COLOR_BLACK, COLOR_RED, COLOR_RED }, SLOW);
+            else if (flagID == ABOVE_PIT_LIMIT) return flag("Pit speed: Too fast!", TOO_HIGH_FLAG, new byte[] { COLOR_BLACK, COLOR_DIM_RED, COLOR_DIM_RED }, SLOW);
+            else if (flagID == HIGH_ON_PIT_LIMIT) return flag("Pit speed: Little over limit", TOO_HIGH_FLAG, new byte[] { COLOR_BLACK, COLOR_GREEN, COLOR_BLACK }, SLOW);
+            else if (flagID == ON_PIT_LIMIT) return flag("Pit speed: On speed limit", ENOUGH_FLAG, new byte[] { COLOR_BLACK, COLOR_GREEN, COLOR_BLACK }, SLOW);
+            else if (flagID == LOW_ON_PIT_LIMIT) return flag("Pit speed: Little below limit", TOO_LOW_FLAG, new byte[] { COLOR_BLACK, COLOR_GREEN, COLOR_BLACK }, SLOW);
+            else if (flagID == BELOW_PIT_LIMIT) return flag("Pit speed: Too slow!", TOO_LOW_FLAG, new byte[] { COLOR_DIM_BLUE, COLOR_DIM_BLUE, COLOR_BLACK }, SLOW);
+            else if (flagID == WAY_BELOW_PIT_LIMIT) return flag("Pit speed: Way too slow!", TOO_LOW_FLAG, new byte[] { COLOR_BLUE, COLOR_BLUE, COLOR_BLACK }, SLOW);
             else return false;
         }
 

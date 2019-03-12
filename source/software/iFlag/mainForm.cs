@@ -11,7 +11,7 @@ namespace iFlag
     public partial class mainForm : Form
     {
         // Version
-        const string version = "v0.79";
+        const string version = "v0.80";
 
         // Embedded firmware version
         const byte firmwareMajor = 0;             // Major version number of the firmware payload
@@ -77,6 +77,16 @@ namespace iFlag
             this.incidentOverlayModuleMenuItem.Checked = Settings.Default.ShowIncidentOverlay;
             this.pitExitBlueModuleMenuItem.Checked = Settings.Default.ShowPitExitBlue;
             this.closedPitsOverlayModuleMenuItem.Checked = Settings.Default.ShowClosedPitsOverlay;
+            this.pitSpeedLimitModuleMenuItem.Checked = Settings.Default.ShowPitSpeedLimit;
+
+            pitSpeedMap = Settings.Default.PitSpeedMap;
+            switch (pitSpeedMap)
+            {
+                case "safe": pitSpeedMapSafeMenuItem.Checked = true; break;
+                case "wide": pitSpeedMapWideMenuItem.Checked = true; break;
+                case "narrow": pitSpeedMapNarrowMenuItem.Checked = true; break;
+                case "aggressive": pitSpeedMapAggressiveMenuItem.Checked = true; break;
+            }
 
             connectorSide = Settings.Default.UsbConnector;
             switch (connectorSide)
@@ -132,6 +142,8 @@ namespace iFlag
             Settings.Default.ShowIncidentOverlay = this.incidentOverlayModuleMenuItem.Checked;
             Settings.Default.ShowPitExitBlue = this.pitExitBlueModuleMenuItem.Checked;
             Settings.Default.ShowClosedPitsOverlay = this.closedPitsOverlayModuleMenuItem.Checked;
+            Settings.Default.ShowPitSpeedLimit = this.pitSpeedLimitModuleMenuItem.Checked;
+            Settings.Default.PitSpeedMap = pitSpeedMap;
             Settings.Default.UsbConnector = connectorSide;
             Settings.Default.MatrixLuma = matrixLuma;
             Settings.Default.Updates = updatesLevel;
@@ -331,6 +343,24 @@ namespace iFlag
             }
             Settings.Default.Updates = updatesLevel;
             updateSoftware();
+        }
+
+        private void pitSpeedMapMenuItem_Click(object sender, EventArgs e)
+        {
+            switch (((ToolStripMenuItem)sender).Name)
+            {
+                case "pitSpeedMapSafeMenuItem":           pitSpeedMap = "safe"; break;
+                case "pitSpeedMapWideMenuItem":           pitSpeedMap = "wide"; break;
+                case "pitSpeedMapNarrowMenuItem":         pitSpeedMap = "narrow"; break;
+                case "pitSpeedMapAggressiveMenuItem":     pitSpeedMap = "aggressive"; break;
+            }
+            pitSpeedMapSafeMenuItem.Checked = false;
+            pitSpeedMapWideMenuItem.Checked = false;
+            pitSpeedMapNarrowMenuItem.Checked = false;
+            pitSpeedMapAggressiveMenuItem.Checked = false;
+            ((ToolStripMenuItem)sender).Checked = true;
+
+            Settings.Default.PitSpeedMap = pitSpeedMap;
         }
 
         private void multiFlagMessageDismissButton_Click(object sender, EventArgs e)
