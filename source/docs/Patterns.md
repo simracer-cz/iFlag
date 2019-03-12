@@ -11,22 +11,22 @@ Many of them are capable of more than they are used for and there are also few p
 Mechanics
 ---------
 
-Each pattern is made out of color indexes referring to the `color` array the actual flag uses in the `flag()` call.
+Each pattern is made out of color indexes referring to the `color` array the actual flag uses in the `flag()` or `overlay()` calls.
 This allows for reuse of the patterns and while many are unique to some flags, some of the more trivial ones are being used by multiple signals at once.
 
 
 Color Legend
 ------------
 
-Frame Color | Index in `flag()`'s `color` Array
------------ | ---------------------------------
+Frame Color | Index in `flag()`'s or `overlay()`'s `color` Array
+----------- | --------------------------------------------------
 Red         | `0`
 Green       | `1`
 Blue        | `2`
 Yellow      | `3`
 Cyan        | `4` *
 Magenta     | `5` *
-Black       | `9`
+Black       | none
 
 \* Not used yet
 

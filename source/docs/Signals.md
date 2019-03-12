@@ -7,8 +7,8 @@ _as defined in [flags.cs](../iFlag/flags.cs) and  [overlays.cs](../iFlag/overlay
 A complete list of signals and other visual features of _iFLAG_.
 
 
-Mandatory
----------
+Mandatory Modules
+-----------------
 
 ### Racing Flags
 
@@ -38,8 +38,8 @@ Mandatory
 
 
 
-Optional
---------
+Optional Modules
+----------------
 These can be enabled or disabled in _iFLAG_ options menu.
 
 ### Race Start Lights
@@ -74,7 +74,7 @@ These can be enabled or disabled in _iFLAG_ options menu.
 | ![](signals/blue.gif)            | Blue flag | Shows on pit exit with faster car on track within 100 meter behind | `DIAGONAL_STRIPE` |
 
 
-### Closed Pits
+### Closed Pits Overlay
 
 | Visual                                  | Signal   | Description | Flag primitive |
 | --------------------------------------- | -------- | ----------- | -------------- |
