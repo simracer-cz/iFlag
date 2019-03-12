@@ -322,6 +322,7 @@
             this.donateToolStripMenuItem.Name = "donateToolStripMenuItem";
             this.donateToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.donateToolStripMenuItem.Text = "Donate! Thank you.";
+            this.donateToolStripMenuItem.ToolTipText = "Support iFLAG via PayPal";
             this.donateToolStripMenuItem.Click += new System.EventHandler(this.donateToolStripMenuItem_Click);
             // 
             // updatesMenuItem
