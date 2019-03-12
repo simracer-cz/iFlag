@@ -17,6 +17,7 @@ namespace iFlag
             irsdk_red,
             irsdk_white,
             irsdk_blue,
+            irsdk_black,
             irsdk_debris,
             irsdk_disqualify,
             irsdk_repair,
