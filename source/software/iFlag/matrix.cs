@@ -140,7 +140,7 @@ namespace iFlag
 
             if (broadcastable)
             {
-                Console.WriteLine("{0} {1}{2}", DateTime.Now, flagOnDisplayLabel, overlaysOnDisplayLabel);
+                Console.WriteLine("{0} {1} {2}", DateTime.Now, flagOnDisplayLabel, overlaysOnDisplayLabel);
                 updateSignalLabels();
 
                 SP_SendData(COMMAND_NOBLINK);
