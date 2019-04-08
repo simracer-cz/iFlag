@@ -31,6 +31,7 @@ namespace iFlag
         long clearFlag = NO_FLAG;
 
         string pitSpeedMap;                       // Holds currently selected pit speed limit module map
+        string incidentStyleMap;                  // Holds currently selected incident signal style
 
         private void startDispatcher()
         {

@@ -88,6 +88,14 @@ namespace iFlag
                 case "aggressive": pitSpeedMapAggressiveMenuItem.Checked = true; break;
             }
 
+            incidentStyleMap = Settings.Default.IncidentStyleMap;
+            switch (incidentStyleMap)
+            {
+                case "small": incidentStyleMapSmallMenuItem.Checked = true; break;
+                case "big": incidentStyleMapBigMenuItem.Checked = true; break;
+                case "exploded": incidentStyleMapExplodedMenuItem.Checked = true; break;
+            }
+
             connectorSide = Settings.Default.UsbConnector;
             switch (connectorSide)
             {
@@ -144,6 +152,7 @@ namespace iFlag
             Settings.Default.ShowClosedPitsOverlay = this.closedPitsOverlayModuleMenuItem.Checked;
             Settings.Default.ShowPitSpeedLimit = this.pitSpeedLimitModuleMenuItem.Checked;
             Settings.Default.PitSpeedMap = pitSpeedMap;
+            Settings.Default.IncidentStyleMap = incidentStyleMap;
             Settings.Default.UsbConnector = connectorSide;
             Settings.Default.MatrixLuma = matrixLuma;
             Settings.Default.Updates = updatesLevel;
@@ -361,6 +370,22 @@ namespace iFlag
             ((ToolStripMenuItem)sender).Checked = true;
 
             Settings.Default.PitSpeedMap = pitSpeedMap;
+        }
+
+        private void incidentStyleMapMenuItem_Click(object sender, EventArgs e)
+        {
+            switch (((ToolStripMenuItem)sender).Name)
+            {
+                case "incidentStyleMapSmallMenuItem":         incidentStyleMap = "small"; break;
+                case "incidentStyleMapBigMenuItem":           incidentStyleMap = "big"; break;
+                case "incidentStyleMapExplodedMenuItem":      incidentStyleMap = "exploded"; break;
+            }
+            incidentStyleMapSmallMenuItem.Checked = false;
+            incidentStyleMapBigMenuItem.Checked = false;
+            incidentStyleMapExplodedMenuItem.Checked = false;
+            ((ToolStripMenuItem)sender).Checked = true;
+
+            Settings.Default.IncidentStyleMap = incidentStyleMap;
         }
 
         private void multiFlagMessageDismissButton_Click(object sender, EventArgs e)
