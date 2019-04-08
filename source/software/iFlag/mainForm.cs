@@ -77,6 +77,7 @@ namespace iFlag
             this.incidentOverlayModuleMenuItem.Checked = Settings.Default.ShowIncidentOverlay;
             this.pitExitBlueModuleMenuItem.Checked = Settings.Default.ShowPitExitBlue;
             this.closedPitsOverlayModuleMenuItem.Checked = Settings.Default.ShowClosedPitsOverlay;
+            this.repairsOverlayModuleMenuItem.Checked = Settings.Default.ShowRepairsOverlay;
             this.pitSpeedLimitModuleMenuItem.Checked = Settings.Default.ShowPitSpeedLimit;
 
             pitSpeedMap = Settings.Default.PitSpeedMap;
@@ -142,6 +143,7 @@ namespace iFlag
             Settings.Default.ShowIncidentOverlay = this.incidentOverlayModuleMenuItem.Checked;
             Settings.Default.ShowPitExitBlue = this.pitExitBlueModuleMenuItem.Checked;
             Settings.Default.ShowClosedPitsOverlay = this.closedPitsOverlayModuleMenuItem.Checked;
+            Settings.Default.ShowRepairsOverlay = this.repairsOverlayModuleMenuItem.Checked;
             Settings.Default.ShowPitSpeedLimit = this.pitSpeedLimitModuleMenuItem.Checked;
             Settings.Default.PitSpeedMap = pitSpeedMap;
             Settings.Default.UsbConnector = connectorSide;

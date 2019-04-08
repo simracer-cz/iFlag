@@ -60,6 +60,7 @@ Pattern Frames
 | `WARN_L`             | ![](patterns/warn-left.gif)           | Car(s) left spotter warning |
 | `WARN_R`             | ![](patterns/warn-right.gif)          | Car(s) right spotter warning |
 | `WARN_LR`            | ![](patterns/warn-left-right.gif)     | Cars left abd right spotter warning |
+| `WRENCH`             | ![](patterns/wrench.gif)              | Repairs progress |
 
 
 

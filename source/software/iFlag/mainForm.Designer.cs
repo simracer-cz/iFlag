@@ -44,6 +44,7 @@
             this.incidentOverlayModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pitExitBlueModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closedPitsOverlayModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.repairsOverlayModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pitSpeedLimitModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pitSpeedMapMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pitSpeedMapSafeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -172,6 +173,7 @@
             this.incidentOverlayModuleMenuItem,
             this.pitExitBlueModuleMenuItem,
             this.closedPitsOverlayModuleMenuItem,
+            this.repairsOverlayModuleMenuItem,
             this.pitSpeedLimitModuleMenuItem});
             this.modulesMenuItem.Name = "modulesMenuItem";
             this.modulesMenuItem.Size = new System.Drawing.Size(179, 22);
@@ -226,6 +228,14 @@
             this.closedPitsOverlayModuleMenuItem.Size = new System.Drawing.Size(153, 22);
             this.closedPitsOverlayModuleMenuItem.Text = "Pits Closed";
             this.closedPitsOverlayModuleMenuItem.ToolTipText = "Show signal when pits are closed";
+            // 
+            // repairsOverlayModuleMenuItem
+            // 
+            this.repairsOverlayModuleMenuItem.CheckOnClick = true;
+            this.repairsOverlayModuleMenuItem.Name = "repairsOverlayModuleMenuItem";
+            this.repairsOverlayModuleMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.repairsOverlayModuleMenuItem.Text = "Repairs Progress";
+            this.repairsOverlayModuleMenuItem.ToolTipText = "Show signals reflecting progress of repairs in pits";
             // 
             // pitSpeedLimitModuleMenuItem
             // 
@@ -643,6 +653,7 @@
         private System.Windows.Forms.ToolStripMenuItem incidentOverlayModuleMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pitExitBlueModuleMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closedPitsOverlayModuleMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem repairsOverlayModuleMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pitSpeedLimitModuleMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pitSpeedMapMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pitSpeedMapSafeMenuItem;

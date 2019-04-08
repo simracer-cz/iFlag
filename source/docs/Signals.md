@@ -93,6 +93,15 @@ These can be enabled or disabled in _iFLAG_ options menu.
 | ![](signals/pit-speed-too-low.gif)      | Too slow! | Shows on pit entry & lane when coming in too cold | `TOO_LOW` |
 
 
+### Repairs Progress
+
+| Visual                                  | Signal   | Description | Flag primitive |
+| --------------------------------------- | -------- | ----------- | -------------- |
+| ![](signals/repairs-mandatory.gif)      | Mandatory Repairs | Being shown when mandatory repairs are progressing | `WRENCH` |
+| ![](signals/repairs-optional.gif)       | Optional Repairs | Being shown when optional repairs are in progress | `WRENCH` |
+| ![](signals/repairs-done.gif)           | Repairs Done | Being shown when all repairs are done | `WRENCH` |
+
+
 
 Miscelanous
 -----------

@@ -44,6 +44,9 @@
     <Setting Name="ShowClosedPitsOverlay" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="ShowRepairsOverlay" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
     <Setting Name="ShowPitSpeedLimit" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
