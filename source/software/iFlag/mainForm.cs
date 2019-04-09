@@ -268,6 +268,7 @@ namespace iFlag
                 demoTimer.Enabled = true;
                 updateTimer.Enabled = false;
                 sessionDetected = false;
+                pitStallDetected = false;
             }
             simConnected = connected;
         }
