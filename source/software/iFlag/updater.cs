@@ -216,7 +216,7 @@ namespace iFlag
                                                   // and adjusts the main UI based on its findings
         private void UpdateWorkerThread()  
         {
-            if (updatesLevel != "none")
+            if (updatesLevel != "none" && updatable)
             {
                 if (CheckSoftwareVersion())
                 {
