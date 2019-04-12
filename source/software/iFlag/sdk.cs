@@ -84,7 +84,6 @@ namespace iFlag
             }
             catch (Exception ex)
             {
-                Console.WriteLine("FAIL");
             }
 
             indicateSimConnected(false);
