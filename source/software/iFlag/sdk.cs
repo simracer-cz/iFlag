@@ -64,22 +64,38 @@ namespace iFlag
         //
         private void detectSDK()
         {
-            if (sdk.IsConnected() && sdk.VarHeaders.Count > 0)
+            try
             {
-                indicateSimConnected(true);
+
+                if (sdk.IsConnected() && sdk.VarHeaders.Count > 0)
+                {
+                    // Check the availability of data retrieval
+                    // before eventualy declaring the sim as connected
+                    // to eliminate rare null pointer reference exceptions
+                    //
+                    int tick = (int)sdk.GetData("SessionTick");
+
+                    indicateSimConnected(true);
+
+                    // Escape here when really ready
+                    //
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("FAIL");
+            }
+
+            indicateSimConnected(false);
+
+            if (sdk.IsInitialized)
+            {
+                sdk.Shutdown();
             }
             else
             {
-                indicateSimConnected(false);
-
-                if (sdk.IsInitialized)
-                {
-                    sdk.Shutdown();
-                }
-                else
-                {
-                    sdk.Startup();
-                }
+                sdk.Startup();
             }
         }
 
