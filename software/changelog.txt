@@ -1,6 +1,7 @@
 Changelog
 =========
 
+v0.82 - Improved incident overlay module
 v0.81 - Rare crashing because of iRacing SDK issue fixed
 v0.80 - New pit speed limit assist module
 v0.79 - New closed pits overlay module

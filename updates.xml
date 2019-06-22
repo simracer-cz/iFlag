@@ -33,9 +33,10 @@
     v0.55 - First ever release
   </stable-changelog>
 
-  <experimental-version>v0.81</experimental-version>
+  <experimental-version>v0.82</experimental-version>
   <experimental-url>http://simracer.cz/iflag/updates/experimental</experimental-url>
   <experimental-changelog>
+    v0.82 - Improved incident overlay module
   </experimental-changelog>
 
 </iflag>
