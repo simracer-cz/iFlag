@@ -18,6 +18,7 @@ namespace iFlag
         bool onPitExitRoad;
         bool onPitEntryRoad;
         bool inPitStall;
+        bool hasPitted;
 
         private void startCar()
         {
@@ -34,9 +35,12 @@ namespace iFlag
             carSurface = carsTrackSurface[carID];
 
             onPitRoad = (bool)sdk.GetData("OnPitRoad");
-            onPitExitRoad = !onPitRoad && carSurface == irsdk_AproachingPits && carLapPct < 0.5;
+            onPitExitRoad = !onPitRoad && hasPitted && carSurface == irsdk_AproachingPits && carLapPct < 0.5;
             onPitEntryRoad = !onPitRoad && carSurface == irsdk_AproachingPits && carLapPct > 0.5;
             inPitStall = (bool)sdk.GetData("PlayerCarInPitStall");
+
+            if (onPitRoad && !hasPitted) hasPitted = true;
+            if (hasPitted && !onPitEntryRoad && !onPitRoad && !onPitExitRoad) hasPitted = false;
 
             if (inPitStall && !pitStallDetected)
             {
