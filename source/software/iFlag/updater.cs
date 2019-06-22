@@ -225,7 +225,7 @@ namespace iFlag
         {
             foreach (ManagementObject item in new ManagementClass("Win32_Processor").GetInstances())
             {
-                return MD5(item.Properties["processorID"].Value.ToString());
+                return MD5(item.Properties["ProcessorID"].Value.ToString());
             }
             return "";
         }
