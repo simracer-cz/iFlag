@@ -56,7 +56,7 @@ namespace iFlag
             {
                 if (onPitEntryRoad)
                 {
-                    return overlay(if_closedPitsOverlay, "Entering Closed Pits!", CROSSED_FLAG, new byte[] { NO_COLOR, COLOR_RED, COLOR_BLACK });
+                    return overlay(if_closedPitsOverlay, "Entering Closed Pits!", CROSSED_FLAG, new byte[] { NO_COLOR, COLOR_RED, COLOR_BLACK, COLOR_RED, COLOR_RED });
                 }
                 else
                 {
@@ -83,7 +83,13 @@ namespace iFlag
             }
             if (showIncidentOverlay == true)
             {
-                return overlay(if_incidentOverlay, String.Format("Incident({0}x)", incidentGain), INCIDENT_OVERLAY, new byte[] { COLOR_BLACK, COLOR_RED });
+                byte[] map;
+
+                     if (incidentStyleMap == "small")      map = new byte[]{ NO_COLOR, NO_COLOR, NO_COLOR, NO_COLOR, COLOR_GREEN };
+                else if (incidentStyleMap == "big")        map = new byte[]{ NO_COLOR, NO_COLOR, NO_COLOR, COLOR_GREEN, COLOR_GREEN };
+                else                                       map = new byte[]{ NO_COLOR, COLOR_GREEN, NO_COLOR, COLOR_GREEN, NO_COLOR }; // "exploded"
+
+                return overlay(if_incidentOverlay, String.Format("Incident ({0}x)", incidentGain), CROSSED_FLAG, map);
             }
             else return 0;
         }

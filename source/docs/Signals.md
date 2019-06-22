@@ -64,7 +64,7 @@ These can be enabled or disabled in _iFLAG_ options menu.
 
 | Visual                           | Signal   | Description | Flag primitive |
 | -------------------------------- | -------- | ----------- | -------------- |
-| ![](signals/incident.gif)       | + Incident (Xx) | Lights up for 3 seconds every incident count increases | `INCIDENT` |
+| ![](signals/incident-small.gif) ![](signals/incident-big.gif) ![](signals/incident-exploded.gif) | + Incident (Xx) | Lights up for 3 seconds every incident count increases. Small, big or exploded X depending on an option | `CROSSED` |
 
 
 ### Pit Exit Blue

@@ -214,5 +214,17 @@ namespace iFlag.Properties {
                 this["PitSpeedMap"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("exploded")]
+        public string IncidentStyleMap {
+            get {
+                return ((string)(this["IncidentStyleMap"]));
+            }
+            set {
+                this["IncidentStyleMap"] = value;
+            }
+        }
     }
 }
