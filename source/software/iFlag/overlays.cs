@@ -23,7 +23,7 @@ namespace iFlag
                                                   // Returns bit field of matches.
         private int matchOverlays()
         {
-            if (!sdk.IsConnected()) return 0;
+            if (!simConnected) return 0;
 
             return 0
             + matchSpotterOverlay()

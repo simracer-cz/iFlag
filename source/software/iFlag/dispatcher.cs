@@ -126,7 +126,7 @@ namespace iFlag
         {
             try
             {
-                if (sdk.IsConnected())
+                if (simConnected)
                 {
                     getSessionDetails();
                     getCarDetails();
