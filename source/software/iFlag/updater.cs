@@ -238,7 +238,7 @@ namespace iFlag
             {
                 if (item["DeviceID"].ToString() == port)
                 {
-                    return item["Description"].ToString();
+                    return item["Name"].ToString();
                 }
             }
             return "";
