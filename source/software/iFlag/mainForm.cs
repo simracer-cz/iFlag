@@ -12,6 +12,7 @@ namespace iFlag
     {
         // Version
         const string version = "v0.82";
+        const bool updatable = true;
 
         // Embedded firmware version
         const byte firmwareMajor = 0;             // Major version number of the firmware payload
@@ -41,6 +42,7 @@ namespace iFlag
 
             this.Text = String.Format("iFLAG{1} {0}", edition, processNo > 1 ? "#" + processNo : "");
             flagLabel.Text = appMenuItem.Text = String.Format("iFlag {0}", version);
+            this.updatesMenuItem.Visible = updatable;
 
                                                   // Initialize flag modules
             startCommunication();
