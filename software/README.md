@@ -55,6 +55,7 @@ The visual features of _iFLAG_ are coupled into modules, which can be turned on 
 * __Pit Exit Blue__ - shows blue flag on pit exit with faster car within 100 meters behind. Optional.
 * __Closed Pits__ - shows signals in case pits are closed. Optional.
 * __Pit Speed Limit__ - shows high/low speed signals on pit entry and pit lane. Optional.
+* __Repairs Progress__ - shows informational signals about repairs progress. Optional.
 * (__Pit Signals__) - coming soon...
 
 
