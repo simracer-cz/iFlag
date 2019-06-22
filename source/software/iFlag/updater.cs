@@ -202,6 +202,7 @@ namespace iFlag
             };
             string[] profile = {
                 "v=" + version,
+                "w=" + WindowsVersion(),
                 "u=" + updatesLevel,
                 "d=" + String.Join("", device),
             };
@@ -226,6 +227,16 @@ namespace iFlag
             foreach (ManagementObject item in new ManagementClass("Win32_Processor").GetInstances())
             {
                 return MD5(item.Properties["ProcessorID"].Value.ToString());
+            }
+            return "";
+        }
+
+                                                  // Returns back version of Windows
+        private string WindowsVersion()
+        {
+            foreach (ManagementObject item in new ManagementClass("Win32_OperatingSystem").GetInstances())
+            {
+                return item.Properties["Version"].Value.ToString();
             }
             return "";
         }
