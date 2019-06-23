@@ -19,6 +19,7 @@ namespace iFlag
         bool onPitEntryRoad;
         bool inPitStall;
         bool hasPitted;
+        float toPitStallMtr;
 
         private void startCar()
         {
@@ -33,6 +34,11 @@ namespace iFlag
             carsTrackSurface = (int[])sdk.GetData("CarIdxTrackSurface");
 
             carSurface = carsTrackSurface[carID];
+
+            float flip = 0;
+            if (pitStallLapPct - carLapPct > 0.5) flip = -1.0F;
+            else if (pitStallLapPct - carLapPct < -0.5) flip = 1.0F;
+            toPitStallMtr = (flip + pitStallLapPct - carLapPct) * trackLength;
 
             onPitRoad = (bool)sdk.GetData("OnPitRoad");
             onPitExitRoad = !onPitRoad && hasPitted && carSurface == irsdk_AproachingPits && carLapPct < 0.5;
