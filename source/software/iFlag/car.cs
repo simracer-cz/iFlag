@@ -41,8 +41,8 @@ namespace iFlag
             toPitStallMtr = (flip + pitStallLapPct - carLapPct) * trackLength;
 
             onPitRoad = (bool)sdk.GetData("OnPitRoad");
-            onPitExitRoad = !onPitRoad && hasPitted && carSurface == irsdk_AproachingPits && carLapPct < 0.5;
-            onPitEntryRoad = !onPitRoad && carSurface == irsdk_AproachingPits && carLapPct > 0.5;
+            onPitExitRoad = !onPitRoad && hasPitted && carSurface == irsdk_AproachingPits && toPitStallMtr < 0;
+            onPitEntryRoad = !onPitRoad && carSurface == irsdk_AproachingPits && toPitStallMtr > 0;
             inPitStall = (bool)sdk.GetData("PlayerCarInPitStall");
 
             if (onPitRoad && !hasPitted) hasPitted = true;
