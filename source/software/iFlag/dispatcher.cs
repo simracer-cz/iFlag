@@ -28,9 +28,14 @@ namespace iFlag
         const int ABOVE_PIT_LIMIT =             -45;
         const int WAY_ABOVE_PIT_LIMIT =         -46;
 
+        const int REPAIRS_MANDATORY =           -20;
+        const int REPAIRS_OPTIONAL =            -21;
+        const int REPAIRS_DONE =                -22;
+
         long clearFlag = NO_FLAG;
 
         string pitSpeedMap;                       // Holds currently selected pit speed limit module map
+        string incidentStyleMap;                  // Holds currently selected incident signal style
 
         private void startDispatcher()
         {
@@ -126,7 +131,7 @@ namespace iFlag
         {
             try
             {
-                if (sdk.IsConnected())
+                if (simConnected)
                 {
                     getSessionDetails();
                     getCarDetails();
@@ -161,6 +166,15 @@ namespace iFlag
 
         private bool locationSpecificFlags()
         {
+            if (inPitStall)
+            {
+                float repairsLeft = (float)sdk.GetData("PitRepairLeft");
+                float optRepairsLeft = (float)sdk.GetData("PitOptRepairLeft");
+
+                if (repairsLeft > 0) return showFlag(REPAIRS_MANDATORY);
+                if (repairsLeft == 0 && optRepairsLeft > 0) return showFlag(REPAIRS_OPTIONAL);
+                if (repairsLeft == 0 && optRepairsLeft == 0) return showFlag(REPAIRS_DONE);
+            }
             if (onPitEntryRoad || onPitRoad)
             {
                 speed = (float)sdk.GetData("Speed");

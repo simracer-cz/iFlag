@@ -42,6 +42,7 @@ namespace iFlag
             return matchSystemFlags(flagID)
                 || matchStartingFlags(flagID)
                 || matchPitSpeedFlags(flagID)
+                || matchRepairsFlags(flagID)
                 || matchRacingFlags(flagID)
                 || false;
         }
@@ -52,7 +53,7 @@ namespace iFlag
             if (flagID < 0) return false;
 
                  if (Convert.ToBoolean(flagID & irsdk_crossed)
-                  || Convert.ToBoolean(flagID & irsdk_disqualify)) return flag("Disqualified", CROSSED_FLAG, new byte[] { COLOR_BLACK, COLOR_WHITE, COLOR_WHITE }, FAST);
+                  || Convert.ToBoolean(flagID & irsdk_disqualify)) return flag("Disqualified", CROSSED_FLAG, new byte[] { COLOR_BLACK, COLOR_WHITE, COLOR_WHITE, COLOR_WHITE, COLOR_WHITE }, FAST);
             else if (Convert.ToBoolean(flagID & irsdk_yellow)) return clearedFlag("Careful And No Overtaking!", FLASHING_FLAG, new byte[] { COLOR_BLACK, COLOR_YELLOW }, FAST);
             else if (Convert.ToBoolean(flagID & irsdk_yellowWaving)) return clearedFlag("Careful And No Overtaking!", WAVING_FLAG, new byte[] { COLOR_BLACK, COLOR_YELLOW }, FAST);
             else if (Convert.ToBoolean(flagID & irsdk_black)) return flag("Serve Stop And Go Penalty", INVERTED_FLAG, new byte[] { COLOR_BLACK, COLOR_WHITE }, SLOW);
@@ -100,6 +101,16 @@ namespace iFlag
             else if (flagID == LOW_ON_PIT_LIMIT) return flag("Pit speed: Little below limit", TOO_LOW_FLAG, new byte[] { COLOR_BLACK, COLOR_GREEN, COLOR_BLACK }, SLOW);
             else if (flagID == BELOW_PIT_LIMIT) return flag("Pit speed: Too slow!", TOO_LOW_FLAG, new byte[] { COLOR_DIM_BLUE, COLOR_DIM_BLUE, COLOR_BLACK }, SLOW);
             else if (flagID == WAY_BELOW_PIT_LIMIT) return flag("Pit speed: Way too slow!", TOO_LOW_FLAG, new byte[] { COLOR_BLUE, COLOR_BLUE, COLOR_BLACK }, SLOW);
+            else return false;
+        }
+
+        private bool matchRepairsFlags(long flagID)
+        {
+            if (!this.repairsOverlayModuleMenuItem.Checked) return false;
+
+                 if (flagID == REPAIRS_MANDATORY) return flag("Service: Mandatory Repairs", WRENCH_FLAG, new byte[] { COLOR_BLACK, COLOR_RED }, SLOW);
+            else if (flagID == REPAIRS_OPTIONAL) return flag("Service: Optional Repairs", WRENCH_FLAG, new byte[] { COLOR_BLACK, COLOR_YELLOW }, SLOW);
+            else if (flagID == REPAIRS_DONE) return flag("Service: Repairs Done", WRENCH_FLAG, new byte[] { COLOR_BLACK, COLOR_GREEN }, SLOW);
             else return false;
         }
 

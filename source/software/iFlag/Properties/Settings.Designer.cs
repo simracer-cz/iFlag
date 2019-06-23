@@ -194,6 +194,18 @@ namespace iFlag.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ShowRepairsOverlay {
+            get {
+                return ((bool)(this["ShowRepairsOverlay"]));
+            }
+            set {
+                this["ShowRepairsOverlay"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool ShowPitSpeedLimit {
             get {
                 return ((bool)(this["ShowPitSpeedLimit"]));
@@ -212,6 +224,18 @@ namespace iFlag.Properties {
             }
             set {
                 this["PitSpeedMap"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("exploded")]
+        public string IncidentStyleMap {
+            get {
+                return ((string)(this["IncidentStyleMap"]));
+            }
+            set {
+                this["IncidentStyleMap"] = value;
             }
         }
     }

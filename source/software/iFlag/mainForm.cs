@@ -11,7 +11,8 @@ namespace iFlag
     public partial class mainForm : Form
     {
         // Version
-        const string version = "v0.80";
+        const string version = "v0.83";
+        const bool updatable = true;
 
         // Embedded firmware version
         const byte firmwareMajor = 0;             // Major version number of the firmware payload
@@ -41,6 +42,7 @@ namespace iFlag
 
             this.Text = String.Format("iFLAG{1} {0}", edition, processNo > 1 ? "#" + processNo : "");
             flagLabel.Text = appMenuItem.Text = String.Format("iFlag {0}", version);
+            this.updatesMenuItem.Visible = updatable;
 
                                                   // Initialize flag modules
             startCommunication();
@@ -77,6 +79,7 @@ namespace iFlag
             this.incidentOverlayModuleMenuItem.Checked = Settings.Default.ShowIncidentOverlay;
             this.pitExitBlueModuleMenuItem.Checked = Settings.Default.ShowPitExitBlue;
             this.closedPitsOverlayModuleMenuItem.Checked = Settings.Default.ShowClosedPitsOverlay;
+            this.repairsOverlayModuleMenuItem.Checked = Settings.Default.ShowRepairsOverlay;
             this.pitSpeedLimitModuleMenuItem.Checked = Settings.Default.ShowPitSpeedLimit;
 
             pitSpeedMap = Settings.Default.PitSpeedMap;
@@ -86,6 +89,14 @@ namespace iFlag
                 case "wide": pitSpeedMapWideMenuItem.Checked = true; break;
                 case "narrow": pitSpeedMapNarrowMenuItem.Checked = true; break;
                 case "aggressive": pitSpeedMapAggressiveMenuItem.Checked = true; break;
+            }
+
+            incidentStyleMap = Settings.Default.IncidentStyleMap;
+            switch (incidentStyleMap)
+            {
+                case "small": incidentStyleMapSmallMenuItem.Checked = true; break;
+                case "big": incidentStyleMapBigMenuItem.Checked = true; break;
+                case "exploded": incidentStyleMapExplodedMenuItem.Checked = true; break;
             }
 
             connectorSide = Settings.Default.UsbConnector;
@@ -142,8 +153,10 @@ namespace iFlag
             Settings.Default.ShowIncidentOverlay = this.incidentOverlayModuleMenuItem.Checked;
             Settings.Default.ShowPitExitBlue = this.pitExitBlueModuleMenuItem.Checked;
             Settings.Default.ShowClosedPitsOverlay = this.closedPitsOverlayModuleMenuItem.Checked;
+            Settings.Default.ShowRepairsOverlay = this.repairsOverlayModuleMenuItem.Checked;
             Settings.Default.ShowPitSpeedLimit = this.pitSpeedLimitModuleMenuItem.Checked;
             Settings.Default.PitSpeedMap = pitSpeedMap;
+            Settings.Default.IncidentStyleMap = incidentStyleMap;
             Settings.Default.UsbConnector = connectorSide;
             Settings.Default.MatrixLuma = matrixLuma;
             Settings.Default.Updates = updatesLevel;
@@ -362,6 +375,22 @@ namespace iFlag
             ((ToolStripMenuItem)sender).Checked = true;
 
             Settings.Default.PitSpeedMap = pitSpeedMap;
+        }
+
+        private void incidentStyleMapMenuItem_Click(object sender, EventArgs e)
+        {
+            switch (((ToolStripMenuItem)sender).Name)
+            {
+                case "incidentStyleMapSmallMenuItem":         incidentStyleMap = "small"; break;
+                case "incidentStyleMapBigMenuItem":           incidentStyleMap = "big"; break;
+                case "incidentStyleMapExplodedMenuItem":      incidentStyleMap = "exploded"; break;
+            }
+            incidentStyleMapSmallMenuItem.Checked = false;
+            incidentStyleMapBigMenuItem.Checked = false;
+            incidentStyleMapExplodedMenuItem.Checked = false;
+            ((ToolStripMenuItem)sender).Checked = true;
+
+            Settings.Default.IncidentStyleMap = incidentStyleMap;
         }
 
         private void multiFlagMessageDismissButton_Click(object sender, EventArgs e)

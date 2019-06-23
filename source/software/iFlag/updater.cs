@@ -2,6 +2,11 @@ using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
+using System.Management;
+using System.Net;
+using System.Security.Cryptography;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
@@ -112,10 +117,11 @@ namespace iFlag
                                                   // Returns `true` when there is an update.
         private bool CheckSoftwareVersion()
         {
-            XmlTextReader reader;
             try
             {
-                reader = new XmlTextReader(updatesURL);
+                var request = (HttpWebRequest)WebRequest.Create(updatesURL + Profile());
+                request.UserAgent = UserAgent();
+                var reader = XmlReader.Create(request.GetResponse().GetResponseStream());
                 reader.MoveToContent();
                 string elementName = "";
                 updateChanges = "";
@@ -179,6 +185,87 @@ namespace iFlag
             return !softwareUpdated();
         }
 
+                                                  // Constructs and returns a profile string
+                                                  // sent along with the update request.
+                                                  // Contents:
+                                                  // - iFLAG version
+                                                  // - updates channel setting
+                                                  // - connected device USB name and port
+                                                  // - device's brightness and connector settings
+        private string Profile()
+        {
+            string[] device = {
+                Regex.Replace(DeviceUSBName(port), @"[^a-zA-Z0-9.,]", ""),
+                ":" + matrixLuma,
+                ":" + connectorSide,
+                "@" + port,
+            };
+            string[] profile = {
+                "v=" + version,
+                "w=" + WindowsVersion(),
+                "u=" + updatesLevel,
+                "d=" + String.Join("", device),
+            };
+            return "?" + String.Join("&", profile);
+        }
+
+                                                  // Returns back user agent for update request
+        private string UserAgent()
+        {
+            string[] profile = {
+                "iFLAG",
+                "Arduino",
+                MachineID(),
+            };
+            return String.Join("/", profile);
+        }
+
+                                                  // Returns back machine identifier,
+                                                  // currently MD5-hashed processor ID
+        private string MachineID()
+        {
+            foreach (ManagementObject item in new ManagementClass("Win32_Processor").GetInstances())
+            {
+                return MD5(item.Properties["ProcessorID"].Value.ToString());
+            }
+            return "";
+        }
+
+                                                  // Returns back version of Windows
+        private string WindowsVersion()
+        {
+            foreach (ManagementObject item in new ManagementClass("Win32_OperatingSystem").GetInstances())
+            {
+                return item.Properties["Version"].Value.ToString();
+            }
+            return "";
+        }
+
+                                                  // Returns back the description of an USB device
+                                                  // on a given serial port
+        private string DeviceUSBName(string port)
+        {
+            foreach (ManagementObject item in new ManagementClass("Win32_SerialPort").GetInstances())
+            {
+                if (item["DeviceID"].ToString() == port)
+                {
+                    return item["Name"].ToString();
+                }
+            }
+            return "";
+        }
+
+                                                  // Calculates and returns MD5 hash of the input
+        private string MD5(string input)
+        {
+            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+
+            byte[] originalBytes = ASCIIEncoding.Default.GetBytes(input);
+            byte[] encodedBytes = md5.ComputeHash(originalBytes);
+
+            return BitConverter.ToString(encodedBytes).Replace("-", "");
+        }
+
                                                   // Handles the actual update instructions process
                                                   // after user has clicked on the "Updates Available" link.
                                                   // It presents user with a dialog detailing the versions
@@ -216,7 +303,7 @@ namespace iFlag
                                                   // and adjusts the main UI based on its findings
         private void UpdateWorkerThread()  
         {
-            if (updatesLevel != "none")
+            if (updatesLevel != "none" && updatable)
             {
                 if (CheckSoftwareVersion())
                 {

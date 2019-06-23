@@ -44,11 +44,17 @@
     <Setting Name="ShowClosedPitsOverlay" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="ShowRepairsOverlay" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
     <Setting Name="ShowPitSpeedLimit" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="PitSpeedMap" Type="System.String" Scope="User">
       <Value Profile="(Default)">safe</Value>
+    </Setting>
+    <Setting Name="IncidentStyleMap" Type="System.String" Scope="User">
+      <Value Profile="(Default)">exploded</Value>
     </Setting>
   </Settings>
 </SettingsFile>

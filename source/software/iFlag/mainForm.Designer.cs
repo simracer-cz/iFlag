@@ -42,8 +42,13 @@
             this.spotterOverlayModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startLightsModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.incidentOverlayModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.incidentStyleMapMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.incidentStyleMapSmallMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.incidentStyleMapBigMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.incidentStyleMapExplodedMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pitExitBlueModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closedPitsOverlayModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.repairsOverlayModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pitSpeedLimitModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pitSpeedMapMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pitSpeedMapSafeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -172,6 +177,7 @@
             this.incidentOverlayModuleMenuItem,
             this.pitExitBlueModuleMenuItem,
             this.closedPitsOverlayModuleMenuItem,
+            this.repairsOverlayModuleMenuItem,
             this.pitSpeedLimitModuleMenuItem});
             this.modulesMenuItem.Name = "modulesMenuItem";
             this.modulesMenuItem.Size = new System.Drawing.Size(179, 22);
@@ -206,10 +212,49 @@
             // incidentOverlayModuleMenuItem
             // 
             this.incidentOverlayModuleMenuItem.CheckOnClick = true;
+            this.incidentOverlayModuleMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.incidentStyleMapMenuItem});
             this.incidentOverlayModuleMenuItem.Name = "incidentOverlayModuleMenuItem";
             this.incidentOverlayModuleMenuItem.Size = new System.Drawing.Size(153, 22);
             this.incidentOverlayModuleMenuItem.Text = "Incidents";
             this.incidentOverlayModuleMenuItem.ToolTipText = "Show a signal on number of incidents increase";
+            // 
+            // incidentStyleMapMenuItem
+            // 
+            this.incidentStyleMapMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.incidentStyleMapSmallMenuItem,
+            this.incidentStyleMapBigMenuItem,
+            this.incidentStyleMapExplodedMenuItem});
+            this.incidentStyleMapMenuItem.Name = "incidentStyleMapMenuItem";
+            this.incidentStyleMapMenuItem.Size = new System.Drawing.Size(102, 22);
+            this.incidentStyleMapMenuItem.Text = "Style";
+            // 
+            // incidentStyleMapSmallMenuItem
+            // 
+            this.incidentStyleMapSmallMenuItem.CheckOnClick = true;
+            this.incidentStyleMapSmallMenuItem.Name = "incidentStyleMapSmallMenuItem";
+            this.incidentStyleMapSmallMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.incidentStyleMapSmallMenuItem.Text = "Small";
+            this.incidentStyleMapSmallMenuItem.ToolTipText = "Small letter X signal";
+            this.incidentStyleMapSmallMenuItem.Click += new System.EventHandler(this.incidentStyleMapMenuItem_Click);
+            // 
+            // incidentStyleMapBigMenuItem
+            // 
+            this.incidentStyleMapBigMenuItem.CheckOnClick = true;
+            this.incidentStyleMapBigMenuItem.Name = "incidentStyleMapBigMenuItem";
+            this.incidentStyleMapBigMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.incidentStyleMapBigMenuItem.Text = "Big";
+            this.incidentStyleMapBigMenuItem.ToolTipText = "Big letter X signal";
+            this.incidentStyleMapBigMenuItem.Click += new System.EventHandler(this.incidentStyleMapMenuItem_Click);
+            // 
+            // incidentStyleMapExplodedMenuItem
+            // 
+            this.incidentStyleMapExplodedMenuItem.CheckOnClick = true;
+            this.incidentStyleMapExplodedMenuItem.Name = "incidentStyleMapExplodedMenuItem";
+            this.incidentStyleMapExplodedMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.incidentStyleMapExplodedMenuItem.Text = "Exploded";
+            this.incidentStyleMapExplodedMenuItem.ToolTipText = "Exploded letter X signal";
+            this.incidentStyleMapExplodedMenuItem.Click += new System.EventHandler(this.incidentStyleMapMenuItem_Click);
             // 
             // pitExitBlueModuleMenuItem
             // 
@@ -226,6 +271,14 @@
             this.closedPitsOverlayModuleMenuItem.Size = new System.Drawing.Size(153, 22);
             this.closedPitsOverlayModuleMenuItem.Text = "Pits Closed";
             this.closedPitsOverlayModuleMenuItem.ToolTipText = "Show signal when pits are closed";
+            // 
+            // repairsOverlayModuleMenuItem
+            // 
+            this.repairsOverlayModuleMenuItem.CheckOnClick = true;
+            this.repairsOverlayModuleMenuItem.Name = "repairsOverlayModuleMenuItem";
+            this.repairsOverlayModuleMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.repairsOverlayModuleMenuItem.Text = "Repairs Progress";
+            this.repairsOverlayModuleMenuItem.ToolTipText = "Show signals reflecting progress of repairs in pits";
             // 
             // pitSpeedLimitModuleMenuItem
             // 
@@ -641,8 +694,13 @@
         private System.Windows.Forms.ToolStripMenuItem startLightsModuleMenuItem;
         private System.Windows.Forms.ToolStripMenuItem spotterOverlayModuleMenuItem;
         private System.Windows.Forms.ToolStripMenuItem incidentOverlayModuleMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem incidentStyleMapMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem incidentStyleMapSmallMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem incidentStyleMapBigMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem incidentStyleMapExplodedMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pitExitBlueModuleMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closedPitsOverlayModuleMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem repairsOverlayModuleMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pitSpeedLimitModuleMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pitSpeedMapMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pitSpeedMapSafeMenuItem;

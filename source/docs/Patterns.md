@@ -38,7 +38,7 @@ Pattern Frames
 | -------------------- | --------------------------------------| ------- |
 | `CHECKERED`          | ![](patterns/checkered.gif)           | Checkered flag |
 | `CORNERS`            | ![](patterns/corners.gif)             | Pits closed |
-| `CROSSED`            | ![](patterns/crossed.gif)             | Disqualified, Entering Closed Pits! |
+| `CROSSED`            | ![](patterns/crossed.gif)             | Disqualified, Entering Closed Pits!, Incident notification |
 | `DIAGONAL_STRIPE`    | ![](patterns/diagonal-stripe.gif)     | Blue flag |
 | `DOUBLE_WAVING`      | ![](patterns/double-waving.gif)       | (N/A) |
 | `ENOUGH`             | ![](patterns/enough.gif)              | On speed limit |
@@ -46,7 +46,6 @@ Pattern Frames
 | `FLASHING`           | ![](patterns/flashing.gif)            | Red flag, Full course caution (oval) |
 | `FURLED`             | ![](patterns/furled.gif)              | Furled black flag |
 | `HALF`               | ![](patterns/half.gif)                | Start lights: Ready! |
-| `INCIDENT`           | ![](patterns/incident.gif)            | Incident notification |
 | `INVERTED`           | ![](patterns/inverted.gif)            | Black flag, One lap to green |
 | `IRACING_LOGO`       | ![](patterns/iracing.gif)             | (N/A) |
 | `MEATBALL`           | ![](patterns/meatball.gif)            | Meat ball flag |
@@ -60,6 +59,7 @@ Pattern Frames
 | `WARN_L`             | ![](patterns/warn-left.gif)           | Car(s) left spotter warning |
 | `WARN_R`             | ![](patterns/warn-right.gif)          | Car(s) right spotter warning |
 | `WARN_LR`            | ![](patterns/warn-left-right.gif)     | Cars left abd right spotter warning |
+| `WRENCH`             | ![](patterns/wrench.gif)              | Repairs progress |
 
 
 

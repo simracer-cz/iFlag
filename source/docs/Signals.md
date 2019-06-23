@@ -64,7 +64,7 @@ These can be enabled or disabled in _iFLAG_ options menu.
 
 | Visual                           | Signal   | Description | Flag primitive |
 | -------------------------------- | -------- | ----------- | -------------- |
-| ![](signals/incident.gif)       | + Incident (Xx) | Lights up for 3 seconds every incident count increases | `INCIDENT` |
+| ![](signals/incident-small.gif) ![](signals/incident-big.gif) ![](signals/incident-exploded.gif) | + Incident (Xx) | Lights up for 3 seconds every incident count increases. Small, big or exploded X depending on an option | `CROSSED` |
 
 
 ### Pit Exit Blue
@@ -91,6 +91,15 @@ These can be enabled or disabled in _iFLAG_ options menu.
 | ![](signals/pit-speed-enough.gif)       | On speed limit | Shows on pit entry & lane when coming in spot on speed limit | `ENOUGH` |
 | ![](signals/pit-speed-low.gif)          | Little below limit | Shows on pit entry & lane when coming in just slightly below the limit | `TOO_LOW` |
 | ![](signals/pit-speed-too-low.gif)      | Too slow! | Shows on pit entry & lane when coming in too cold | `TOO_LOW` |
+
+
+### Repairs Progress
+
+| Visual                                  | Signal   | Description | Flag primitive |
+| --------------------------------------- | -------- | ----------- | -------------- |
+| ![](signals/repairs-mandatory.gif)      | Mandatory Repairs | Being shown when mandatory repairs are progressing | `WRENCH` |
+| ![](signals/repairs-optional.gif)       | Optional Repairs | Being shown when optional repairs are in progress | `WRENCH` |
+| ![](signals/repairs-done.gif)           | Repairs Done | Being shown when all repairs are done | `WRENCH` |
 
 
 
