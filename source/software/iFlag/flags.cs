@@ -40,7 +40,7 @@ namespace iFlag
         private bool matchFlags(long flagID)
         {
             return matchSystemFlags(flagID)
-                || matchStartingFlags(flagID)
+                || matchStartingFlags((long)Convert.ToInt64(sdk.GetData("SessionFlags")))
                 || matchPitSpeedFlags(flagID)
                 || matchRepairsFlags(flagID)
                 || matchRacingFlags(flagID)
@@ -80,7 +80,6 @@ namespace iFlag
         private bool matchStartingFlags(long flagID)
         {
             if (!this.startLightsModuleMenuItem.Checked) return false;
-            if (flagID < 0) return false;
 
                  if (Convert.ToBoolean(flagID & irsdk_startReady)) return flag("Startlights: Ready!", HALF_FLAG, new byte[] { COLOR_RED, COLOR_BLACK }, FAST);
             else if (Convert.ToBoolean(flagID & irsdk_startSet)) return flag("Startlights: Set!", SIMPLE_FLAG, new byte[] { COLOR_RED, COLOR_RED }, SLOW);
