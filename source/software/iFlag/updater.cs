@@ -221,12 +221,12 @@ namespace iFlag
         }
 
                                                   // Returns back machine identifier,
-                                                  // currently MD5-hashed processor ID
+                                                  // currently MD5-hashed HDD serial number
         private string MachineID()
         {
-            foreach (ManagementObject item in new ManagementClass("Win32_Processor").GetInstances())
+            foreach (ManagementObject item in new ManagementClass("Win32_DiskDrive").GetInstances())
             {
-                return MD5(item.Properties["ProcessorID"].Value.ToString());
+                return MD5(item.Properties["SerialNumber"].Value.ToString());
             }
             return "";
         }
