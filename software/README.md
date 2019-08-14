@@ -3,7 +3,7 @@
 The Software
 ============
 
-	v0.83 (v0.21)
+	v0.84 (v0.21)
 
 _iFLAG_ software provides the interconnection of iRacing and the matrix. It continuously listens for iRacing session and other signals, processes them and issues commands telling the device exactly what to display on the LED matrix.
 

@@ -1,6 +1,7 @@
 Changelog
 =========
 
+v0.84 - Corrected race start green timing on ovals
 v0.83 - New pit repairs signals module
 v0.82 - Improved incident overlay module
 v0.81 - Rare crashing because of iRacing SDK issue fixed
