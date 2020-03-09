@@ -132,14 +132,14 @@ namespace iFlag
                             deviceMatrix[ frame, x + 2, y ] = matrix[ frame, x + 2, y ];
                             deviceMatrix[ frame, x + 3, y ] = matrix[ frame, x + 3, y ];
                             SP_SendData(new byte[8] {
-                                0xFF,                                        // FF
-                                Convert.ToByte( x ),                         // 00..07
-                                Convert.ToByte( y ),                         // 00..07
-                                Convert.ToByte( matrix[ frame, x, y ] ),     // 00..FE
-                                Convert.ToByte( matrix[ frame, x + 1, y ] ), // 00..FE
-                                Convert.ToByte( matrix[ frame, x + 2, y ] ), // 00..FE
-                                Convert.ToByte( matrix[ frame, x + 3, y ] ), // 00..FE
-                                0x00
+                                0xFF,                                           // FF
+                                Convert.ToByte( x ),                            // 00..07
+                                Convert.ToByte( y ),                            // 00..07
+                                Convert.ToByte( matrixDot( frame, x + 0, y ) ), // 00..FE
+                                Convert.ToByte( matrixDot( frame, x + 1, y ) ), // 00..FE
+                                Convert.ToByte( matrixDot( frame, x + 2, y ) ), // 00..FE
+                                Convert.ToByte( matrixDot( frame, x + 3, y ) ), // 00..FE
+                                0x00,
                             });
                         }
                     if (frame == 0) SP_SendData(COMMAND_DRAW);
