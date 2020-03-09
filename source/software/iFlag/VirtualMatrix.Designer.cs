@@ -50,9 +50,9 @@
             // 
             this.sizeToggle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.sizeToggle.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.sizeToggle.Location = new System.Drawing.Point(0, 200);
+            this.sizeToggle.Location = new System.Drawing.Point(0, 240);
             this.sizeToggle.Name = "sizeToggle";
-            this.sizeToggle.Size = new System.Drawing.Size(40, 40);
+            this.sizeToggle.Size = new System.Drawing.Size(30, 30);
             this.sizeToggle.TabIndex = 4;
             this.sizeToggle.TabStop = false;
             // 
@@ -60,9 +60,9 @@
             // 
             this.shapeToggle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.shapeToggle.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.shapeToggle.Location = new System.Drawing.Point(200, 200);
+            this.shapeToggle.Location = new System.Drawing.Point(210, 240);
             this.shapeToggle.Name = "shapeToggle";
-            this.shapeToggle.Size = new System.Drawing.Size(40, 40);
+            this.shapeToggle.Size = new System.Drawing.Size(30, 30);
             this.shapeToggle.TabIndex = 3;
             this.shapeToggle.TabStop = false;
             // 
@@ -70,7 +70,7 @@
             // 
             this.logoPicture.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.logoPicture.Image = global::iFlag.Properties.Resources.matrixLogo;
-            this.logoPicture.Location = new System.Drawing.Point(85, 200);
+            this.logoPicture.Location = new System.Drawing.Point(85, 240);
             this.logoPicture.Name = "logoPicture";
             this.logoPicture.Size = new System.Drawing.Size(69, 30);
             this.logoPicture.TabIndex = 2;
@@ -80,7 +80,7 @@
             // 
             this.matrixBox.Location = new System.Drawing.Point(0, 0);
             this.matrixBox.Name = "matrixBox";
-            this.matrixBox.Size = new System.Drawing.Size(100, 50);
+            this.matrixBox.Size = new System.Drawing.Size(240, 240);
             this.matrixBox.TabIndex = 0;
             this.matrixBox.TabStop = false;
             // 
@@ -89,7 +89,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Black;
             this.CausesValidation = false;
-            this.ClientSize = new System.Drawing.Size(240, 240);
+            this.ClientSize = new System.Drawing.Size(240, 270);
             this.ControlBox = false;
             this.Controls.Add(this.sizeToggle);
             this.Controls.Add(this.shapeToggle);
