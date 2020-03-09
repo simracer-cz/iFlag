@@ -34,6 +34,14 @@ namespace iFlag
 
         private byte[, ,] Matrix = new byte[2, 8, 8];
 
+        private int DotShapeIndex = 0;              // Index of the chosen matrix dot shape
+        private Bitmap[] DotShapes = new Bitmap[]   // Bank of available matrix dot shapes
+        {
+            global::iFlag.Properties.Resources.matrixDotCircle,
+            global::iFlag.Properties.Resources.matrixDotSquare,
+            global::iFlag.Properties.Resources.matrixDotDiamond,
+        };
+
         private int DotSizeX;                       // Width of the chosen matrix dot size
         private int DotSizeY;                       // Height of the chosen matrix dot size
         private int DotSizeIndex = 0;               // Index of the chosen matrix dot sizr
