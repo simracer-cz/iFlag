@@ -55,6 +55,10 @@ namespace iFlag
             new Size(20, 20),                       // 20 * 20px
         };
 
+                                                    // Pixels adding to the overall height of the otherwise square matrix
+                                                    // making space and housing the UI controls under the matrix
+        private int AdditionalHeight = 30;          
+
                                                     // Array of bitmaps representing the matrix page frames
         private Bitmap[] PageFrames = new Bitmap[Pages];
 
@@ -162,6 +166,35 @@ namespace iFlag
             Settings.Default.Save();
         }
 
+                                                    // Physically size the matrix and all its components
+                                                    // to match the user-selected dot size
+        public void SetSize()
+        {
+            int width = Xs * DotSizeX;
+            int height = Ys * DotSizeY;
+            Size matrixSize = new Size(width, height);
+
+            this.matrixBox.Visible = logoPicture.Visible = false;
+            
+            this.Location = new Point(this.Location.X, this.Location.Y + (this.ClientSize.Height - height - AdditionalHeight));
+            this.ClientSize = new Size(width, height + AdditionalHeight);
+
+            matrixBox.Size = new Size(width, height);
+
+            for (int frame = 0; frame < Pages; frame++)
+            {
+                MatrixMaskBoxes[frame].Size = matrixBox.Size;
+                MatrixLedBoxes[frame].Size = matrixBox.Size;
+                MatrixLedBoxes[frame].Image = new Bitmap(PageFrames[frame], matrixBox.Size);
+            }
+
+            sizeToggle.Location = new Point(0, height);
+            logoPicture.Location = new Point(width / 2 - logoPicture.Size.Width / 2, height);
+            shapeToggle.Location = new Point(width - AdditionalHeight, height);
+
+            this.matrixBox.Visible = logoPicture.Visible = true;
+        }
+
                                                     // Mouse handler for shape change UI control
         private void ChangeShape(object sender, MouseEventArgs e)
         {
@@ -190,6 +223,7 @@ namespace iFlag
         }
 
                                                     // Changes size of all matrix dots
+                                                    // and calls for overall matrix resize
         private void ChangeSize(int size)
         {
             DotSizeIndex = size;
@@ -204,6 +238,8 @@ namespace iFlag
 
             sizeToggle.BackgroundImage = new Bitmap(DotShapes[DotShapeIndex], DotSizes[nextSize]);
             shapeToggle.BackgroundImage = new Bitmap(DotShapes[nextShape], DotSizes[DotSizeIndex]);
+
+            SetSize();
         }
 
                                                     // Returns an index of the next dot shape in the cycle
