@@ -85,6 +85,7 @@ namespace iFlag
             sizeToggle.BackColor = Color.Black;
             sizeToggle.BackgroundImage = new Bitmap(DotShapes[DotShapeIndex], DotSizes[nextDotSizeIndex()]);
             sizeToggle.Size = DotSizes[0];
+            sizeToggle.MouseClick += new MouseEventHandler(this.ChangeSize);
             helperTip.SetToolTip(sizeToggle, "Cycle dot sizes");
             
             for (int f = 0; f < Pages; f++)
@@ -113,6 +114,7 @@ namespace iFlag
         private void VirtualMatrix_Load(object sender, EventArgs e)
         {
             ChangeShape(Settings.Default.DisplayDotShape);
+            ChangeSize(Settings.Default.DisplayDotSize);
             if (!Settings.Default.DisplayWindowLocation.IsEmpty)
             {
                 this.Location = Settings.Default.DisplayWindowLocation;
@@ -125,6 +127,7 @@ namespace iFlag
         {
             Settings.Default.DisplayWindowLocation = this.Location;
             Settings.Default.DisplayDotShape = DotShapeIndex;
+            Settings.Default.DisplayDotSize = DotSizeIndex;
             Settings.Default.Save();
         }
 
@@ -164,6 +167,12 @@ namespace iFlag
             ChangeShape(nextDotShapeIndex());
         }
 
+                                                    // Mouse handler for size change UI control
+        private void ChangeSize(object sender, MouseEventArgs e)
+        {
+            ChangeSize(nextDotSizeIndex());
+        }
+
                                                     // Changes shape of all matrix dots
         private void ChangeShape(int shape)
         {
@@ -177,6 +186,23 @@ namespace iFlag
 
             sizeToggle.BackgroundImage = new Bitmap(DotShapes[nextShape], DotSizes[nextSize]);
             shapeToggle.BackgroundImage = new Bitmap(DotShapes[nextDotShapeIndex()], DotSizes[DotSizeIndex]);
+        }
+
+                                                    // Changes size of all matrix dots
+        private void ChangeSize(int size)
+        {
+            DotSizeIndex = size;
+            DotSizeX = DotSizes[DotSizeIndex].Width;
+            DotSizeY = DotSizes[DotSizeIndex].Height;
+
+            int nextShape = nextDotShapeIndex();
+            int nextSize = nextDotSizeIndex();
+
+            for (int f = 0; f < Pages; f++)
+                MatrixMaskBoxes[f].BackgroundImage = PageFrames[f] = new Bitmap(Xs * DotSizeX, Ys * DotSizeY);
+
+            sizeToggle.BackgroundImage = new Bitmap(DotShapes[DotShapeIndex], DotSizes[nextSize]);
+            shapeToggle.BackgroundImage = new Bitmap(DotShapes[nextShape], DotSizes[DotSizeIndex]);
         }
 
                                                     // Returns an index of the next dot shape in the cycle
