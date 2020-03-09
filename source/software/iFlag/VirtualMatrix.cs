@@ -207,6 +207,7 @@ namespace iFlag
                 int X = x * DotSizeX;
                 int Y = (Ys - y - 1) * DotSizeY;
 
+                Color R, G, B;
                 Color col = COLORS[color];
 
                 int chipWidth = DotSizeX / 10;
@@ -215,6 +216,19 @@ namespace iFlag
                 int chipY = Y + DotSizeY / 2 - chipHeight/2;
 
                 g.FillRectangle(new SolidBrush(col), new Rectangle(X, Y, DotSizeX, DotSizeY));
+
+                if (color == 0)
+                {
+                                                    // only faintly visible chips when black
+                    R = G = B = Color.FromArgb(255, 24, 24, 24);
+                }
+                else
+                {
+                                                    // individual chips illuminated to match the color
+                    R = Color.FromArgb(Math.Min(col.R, (byte)190), 255, col.R / 3, col.R / 3);
+                    G = Color.FromArgb(Math.Min(col.G, (byte)190), col.G / 3, 255, col.G / 3);
+                    B = Color.FromArgb(Math.Min(col.B, (byte)190), col.B / 3, col.B / 3, 255);
+                }
             }
         }
 
