@@ -234,6 +234,18 @@ namespace iFlag
                 g.FillRectangle(new SolidBrush(G), new Rectangle(chipX, chipY + 0, chipWidth, chipHeight));
                 g.FillRectangle(new SolidBrush(B), new Rectangle(chipX, chipY + 1, chipWidth, chipHeight));
             }
+
+                                                    // Place the LED mask on top of the LEDs
+                                                    // once last frame of last page is painted
+            if (frame == Pages - 1 && x == 7 && y == 7)
+            {
+                for (int f = 0; f < Pages; f++)
+                {
+                    MatrixLedBoxes[f].Image = PageFrames[f];
+                    MatrixMaskBoxes[f].BackgroundImage = new Bitmap(DotShapes[DotShapeIndex], DotSizes[DotSizeIndex]);
+                    matrixBox.Controls.SetChildIndex(MatrixLedBoxes[f], f + 1);
+                }
+            }
         }
 
                                                     // Mouse handler for shape change UI control
