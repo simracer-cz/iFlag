@@ -206,6 +206,10 @@ namespace iFlag
 
                 int X = x * DotSizeX;
                 int Y = (Ys - y - 1) * DotSizeY;
+
+                Color col = COLORS[color];
+
+                g.FillRectangle(new SolidBrush(col), new Rectangle(X, Y, DotSizeX, DotSizeY));
             }
         }
 
