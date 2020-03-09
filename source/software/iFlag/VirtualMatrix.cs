@@ -265,6 +265,11 @@ namespace iFlag
             }
         }
 
+        public void SetBlinking(bool blinkFast)
+        {
+            pageFlipTimer.Interval = blinkFast ? 100 : 200;
+        }
+
                                                     // On every page flip timer tick,
                                                     // flip the page by bringing it to foreground
         private void pageFlipTimer_Tick(object sender, EventArgs e)
