@@ -34,6 +34,7 @@ namespace iFlag
 
         static private int Pages = 2;               // Number of matrix page frames
 
+                                                    // Structure physically holding the matrix data
         private byte[, ,] Matrix = new byte[2, 8, 8];
 
         private int DotShapeIndex = 0;              // Index of the chosen matrix dot shape
