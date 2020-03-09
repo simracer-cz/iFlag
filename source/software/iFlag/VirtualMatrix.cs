@@ -64,6 +64,9 @@ namespace iFlag
         private bool IsWindowDragging;              // Flags window being mouse-dragged
         private Point LastLocation;                 // Holds last window location at the start of drag
 
+        private ToolTip helperTip = new ToolTip();  // Tooltip object for UI controls
+
+
         public VirtualMatrix()
         {
             InitializeComponent();
@@ -73,6 +76,11 @@ namespace iFlag
 
             this.BackColor = Color.Black;
 
+            sizeToggle.BackColor = Color.Black;
+            sizeToggle.BackgroundImage = new Bitmap(DotShapes[DotShapeIndex], DotSizes[nextDotSizeIndex()]);
+            sizeToggle.Size = DotSizes[0];
+            helperTip.SetToolTip(sizeToggle, "Cycle dot sizes");
+            
             for (int f = 0; f < Pages; f++)
             {
                 MatrixLedBoxes[f] = new PictureBox();
@@ -140,6 +148,14 @@ namespace iFlag
         {
             Settings.Default.DisplayWindowLocation = this.Location;
             Settings.Default.Save();
+        }
+
+                                                    // Returns an index of the next dot size in the cycle
+        private int nextDotSizeIndex()
+        {
+            int index = DotSizeIndex + 1;
+            if (index >= DotSizes.Length) index = 0;
+            return index;
         }
    }
 }
