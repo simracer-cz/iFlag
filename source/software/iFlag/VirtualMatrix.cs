@@ -195,6 +195,17 @@ namespace iFlag
             this.matrixBox.Visible = logoPicture.Visible = true;
         }
 
+                                                    // Paints a single dot of the matrix by paining a representation
+                                                    // of an actual RGB LED chip with its 3 independent color components
+        public void PaintDot(int frame, int x, int y, int color)
+        {
+            using (Graphics g = Graphics.FromImage(PageFrames[frame]))
+            {
+                g.SmoothingMode = SmoothingMode.None;
+                g.CompositingQuality = CompositingQuality.HighSpeed;
+            }
+        }
+
                                                     // Mouse handler for shape change UI control
         private void ChangeShape(object sender, MouseEventArgs e)
         {
