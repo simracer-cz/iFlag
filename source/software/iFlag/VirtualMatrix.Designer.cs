@@ -83,7 +83,6 @@
             this.BackColor = System.Drawing.Color.Black;
             this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(240, 240);
-            this.ContextMenuStrip = this.contextMenuStrip;
             this.ControlBox = false;
             this.Controls.Add(this.sizeToggle);
             this.Controls.Add(this.shapeToggle);
