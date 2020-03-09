@@ -84,5 +84,23 @@ namespace iFlag
                 PageFrames[f] = new Bitmap(Xs * DotSizeX, Ys * DotSizeY);
             }
         }
-    }
+
+                                                    // Executes on load of the window to restore matrix
+                                                    // settings from the persistent storage
+        private void VirtualMatrix_Load(object sender, EventArgs e)
+        {
+            if (!Settings.Default.DisplayWindowLocation.IsEmpty)
+            {
+                this.Location = Settings.Default.DisplayWindowLocation;
+            }
+        }
+
+                                                    // Executes when leaving the app to persistently store
+                                                    // window's settings
+        private void VirtualMatrix_Close(object sender, FormClosingEventArgs e)
+        {
+            Settings.Default.DisplayWindowLocation = this.Location;
+            Settings.Default.Save();
+        }
+   }
 }

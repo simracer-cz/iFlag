@@ -59,6 +59,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "iFLAG Virtual Matrix";
             this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.VirtualMatrix_Close);
+            this.Load += new System.EventHandler(this.VirtualMatrix_Load);
             ((System.ComponentModel.ISupportInitialize)(this.matrixBox)).EndInit();
             this.ResumeLayout(false);
 
