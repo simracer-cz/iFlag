@@ -27,6 +27,13 @@ namespace iFlag
             Color.Purple,           // 0x15 | dim purple
         };
 
+        private int Xs = 8;                         // Number of matrix dots horizontally
+        private int Ys = 8;                         // Number of matrix dots vertically
+
+        static private int Pages = 2;               // Number of matrix page frames
+
+        private byte[, ,] Matrix = new byte[2, 8, 8];
+
         public VirtualMatrix()
         {
             InitializeComponent();
