@@ -20,7 +20,7 @@
 
 // Version
 byte major = 0;
-byte minor = 21;
+byte minor = 22;
 
 // Communication
 #define DEVICE_ID      0xD2
@@ -34,7 +34,7 @@ byte minor = 21;
 int dataX;
 int dataY;
 int dataP;
-byte pinger;
+int pinger;
 
 // Color palette
 byte colors[ 16 ][ 3 ]=
@@ -63,7 +63,7 @@ byte balance[ 3 ] = { 36, 45, 63 }; // 0-63 RGB
 
 byte luma = 100;                    // 0-100 % Luminosity level 
 
-byte blinker;
+unsigned int blinker;
 byte blink_speed= 0;
 
 // Software reset
@@ -101,8 +101,6 @@ void loop()
     // Blinking
     if ( blink_speed && !(blinker+= blink_speed) )
         Colorduino.FlipPage();
-
-    delay( 2 );
 }
 
 void serialEvent(){
