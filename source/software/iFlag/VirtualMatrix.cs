@@ -54,6 +54,13 @@ namespace iFlag
             new Size(20, 20),                       // 20 * 20px
         };
 
+                                                    // Array of bitmaps representing the matrix page frames
+        private Bitmap[] PageFrames = new Bitmap[Pages];
+
+                                                    // Arrays of the physical LED dots and their masks
+        private PictureBox[] MatrixLedBoxes = new PictureBox[Pages];
+        private PictureBox[] MatrixMaskBoxes = new PictureBox[Pages];
+
         public VirtualMatrix()
         {
             InitializeComponent();
@@ -62,6 +69,20 @@ namespace iFlag
             DotSizeY = DotSizes[DotSizeIndex].Height;
 
             this.BackColor = Color.Black;
+
+            for (int f = 0; f < Pages; f++)
+            {
+                MatrixLedBoxes[f] = new PictureBox();
+
+                MatrixMaskBoxes[f] = new PictureBox();
+                MatrixMaskBoxes[f].BackgroundImage = new Bitmap(DotShapes[DotShapeIndex], DotSizes[DotSizeIndex]);
+                MatrixMaskBoxes[f].BackColor = Color.Transparent;
+
+                matrixBox.Controls.Add(MatrixLedBoxes[f]);
+                MatrixLedBoxes[f].Controls.Add(MatrixMaskBoxes[f]);
+
+                PageFrames[f] = new Bitmap(Xs * DotSizeX, Ys * DotSizeY);
+            }
         }
     }
 }

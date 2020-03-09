@@ -29,7 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.matrixBox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.matrixBox)).BeginInit();
             this.SuspendLayout();
+            // 
+            // matrixBox
+            // 
+            this.matrixBox.Location = new System.Drawing.Point(0, 0);
+            this.matrixBox.Name = "matrixBox";
+            this.matrixBox.Size = new System.Drawing.Size(100, 50);
+            this.matrixBox.TabIndex = 0;
+            this.matrixBox.TabStop = false;
             // 
             // VirtualMatrix
             // 
@@ -39,6 +49,7 @@
             this.ClientSize = new System.Drawing.Size(240, 240);
             this.ContextMenuStrip = this.contextMenuStrip;
             this.ControlBox = false;
+            this.Controls.Add(this.matrixBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -48,10 +59,13 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "iFLAG Virtual Matrix";
             this.TopMost = true;
+            ((System.ComponentModel.ISupportInitialize)(this.matrixBox)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.PictureBox matrixBox;
     }
 }
