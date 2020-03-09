@@ -79,6 +79,7 @@ namespace iFlag
             shapeToggle.BackColor = Color.Black;
             shapeToggle.BackgroundImage = new Bitmap(DotShapes[nextDotShapeIndex()], DotSizes[DotSizeIndex]);
             shapeToggle.Size = DotSizes[0];
+            shapeToggle.MouseClick += new MouseEventHandler(this.ChangeShape);
             helperTip.SetToolTip(shapeToggle, "Cycle dot shapes");
 
             sizeToggle.BackColor = Color.Black;
@@ -111,6 +112,7 @@ namespace iFlag
                                                     // settings from the persistent storage
         private void VirtualMatrix_Load(object sender, EventArgs e)
         {
+            ChangeShape(Settings.Default.DisplayDotShape);
             if (!Settings.Default.DisplayWindowLocation.IsEmpty)
             {
                 this.Location = Settings.Default.DisplayWindowLocation;
@@ -122,6 +124,7 @@ namespace iFlag
         private void VirtualMatrix_Close(object sender, FormClosingEventArgs e)
         {
             Settings.Default.DisplayWindowLocation = this.Location;
+            Settings.Default.DisplayDotShape = DotShapeIndex;
             Settings.Default.Save();
         }
 
@@ -153,6 +156,27 @@ namespace iFlag
         {
             Settings.Default.DisplayWindowLocation = this.Location;
             Settings.Default.Save();
+        }
+
+                                                    // Mouse handler for shape change UI control
+        private void ChangeShape(object sender, MouseEventArgs e)
+        {
+            ChangeShape(nextDotShapeIndex());
+        }
+
+                                                    // Changes shape of all matrix dots
+        private void ChangeShape(int shape)
+        {
+            int nextShape = shape;
+            int nextSize = nextDotSizeIndex();
+
+            for (int f = 0; f < Pages; f++)
+                MatrixMaskBoxes[f].BackgroundImage = new Bitmap(DotShapes[nextShape], DotSizes[DotSizeIndex]);
+
+            DotShapeIndex = nextShape;
+
+            sizeToggle.BackgroundImage = new Bitmap(DotShapes[nextShape], DotSizes[nextSize]);
+            shapeToggle.BackgroundImage = new Bitmap(DotShapes[nextDotShapeIndex()], DotSizes[DotSizeIndex]);
         }
 
                                                     // Returns an index of the next dot shape in the cycle

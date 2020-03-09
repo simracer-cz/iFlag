@@ -251,5 +251,17 @@ namespace iFlag.Properties {
             }
         }
         
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int DisplayDotShape {
+            get {
+                return ((int)(this["DisplayDotShape"]));
+            }
+            set {
+                this["DisplayDotShape"] = value;
+            }
+        }
+        
     }
 }
