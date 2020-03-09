@@ -229,6 +229,10 @@ namespace iFlag
                     G = Color.FromArgb(Math.Min(col.G, (byte)190), col.G / 3, 255, col.G / 3);
                     B = Color.FromArgb(Math.Min(col.B, (byte)190), col.B / 3, col.B / 3, 255);
                 }
+
+                g.FillRectangle(new SolidBrush(R), new Rectangle(chipX, chipY - 1, chipWidth, chipHeight));
+                g.FillRectangle(new SolidBrush(G), new Rectangle(chipX, chipY + 0, chipWidth, chipHeight));
+                g.FillRectangle(new SolidBrush(B), new Rectangle(chipX, chipY + 1, chipWidth, chipHeight));
             }
         }
 
