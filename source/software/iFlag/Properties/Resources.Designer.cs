@@ -113,6 +113,16 @@ namespace iFlag.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap matrixLogo {
+            get {
+                object obj = ResourceManager.GetObject("matrixLogo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap paypalLogo {
             get {
                 object obj = ResourceManager.GetObject("paypalLogo", resourceCulture);

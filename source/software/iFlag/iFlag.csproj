@@ -161,6 +161,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\matrixLogo.png" />
     <None Include="Resources\matrixDotCircle.png" />
     <None Include="Resources\matrixDotSquare.png" />
     <None Include="Resources\matrixDotDiamond.png" />

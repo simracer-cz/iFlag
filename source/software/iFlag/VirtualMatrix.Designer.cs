@@ -31,9 +31,11 @@
             this.components = new System.ComponentModel.Container();
             this.sizeToggle = new System.Windows.Forms.PictureBox();
             this.shapeToggle = new System.Windows.Forms.PictureBox();
+            this.logoPicture = new System.Windows.Forms.PictureBox();
             this.matrixBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.sizeToggle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.shapeToggle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logoPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.matrixBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,6 +59,16 @@
             this.shapeToggle.TabIndex = 3;
             this.shapeToggle.TabStop = false;
             // 
+            // logoPicture
+            // 
+            this.logoPicture.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.logoPicture.Image = global::iFlag.Properties.Resources.matrixLogo;
+            this.logoPicture.Location = new System.Drawing.Point(85, 200);
+            this.logoPicture.Name = "logoPicture";
+            this.logoPicture.Size = new System.Drawing.Size(69, 30);
+            this.logoPicture.TabIndex = 2;
+            this.logoPicture.TabStop = false;
+            // 
             // matrixBox
             // 
             this.matrixBox.Location = new System.Drawing.Point(0, 0);
@@ -75,6 +87,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.sizeToggle);
             this.Controls.Add(this.shapeToggle);
+            this.Controls.Add(this.logoPicture);
             this.Controls.Add(this.matrixBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
@@ -90,6 +103,7 @@
             this.Move += new System.EventHandler(this.SaveLocation);
             ((System.ComponentModel.ISupportInitialize)(this.sizeToggle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.shapeToggle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logoPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.matrixBox)).EndInit();
             this.ResumeLayout(false);
 
@@ -100,5 +114,6 @@
         private System.Windows.Forms.PictureBox matrixBox;
         private System.Windows.Forms.PictureBox sizeToggle;
         private System.Windows.Forms.PictureBox shapeToggle;
+        private System.Windows.Forms.PictureBox logoPicture;
     }
 }
