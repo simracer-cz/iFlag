@@ -60,39 +60,17 @@ namespace iFlag
                                                   // to be broadcasted right away.
         public void patternToMatrix(ref byte[, ,] matrix, byte[, ,] pattern, byte[] color, bool speed)
         {
-            int matrixX = 0, matrixY = 0;
             byte colorIndex = 0;
 
             for (int y = 0; y < 8; y++)
                 for (int x = 0; x < 8; x++)
                 {
-                                                  // A matrix rotation is performed based on in what
-                                                  // direction is Arduino USB connector sticking out
-                                                  // of the hardware assembly.
-                    switch (connectorSide)
-                    {
-                        case 0x00:                // Down
-                            matrixX = 8 - y - 1;
-                            matrixY = x;
-                            break;
-                        case 0x01:                // Right
-                            matrixX = 8 - x - 1;
-                            matrixY = 8 - y - 1;
-                            break;
-                        case 0x02:                // Left
-                            matrixX = x;
-                            matrixY = y;
-                            break;
-                        case 0x03:                // Up
-                            matrixX = y;
-                            matrixY = 8 - x - 1;
-                            break;
-                    }
-                    colorIndex = pattern[0, matrixX, matrixY];
+                    colorIndex = pattern[0, x, y];
                     if (colorIndex != 9) matrix[0, x, y] = color[colorIndex];
+
                                                   // For single-frame patterns the second frame of the matrix
                                                   // is a clone of the first one.
-                    colorIndex = pattern[pattern.Length >= 128 ? 1 : 0, matrixX, matrixY];
+                    colorIndex = pattern[pattern.Length >= 128 ? 1 : 0, x, y];
                     if (colorIndex != 9) matrix[1, x, y] = color[colorIndex];
                 }
 
