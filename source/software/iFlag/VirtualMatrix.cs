@@ -195,6 +195,15 @@ namespace iFlag
             this.matrixBox.Visible = logoPicture.Visible = true;
         }
 
+                                                    // Goes over each matrix dot to actually paint it
+        public void PaintMatrix()
+        {
+            for (int f = 0; f < 2; f++)
+                for (int y = 0; y < 8; y++)
+                    for (int x = 0; x < 8; x++)
+                        PaintDot(f, x, y, Matrix[f, 8 - y - 1, x]);
+        }
+
                                                     // Paints a single dot of the matrix by paining a representation
                                                     // of an actual RGB LED chip with its 3 independent color components
         public void PaintDot(int frame, int x, int y, int color)
@@ -292,6 +301,7 @@ namespace iFlag
             sizeToggle.BackgroundImage = new Bitmap(DotShapes[DotShapeIndex], DotSizes[nextSize]);
             shapeToggle.BackgroundImage = new Bitmap(DotShapes[nextShape], DotSizes[DotSizeIndex]);
 
+            PaintMatrix();
             SetSize();
         }
 
