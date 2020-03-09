@@ -127,10 +127,10 @@ namespace iFlag
                     for (int y = 0; y < 8; y++)
                         for (int x = 0; x < 8; x += 4)
                         {
-                            deviceMatrix[frame, x, y] = matrix[frame, x, y];
-                            deviceMatrix[frame, x + 1, y] = matrix[frame, x + 1, y];
-                            deviceMatrix[frame, x + 2, y] = matrix[frame, x + 2, y];
-                            deviceMatrix[frame, x + 3, y] = matrix[frame, x + 3, y];
+                            deviceMatrix[ frame, x + 0, y ] = matrix[ frame, x + 0, y ];
+                            deviceMatrix[ frame, x + 1, y ] = matrix[ frame, x + 1, y ];
+                            deviceMatrix[ frame, x + 2, y ] = matrix[ frame, x + 2, y ];
+                            deviceMatrix[ frame, x + 3, y ] = matrix[ frame, x + 3, y ];
                             SP_SendData(new byte[8] {
                                 0xFF,                                        // FF
                                 Convert.ToByte( x ),                         // 00..07
