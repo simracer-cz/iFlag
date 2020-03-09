@@ -34,9 +34,22 @@ namespace iFlag
 
         private byte[, ,] Matrix = new byte[2, 8, 8];
 
+        private int DotSizeX;                       // Width of the chosen matrix dot size
+        private int DotSizeY;                       // Height of the chosen matrix dot size
+        private int DotSizeIndex = 0;               // Index of the chosen matrix dot sizr
+        private Size[] DotSizes = new Size[]        // Bank of available dot sizes
+        {
+            new Size(30, 30),                       // 30 * 30px
+            new Size(24, 24),                       // 24 * 24px
+            new Size(20, 20),                       // 20 * 20px
+        };
+
         public VirtualMatrix()
         {
             InitializeComponent();
+
+            DotSizeX = DotSizes[DotSizeIndex].Width;
+            DotSizeY = DotSizes[DotSizeIndex].Height;
         }
     }
 }
