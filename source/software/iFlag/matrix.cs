@@ -111,9 +111,7 @@ namespace iFlag
             for (int f = 0; f < 2; f++)
                 for (int y = 0; y < 8; y++)
                     for (int x = 0; x < 8; x++)
-                    {
                         overlayMatrix[f, x, y] = NO_COLOR;
-                    }
         }
 
                                                   // Processes the matrix pixels into data packets
@@ -125,10 +123,7 @@ namespace iFlag
             for (int f = 0; f < 2; f++)
                 for (int y = 0; y < 8; y++)
                     for (int x = 0; x < 8; x++)
-                    {
                         matrix[f, x, y] = overlayMatrix[f, x, y] == NO_COLOR ? flagMatrix[f, x, y] : overlayMatrix[f, x, y];
-                        // Console.WriteLine("X{0} Y{1} F{2} O{3} M{4}", x, y, flagMatrix[f, x, y], overlayMatrix[f, x, y], matrix[f, x, y]);
-                    }
 
             for (int f = 0; f < 2 && !broadcastable; f++)
                 for (int y = 0; y < 8 && !broadcastable; y++)
