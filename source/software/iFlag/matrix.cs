@@ -114,26 +114,30 @@ namespace iFlag
                         overlayMatrix[f, x, y] = NO_COLOR;
         }
 
+                                                  // Compares matrix in software memory with a snapshot
+                                                  // of matrix currently on the device dot by dot
+                                                  // and returns `true` if not exactly the same
+        private bool worthBroadcasting()
+        {
+
+            for (int f = 0; f < 2; f++)
+                for (int y = 0; y < 8; y++)
+                    for (int x = 0; x < 8; x++)
+                        if (matrix[f, x, y] != deviceMatrix[f, x, y])
+                            return true;
+            return false;
+        }
+
                                                   // Processes the matrix pixels into data packets
                                                   // and sends them out through the USB connection
         private bool broadcastMatrix()
         {
-           bool broadcastable = false;
-
             for (int f = 0; f < 2; f++)
                 for (int y = 0; y < 8; y++)
                     for (int x = 0; x < 8; x++)
                         matrix[f, x, y] = overlayMatrix[f, x, y] == NO_COLOR ? flagMatrix[f, x, y] : overlayMatrix[f, x, y];
 
-            for (int f = 0; f < 2 && !broadcastable; f++)
-                for (int y = 0; y < 8 && !broadcastable; y++)
-                    for (int x = 0; x < 8 && !broadcastable; x++)
-                    {
-                        broadcastable = matrix[f, x, y] != deviceMatrix[f, x, y];
-                        // Console.WriteLine("F{5} X{0} Y{1} M{2} MM{3} B{4}", x, y, matrix[f, x, y], deviceMatrix[f, x, y], broadcastable, f);
-                    }
-
-            if (broadcastable)
+            if (worthBroadcasting())
             {
                 Console.WriteLine("{0} {1} {2}", DateTime.Now, flagOnDisplayLabel, overlaysOnDisplayLabel);
                 updateSignalLabels();
