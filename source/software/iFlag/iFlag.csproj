@@ -161,6 +161,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\matrixDotCircle.png" />
+    <None Include="Resources\matrixDotSquare.png" />
+    <None Include="Resources\matrixDotDiamond.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
