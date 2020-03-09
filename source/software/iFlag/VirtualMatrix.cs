@@ -203,6 +203,9 @@ namespace iFlag
             {
                 g.SmoothingMode = SmoothingMode.None;
                 g.CompositingQuality = CompositingQuality.HighSpeed;
+
+                int X = x * DotSizeX;
+                int Y = (Ys - y - 1) * DotSizeY;
             }
         }
 
