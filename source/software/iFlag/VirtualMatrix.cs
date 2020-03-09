@@ -33,6 +33,7 @@ namespace iFlag
         private int Ys = 8;                         // Number of matrix dots vertically
 
         static private int Pages = 2;               // Number of matrix page frames
+        private int Page;                           // Currently displayed page index
 
                                                     // Structure physically holding the matrix data
         private byte[, ,] Matrix = new byte[2, 8, 8];
@@ -262,6 +263,14 @@ namespace iFlag
                     matrixBox.Controls.SetChildIndex(MatrixLedBoxes[f], f + 1);
                 }
             }
+        }
+
+                                                    // On every page flip timer tick,
+                                                    // flip the page by bringing it to foreground
+        private void pageFlipTimer_Tick(object sender, EventArgs e)
+        {
+            Page = Page+++1 < Pages ? Page : 0;
+            matrixBox.Controls.SetChildIndex(MatrixLedBoxes[Page], 1);
         }
 
                                                     // Mouse handler for shape change UI control

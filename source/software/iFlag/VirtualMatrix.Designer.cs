@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.pageFlipTimer = new System.Windows.Forms.Timer(this.components);
             this.sizeToggle = new System.Windows.Forms.PictureBox();
             this.shapeToggle = new System.Windows.Forms.PictureBox();
             this.logoPicture = new System.Windows.Forms.PictureBox();
@@ -38,6 +39,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.logoPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.matrixBox)).BeginInit();
             this.SuspendLayout();
+            // 
+            // pageFlipTimer
+            // 
+            this.pageFlipTimer.Enabled = true;
+            this.pageFlipTimer.Interval = 100;
+            this.pageFlipTimer.Tick += new System.EventHandler(this.pageFlipTimer_Tick);
             // 
             // sizeToggle
             // 
@@ -110,6 +117,7 @@
 
         #endregion
 
+        public System.Windows.Forms.Timer pageFlipTimer;
         private System.Windows.Forms.PictureBox matrixBox;
         private System.Windows.Forms.PictureBox sizeToggle;
         private System.Windows.Forms.PictureBox shapeToggle;
