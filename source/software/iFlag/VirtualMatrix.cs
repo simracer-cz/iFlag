@@ -195,6 +195,13 @@ namespace iFlag
             this.matrixBox.Visible = logoPicture.Visible = true;
         }
 
+                                                    // Method to pass matrix array to the virtual matrix
+        public void SetMatrix(byte[, ,] matrix)
+        {
+            Matrix = matrix;
+            PaintMatrix();
+        }
+
                                                     // Goes over each matrix dot to actually paint it
         public void PaintMatrix()
         {
