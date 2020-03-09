@@ -30,8 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             this.sizeToggle = new System.Windows.Forms.PictureBox();
+            this.shapeToggle = new System.Windows.Forms.PictureBox();
             this.matrixBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.sizeToggle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shapeToggle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.matrixBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,6 +46,16 @@
             this.sizeToggle.Size = new System.Drawing.Size(40, 40);
             this.sizeToggle.TabIndex = 4;
             this.sizeToggle.TabStop = false;
+            // 
+            // shapeToggle
+            // 
+            this.shapeToggle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.shapeToggle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.shapeToggle.Location = new System.Drawing.Point(200, 200);
+            this.shapeToggle.Name = "shapeToggle";
+            this.shapeToggle.Size = new System.Drawing.Size(40, 40);
+            this.shapeToggle.TabIndex = 3;
+            this.shapeToggle.TabStop = false;
             // 
             // matrixBox
             // 
@@ -62,6 +74,7 @@
             this.ContextMenuStrip = this.contextMenuStrip;
             this.ControlBox = false;
             this.Controls.Add(this.sizeToggle);
+            this.Controls.Add(this.shapeToggle);
             this.Controls.Add(this.matrixBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
@@ -76,6 +89,7 @@
             this.Load += new System.EventHandler(this.VirtualMatrix_Load);
             this.Move += new System.EventHandler(this.SaveLocation);
             ((System.ComponentModel.ISupportInitialize)(this.sizeToggle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shapeToggle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.matrixBox)).EndInit();
             this.ResumeLayout(false);
 
@@ -85,5 +99,6 @@
 
         private System.Windows.Forms.PictureBox matrixBox;
         private System.Windows.Forms.PictureBox sizeToggle;
+        private System.Windows.Forms.PictureBox shapeToggle;
     }
 }

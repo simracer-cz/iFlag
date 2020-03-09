@@ -76,6 +76,11 @@ namespace iFlag
 
             this.BackColor = Color.Black;
 
+            shapeToggle.BackColor = Color.Black;
+            shapeToggle.BackgroundImage = new Bitmap(DotShapes[nextDotShapeIndex()], DotSizes[DotSizeIndex]);
+            shapeToggle.Size = DotSizes[0];
+            helperTip.SetToolTip(shapeToggle, "Cycle dot shapes");
+
             sizeToggle.BackColor = Color.Black;
             sizeToggle.BackgroundImage = new Bitmap(DotShapes[DotShapeIndex], DotSizes[nextDotSizeIndex()]);
             sizeToggle.Size = DotSizes[0];
@@ -148,6 +153,14 @@ namespace iFlag
         {
             Settings.Default.DisplayWindowLocation = this.Location;
             Settings.Default.Save();
+        }
+
+                                                    // Returns an index of the next dot shape in the cycle
+        private int nextDotShapeIndex()
+        {
+            int index = DotShapeIndex + 1;
+            if (index >= DotShapes.Length) index = 0;
+            return index;
         }
 
                                                     // Returns an index of the next dot size in the cycle
