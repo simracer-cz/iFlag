@@ -60,6 +60,8 @@ namespace iFlag
 
             DotSizeX = DotSizes[DotSizeIndex].Width;
             DotSizeY = DotSizes[DotSizeIndex].Height;
+
+            this.BackColor = Color.Black;
         }
     }
 }
