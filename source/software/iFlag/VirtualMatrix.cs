@@ -209,6 +209,11 @@ namespace iFlag
 
                 Color col = COLORS[color];
 
+                int chipWidth = DotSizeX / 10;
+                int chipHeight = 1;
+                int chipX = X + DotSizeX / 2 - chipWidth/2;
+                int chipY = Y + DotSizeY / 2 - chipHeight/2;
+
                 g.FillRectangle(new SolidBrush(col), new Rectangle(X, Y, DotSizeX, DotSizeY));
             }
         }
