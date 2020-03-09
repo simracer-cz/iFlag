@@ -61,6 +61,7 @@
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.VirtualMatrix_Close);
             this.Load += new System.EventHandler(this.VirtualMatrix_Load);
+            this.Move += new System.EventHandler(this.SaveLocation);
             ((System.ComponentModel.ISupportInitialize)(this.matrixBox)).EndInit();
             this.ResumeLayout(false);
 

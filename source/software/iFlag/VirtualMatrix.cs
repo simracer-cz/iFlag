@@ -61,6 +61,9 @@ namespace iFlag
         private PictureBox[] MatrixLedBoxes = new PictureBox[Pages];
         private PictureBox[] MatrixMaskBoxes = new PictureBox[Pages];
 
+        private bool IsWindowDragging;              // Flags window being mouse-dragged
+        private Point LastLocation;                 // Holds last window location at the start of drag
+
         public VirtualMatrix()
         {
             InitializeComponent();
@@ -73,10 +76,16 @@ namespace iFlag
             for (int f = 0; f < Pages; f++)
             {
                 MatrixLedBoxes[f] = new PictureBox();
+                MatrixLedBoxes[f].MouseDown += new MouseEventHandler(this.Drag_MouseDown);
+                MatrixLedBoxes[f].MouseMove += new MouseEventHandler(this.Drag_MouseMove);
+                MatrixLedBoxes[f].MouseUp += new MouseEventHandler(this.Drag_MouseUp);
 
                 MatrixMaskBoxes[f] = new PictureBox();
                 MatrixMaskBoxes[f].BackgroundImage = new Bitmap(DotShapes[DotShapeIndex], DotSizes[DotSizeIndex]);
                 MatrixMaskBoxes[f].BackColor = Color.Transparent;
+                MatrixMaskBoxes[f].MouseDown += new MouseEventHandler(this.Drag_MouseDown);
+                MatrixMaskBoxes[f].MouseMove += new MouseEventHandler(this.Drag_MouseMove);
+                MatrixMaskBoxes[f].MouseUp += new MouseEventHandler(this.Drag_MouseUp);
 
                 matrixBox.Controls.Add(MatrixLedBoxes[f]);
                 MatrixLedBoxes[f].Controls.Add(MatrixMaskBoxes[f]);
@@ -98,6 +107,36 @@ namespace iFlag
                                                     // Executes when leaving the app to persistently store
                                                     // window's settings
         private void VirtualMatrix_Close(object sender, FormClosingEventArgs e)
+        {
+            Settings.Default.DisplayWindowLocation = this.Location;
+            Settings.Default.Save();
+        }
+
+                                                    // Holds the window location prior the drag
+        private void Drag_MouseDown(object sender, MouseEventArgs e)
+        {
+            IsWindowDragging = true;
+            LastLocation = e.Location;
+        }
+
+                                                    // Adjusts the window location based on the drag movement
+        private void Drag_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (IsWindowDragging)
+            {
+                this.Location = new Point((this.Location.X - LastLocation.X) + e.X, (this.Location.Y - LastLocation.Y) + e.Y);
+                this.Update();
+            }
+        }
+
+                                                    // Stop dragging the window on mouse release
+        private void Drag_MouseUp(object sender, MouseEventArgs e)
+        {
+            IsWindowDragging = false;
+        }
+
+                                                    // Saves window location on window drag
+        private void SaveLocation(object sender, EventArgs e)
         {
             Settings.Default.DisplayWindowLocation = this.Location;
             Settings.Default.Save();
