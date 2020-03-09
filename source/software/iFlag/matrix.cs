@@ -151,5 +151,19 @@ namespace iFlag
 
             return true;
         }
+
+                                          // A matrix rotation is performed based on in what
+                                          // direction is Arduino USB connector sticking out
+                                          // of the hardware assembly.
+        private byte matrixDot(int frame, int x, int y)
+        {
+            switch (connectorSide)
+            {
+                case 0x01: return matrix[frame, 8 - x - 1, 8 - y - 1];       // Right
+                case 0x02: return matrix[frame, x, y];                       // Left
+                case 0x03: return matrix[frame, y, 8 - x - 1];               // Up
+                default: return matrix[frame, 8 - y - 1, x];                 // Down
+            }
+        }
     }
 }
