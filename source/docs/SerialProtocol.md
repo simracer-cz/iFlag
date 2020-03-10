@@ -75,6 +75,13 @@ Ping packets are similar to regular data packets with the difference that they c
 | 8 | Empty               | `0x00`        |
 
 
+Communication Speed
+-------------------
+
+Currently all serial communication happens in 9600 baudrate.
+
+_iFLAG_ will establish connection to 9600 as well as 38400 baudrate shall the firmware already support it, but _iFLAG_ device itself doesn't use this speed yet until the multi-speed support makes it into the stable release and ensures seamless down/upgrade of the firmware.
+
 
 
 
@@ -82,6 +89,6 @@ Ping packets are similar to regular data packets with the difference that they c
 
 
 ---
-© 2015-2019
+© 2015-2020
 [Petr.Vostřel.cz](http://petr.vostrel.cz),
 [simracer.cz](http://simracer.cz)

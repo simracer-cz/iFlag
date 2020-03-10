@@ -15,6 +15,10 @@ namespace iFlag
         String port;                              // Currently open serial port name
         byte tryPortIndex;                        // Index in list of `ports`
 
+        int[] bauds = new int[2] { 9600, 38400 }; // List of supported serial port baudrates
+        int baud;                                 // Currently used baudrate
+        byte tryBaudIndex;                        // Index in list of `bauds`
+
         bool deviceConnected;                     // Well, whether device is connected or not
         byte firmwareVersionMajor;                // Major firmware version of the device connected
         byte firmwareVersionMinor;                // Minor version of the same
@@ -78,14 +82,21 @@ namespace iFlag
                 {
                     commLabel.Text = "No device.";
                     tryPortIndex = 0;
+                    tryBaudIndex++;
+                }
+                                                  // Cycle over the baudrates list every ports list cycle
+                if (tryBaudIndex >= bauds.Length)
+                {
+                    tryBaudIndex = 0;
                 }
 
                 try
                 {
                     port = ports[tryPortIndex];
-                    Console.WriteLine("Probing " + port + " port...");
+                    baud = bauds[tryBaudIndex];
+                    Console.WriteLine(string.Format("Probing port {0} at {1} bps...", port, baud));
                     if (SP != null && SP.IsOpen) SP.Close();
-                    SP = new SerialPort(port, 9600, Parity.None, 8);
+                    SP = new SerialPort(port, baud, Parity.None, 8);
                     SP.Open();
 
                                                   // If the device is present and physically connected,
