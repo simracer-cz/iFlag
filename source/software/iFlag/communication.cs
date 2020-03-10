@@ -122,7 +122,7 @@ namespace iFlag
                                                   // are arriving.
         private void SP_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
-            while (SP.IsOpen && SP.BytesToRead >= 8)
+            while (SP.IsOpen && SP.BytesToRead >= 8 && SP_ReadLine() == 0xFF)
             {
                 try
                 {
@@ -134,7 +134,7 @@ namespace iFlag
                     byte extra = SP_ReadLine();
                     byte more = SP_ReadLine();
 
-                    if (inByte == 255 && inByteExtra == 255)
+                    if (inByteExtra == 0xFF)
                     {
                         switch (command)
                         {
