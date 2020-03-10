@@ -1,6 +1,7 @@
 using System;
 using System.IO.Ports;
 using System.Drawing;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 using iFlag.Properties;
@@ -109,6 +110,13 @@ namespace iFlag
             }
         }
 
+                                                  // Precondition incoming data.
+        private byte SP_ReadLine()
+        {
+            string line = Regex.Replace( SP.ReadLine(), @"[^0-9a-f]+", "");
+            return Convert.ToByte( line );
+        }
+
                                                   // Ingress and digest serial data coming from the USB device.
                                                   // This one is a simple device, so only ping packets
                                                   // are arriving.
@@ -118,14 +126,14 @@ namespace iFlag
             {
                 try
                 {
-                    byte inByte = Convert.ToByte(SP.ReadLine());
-                    byte inByteExtra = Convert.ToByte(SP.ReadLine());
-                    byte major = Convert.ToByte(SP.ReadLine());
-                    byte minor = Convert.ToByte(SP.ReadLine());
-                    byte command = Convert.ToByte(SP.ReadLine());
-                    byte value = Convert.ToByte(SP.ReadLine());
-                    SP.ReadLine();
-                    SP.ReadLine();
+                    byte inByteExtra = SP_ReadLine();
+                    byte major = SP_ReadLine();
+                    byte minor = SP_ReadLine();
+                    byte command = SP_ReadLine();
+                    byte value = SP_ReadLine();
+                    byte extra = SP_ReadLine();
+                    byte more = SP_ReadLine();
+
                     if (inByte == 255 && inByteExtra == 255)
                     {
                         switch (command)
