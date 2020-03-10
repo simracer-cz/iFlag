@@ -34,6 +34,8 @@ namespace iFlag
 
         int processNo;                            // Number of the currently running order (1 to X)
 
+        public VirtualMatrix VDisplay;
+
         public mainForm()
         {
             processNo = Process.GetProcessesByName("iFlag").Length;
@@ -43,6 +45,9 @@ namespace iFlag
             this.Text = String.Format("iFLAG{1} {0}", edition, processNo > 1 ? "#" + processNo : "");
             flagLabel.Text = appMenuItem.Text = String.Format("iFlag {0}", version);
             this.updatesMenuItem.Visible = updatable;
+
+            VDisplay = new VirtualMatrix();
+            VDisplay.Show(this);
 
                                                   // Initialize flag modules
             startCommunication();

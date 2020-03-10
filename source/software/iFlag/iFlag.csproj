@@ -69,6 +69,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="VirtualMatrix.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VirtualMatrix.Designer.cs">
+      <DependentUpon>VirtualMatrix.cs</DependentUpon>
+    </Compile>
     <Compile Include="mainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +136,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="VirtualMatrix.resx">
+      <DependentUpon>VirtualMatrix.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -152,6 +161,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\matrixLogo.png" />
+    <None Include="Resources\matrixDotCircle.png" />
+    <None Include="Resources\matrixDotSquare.png" />
+    <None Include="Resources\matrixDotDiamond.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
