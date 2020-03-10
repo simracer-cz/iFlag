@@ -54,8 +54,9 @@ namespace iFlag
         private void updateFirmware()
         {
             hardwareLight.BackColor = Color.FromName("Blue");
-            commLabel.Text = "Programming with v" + firmwareMajor + "." + firmwareMinor + "...";
-
+            commLabel.Text = string.Format("Flashing {2} with v{0}.{1}...", firmwareMajor, firmwareMinor, port);
+            Console.WriteLine(commLabel.Text);
+                
             SP.Close();
             deviceConnected = false;
             connectTimer.Enabled = false;
@@ -73,6 +74,9 @@ namespace iFlag
             process.WaitForExit();
             Console.WriteLine(info.Arguments);
             Console.WriteLine(process.ExitCode);
+
+            hardwareLight.BackColor = Color.Red;
+            commLabel.Text = "";
         }
 
                                                   // Runs a separate thread, which will check for app updates
