@@ -48,6 +48,7 @@ namespace iFlag
         {
             resetOverlay();
             setMatrixLuma();
+            matrixToDevice();
         }
 
         private void setMatrixLuma()
@@ -106,8 +107,8 @@ namespace iFlag
             return false;
         }
 
-                                                  // Processes the matrix pixels into data packets
-                                                  // and sends them out through the USB connection
+                                                  // Combines matrix with overlays and determines
+                                                  // if there is something to transmit to the device
         private bool broadcastMatrix()
         {
             for (int f = 0; f < 2; f++)
@@ -120,34 +121,43 @@ namespace iFlag
                 Console.WriteLine("{0} {1} {2}", DateTime.Now, flagOnDisplayLabel, overlaysOnDisplayLabel);
                 updateSignalLabels();
 
-                SP_SendData(COMMAND_NOBLINK);
-
-                for (int frame = 0; frame < 2; frame++)
-                {
+                for (int f = 0; f < 2; f++)
                     for (int y = 0; y < 8; y++)
-                        for (int x = 0; x < 8; x += 4)
-                        {
-                            deviceMatrix[ frame, x + 0, y ] = matrix[ frame, x + 0, y ];
-                            deviceMatrix[ frame, x + 1, y ] = matrix[ frame, x + 1, y ];
-                            deviceMatrix[ frame, x + 2, y ] = matrix[ frame, x + 2, y ];
-                            deviceMatrix[ frame, x + 3, y ] = matrix[ frame, x + 3, y ];
-                            SP_SendData(new byte[8] {
-                                0xFF,                                           // FF
-                                Convert.ToByte( x ),                            // 00..07
-                                Convert.ToByte( y ),                            // 00..07
-                                Convert.ToByte( matrixDot( frame, x + 0, y ) ), // 00..FE
-                                Convert.ToByte( matrixDot( frame, x + 1, y ) ), // 00..FE
-                                Convert.ToByte( matrixDot( frame, x + 2, y ) ), // 00..FE
-                                Convert.ToByte( matrixDot( frame, x + 3, y ) ), // 00..FE
-                                0x00,
-                            });
-                        }
-                    if (frame == 0) SP_SendData(COMMAND_DRAW);
-                    else SP_SendData(blinkSpeed ? COMMAND_BLINK_FAST : COMMAND_BLINK_SLOW);
-                }
+                        for (int x = 0; x < 8; x++)
+                            deviceMatrix[f, x, y] = matrix[f, x, y];
 
-                SP_SendData(COMMAND_DRAW);
+                matrixToDevice();
             } 
+
+            return true;
+        }
+
+
+                                                  // Processes the matrix pixels into data packets
+                                                  // and sends them out through the USB connection
+        private bool matrixToDevice()
+        {
+            SP_SendData(COMMAND_NOBLINK);
+
+            for (int frame = 0; frame < 2; frame++)
+            {
+                for (int y = 0; y < 8; y++)
+                    for (int x = 0; x < 8; x += 4)
+                        SP_SendData(new byte[8] {
+                            0xFF,                                           // FF
+                            Convert.ToByte( x ),                            // 00..07
+                            Convert.ToByte( y ),                            // 00..07
+                            Convert.ToByte( matrixDot( frame, x + 0, y ) ), // 00..FE
+                            Convert.ToByte( matrixDot( frame, x + 1, y ) ), // 00..FE
+                            Convert.ToByte( matrixDot( frame, x + 2, y ) ), // 00..FE
+                            Convert.ToByte( matrixDot( frame, x + 3, y ) ), // 00..FE
+                            0x00,
+                        });
+                if (frame == 0) SP_SendData(COMMAND_DRAW);
+                else SP_SendData(blinkSpeed ? COMMAND_BLINK_FAST : COMMAND_BLINK_SLOW);
+            }
+
+            SP_SendData(COMMAND_DRAW);
 
             return true;
         }
