@@ -48,7 +48,7 @@ namespace iFlag
         {
             resetOverlay();
             setMatrixLuma();
-            matrixToDevice();
+            // matrixToDevice();
         }
 
         private void setMatrixLuma()
