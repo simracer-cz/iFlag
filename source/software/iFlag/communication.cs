@@ -127,7 +127,8 @@ namespace iFlag
             try
             {
                 string line = Regex.Replace( SP.ReadLine(), @"[^0-9a-f]+", "");
-                return Convert.ToByte( line );
+                if (line != "") return Convert.ToByte( line );
+                else return 0;
             }
             catch (Exception ex)
             {
