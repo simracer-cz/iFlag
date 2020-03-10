@@ -170,7 +170,7 @@ namespace iFlag
             if (deviceConnected)
                 try
                 {
-                    SP.Write(data, 0, 8);
+                    SP.Write(data, 0, data.Length);
                 }
                 catch (Exception ex)
                 {
