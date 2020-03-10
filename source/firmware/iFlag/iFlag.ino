@@ -13,7 +13,7 @@
 //   2. Colorduino Library for Arduino IDE (https://github.com/lincomatic/Colorduino)
 //   3. iFLAG host software (https://github.com/simracer-cz/iFlag)
 //
-// (c) 2015-2019 Petr.Vostrel.cz
+// (c) 2015-2020 Petr.Vostrel.cz
 
 #include <Colorduino.h>
 #include <EEPROM.h>
