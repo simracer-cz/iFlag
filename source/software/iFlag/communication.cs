@@ -145,11 +145,11 @@ namespace iFlag
                                 {
                                     if (!deviceConnected)
                                     {
+                                        deviceConnected = true;
                                         firmwareVersionMajor = major;
                                         firmwareVersionMinor = minor;
                                         startMatrix();
                                     }
-                                    deviceConnected = true;
                                     lastPingTime = DateTime.Now;
                                     initiationTimer.Stop();
                                 }
