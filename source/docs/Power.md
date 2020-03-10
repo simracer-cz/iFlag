@@ -27,6 +27,6 @@ Following table is for illustration purposes only. It contains bench measurement
 
 
 ---
-© 2015-2019
+© 2015-2020
 [Petr.Vostřel.cz](http://petr.vostrel.cz),
 [simracer.cz](http://simracer.cz)

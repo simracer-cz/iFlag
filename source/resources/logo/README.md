@@ -46,6 +46,6 @@ _iFLAG_'s logo is open source as well and as such you are free to use this logo 
 
 
 ---
-© 2015-2019
+© 2015-2020
 [Petr.Vostřel.cz](http://petr.vostrel.cz),
 [simracer.cz](http://simracer.cz)

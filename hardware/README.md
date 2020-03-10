@@ -71,7 +71,7 @@ Or buy a [FiTECH](http://www.fi-tech.net) enclosure from Carsten Filmer.
 
 
 ---
-© 2015-2019
+© 2015-2020
 [Petr.Vostřel.cz](http://petr.vostrel.cz),
 [simracer.cz](http://simracer.cz)
 

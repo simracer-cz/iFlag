@@ -87,6 +87,6 @@ please get in touch with me via iRacing PM (Petr Vostrel) or by email (`petr at 
 
 
 ---
-© 2015-2019
+© 2015-2020
 [Petr.Vostřel.cz](http://petr.vostrel.cz),
 [simracer.cz](http://simracer.cz)

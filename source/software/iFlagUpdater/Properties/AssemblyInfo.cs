@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("vostrobotech")]
 [assembly: AssemblyProduct("iFLAGUpdater")]
-[assembly: AssemblyCopyright("© 2015-2019 Petr Vostrel")]
+[assembly: AssemblyCopyright("© 2015-2020 Petr Vostrel")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

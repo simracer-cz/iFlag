@@ -75,7 +75,7 @@ As usual. Whether to keep the window on top of all other windows.
 
 
 ---
-© 2015-2019
+© 2015-2020
 [Petr.Vostřel.cz](http://petr.vostrel.cz),
 [simracer.cz](http://simracer.cz)
 
