@@ -77,17 +77,17 @@ namespace iFlag
             {
                 timeoutTimer.Enabled = false;
 
-                                                  // Cycle over the ports list eventually
-                if (tryPortIndex >= ports.Length)
-                {
-                    tryPortIndex = 0;
-                    tryBaudIndex++;
-                }
-                                                  // Cycle over the baudrates list every ports list cycle
+                                                  // Cycle over the baudrates list
                 if (tryBaudIndex >= bauds.Length)
                 {
-                    commLabel.Text = "No device.";
                     tryBaudIndex = 0;
+                    tryPortIndex++;
+                }
+                                                  // Cycle over the ports list every baudrates list cycle
+                if (tryPortIndex >= ports.Length)
+                {
+                    commLabel.Text = "No device.";
+                    tryPortIndex = 0;
                 }
 
                 try
@@ -112,7 +112,7 @@ namespace iFlag
 
                                                   // In case the device doesn't respond in time,
                                                   // prepare to try the next port in the list
-                tryPortIndex++;
+                tryBaudIndex++;
             }
             else
             {
