@@ -248,7 +248,7 @@ namespace iFlag
                         updateSoftware();
                     }
                     hardwareLight.BackColor = Color.FromName("ForestGreen");
-                    commLabel.Text = "v" + firmwareVersionMajor + "." + firmwareVersionMinor + " @" + port;
+                    commLabel.Text = string.Format("v{0}.{1} @{2}", firmwareVersionMajor, firmwareVersionMinor, port);                 
                 }
             }
             else
