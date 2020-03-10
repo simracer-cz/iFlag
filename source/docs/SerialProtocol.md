@@ -44,13 +44,13 @@ Aside of the data stream there are a few commands you can call up to at any plac
 ### Device-bound Commands
 
 - __DRAW__ (`A0`)
-The display driver operates with two buffers and switches between them. The incoming packets fill the buffer, which is not displayed until the buffers are latched with the DRAW command.
+The display driver operates with two buffers and switches between them. The incoming packets fill the buffer, which is not displayed until the buffers are latched with the `DRAW` command.
 
 - __BLINK__ (`A1`)
 Instructs the matrix to switch buffers timely based on the timer value given by the command's value. Value ranges from `1` (slow) to `5` (fast).
 
 - __LUMA__ (`A2`)
-Luminosity setting adjustment. The matrix will always start on 100%, but by using the LUMA command matrix can be instructed to use different percentage. Value ranges from `0` (no brightness) to `100` (full brightness).
+Luminosity setting adjustment. The matrix will always start on 100%, but by using the `LUMA` command matrix can be instructed to use different percentage. Value ranges from `0` (no brightness) to `100` (full brightness).
 
 - __RESET__ (`A9`)
 Resets the board at once.
