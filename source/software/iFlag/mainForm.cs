@@ -253,6 +253,7 @@ namespace iFlag
             }
             else
             {
+                greeted = false;
                 hardwareLight.BackColor = Color.FromName("Red");
                 commLabel.Text = "";
             }
