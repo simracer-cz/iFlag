@@ -124,8 +124,16 @@ namespace iFlag
                                                   // Precondition incoming data.
         private byte SP_ReadLine()
         {
-            string line = Regex.Replace( SP.ReadLine(), @"[^0-9a-f]+", "");
-            return Convert.ToByte( line );
+            try
+            {
+                string line = Regex.Replace( SP.ReadLine(), @"[^0-9a-f]+", "");
+                return Convert.ToByte( line );
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return 0;
         }
 
                                                   // Ingress and digest serial data coming from the USB device.
@@ -135,42 +143,36 @@ namespace iFlag
         {
             while (SP.IsOpen && SP.BytesToRead >= 8 && SP_ReadLine() == 0xFF)
             {
-                try
-                {
-                    byte inByteExtra = SP_ReadLine();
-                    byte major = SP_ReadLine();
-                    byte minor = SP_ReadLine();
-                    byte command = SP_ReadLine();
-                    byte value = SP_ReadLine();
-                    byte extra = SP_ReadLine();
-                    byte more = SP_ReadLine();
+                byte inByteExtra = SP_ReadLine();
+                byte major = SP_ReadLine();
+                byte minor = SP_ReadLine();
+                byte command = SP_ReadLine();
+                byte value = SP_ReadLine();
+                byte extra = SP_ReadLine();
+                byte more = SP_ReadLine();
+                // Console.WriteLine(string.Format("PACKET major:{0} minor:{1} command:{2} value:{3} extra:{4} more:{5}", major, minor, command, value, extra, more));
 
-                    if (inByteExtra == 0xFF)
-                    {
-                        switch (command)
-                        {
-                            case 0xB0:            // ping beacon
-                                                  // In order to not try to communicate with other unrelated
-                                                  // devices on the serial bus device identifier is checked here.
-                                if (value == 0xD2)
-                                {
-                                    if (!deviceConnected)
-                                    {
-                                        deviceConnected = true;
-                                        firmwareVersionMajor = major;
-                                        firmwareVersionMinor = minor;
-                                        startMatrix();
-                                    }
-                                    lastPingTime = DateTime.Now;
-                                    initiationTimer.Stop();
-                                }
-                                break;
-                        }
-                    }
-                }
-                catch (Exception ex)
+                if (inByteExtra == 0xFF)
                 {
-                    Console.WriteLine(ex);
+                    switch (command)
+                    {
+                        case 0xB0:            // ping beacon
+                                              // In order to not try to communicate with other unrelated
+                                              // devices on the serial bus device identifier is checked here.
+                            if (value == 0xD2)
+                            {
+                                if (!deviceConnected)
+                                {
+                                    deviceConnected = true;
+                                    firmwareVersionMajor = major;
+                                    firmwareVersionMinor = minor;
+                                    startMatrix();
+                                }
+                                lastPingTime = DateTime.Now;
+                                initiationTimer.Stop();
+                            }
+                            break;
+                    }
                 }
             }
         }
