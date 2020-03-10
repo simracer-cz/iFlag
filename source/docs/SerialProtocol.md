@@ -59,7 +59,7 @@ Resets the board at once.
 ### Software-bound Commands
 
 - __PING__ (`B0`)
-The device continuously sends pings to the software to let it know about the _iFLAG_ presence. The PING command 
+The device continuously sends pings to the software to let it know about the _iFLAG_ presence. The `PING` command should be sent in roughly 2 Hz frequency (around 500ms interval between `PING` packets).
 
 Ping packets are similar to regular data packets with the difference that they contain device type identifier (`D2` for _iFLAG_) and firmware version data in them for the purpose of software/firmware synchronization. This is its structure:
 
