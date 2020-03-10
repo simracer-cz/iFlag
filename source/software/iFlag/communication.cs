@@ -1,6 +1,7 @@
 using System;
 using System.IO.Ports;
 using System.Drawing;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 using iFlag.Properties;
@@ -12,7 +13,11 @@ namespace iFlag
         static SerialPort SP;                     // Serial port IO instance
         String[] ports;                           // List of known ports to scan through for device
         String port;                              // Currently open serial port name
-        byte tryPortIndex;                        // Index in list of `ports¨
+        byte tryPortIndex;                        // Index in list of `ports`
+
+        int[] bauds = new int[2] { 9600, 38400 }; // List of supported serial port baudrates
+        int baud;                                 // Currently used baudrate
+        byte tryBaudIndex;                        // Index in list of `bauds`
 
         bool deviceConnected;                     // Well, whether device is connected or not
         byte firmwareVersionMajor;                // Major firmware version of the device connected
@@ -72,7 +77,13 @@ namespace iFlag
             {
                 timeoutTimer.Enabled = false;
 
-                                                  // Cycle over the ports list eventually
+                                                  // Cycle over the baudrates list
+                if (tryBaudIndex >= bauds.Length)
+                {
+                    tryBaudIndex = 0;
+                    tryPortIndex++;
+                }
+                                                  // Cycle over the ports list every baudrates list cycle
                 if (tryPortIndex >= ports.Length)
                 {
                     commLabel.Text = "No device.";
@@ -82,9 +93,10 @@ namespace iFlag
                 try
                 {
                     port = ports[tryPortIndex];
-                    Console.WriteLine("Probing " + port + " port...");
+                    baud = bauds[tryBaudIndex];
+                    Console.WriteLine(string.Format("Probing port {0} at {1} bps...", port, baud));
                     if (SP != null && SP.IsOpen) SP.Close();
-                    SP = new SerialPort(port, 9600, Parity.None, 8);
+                    SP = new SerialPort(port, baud, Parity.None, 8);
                     SP.Open();
 
                                                   // If the device is present and physically connected,
@@ -100,7 +112,7 @@ namespace iFlag
 
                                                   // In case the device doesn't respond in time,
                                                   // prepare to try the next port in the list
-                tryPortIndex++;
+                tryBaudIndex++;
             }
             else
             {
@@ -109,49 +121,59 @@ namespace iFlag
             }
         }
 
+                                                  // Precondition incoming data.
+        private byte SP_ReadLine()
+        {
+            try
+            {
+                string line = Regex.Replace( SP.ReadLine(), @"[^0-9a-f]+", "");
+                if (line != "") return Convert.ToByte( line );
+                else return 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return 0;
+        }
+
                                                   // Ingress and digest serial data coming from the USB device.
                                                   // This one is a simple device, so only ping packets
                                                   // are arriving.
         private void SP_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
-            while (SP.IsOpen && SP.BytesToRead >= 8)
+            while (SP.IsOpen && SP.BytesToRead >= 8 && SP_ReadLine() == 0xFF)
             {
-                try
+                byte inByteExtra = SP_ReadLine();
+                byte major = SP_ReadLine();
+                byte minor = SP_ReadLine();
+                byte command = SP_ReadLine();
+                byte value = SP_ReadLine();
+                byte extra = SP_ReadLine();
+                byte more = SP_ReadLine();
+                // Console.WriteLine(string.Format("PACKET major:{0} minor:{1} command:{2} value:{3} extra:{4} more:{5}", major, minor, command, value, extra, more));
+
+                if (inByteExtra == 0xFF)
                 {
-                    byte inByte = Convert.ToByte(SP.ReadLine());
-                    byte inByteExtra = Convert.ToByte(SP.ReadLine());
-                    byte major = Convert.ToByte(SP.ReadLine());
-                    byte minor = Convert.ToByte(SP.ReadLine());
-                    byte command = Convert.ToByte(SP.ReadLine());
-                    byte value = Convert.ToByte(SP.ReadLine());
-                    SP.ReadLine();
-                    SP.ReadLine();
-                    if (inByte == 255 && inByteExtra == 255)
+                    switch (command)
                     {
-                        switch (command)
-                        {
-                            case 0xB0:            // ping beacon
-                                                  // In order to not try to communicate with other unrelated
-                                                  // devices on the serial bus device identifier is checked here.
-                                if (value == 0xD2)
+                        case 0xB0:            // ping beacon
+                                              // In order to not try to communicate with other unrelated
+                                              // devices on the serial bus device identifier is checked here.
+                            if (value == 0xD2)
+                            {
+                                if (!deviceConnected)
                                 {
-                                    if (!deviceConnected)
-                                    {
-                                        firmwareVersionMajor = major;
-                                        firmwareVersionMinor = minor;
-                                        startMatrix();
-                                    }
                                     deviceConnected = true;
-                                    lastPingTime = DateTime.Now;
-                                    initiationTimer.Stop();
+                                    firmwareVersionMajor = major;
+                                    firmwareVersionMinor = minor;
+                                    startMatrix();
                                 }
-                                break;
-                        }
+                                lastPingTime = DateTime.Now;
+                                initiationTimer.Stop();
+                            }
+                            break;
                     }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex);
                 }
             }
         }
@@ -162,7 +184,7 @@ namespace iFlag
             if (deviceConnected)
                 try
                 {
-                    SP.Write(data, 0, 8);
+                    SP.Write(data, 0, data.Length);
                 }
                 catch (Exception ex)
                 {

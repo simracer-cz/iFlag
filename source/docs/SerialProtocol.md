@@ -44,13 +44,13 @@ Aside of the data stream there are a few commands you can call up to at any plac
 ### Device-bound Commands
 
 - __DRAW__ (`A0`)
-The display driver operates with two buffers and switches between them. The incoming packets fill the buffer, which is not displayed until the buffers are latched with the DRAW command.
+The display driver operates with two buffers and switches between them. The incoming packets fill the buffer, which is not displayed until the buffers are latched with the `DRAW` command.
 
 - __BLINK__ (`A1`)
 Instructs the matrix to switch buffers timely based on the timer value given by the command's value. Value ranges from `1` (slow) to `5` (fast).
 
 - __LUMA__ (`A2`)
-Luminosity setting adjustment. The matrix will always start on 100%, but by using the LUMA command matrix can be instructed to use different percentage. Value ranges from `0` (no brightness) to `100` (full brightness).
+Luminosity setting adjustment. The matrix will always start on 100%, but by using the `LUMA` command matrix can be instructed to use different percentage. Value ranges from `0` (no brightness) to `100` (full brightness).
 
 - __RESET__ (`A9`)
 Resets the board at once.
@@ -59,7 +59,7 @@ Resets the board at once.
 ### Software-bound Commands
 
 - __PING__ (`B0`)
-The device continuously sends pings to the software to let it know about the _iFLAG_ presence. The PING command 
+The device continuously sends pings to the software to let it know about the _iFLAG_ presence. The `PING` command should be sent in roughly 2 Hz frequency (around 500ms interval between `PING` packets).
 
 Ping packets are similar to regular data packets with the difference that they contain device type identifier (`D2` for _iFLAG_) and firmware version data in them for the purpose of software/firmware synchronization. This is its structure:
 
@@ -75,6 +75,13 @@ Ping packets are similar to regular data packets with the difference that they c
 | 8 | Empty               | `0x00`        |
 
 
+Communication Speed
+-------------------
+
+Currently all serial communication happens in 9600 baudrate.
+
+_iFLAG_ will establish connection to 9600 as well as 38400 baudrate shall the firmware already support it, but _iFLAG_ device itself doesn't use this speed yet until the multi-speed support makes it into the stable release and ensures seamless down/upgrade of the firmware.
+
 
 
 
@@ -82,6 +89,6 @@ Ping packets are similar to regular data packets with the difference that they c
 
 
 ---
-© 2015-2019
+© 2015-2020
 [Petr.Vostřel.cz](http://petr.vostrel.cz),
 [simracer.cz](http://simracer.cz)

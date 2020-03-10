@@ -144,6 +144,8 @@ namespace iFlag
             resetOverlay();
             showFlag(NO_FLAG);
 
+            storeCommunication();
+
             Settings.Default.WindowState = this.WindowState;
             if (this.WindowState == FormWindowState.Normal) Settings.Default.WindowLocation = this.Location;
             Settings.Default.WindowTopMost = this.TopMost;
@@ -161,8 +163,6 @@ namespace iFlag
             Settings.Default.MatrixLuma = matrixLuma;
             Settings.Default.Updates = updatesLevel;
             Settings.Default.Save();
-
-            storeCommunication();
         }
 
                                                   // When the window moves,
@@ -248,11 +248,12 @@ namespace iFlag
                         updateSoftware();
                     }
                     hardwareLight.BackColor = Color.FromName("ForestGreen");
-                    commLabel.Text = "v" + firmwareVersionMajor + "." + firmwareVersionMinor + " @" + port;
+                    commLabel.Text = string.Format("v{0}.{1} @{2}", firmwareVersionMajor, firmwareVersionMinor, port);                 
                 }
             }
             else
             {
+                greeted = false;
                 hardwareLight.BackColor = Color.FromName("Red");
                 commLabel.Text = "";
             }
