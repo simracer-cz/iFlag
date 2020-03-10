@@ -516,7 +516,7 @@
             // connectTimer
             // 
             this.connectTimer.Enabled = true;
-            this.connectTimer.Interval = 3000;
+            this.connectTimer.Interval = 1000;
             this.connectTimer.Tick += new System.EventHandler(this.connectTimer_Tick);
             // 
             // simLight
