@@ -13,7 +13,7 @@ namespace iFlag
         static SerialPort SP;                     // Serial port IO instance
         String[] ports;                           // List of known ports to scan through for device
         String port;                              // Currently open serial port name
-        byte tryPortIndex;                        // Index in list of `ports¨
+        byte tryPortIndex;                        // Index in list of `ports`
 
         bool deviceConnected;                     // Well, whether device is connected or not
         byte firmwareVersionMajor;                // Major firmware version of the device connected
