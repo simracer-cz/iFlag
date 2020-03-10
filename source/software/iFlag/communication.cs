@@ -80,13 +80,13 @@ namespace iFlag
                                                   // Cycle over the ports list eventually
                 if (tryPortIndex >= ports.Length)
                 {
-                    commLabel.Text = "No device.";
                     tryPortIndex = 0;
                     tryBaudIndex++;
                 }
                                                   // Cycle over the baudrates list every ports list cycle
                 if (tryBaudIndex >= bauds.Length)
                 {
+                    commLabel.Text = "No device.";
                     tryBaudIndex = 0;
                 }
 
