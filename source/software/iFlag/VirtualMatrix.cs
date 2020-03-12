@@ -219,9 +219,12 @@ namespace iFlag
         public void Paint(byte[,,] matrix, bool force)
         {
             for (int f = 0; f < 2; f++)
+            {
                 for (int y = 0; y < 8; y++)
                     for (int x = 0; x < 8; x++)
                         PaintDot(f, x, y, Matrix[f, 8 - y - 1, x]);
+                MatrixLedBoxes[f].Image = PageFrames[f];
+            }
         }
 
                                                     // Paints a single dot of the matrix by paining a representation
