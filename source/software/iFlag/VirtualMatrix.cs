@@ -268,6 +268,7 @@ namespace iFlag
         public void SetBlinking(bool blinkFast)
         {
             pageFlipTimer.Interval = blinkFast ? 109 : 218;
+        }
 
                                                     // Physically change page to the given one
         private void SetPage(int page)
