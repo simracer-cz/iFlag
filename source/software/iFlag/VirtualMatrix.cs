@@ -210,10 +210,12 @@ namespace iFlag
         {
             Matrix = matrix;
             PaintMatrix();
+            Paint(matrix, false);
         }
 
-                                                    // Goes over each matrix dot to actually paint it
-        public void PaintMatrix()
+                                                    // Cycles over every dot of the matrix array
+                                                    // and if the dot differs (or `force`d) it gets painted
+        public void Paint(byte[,,] matrix, bool force)
         {
             for (int f = 0; f < 2; f++)
                 for (int y = 0; y < 8; y++)
@@ -321,8 +323,8 @@ namespace iFlag
             sizeToggle.BackgroundImage = new Bitmap(DotShapes[DotShapeIndex], DotSizes[nextSize]);
             shapeToggle.BackgroundImage = new Bitmap(DotShapes[nextShape], DotSizes[DotSizeIndex]);
 
-            PaintMatrix();
             SetSize();
+            Paint(Matrix, true);
         }
 
                                                     // Returns an index of the next dot shape in the cycle
