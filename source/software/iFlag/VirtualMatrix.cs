@@ -60,8 +60,9 @@ namespace iFlag
                                                     // making space and housing the UI controls under the matrix
         private int AdditionalHeight = 30;          
 
-                                                    // Array of bitmaps representing the matrix page frames
+                                                    // Array of graphic instances representing the matrix page frames
         private Bitmap[] PageFrames = new Bitmap[Pages];
+        private Graphics[] PageGraphics = new Graphics[Pages];
 
                                                     // Arrays of the physical LED dots and their masks
         private PictureBox[] MatrixLedBoxes = new PictureBox[Pages];
@@ -187,6 +188,14 @@ namespace iFlag
                 MatrixMaskBoxes[frame].Size = matrixBox.Size;
                 MatrixLedBoxes[frame].Size = matrixBox.Size;
                 MatrixLedBoxes[frame].Image = new Bitmap(PageFrames[frame], matrixBox.Size);
+
+                PageGraphics[frame] = Graphics.FromImage(PageFrames[frame]);
+                PageGraphics[frame].SmoothingMode = SmoothingMode.None;
+                PageGraphics[frame].CompositingQuality = CompositingQuality.HighSpeed;
+
+                                                    // Place the LED mask on top of the LEDs
+                MatrixMaskBoxes[frame].BackgroundImage = new Bitmap(DotShapes[DotShapeIndex], DotSizes[DotSizeIndex]);
+                matrixBox.Controls.SetChildIndex(MatrixLedBoxes[frame], frame + 1);
             }
 
             sizeToggle.Location = new Point(0, height);
@@ -216,10 +225,7 @@ namespace iFlag
                                                     // of an actual RGB LED chip with its 3 independent color components
         public void PaintDot(int frame, int x, int y, int color)
         {
-            using (Graphics g = Graphics.FromImage(PageFrames[frame]))
-            {
-                g.SmoothingMode = SmoothingMode.None;
-                g.CompositingQuality = CompositingQuality.HighSpeed;
+                var g = PageGraphics[frame];
 
                 int X = x * DotSizeX;
                 int Y = (Ys - y - 1) * DotSizeY;
@@ -250,19 +256,6 @@ namespace iFlag
                 g.FillRectangle(new SolidBrush(R), new Rectangle(chipX, chipY - 1, chipWidth, chipHeight));
                 g.FillRectangle(new SolidBrush(G), new Rectangle(chipX, chipY + 0, chipWidth, chipHeight));
                 g.FillRectangle(new SolidBrush(B), new Rectangle(chipX, chipY + 1, chipWidth, chipHeight));
-            }
-
-                                                    // Place the LED mask on top of the LEDs
-                                                    // once last frame of last page is painted
-            if (frame == Pages - 1 && x == 7 && y == 7)
-            {
-                for (int f = 0; f < Pages; f++)
-                {
-                    MatrixLedBoxes[f].Image = PageFrames[f];
-                    MatrixMaskBoxes[f].BackgroundImage = new Bitmap(DotShapes[DotShapeIndex], DotSizes[DotSizeIndex]);
-                    matrixBox.Controls.SetChildIndex(MatrixLedBoxes[f], f + 1);
-                }
-            }
         }
 
                                                     // Sets either slow or fast page flipping rate
