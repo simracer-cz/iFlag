@@ -209,8 +209,6 @@ namespace iFlag
                                                     // Method to pass matrix array to the virtual matrix
         public void SetMatrix(byte[, ,] matrix)
         {
-            Matrix = matrix;
-            PaintMatrix();
             Paint(matrix, false);
         }
 
@@ -222,7 +220,8 @@ namespace iFlag
             {
                 for (int y = 0; y < 8; y++)
                     for (int x = 0; x < 8; x++)
-                        PaintDot(f, x, y, Matrix[f, 8 - y - 1, x]);
+                        if (force || matrix[f, x, y] != Matrix[f, x, y])
+                            PaintDot(f, y, 8 - x - 1, Matrix[f, x, y] = matrix[f, x, y]);
                 MatrixLedBoxes[f].Image = PageFrames[f];
             }
         }
