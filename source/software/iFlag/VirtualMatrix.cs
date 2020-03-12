@@ -269,14 +269,19 @@ namespace iFlag
         public void SetBlinking(bool blinkFast)
         {
             pageFlipTimer.Interval = blinkFast ? 100 : 200;
+
+                                                    // Physically change page to the given one
+        private void SetPage(int page)
+        {
+            Page = page;
+            matrixBox.Controls.SetChildIndex(MatrixLedBoxes[Page], 1);
         }
 
                                                     // On every page flip timer tick,
                                                     // flip the page by bringing it to foreground
         private void pageFlipTimer_Tick(object sender, EventArgs e)
         {
-            Page = Page+++1 < Pages ? Page : 0;
-            matrixBox.Controls.SetChildIndex(MatrixLedBoxes[Page], 1);
+            SetPage(Page+++1 < Pages ? Page : 0);
         }
 
                                                     // Mouse handler for shape change UI control
