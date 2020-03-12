@@ -267,6 +267,7 @@ namespace iFlag
                                                     // Sets either slow or fast page flipping rate
         public void SetBlinking(bool blinkFast)
         {
+            SetPage(0);
             pageFlipTimer.Interval = blinkFast ? 109 : 218;
         }
 
