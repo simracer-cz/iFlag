@@ -126,6 +126,7 @@ namespace iFlag
             {
                 this.Location = Settings.Default.DisplayWindowLocation;
             }
+            this.Move += new System.EventHandler(this.SaveLocation);
         }
 
                                                     // Executes when leaving the app to persistently store
