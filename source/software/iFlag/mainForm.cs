@@ -244,7 +244,7 @@ namespace iFlag
                     {
                         greeted = true;
                         showSystemFlag(STARTUP_GREETING, 3);
-                        demoTimer.Enabled = true;
+                        indicateSimConnected(!(simConnected = false));
                         updateSoftware();
                     }
                     hardwareLight.BackColor = Color.FromName("ForestGreen");
