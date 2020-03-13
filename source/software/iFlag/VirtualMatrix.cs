@@ -60,8 +60,9 @@ namespace iFlag
                                                     // making space and housing the UI controls under the matrix
         private int AdditionalHeight = 30;          
 
-                                                    // Array of bitmaps representing the matrix page frames
+                                                    // Array of graphic instances representing the matrix page frames
         private Bitmap[] PageFrames = new Bitmap[Pages];
+        private Graphics[] PageGraphics = new Graphics[Pages];
 
                                                     // Arrays of the physical LED dots and their masks
         private PictureBox[] MatrixLedBoxes = new PictureBox[Pages];
@@ -125,6 +126,7 @@ namespace iFlag
             {
                 this.Location = Settings.Default.DisplayWindowLocation;
             }
+            this.Move += new System.EventHandler(this.SaveLocation);
         }
 
                                                     // Executes when leaving the app to persistently store
@@ -187,6 +189,14 @@ namespace iFlag
                 MatrixMaskBoxes[frame].Size = matrixBox.Size;
                 MatrixLedBoxes[frame].Size = matrixBox.Size;
                 MatrixLedBoxes[frame].Image = new Bitmap(PageFrames[frame], matrixBox.Size);
+
+                PageGraphics[frame] = Graphics.FromImage(PageFrames[frame]);
+                PageGraphics[frame].SmoothingMode = SmoothingMode.None;
+                PageGraphics[frame].CompositingQuality = CompositingQuality.HighSpeed;
+
+                                                    // Place the LED mask on top of the LEDs
+                MatrixMaskBoxes[frame].BackgroundImage = new Bitmap(DotShapes[DotShapeIndex], DotSizes[DotSizeIndex]);
+                matrixBox.Controls.SetChildIndex(MatrixLedBoxes[frame], frame + 1);
             }
 
             sizeToggle.Location = new Point(0, height);
@@ -199,27 +209,28 @@ namespace iFlag
                                                     // Method to pass matrix array to the virtual matrix
         public void SetMatrix(byte[, ,] matrix)
         {
-            Matrix = matrix;
-            PaintMatrix();
+            Paint(matrix, false);
         }
 
-                                                    // Goes over each matrix dot to actually paint it
-        public void PaintMatrix()
+                                                    // Cycles over every dot of the matrix array
+                                                    // and if the dot differs (or `force`d) it gets painted
+        public void Paint(byte[,,] matrix, bool force)
         {
             for (int f = 0; f < 2; f++)
+            {
                 for (int y = 0; y < 8; y++)
                     for (int x = 0; x < 8; x++)
-                        PaintDot(f, x, y, Matrix[f, 8 - y - 1, x]);
+                        if (force || matrix[f, x, y] != Matrix[f, x, y])
+                            PaintDot(f, y, 8 - x - 1, Matrix[f, x, y] = matrix[f, x, y]);
+                MatrixLedBoxes[f].Image = PageFrames[f];
+            }
         }
 
                                                     // Paints a single dot of the matrix by paining a representation
                                                     // of an actual RGB LED chip with its 3 independent color components
         public void PaintDot(int frame, int x, int y, int color)
         {
-            using (Graphics g = Graphics.FromImage(PageFrames[frame]))
-            {
-                g.SmoothingMode = SmoothingMode.None;
-                g.CompositingQuality = CompositingQuality.HighSpeed;
+                var g = PageGraphics[frame];
 
                 int X = x * DotSizeX;
                 int Y = (Ys - y - 1) * DotSizeY;
@@ -250,33 +261,27 @@ namespace iFlag
                 g.FillRectangle(new SolidBrush(R), new Rectangle(chipX, chipY - 1, chipWidth, chipHeight));
                 g.FillRectangle(new SolidBrush(G), new Rectangle(chipX, chipY + 0, chipWidth, chipHeight));
                 g.FillRectangle(new SolidBrush(B), new Rectangle(chipX, chipY + 1, chipWidth, chipHeight));
-            }
-
-                                                    // Place the LED mask on top of the LEDs
-                                                    // once last frame of last page is painted
-            if (frame == Pages - 1 && x == 7 && y == 7)
-            {
-                for (int f = 0; f < Pages; f++)
-                {
-                    MatrixLedBoxes[f].Image = PageFrames[f];
-                    MatrixMaskBoxes[f].BackgroundImage = new Bitmap(DotShapes[DotShapeIndex], DotSizes[DotSizeIndex]);
-                    matrixBox.Controls.SetChildIndex(MatrixLedBoxes[f], f + 1);
-                }
-            }
         }
 
                                                     // Sets either slow or fast page flipping rate
         public void SetBlinking(bool blinkFast)
         {
-            pageFlipTimer.Interval = blinkFast ? 100 : 200;
+            SetPage(0);
+            pageFlipTimer.Interval = blinkFast ? 109 : 218;
+        }
+
+                                                    // Physically change page to the given one
+        private void SetPage(int page)
+        {
+            Page = page;
+            matrixBox.Controls.SetChildIndex(MatrixLedBoxes[Page], 1);
         }
 
                                                     // On every page flip timer tick,
                                                     // flip the page by bringing it to foreground
         private void pageFlipTimer_Tick(object sender, EventArgs e)
         {
-            Page = Page+++1 < Pages ? Page : 0;
-            matrixBox.Controls.SetChildIndex(MatrixLedBoxes[Page], 1);
+            SetPage(Page+++1 < Pages ? Page : 0);
         }
 
                                                     // Mouse handler for shape change UI control
@@ -323,8 +328,8 @@ namespace iFlag
             sizeToggle.BackgroundImage = new Bitmap(DotShapes[DotShapeIndex], DotSizes[nextSize]);
             shapeToggle.BackgroundImage = new Bitmap(DotShapes[nextShape], DotSizes[DotSizeIndex]);
 
-            PaintMatrix();
             SetSize();
+            Paint(Matrix, true);
         }
 
                                                     // Returns an index of the next dot shape in the cycle

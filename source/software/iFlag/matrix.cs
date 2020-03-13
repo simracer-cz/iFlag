@@ -117,6 +117,9 @@ namespace iFlag
 
             if (worthBroadcasting())
             {
+                VDisplay.SetMatrix(matrix);
+                VDisplay.SetBlinking(blinkSpeed);
+
                 Console.WriteLine("{0} {1} {2}", DateTime.Now, flagOnDisplayLabel, overlaysOnDisplayLabel);
                 updateSignalLabels();
 
