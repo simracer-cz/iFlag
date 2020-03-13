@@ -247,14 +247,14 @@ namespace iFlag
                         indicateSimConnected(!(simConnected = false));
                         updateSoftware();
                     }
-                    hardwareLight.BackColor = Color.FromName("ForestGreen");
+                    hardwareLight.BackColor = Color.ForestGreen;
                     commLabel.Text = string.Format("v{0}.{1} @{2}", firmwareVersionMajor, firmwareVersionMinor, port);                 
                 }
             }
             else
             {
                 greeted = false;
-                hardwareLight.BackColor = Color.FromName("Red");
+                hardwareLight.BackColor = Color.Red;
                 commLabel.Text = "";
             }
 
@@ -268,7 +268,7 @@ namespace iFlag
         {
             if (connected && !simConnected)
             {
-                simLight.BackColor = Color.FromName("ForestGreen");
+                simLight.BackColor = Color.ForestGreen;
 
                 demoMenuItem.Enabled = false;
                 demoTimer.Enabled = false;
@@ -276,7 +276,7 @@ namespace iFlag
             }
             else if (!connected && simConnected)
             {
-                simLight.BackColor = Color.FromName("Red");
+                simLight.BackColor = Color.Red;
 
                 demoMenuItem.Enabled = true;
                 demoTimer.Enabled = true;

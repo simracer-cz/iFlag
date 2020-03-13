@@ -53,7 +53,7 @@ namespace iFlag
                                                   // with the firmware distributed along the software
         private void updateFirmware()
         {
-            hardwareLight.BackColor = Color.FromName("Blue");
+            hardwareLight.BackColor = Color.Blue;
             commLabel.Text = string.Format("Flashing {2} with v{0}.{1}...", firmwareMajor, firmwareMinor, port);
             Console.WriteLine(commLabel.Text);
                 
@@ -324,8 +324,8 @@ namespace iFlag
         private void indicateUpdatesAvailable()
         {
             updateLinkLabel.Text = "**Update available**";
-            updateLinkLabel.LinkColor = Color.FromName("Gold");
-            updateLinkLabel.BackColor = Color.FromName("Black");
+            updateLinkLabel.LinkColor = Color.Gold;
+            updateLinkLabel.BackColor = Color.Black;
             updateLinkLabel.Location = new Point(this.Width - updateLinkLabel.Width - 5, updateLinkLabel.Location.Y);
             updateLinkLabel.Show();
         }
@@ -339,8 +339,8 @@ namespace iFlag
             }
 
             updateLinkLabel.Text = "Up-to-date";
-            updateLinkLabel.LinkColor = Color.FromName("Gray");
-            updateLinkLabel.BackColor = Color.FromName("Transparent");
+            updateLinkLabel.LinkColor = Color.Gray;
+            updateLinkLabel.BackColor = Color.Transparent;
             updateLinkLabel.Location = new Point(this.Width - updateLinkLabel.Width - 5, updateLinkLabel.Location.Y);
             updateLinkLabel.Show();
         }
