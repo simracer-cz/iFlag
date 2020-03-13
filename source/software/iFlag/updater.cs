@@ -74,9 +74,6 @@ namespace iFlag
             process.WaitForExit();
             Console.WriteLine(info.Arguments);
             Console.WriteLine(process.ExitCode);
-
-            hardwareLight.BackColor = Color.Red;
-            commLabel.Text = "";
         }
 
                                                   // Runs a separate thread, which will check for app updates
