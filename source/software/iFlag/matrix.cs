@@ -98,7 +98,6 @@ namespace iFlag
                                                   // and returns `true` if not exactly the same
         private bool worthBroadcasting()
         {
-
             for (int f = 0; f < 2; f++)
                 for (int y = 0; y < 8; y++)
                     for (int x = 0; x < 8; x++)
@@ -132,7 +131,6 @@ namespace iFlag
             return true;
         }
 
-
                                                   // Processes the matrix pixels into data packets
                                                   // and sends them out through the USB connection
         private bool matrixToDevice()
@@ -153,11 +151,10 @@ namespace iFlag
                             Convert.ToByte( matrixDot( frame, x + 3, y ) ), // 00..FE
                             0x00,
                         });
-                if (frame == 0) SP_SendData(COMMAND_DRAW);
-                else SP_SendData(blinkSpeed ? COMMAND_BLINK_FAST : COMMAND_BLINK_SLOW);
+                SP_SendData(COMMAND_DRAW);
             }
 
-            SP_SendData(COMMAND_DRAW);
+            SP_SendData(blinkSpeed ? COMMAND_BLINK_FAST : COMMAND_BLINK_SLOW);
 
             return true;
         }
