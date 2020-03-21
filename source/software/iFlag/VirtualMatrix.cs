@@ -124,11 +124,11 @@ namespace iFlag
                                                     // settings from the persistent storage
         private void VirtualMatrix_Load(object sender, EventArgs e)
         {
-            ChangeShape(Settings.Default.DisplayDotShape);
-            ChangeSize(Settings.Default.DisplayDotSize);
-            if (!Settings.Default.DisplayWindowLocation.IsEmpty)
+            ChangeShape(Settings.Default.VirtualDotShape);
+            ChangeSize(Settings.Default.VirtualDotSize);
+            if (!Settings.Default.VirtualWindowLocation.IsEmpty)
             {
-                this.Location = Settings.Default.DisplayWindowLocation;
+                this.Location = Settings.Default.VirtualWindowLocation;
             }
             this.Move += new System.EventHandler(this.SaveLocation);
         }
@@ -137,9 +137,9 @@ namespace iFlag
                                                     // window's settings
         private void VirtualMatrix_Close(object sender, FormClosingEventArgs e)
         {
-            Settings.Default.DisplayWindowLocation = this.Location;
-            Settings.Default.DisplayDotShape = DotShapeIndex;
-            Settings.Default.DisplayDotSize = DotSizeIndex;
+            Settings.Default.VirtualWindowLocation = this.Location;
+            Settings.Default.VirtualDotShape = DotShapeIndex;
+            Settings.Default.VirtualDotSize = DotSizeIndex;
             Settings.Default.Save();
         }
 
@@ -169,7 +169,7 @@ namespace iFlag
                                                     // Saves window location on window drag
         private void SaveLocation(object sender, EventArgs e)
         {
-            Settings.Default.DisplayWindowLocation = this.Location;
+            Settings.Default.VirtualWindowLocation = this.Location;
             Settings.Default.Save();
         }
 

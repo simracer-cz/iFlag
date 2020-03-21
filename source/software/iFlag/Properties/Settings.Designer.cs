@@ -242,36 +242,36 @@ namespace iFlag.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
-        public global::System.Drawing.Point DisplayWindowLocation {
+        public global::System.Drawing.Point VirtualWindowLocation {
             get {
-                return ((global::System.Drawing.Point)(this["DisplayWindowLocation"]));
+                return ((global::System.Drawing.Point)(this["VirtualWindowLocation"]));
             }
             set {
-                this["DisplayWindowLocation"] = value;
+                this["VirtualWindowLocation"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int DisplayDotShape {
+        public int VirtualDotShape {
             get {
-                return ((int)(this["DisplayDotShape"]));
+                return ((int)(this["VirtualDotShape"]));
             }
             set {
-                this["DisplayDotShape"] = value;
+                this["VirtualDotShape"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int DisplayDotSize {
+        public int VirtualDotSize {
             get {
-                return ((int)(this["DisplayDotSize"]));
+                return ((int)(this["VirtualDotSize"]));
             }
             set {
-                this["DisplayDotSize"] = value;
+                this["VirtualDotSize"] = value;
             }
         }
     }
