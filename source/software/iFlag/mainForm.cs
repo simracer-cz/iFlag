@@ -256,6 +256,7 @@ namespace iFlag
                 greeted = false;
                 hardwareLight.BackColor = Color.Red;
                 commLabel.Text = "";
+                indicateSimConnected(false);
             }
 
             detectSDK();
