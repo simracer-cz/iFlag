@@ -48,8 +48,7 @@ namespace iFlag
             flagLabel.Text = appMenuItem.Text = String.Format("iFlag {0}", version);
             this.updatesMenuItem.Visible = updatable;
 
-            VDisplay = new VirtualMatrix();
-            VDisplay.Show(this);
+            VDisplay = new VirtualMatrix(this);
 
                                                   // Initialize flag modules
             startCommunication();
