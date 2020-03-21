@@ -415,11 +415,13 @@ namespace iFlag
             {
                 virtualEnabledMenuItem.Checked = false;
                 virtualAlwaysMenuItem.Enabled = false;
+                virtualResetMenuItem.Enabled = false;
             }
             else
             {
                 virtualEnabledMenuItem.Checked = true;
                 virtualAlwaysMenuItem.Enabled = true;
+                virtualResetMenuItem.Enabled = true;
             }
 
             VDisplay.Visible = Settings.Default.ShowVirtual = virtualEnabledMenuItem.Checked;
