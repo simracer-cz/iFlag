@@ -154,7 +154,7 @@ namespace iFlag
                                                   // such as yellows with a green flag.
         private bool flagsEveryTick(long flagID)
         {
-            if (locationSpecificFlags())
+            if (locationSpecificFlags(flagID))
             {
                 return false;
             }
@@ -164,16 +164,19 @@ namespace iFlag
             }
         }
 
-        private bool locationSpecificFlags()
+        private bool locationSpecificFlags(long flagID)
         {
             if (inPitStall)
             {
-                float repairsLeft = (float)sdk.GetData("PitRepairLeft");
-                float optRepairsLeft = (float)sdk.GetData("PitOptRepairLeft");
+                if (!Convert.ToBoolean(flagID & irsdk_checkered))
+                {
+                    float repairsLeft = (float)sdk.GetData("PitRepairLeft");
+                    float optRepairsLeft = (float)sdk.GetData("PitOptRepairLeft");
 
-                if (repairsLeft > 0) return showFlag(REPAIRS_MANDATORY);
-                if (repairsLeft == 0 && optRepairsLeft > 0) return showFlag(REPAIRS_OPTIONAL);
-                if (repairsLeft == 0 && optRepairsLeft == 0) return showFlag(REPAIRS_DONE);
+                    if (repairsLeft > 0) return showFlag(REPAIRS_MANDATORY);
+                    if (repairsLeft == 0 && optRepairsLeft > 0) return showFlag(REPAIRS_OPTIONAL);
+                    if (repairsLeft == 0 && optRepairsLeft == 0) return showFlag(REPAIRS_DONE);
+                }
             }
             if (onPitEntryRoad || onPitRoad)
             {
