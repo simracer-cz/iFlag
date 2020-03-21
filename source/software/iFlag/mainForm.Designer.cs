@@ -63,6 +63,7 @@
             this.virtualMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.virtualEnabledMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.virtualAlwaysMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.virtualResetMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.demoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alwaysOnTopMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsMenuSeparator = new System.Windows.Forms.ToolStripSeparator();
@@ -390,6 +391,7 @@
             this.virtualMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.virtualEnabledMenuItem,
             this.virtualAlwaysMenuItem,
+            this.virtualResetMenuItem});
             this.virtualMenuItem.Name = "virtualMenuItem";
             this.virtualMenuItem.Size = new System.Drawing.Size(179, 22);
             this.virtualMenuItem.Text = "Virtual Device";
@@ -409,6 +411,14 @@
             this.virtualAlwaysMenuItem.Text = "Always Visible";
             this.virtualAlwaysMenuItem.ToolTipText = "Show either always OR when driving only (and in demo mode)";
             this.virtualAlwaysMenuItem.Click += new System.EventHandler(this.virtualAlwaysMenuItem_Click);
+            // virtualResetMenuItem
+            // 
+            this.virtualResetMenuItem.Name = "virtualResetMenuItem";
+            this.virtualResetMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.virtualResetMenuItem.Text = "Reset";
+            this.virtualResetMenuItem.ToolTipText = "Useful to recover a window lost off-screen";
+            this.virtualResetMenuItem.Click += new System.EventHandler(this.virtualResetMenuItem_Click);
+            // 
             // demoMenuItem
             // 
             this.demoMenuItem.Checked = true;
@@ -755,6 +765,7 @@
         private System.Windows.Forms.ToolStripMenuItem virtualMenuItem;
         public System.Windows.Forms.ToolStripMenuItem virtualEnabledMenuItem;
         public System.Windows.Forms.ToolStripMenuItem virtualAlwaysMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem virtualResetMenuItem;
     }
 }
 

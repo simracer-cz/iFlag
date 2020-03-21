@@ -438,5 +438,10 @@ namespace iFlag
 
             Settings.Default.VirtualAlways = virtualAlwaysMenuItem.Checked;
         }
+
+        private void virtualResetMenuItem_Click(object sender, EventArgs e)
+        {
+            VDisplay.Reset();
+        }
     }
 }

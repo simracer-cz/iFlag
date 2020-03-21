@@ -130,7 +130,20 @@ namespace iFlag
             {
                 this.Location = Settings.Default.VirtualWindowLocation;
             }
+            else
+            {
+                Reset();
+            }
             this.Move += new System.EventHandler(this.SaveLocation);
+        }
+
+                                                    // Resets the virtual device window's position
+        public void Reset()
+        {
+            System.Drawing.Point screenCenter = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Location;
+            screenCenter.X += System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width / 2 - this.Width / 2;
+            screenCenter.Y += System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height / 2 - this.Height / 2;
+            this.Location = screenCenter;
         }
 
                                                     // Executes when leaving the app to persistently store
