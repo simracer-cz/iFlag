@@ -175,12 +175,13 @@ namespace iFlag
         {
             int width = Xs * DotSizeX;
             int height = Ys * DotSizeY;
+            int clientHeight = this.ClientSize.Height;
             Size matrixSize = new Size(width, height);
 
             this.matrixBox.Visible = logoPicture.Visible = false;
             
-            this.Location = new Point(this.Location.X, this.Location.Y + (this.ClientSize.Height - height - AdditionalHeight));
             this.ClientSize = new Size(width, height + AdditionalHeight);
+            this.Location = new Point(this.Location.X, this.Location.Y + (clientHeight - height - AdditionalHeight));
 
             matrixBox.Size = new Size(width, height);
 
