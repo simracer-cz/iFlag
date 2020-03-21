@@ -286,6 +286,15 @@ namespace iFlag
         private void pageFlipTimer_Tick(object sender, EventArgs e)
         {
             SetPage(Page+++1 < Pages ? Page : 0);
+            bool state;
+            if (Main.virtualEnabledMenuItem.Checked)
+            {
+            }
+            else
+            {
+                state = false;
+            }
+            this.Visible = state;
         }
 
                                                     // Mouse handler for shape change UI control

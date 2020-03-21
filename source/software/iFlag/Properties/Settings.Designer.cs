@@ -274,5 +274,17 @@ namespace iFlag.Properties {
                 this["VirtualDotSize"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ShowVirtual {
+            get {
+                return ((bool)(this["ShowVirtual"]));
+            }
+            set {
+                this["ShowVirtual"] = value;
+            }
+        }
     }
 }

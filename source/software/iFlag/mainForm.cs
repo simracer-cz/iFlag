@@ -86,6 +86,7 @@ namespace iFlag
             this.closedPitsOverlayModuleMenuItem.Checked = Settings.Default.ShowClosedPitsOverlay;
             this.repairsOverlayModuleMenuItem.Checked = Settings.Default.ShowRepairsOverlay;
             this.pitSpeedLimitModuleMenuItem.Checked = Settings.Default.ShowPitSpeedLimit;
+            this.virtualEnabledMenuItem.Checked = Settings.Default.ShowVirtual;
 
             pitSpeedMap = Settings.Default.PitSpeedMap;
             switch (pitSpeedMap)
@@ -167,6 +168,7 @@ namespace iFlag
             Settings.Default.UsbConnector = connectorSide;
             Settings.Default.MatrixLuma = matrixLuma;
             Settings.Default.Updates = updatesLevel;
+            Settings.Default.ShowVirtual = this.virtualEnabledMenuItem.Checked;
             Settings.Default.Save();
         }
 
@@ -403,6 +405,20 @@ namespace iFlag
             multiFlagMessage.Hide();
             Settings.Default.AllowMultiple = true;
             Settings.Default.Save();
+        }
+
+        private void virtualEnabledMenuItem_Click(object sender, EventArgs e)
+        {
+            if (virtualEnabledMenuItem.Checked)
+            {
+                virtualEnabledMenuItem.Checked = false;
+            }
+            else
+            {
+                virtualEnabledMenuItem.Checked = true;
+            }
+
+            VDisplay.Visible = Settings.Default.ShowVirtual = virtualEnabledMenuItem.Checked;
         }
     }
 }

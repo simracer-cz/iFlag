@@ -60,6 +60,8 @@
             this.highBrightnessMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mediumBrightnessMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lowBrightnessMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.virtualMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.virtualEnabledMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.demoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alwaysOnTopMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsMenuSeparator = new System.Windows.Forms.ToolStripSeparator();
@@ -101,6 +103,7 @@
             this.connectorMenuItem,
             this.modulesMenuItem,
             this.brightnessMenuItem,
+            this.virtualMenuItem,
             this.demoMenuItem,
             this.alwaysOnTopMenuItem,
             this.optionsMenuSeparator,
@@ -381,6 +384,21 @@
             this.lowBrightnessMenuItem.Text = "Low";
             this.lowBrightnessMenuItem.Click += new System.EventHandler(this.brightnessMenuItem_Click);
             // 
+            // virtualMenuItem
+            // 
+            this.virtualMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.virtualEnabledMenuItem,
+            this.virtualMenuItem.Name = "virtualMenuItem";
+            this.virtualMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.virtualMenuItem.Text = "Virtual Device";
+            this.virtualMenuItem.ToolTipText = "A virtual on-screen matrix (experimental)";
+            // 
+            // virtualEnabledMenuItem
+            // 
+            this.virtualEnabledMenuItem.Name = "virtualEnabledMenuItem";
+            this.virtualEnabledMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.virtualEnabledMenuItem.Text = "Enabled";
+            this.virtualEnabledMenuItem.Click += new System.EventHandler(this.virtualEnabledMenuItem_Click);
             // demoMenuItem
             // 
             this.demoMenuItem.Checked = true;
@@ -724,6 +742,8 @@
         private System.Windows.Forms.Panel multiFlagMessage;
         private System.Windows.Forms.Label multiFlagMessageLabel;
         private System.Windows.Forms.Button multiFlagMessageDismissButton;
+        private System.Windows.Forms.ToolStripMenuItem virtualMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem virtualEnabledMenuItem;
     }
 }
 
