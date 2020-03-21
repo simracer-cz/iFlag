@@ -43,7 +43,6 @@
             // pageFlipTimer
             // 
             this.pageFlipTimer.Enabled = true;
-            this.pageFlipTimer.Interval = 100;
             this.pageFlipTimer.Tick += new System.EventHandler(this.pageFlipTimer_Tick);
             // 
             // sizeToggle
