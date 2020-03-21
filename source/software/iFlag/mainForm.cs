@@ -34,7 +34,9 @@ namespace iFlag
 
         int processNo;                            // Number of the currently running order (1 to X)
 
-        public VirtualMatrix VDisplay;
+        public VirtualMatrix VDisplay;            // Instance of virtual on-screen device
+        int virtualDotSize;                       // Current size of the dot
+        int virtualDotShape;                      // Current shape of the dot
 
         public mainForm()
         {
@@ -46,8 +48,7 @@ namespace iFlag
             flagLabel.Text = appMenuItem.Text = String.Format("iFlag {0}", version);
             this.updatesMenuItem.Visible = updatable;
 
-            VDisplay = new VirtualMatrix();
-            VDisplay.Show(this);
+            VDisplay = new VirtualMatrix(this);
 
                                                   // Initialize flag modules
             startCommunication();
@@ -86,6 +87,24 @@ namespace iFlag
             this.closedPitsOverlayModuleMenuItem.Checked = Settings.Default.ShowClosedPitsOverlay;
             this.repairsOverlayModuleMenuItem.Checked = Settings.Default.ShowRepairsOverlay;
             this.pitSpeedLimitModuleMenuItem.Checked = Settings.Default.ShowPitSpeedLimit;
+            this.virtualEnabledMenuItem.Checked = Settings.Default.ShowVirtual;
+            this.virtualAlwaysMenuItem.Checked = Settings.Default.VirtualAlways;
+
+            virtualDotSize = Settings.Default.VirtualDotSize;
+            switch (virtualDotSize)
+            {
+                case 0: virtualSizeLargeMenuItem.Checked = true; break;
+                case 1: virtualSizeMediumMenuItem.Checked = true; break;
+                case 2: virtualSizeSmallMenuItem.Checked = true; break;
+            }
+
+            virtualDotShape = Settings.Default.VirtualDotShape;
+            switch (virtualDotShape)
+            {
+                case 0: virtualShapeRoundMenuItem.Checked = true; break;
+                case 1: virtualShapeSquareMenuItem.Checked = true; break;
+                case 2: virtualShapeDiamondMenuItem.Checked = true; break;
+            }
 
             pitSpeedMap = Settings.Default.PitSpeedMap;
             switch (pitSpeedMap)
@@ -167,6 +186,10 @@ namespace iFlag
             Settings.Default.UsbConnector = connectorSide;
             Settings.Default.MatrixLuma = matrixLuma;
             Settings.Default.Updates = updatesLevel;
+            Settings.Default.ShowVirtual = this.virtualEnabledMenuItem.Checked;
+            Settings.Default.VirtualAlways = this.virtualAlwaysMenuItem.Checked;
+            Settings.Default.VirtualDotSize = virtualDotSize;
+            Settings.Default.VirtualDotShape = virtualDotShape;
             Settings.Default.Save();
         }
 
@@ -403,6 +426,107 @@ namespace iFlag
             multiFlagMessage.Hide();
             Settings.Default.AllowMultiple = true;
             Settings.Default.Save();
+        }
+
+        private void virtualEnabledMenuItem_Click(object sender, EventArgs e)
+        {
+            if (virtualEnabledMenuItem.Checked)
+            {
+                virtualEnabledMenuItem.Checked = false;
+                virtualAlwaysMenuItem.Enabled = false;
+                virtualSizeMenuItem.Enabled = false;
+                virtualShapeMenuItem.Enabled = false;
+                virtualResetMenuItem.Enabled = false;
+            }
+            else
+            {
+                virtualEnabledMenuItem.Checked = true;
+                virtualAlwaysMenuItem.Enabled = true;
+                virtualSizeMenuItem.Enabled = true;
+                virtualShapeMenuItem.Enabled = true;
+                virtualResetMenuItem.Enabled = true;
+            }
+
+            VDisplay.Visible = Settings.Default.ShowVirtual = virtualEnabledMenuItem.Checked;
+        }
+
+        private void virtualSizeMenuItem_Click(object sender, EventArgs e)
+        {
+            switch (((ToolStripMenuItem)sender).Name)
+            {
+                case "virtualSizeLargeMenuItem":         virtualDotSize = 0; break;
+                case "virtualSizeMediumMenuItem":        virtualDotSize = 1; break;
+                case "virtualSizeSmallMenuItem":         virtualDotSize = 2; break;
+            }
+            virtualSizeMenuItem_Set(virtualDotSize);
+            VDisplay.ChangeSize(virtualDotSize);
+        }
+
+        public void virtualSizeMenuItem_Set(int size)
+        {
+            virtualDotSize = size;
+
+            virtualSizeLargeMenuItem.Checked = false;
+            virtualSizeMediumMenuItem.Checked = false;
+            virtualSizeSmallMenuItem.Checked = false;
+
+            switch (size)
+            {
+                case 0:    virtualSizeLargeMenuItem.Checked = true;  break;
+                case 1:    virtualSizeMediumMenuItem.Checked = true; break;
+                case 2:    virtualSizeSmallMenuItem.Checked = true;  break;
+            }
+
+            Settings.Default.VirtualDotSize = virtualDotSize = size;
+        }
+
+        private void virtualShapeMenuItem_Click(object sender, EventArgs e)
+        {
+            switch (((ToolStripMenuItem)sender).Name)
+            {
+                case "virtualShapeRoundMenuItem":         virtualDotShape = 0; break;
+                case "virtualShapeSquareMenuItem":        virtualDotShape = 1; break;
+                case "virtualShapeDiamondMenuItem":       virtualDotShape = 2; break;
+            }
+            virtualShapeMenuItem_Set(virtualDotShape);
+            VDisplay.ChangeShape(virtualDotShape);
+        }
+
+        public void virtualShapeMenuItem_Set(int shape)
+        {
+            virtualDotShape = shape;
+
+            virtualShapeRoundMenuItem.Checked = false;
+            virtualShapeSquareMenuItem.Checked = false;
+            virtualShapeDiamondMenuItem.Checked = false;
+
+            switch (shape)
+            {
+                case 0:    virtualShapeRoundMenuItem.Checked = true;   break;
+                case 1:    virtualShapeSquareMenuItem.Checked = true;  break;
+                case 2:    virtualShapeDiamondMenuItem.Checked = true; break;
+            }
+
+            Settings.Default.VirtualDotShape = virtualDotShape = shape;
+        }
+
+        private void virtualAlwaysMenuItem_Click(object sender, EventArgs e)
+        {
+            if (virtualAlwaysMenuItem.Checked)
+            {
+                virtualAlwaysMenuItem.Checked = false;
+            }
+            else
+            {
+                virtualAlwaysMenuItem.Checked = true;
+            }
+
+            Settings.Default.VirtualAlways = virtualAlwaysMenuItem.Checked;
+        }
+
+        private void virtualResetMenuItem_Click(object sender, EventArgs e)
+        {
+            VDisplay.Reset();
         }
     }
 }

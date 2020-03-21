@@ -60,6 +60,18 @@
             this.highBrightnessMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mediumBrightnessMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lowBrightnessMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.virtualMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.virtualEnabledMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.virtualAlwaysMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.virtualSizeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.virtualSizeLargeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.virtualSizeMediumMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.virtualSizeSmallMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.virtualShapeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.virtualShapeRoundMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.virtualShapeSquareMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.virtualShapeDiamondMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.virtualResetMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.demoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alwaysOnTopMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsMenuSeparator = new System.Windows.Forms.ToolStripSeparator();
@@ -101,6 +113,7 @@
             this.connectorMenuItem,
             this.modulesMenuItem,
             this.brightnessMenuItem,
+            this.virtualMenuItem,
             this.demoMenuItem,
             this.alwaysOnTopMenuItem,
             this.optionsMenuSeparator,
@@ -380,6 +393,110 @@
             this.lowBrightnessMenuItem.Size = new System.Drawing.Size(119, 22);
             this.lowBrightnessMenuItem.Text = "Low";
             this.lowBrightnessMenuItem.Click += new System.EventHandler(this.brightnessMenuItem_Click);
+            // 
+            // virtualMenuItem
+            // 
+            this.virtualMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.virtualEnabledMenuItem,
+            this.virtualAlwaysMenuItem,
+            this.virtualSizeMenuItem,
+            this.virtualShapeMenuItem,
+            this.virtualResetMenuItem});
+            this.virtualMenuItem.Name = "virtualMenuItem";
+            this.virtualMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.virtualMenuItem.Text = "Virtual Device";
+            this.virtualMenuItem.ToolTipText = "A virtual on-screen matrix (experimental)";
+            // 
+            // virtualEnabledMenuItem
+            // 
+            this.virtualEnabledMenuItem.Name = "virtualEnabledMenuItem";
+            this.virtualEnabledMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.virtualEnabledMenuItem.Text = "Enabled";
+            this.virtualEnabledMenuItem.Click += new System.EventHandler(this.virtualEnabledMenuItem_Click);
+            // 
+            // virtualAlwaysMenuItem
+            // 
+            this.virtualAlwaysMenuItem.Name = "virtualAlwaysMenuItem";
+            this.virtualAlwaysMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.virtualAlwaysMenuItem.Text = "Always Visible";
+            this.virtualAlwaysMenuItem.ToolTipText = "Show either always OR when driving only (and in demo mode)";
+            this.virtualAlwaysMenuItem.Click += new System.EventHandler(this.virtualAlwaysMenuItem_Click);
+            // 
+            // virtualSizeMenuItem
+            // 
+            this.virtualSizeMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.virtualSizeLargeMenuItem,
+            this.virtualSizeMediumMenuItem,
+            this.virtualSizeSmallMenuItem});
+            this.virtualSizeMenuItem.Name = "virtualSizeMenuItem";
+            this.virtualSizeMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.virtualSizeMenuItem.Text = "Size";
+            // 
+            // virtualSizeLargeMenuItem
+            // 
+            this.virtualSizeLargeMenuItem.Name = "virtualSizeLargeMenuItem";
+            this.virtualSizeLargeMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.virtualSizeLargeMenuItem.Text = "Large";
+            this.virtualSizeLargeMenuItem.ToolTipText = "Large virtual device (30px dot)";
+            this.virtualSizeLargeMenuItem.Click += new System.EventHandler(this.virtualSizeMenuItem_Click);
+            // 
+            // virtualSizeMediumMenuItem
+            // 
+            this.virtualSizeMediumMenuItem.Name = "virtualSizeMediumMenuItem";
+            this.virtualSizeMediumMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.virtualSizeMediumMenuItem.Text = "Medium";
+            this.virtualSizeMediumMenuItem.ToolTipText = "Medium virtual device (24px dot)";
+            this.virtualSizeMediumMenuItem.Click += new System.EventHandler(this.virtualSizeMenuItem_Click);
+            // 
+            // virtualSizeSmallMenuItem
+            // 
+            this.virtualSizeSmallMenuItem.Name = "virtualSizeSmallMenuItem";
+            this.virtualSizeSmallMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.virtualSizeSmallMenuItem.Text = "Small";
+            this.virtualSizeSmallMenuItem.ToolTipText = "Small virtual device (20px dot)";
+            this.virtualSizeSmallMenuItem.Click += new System.EventHandler(this.virtualSizeMenuItem_Click);
+            // 
+            // virtualShapeMenuItem
+            // 
+            this.virtualShapeMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.virtualShapeRoundMenuItem,
+            this.virtualShapeSquareMenuItem,
+            this.virtualShapeDiamondMenuItem});
+            this.virtualShapeMenuItem.Name = "virtualShapeMenuItem";
+            this.virtualShapeMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.virtualShapeMenuItem.Text = "Dot Shape";
+            // 
+            // virtualShapeRoundMenuItem
+            // 
+            this.virtualShapeRoundMenuItem.Name = "virtualShapeRoundMenuItem";
+            this.virtualShapeRoundMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.virtualShapeRoundMenuItem.Text = "Round";
+            this.virtualShapeRoundMenuItem.ToolTipText = "Circle-shaped LEDs";
+            this.virtualShapeRoundMenuItem.Click += new System.EventHandler(this.virtualShapeMenuItem_Click);
+            // 
+            // virtualShapeSquareMenuItem
+            // 
+            this.virtualShapeSquareMenuItem.Name = "virtualShapeSquareMenuItem";
+            this.virtualShapeSquareMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.virtualShapeSquareMenuItem.Text = "Square";
+            this.virtualShapeSquareMenuItem.ToolTipText = "Square-shaped LEDs";
+            this.virtualShapeSquareMenuItem.Click += new System.EventHandler(this.virtualShapeMenuItem_Click);
+            // 
+            // virtualShapeDiamondMenuItem
+            // 
+            this.virtualShapeDiamondMenuItem.Name = "virtualShapeDiamondMenuItem";
+            this.virtualShapeDiamondMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.virtualShapeDiamondMenuItem.Text = "Diamond";
+            this.virtualShapeDiamondMenuItem.ToolTipText = "Diamond-shaped LEDs";
+            this.virtualShapeDiamondMenuItem.Click += new System.EventHandler(this.virtualShapeMenuItem_Click);
+            // 
+            // virtualResetMenuItem
+            // 
+            this.virtualResetMenuItem.Name = "virtualResetMenuItem";
+            this.virtualResetMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.virtualResetMenuItem.Text = "Reset";
+            this.virtualResetMenuItem.ToolTipText = "Useful to recover a window lost off-screen";
+            this.virtualResetMenuItem.Click += new System.EventHandler(this.virtualResetMenuItem_Click);
             // 
             // demoMenuItem
             // 
@@ -676,7 +793,7 @@
         private System.Windows.Forms.Label simLight;
         private System.Windows.Forms.Timer updateTimer;
         private System.Windows.Forms.Timer demoTimer;
-        private System.Windows.Forms.ToolStripMenuItem demoMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem demoMenuItem;
         private System.Windows.Forms.ToolStripMenuItem connectorMenuItem;
         private System.Windows.Forms.ToolStripMenuItem connectorTopMenuItem;
         private System.Windows.Forms.ToolStripMenuItem connectorLeftMenuItem;
@@ -724,6 +841,18 @@
         private System.Windows.Forms.Panel multiFlagMessage;
         private System.Windows.Forms.Label multiFlagMessageLabel;
         private System.Windows.Forms.Button multiFlagMessageDismissButton;
+        private System.Windows.Forms.ToolStripMenuItem virtualMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem virtualEnabledMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem virtualAlwaysMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem virtualSizeMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem virtualSizeLargeMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem virtualSizeMediumMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem virtualSizeSmallMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem virtualShapeMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem virtualShapeRoundMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem virtualShapeSquareMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem virtualShapeDiamondMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem virtualResetMenuItem;
     }
 }
 

@@ -7,7 +7,7 @@ namespace iFlag
 {
     public partial class mainForm : Form
     {
-        bool sessionDetected;
+        public bool sessionDetected;
         string sessionInfo;
         string eventType;
         int carID;

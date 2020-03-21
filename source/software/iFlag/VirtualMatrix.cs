@@ -9,6 +9,8 @@ namespace iFlag
 {
     public partial class VirtualMatrix : Form
     {
+        private mainForm Main;
+
         public Color[] COLORS = new Color[16]
         {
             Color.Black,            // 0x00 | black
@@ -74,9 +76,11 @@ namespace iFlag
         private ToolTip helperTip = new ToolTip();  // Tooltip object for UI controls
 
 
-        public VirtualMatrix()
+        public VirtualMatrix(mainForm main)
         {
             InitializeComponent();
+
+            Main = main;
 
             DotSizeX = DotSizes[DotSizeIndex].Width;
             DotSizeY = DotSizes[DotSizeIndex].Height;
@@ -120,22 +124,35 @@ namespace iFlag
                                                     // settings from the persistent storage
         private void VirtualMatrix_Load(object sender, EventArgs e)
         {
-            ChangeShape(Settings.Default.DisplayDotShape);
-            ChangeSize(Settings.Default.DisplayDotSize);
-            if (!Settings.Default.DisplayWindowLocation.IsEmpty)
+            ChangeShape(Settings.Default.VirtualDotShape);
+            ChangeSize(Settings.Default.VirtualDotSize);
+            if (!Settings.Default.VirtualWindowLocation.IsEmpty)
             {
-                this.Location = Settings.Default.DisplayWindowLocation;
+                this.Location = Settings.Default.VirtualWindowLocation;
+            }
+            else
+            {
+                Reset();
             }
             this.Move += new System.EventHandler(this.SaveLocation);
+        }
+
+                                                    // Resets the virtual device window's position
+        public void Reset()
+        {
+            System.Drawing.Point screenCenter = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Location;
+            screenCenter.X += System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width / 2 - this.Width / 2;
+            screenCenter.Y += System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height / 2 - this.Height / 2;
+            this.Location = screenCenter;
         }
 
                                                     // Executes when leaving the app to persistently store
                                                     // window's settings
         private void VirtualMatrix_Close(object sender, FormClosingEventArgs e)
         {
-            Settings.Default.DisplayWindowLocation = this.Location;
-            Settings.Default.DisplayDotShape = DotShapeIndex;
-            Settings.Default.DisplayDotSize = DotSizeIndex;
+            Settings.Default.VirtualWindowLocation = this.Location;
+            Settings.Default.VirtualDotShape = DotShapeIndex;
+            Settings.Default.VirtualDotSize = DotSizeIndex;
             Settings.Default.Save();
         }
 
@@ -165,7 +182,7 @@ namespace iFlag
                                                     // Saves window location on window drag
         private void SaveLocation(object sender, EventArgs e)
         {
-            Settings.Default.DisplayWindowLocation = this.Location;
+            Settings.Default.VirtualWindowLocation = this.Location;
             Settings.Default.Save();
         }
 
@@ -282,22 +299,44 @@ namespace iFlag
         private void pageFlipTimer_Tick(object sender, EventArgs e)
         {
             SetPage(Page+++1 < Pages ? Page : 0);
+            bool show = false;
+            if (Main.virtualEnabledMenuItem.Checked)
+            {
+                if (Main.virtualAlwaysMenuItem.Checked)
+                {
+                    show = true;
+                }
+                else
+                {
+                    if (Main.sessionDetected)
+                    {
+                        show = Main.onTrack;
+                    }
+                    else
+                    {
+                        show = Main.demoMenuItem.Checked;
+                    }
+                }
+            }
+            this.Visible = show;
         }
 
                                                     // Mouse handler for shape change UI control
         private void ChangeShape(object sender, MouseEventArgs e)
         {
             ChangeShape(nextDotShapeIndex());
+            Main.virtualShapeMenuItem_Set(DotShapeIndex);
         }
 
                                                     // Mouse handler for size change UI control
         private void ChangeSize(object sender, MouseEventArgs e)
         {
             ChangeSize(nextDotSizeIndex());
+            Main.virtualSizeMenuItem_Set(DotSizeIndex);
         }
 
                                                     // Changes shape of all matrix dots
-        private void ChangeShape(int shape)
+        public void ChangeShape(int shape)
         {
             int nextShape = shape;
             int nextSize = nextDotSizeIndex();
@@ -313,7 +352,7 @@ namespace iFlag
 
                                                     // Changes size of all matrix dots
                                                     // and calls for overall matrix resize
-        private void ChangeSize(int size)
+        public void ChangeSize(int size)
         {
             DotSizeIndex = size;
             DotSizeX = DotSizes[DotSizeIndex].Width;

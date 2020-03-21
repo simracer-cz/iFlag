@@ -56,14 +56,20 @@
     <Setting Name="IncidentStyleMap" Type="System.String" Scope="User">
       <Value Profile="(Default)">exploded</Value>
     </Setting>
-    <Setting Name="DisplayWindowLocation" Type="System.Drawing.Point" Scope="User">
+    <Setting Name="VirtualWindowLocation" Type="System.Drawing.Point" Scope="User">
       <Value Profile="(Default)">0, 0</Value>
     </Setting>
-    <Setting Name="DisplayDotShape" Type="System.Int32" Scope="User">
+    <Setting Name="VirtualDotShape" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="DisplayDotSize" Type="System.Int32" Scope="User">
+    <Setting Name="VirtualDotSize" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="ShowVirtual" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="VirtualAlways" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>
