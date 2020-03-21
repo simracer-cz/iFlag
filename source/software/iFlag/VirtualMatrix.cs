@@ -209,12 +209,12 @@ namespace iFlag
                                                     // Method to pass matrix array to the virtual matrix
         public void SetMatrix(byte[, ,] matrix)
         {
-            Paint(matrix, false);
+            Render(matrix, false);
         }
 
                                                     // Cycles over every dot of the matrix array
                                                     // and if the dot differs (or `force`d) it gets painted
-        public void Paint(byte[,,] matrix, bool force)
+        public void Render(byte[,,] matrix, bool force)
         {
             for (int f = 0; f < 2; f++)
             {
@@ -329,7 +329,7 @@ namespace iFlag
             shapeToggle.BackgroundImage = new Bitmap(DotShapes[nextShape], DotSizes[DotSizeIndex]);
 
             SetSize();
-            Paint(Matrix, true);
+            Render(Matrix, true);
         }
 
                                                     // Returns an index of the next dot shape in the cycle
