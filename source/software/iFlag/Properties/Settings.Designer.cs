@@ -286,5 +286,17 @@ namespace iFlag.Properties {
                 this["ShowVirtual"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool VirtualAlways {
+            get {
+                return ((bool)(this["VirtualAlways"]));
+            }
+            set {
+                this["VirtualAlways"] = value;
+            }
+        }
     }
 }

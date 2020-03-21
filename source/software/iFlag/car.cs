@@ -12,6 +12,7 @@ namespace iFlag
         int carSurface;
         float speed;
         float kph = 1 / 3.600F;
+        public bool onTrack;
         bool onPitRoad;
         bool onPitExitRoad;
         bool onPitEntryRoad;
@@ -31,6 +32,7 @@ namespace iFlag
 
             carSurface = carsTrackSurface[carID];
 
+            onTrack = (bool)sdk.GetData("IsOnTrack");
             onPitRoad = (bool)sdk.GetData("OnPitRoad");
             onPitExitRoad = !onPitRoad && carSurface == irsdk_AproachingPits && carLapPct < 0.5;
             onPitEntryRoad = !onPitRoad && carSurface == irsdk_AproachingPits && carLapPct > 0.5;

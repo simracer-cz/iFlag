@@ -62,6 +62,7 @@
             this.lowBrightnessMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.virtualMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.virtualEnabledMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.virtualAlwaysMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.demoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alwaysOnTopMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsMenuSeparator = new System.Windows.Forms.ToolStripSeparator();
@@ -388,6 +389,7 @@
             // 
             this.virtualMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.virtualEnabledMenuItem,
+            this.virtualAlwaysMenuItem,
             this.virtualMenuItem.Name = "virtualMenuItem";
             this.virtualMenuItem.Size = new System.Drawing.Size(179, 22);
             this.virtualMenuItem.Text = "Virtual Device";
@@ -399,6 +401,14 @@
             this.virtualEnabledMenuItem.Size = new System.Drawing.Size(152, 22);
             this.virtualEnabledMenuItem.Text = "Enabled";
             this.virtualEnabledMenuItem.Click += new System.EventHandler(this.virtualEnabledMenuItem_Click);
+            // 
+            // virtualAlwaysMenuItem
+            // 
+            this.virtualAlwaysMenuItem.Name = "virtualAlwaysMenuItem";
+            this.virtualAlwaysMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.virtualAlwaysMenuItem.Text = "Always Visible";
+            this.virtualAlwaysMenuItem.ToolTipText = "Show either always OR when driving only (and in demo mode)";
+            this.virtualAlwaysMenuItem.Click += new System.EventHandler(this.virtualAlwaysMenuItem_Click);
             // demoMenuItem
             // 
             this.demoMenuItem.Checked = true;
@@ -694,7 +704,7 @@
         private System.Windows.Forms.Label simLight;
         private System.Windows.Forms.Timer updateTimer;
         private System.Windows.Forms.Timer demoTimer;
-        private System.Windows.Forms.ToolStripMenuItem demoMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem demoMenuItem;
         private System.Windows.Forms.ToolStripMenuItem connectorMenuItem;
         private System.Windows.Forms.ToolStripMenuItem connectorTopMenuItem;
         private System.Windows.Forms.ToolStripMenuItem connectorLeftMenuItem;
@@ -744,6 +754,7 @@
         private System.Windows.Forms.Button multiFlagMessageDismissButton;
         private System.Windows.Forms.ToolStripMenuItem virtualMenuItem;
         public System.Windows.Forms.ToolStripMenuItem virtualEnabledMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem virtualAlwaysMenuItem;
     }
 }
 

@@ -87,6 +87,7 @@ namespace iFlag
             this.repairsOverlayModuleMenuItem.Checked = Settings.Default.ShowRepairsOverlay;
             this.pitSpeedLimitModuleMenuItem.Checked = Settings.Default.ShowPitSpeedLimit;
             this.virtualEnabledMenuItem.Checked = Settings.Default.ShowVirtual;
+            this.virtualAlwaysMenuItem.Checked = Settings.Default.VirtualAlways;
 
             pitSpeedMap = Settings.Default.PitSpeedMap;
             switch (pitSpeedMap)
@@ -169,6 +170,7 @@ namespace iFlag
             Settings.Default.MatrixLuma = matrixLuma;
             Settings.Default.Updates = updatesLevel;
             Settings.Default.ShowVirtual = this.virtualEnabledMenuItem.Checked;
+            Settings.Default.VirtualAlways = this.virtualAlwaysMenuItem.Checked;
             Settings.Default.Save();
         }
 
@@ -412,13 +414,29 @@ namespace iFlag
             if (virtualEnabledMenuItem.Checked)
             {
                 virtualEnabledMenuItem.Checked = false;
+                virtualAlwaysMenuItem.Enabled = false;
             }
             else
             {
                 virtualEnabledMenuItem.Checked = true;
+                virtualAlwaysMenuItem.Enabled = true;
             }
 
             VDisplay.Visible = Settings.Default.ShowVirtual = virtualEnabledMenuItem.Checked;
+        }
+
+        private void virtualAlwaysMenuItem_Click(object sender, EventArgs e)
+        {
+            if (virtualAlwaysMenuItem.Checked)
+            {
+                virtualAlwaysMenuItem.Checked = false;
+            }
+            else
+            {
+                virtualAlwaysMenuItem.Checked = true;
+            }
+
+            Settings.Default.VirtualAlways = virtualAlwaysMenuItem.Checked;
         }
     }
 }
