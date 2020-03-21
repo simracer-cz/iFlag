@@ -67,6 +67,10 @@
             this.virtualSizeLargeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.virtualSizeMediumMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.virtualSizeSmallMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.virtualShapeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.virtualShapeRoundMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.virtualShapeSquareMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.virtualShapeDiamondMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.virtualResetMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.demoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alwaysOnTopMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -396,6 +400,7 @@
             this.virtualEnabledMenuItem,
             this.virtualAlwaysMenuItem,
             this.virtualSizeMenuItem,
+            this.virtualShapeMenuItem,
             this.virtualResetMenuItem});
             this.virtualMenuItem.Name = "virtualMenuItem";
             this.virtualMenuItem.Size = new System.Drawing.Size(179, 22);
@@ -450,6 +455,41 @@
             this.virtualSizeSmallMenuItem.Text = "Small";
             this.virtualSizeSmallMenuItem.ToolTipText = "Small virtual device (20px dot)";
             this.virtualSizeSmallMenuItem.Click += new System.EventHandler(this.virtualSizeMenuItem_Click);
+            // 
+            // virtualShapeMenuItem
+            // 
+            this.virtualShapeMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.virtualShapeRoundMenuItem,
+            this.virtualShapeSquareMenuItem,
+            this.virtualShapeDiamondMenuItem});
+            this.virtualShapeMenuItem.Name = "virtualShapeMenuItem";
+            this.virtualShapeMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.virtualShapeMenuItem.Text = "Dot Shape";
+            // 
+            // virtualShapeRoundMenuItem
+            // 
+            this.virtualShapeRoundMenuItem.Name = "virtualShapeRoundMenuItem";
+            this.virtualShapeRoundMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.virtualShapeRoundMenuItem.Text = "Round";
+            this.virtualShapeRoundMenuItem.ToolTipText = "Circle-shaped LEDs";
+            this.virtualShapeRoundMenuItem.Click += new System.EventHandler(this.virtualShapeMenuItem_Click);
+            // 
+            // virtualShapeSquareMenuItem
+            // 
+            this.virtualShapeSquareMenuItem.Name = "virtualShapeSquareMenuItem";
+            this.virtualShapeSquareMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.virtualShapeSquareMenuItem.Text = "Square";
+            this.virtualShapeSquareMenuItem.ToolTipText = "Square-shaped LEDs";
+            this.virtualShapeSquareMenuItem.Click += new System.EventHandler(this.virtualShapeMenuItem_Click);
+            // 
+            // virtualShapeDiamondMenuItem
+            // 
+            this.virtualShapeDiamondMenuItem.Name = "virtualShapeDiamondMenuItem";
+            this.virtualShapeDiamondMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.virtualShapeDiamondMenuItem.Text = "Diamond";
+            this.virtualShapeDiamondMenuItem.ToolTipText = "Diamond-shaped LEDs";
+            this.virtualShapeDiamondMenuItem.Click += new System.EventHandler(this.virtualShapeMenuItem_Click);
+            // 
             // virtualResetMenuItem
             // 
             this.virtualResetMenuItem.Name = "virtualResetMenuItem";
@@ -808,6 +848,10 @@
         public System.Windows.Forms.ToolStripMenuItem virtualSizeLargeMenuItem;
         public System.Windows.Forms.ToolStripMenuItem virtualSizeMediumMenuItem;
         public System.Windows.Forms.ToolStripMenuItem virtualSizeSmallMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem virtualShapeMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem virtualShapeRoundMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem virtualShapeSquareMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem virtualShapeDiamondMenuItem;
         private System.Windows.Forms.ToolStripMenuItem virtualResetMenuItem;
     }
 }

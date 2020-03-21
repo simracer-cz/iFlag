@@ -325,6 +325,7 @@ namespace iFlag
         private void ChangeShape(object sender, MouseEventArgs e)
         {
             ChangeShape(nextDotShapeIndex());
+            Main.virtualShapeMenuItem_Set(DotShapeIndex);
         }
 
                                                     // Mouse handler for size change UI control
@@ -335,7 +336,7 @@ namespace iFlag
         }
 
                                                     // Changes shape of all matrix dots
-        private void ChangeShape(int shape)
+        public void ChangeShape(int shape)
         {
             int nextShape = shape;
             int nextSize = nextDotSizeIndex();

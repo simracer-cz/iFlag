@@ -36,6 +36,7 @@ namespace iFlag
 
         public VirtualMatrix VDisplay;            // Instance of virtual on-screen device
         int virtualDotSize;                       // Current size of the dot
+        int virtualDotShape;                      // Current shape of the dot
 
         public mainForm()
         {
@@ -96,6 +97,14 @@ namespace iFlag
                 case 0: virtualSizeLargeMenuItem.Checked = true; break;
                 case 1: virtualSizeMediumMenuItem.Checked = true; break;
                 case 2: virtualSizeSmallMenuItem.Checked = true; break;
+            }
+
+            virtualDotShape = Settings.Default.VirtualDotShape;
+            switch (virtualDotShape)
+            {
+                case 0: virtualShapeRoundMenuItem.Checked = true; break;
+                case 1: virtualShapeSquareMenuItem.Checked = true; break;
+                case 2: virtualShapeDiamondMenuItem.Checked = true; break;
             }
 
             pitSpeedMap = Settings.Default.PitSpeedMap;
@@ -181,6 +190,7 @@ namespace iFlag
             Settings.Default.ShowVirtual = this.virtualEnabledMenuItem.Checked;
             Settings.Default.VirtualAlways = this.virtualAlwaysMenuItem.Checked;
             Settings.Default.VirtualDotSize = virtualDotSize;
+            Settings.Default.VirtualDotShape = virtualDotShape;
             Settings.Default.Save();
         }
 
@@ -426,6 +436,7 @@ namespace iFlag
                 virtualEnabledMenuItem.Checked = false;
                 virtualAlwaysMenuItem.Enabled = false;
                 virtualSizeMenuItem.Enabled = false;
+                virtualShapeMenuItem.Enabled = false;
                 virtualResetMenuItem.Enabled = false;
             }
             else
@@ -433,6 +444,7 @@ namespace iFlag
                 virtualEnabledMenuItem.Checked = true;
                 virtualAlwaysMenuItem.Enabled = true;
                 virtualSizeMenuItem.Enabled = true;
+                virtualShapeMenuItem.Enabled = true;
                 virtualResetMenuItem.Enabled = true;
             }
 
@@ -467,6 +479,36 @@ namespace iFlag
             }
 
             Settings.Default.VirtualDotSize = virtualDotSize = size;
+        }
+
+        private void virtualShapeMenuItem_Click(object sender, EventArgs e)
+        {
+            switch (((ToolStripMenuItem)sender).Name)
+            {
+                case "virtualShapeRoundMenuItem":         virtualDotShape = 0; break;
+                case "virtualShapeSquareMenuItem":        virtualDotShape = 1; break;
+                case "virtualShapeDiamondMenuItem":       virtualDotShape = 2; break;
+            }
+            virtualShapeMenuItem_Set(virtualDotShape);
+            VDisplay.ChangeShape(virtualDotShape);
+        }
+
+        public void virtualShapeMenuItem_Set(int shape)
+        {
+            virtualDotShape = shape;
+
+            virtualShapeRoundMenuItem.Checked = false;
+            virtualShapeSquareMenuItem.Checked = false;
+            virtualShapeDiamondMenuItem.Checked = false;
+
+            switch (shape)
+            {
+                case 0:    virtualShapeRoundMenuItem.Checked = true;   break;
+                case 1:    virtualShapeSquareMenuItem.Checked = true;  break;
+                case 2:    virtualShapeDiamondMenuItem.Checked = true; break;
+            }
+
+            Settings.Default.VirtualDotShape = virtualDotShape = shape;
         }
 
         private void virtualAlwaysMenuItem_Click(object sender, EventArgs e)
