@@ -34,7 +34,7 @@ namespace iFlag
 
         int processNo;                            // Number of the currently running order (1 to X)
 
-        public VirtualMatrix VDisplay;
+        public VirtualMatrix VDisplay;            // Instance of virtual on-screen device
 
         public mainForm()
         {
