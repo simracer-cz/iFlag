@@ -331,6 +331,7 @@ namespace iFlag
         private void ChangeSize(object sender, MouseEventArgs e)
         {
             ChangeSize(nextDotSizeIndex());
+            Main.virtualSizeMenuItem_Set(DotSizeIndex);
         }
 
                                                     // Changes shape of all matrix dots
@@ -350,7 +351,7 @@ namespace iFlag
 
                                                     // Changes size of all matrix dots
                                                     // and calls for overall matrix resize
-        private void ChangeSize(int size)
+        public void ChangeSize(int size)
         {
             DotSizeIndex = size;
             DotSizeX = DotSizes[DotSizeIndex].Width;

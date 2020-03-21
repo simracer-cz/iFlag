@@ -35,6 +35,7 @@ namespace iFlag
         int processNo;                            // Number of the currently running order (1 to X)
 
         public VirtualMatrix VDisplay;            // Instance of virtual on-screen device
+        int virtualDotSize;                       // Current size of the dot
 
         public mainForm()
         {
@@ -88,6 +89,14 @@ namespace iFlag
             this.pitSpeedLimitModuleMenuItem.Checked = Settings.Default.ShowPitSpeedLimit;
             this.virtualEnabledMenuItem.Checked = Settings.Default.ShowVirtual;
             this.virtualAlwaysMenuItem.Checked = Settings.Default.VirtualAlways;
+
+            virtualDotSize = Settings.Default.VirtualDotSize;
+            switch (virtualDotSize)
+            {
+                case 0: virtualSizeLargeMenuItem.Checked = true; break;
+                case 1: virtualSizeMediumMenuItem.Checked = true; break;
+                case 2: virtualSizeSmallMenuItem.Checked = true; break;
+            }
 
             pitSpeedMap = Settings.Default.PitSpeedMap;
             switch (pitSpeedMap)
@@ -171,6 +180,7 @@ namespace iFlag
             Settings.Default.Updates = updatesLevel;
             Settings.Default.ShowVirtual = this.virtualEnabledMenuItem.Checked;
             Settings.Default.VirtualAlways = this.virtualAlwaysMenuItem.Checked;
+            Settings.Default.VirtualDotSize = virtualDotSize;
             Settings.Default.Save();
         }
 
@@ -415,16 +425,48 @@ namespace iFlag
             {
                 virtualEnabledMenuItem.Checked = false;
                 virtualAlwaysMenuItem.Enabled = false;
+                virtualSizeMenuItem.Enabled = false;
                 virtualResetMenuItem.Enabled = false;
             }
             else
             {
                 virtualEnabledMenuItem.Checked = true;
                 virtualAlwaysMenuItem.Enabled = true;
+                virtualSizeMenuItem.Enabled = true;
                 virtualResetMenuItem.Enabled = true;
             }
 
             VDisplay.Visible = Settings.Default.ShowVirtual = virtualEnabledMenuItem.Checked;
+        }
+
+        private void virtualSizeMenuItem_Click(object sender, EventArgs e)
+        {
+            switch (((ToolStripMenuItem)sender).Name)
+            {
+                case "virtualSizeLargeMenuItem":         virtualDotSize = 0; break;
+                case "virtualSizeMediumMenuItem":        virtualDotSize = 1; break;
+                case "virtualSizeSmallMenuItem":         virtualDotSize = 2; break;
+            }
+            virtualSizeMenuItem_Set(virtualDotSize);
+            VDisplay.ChangeSize(virtualDotSize);
+        }
+
+        public void virtualSizeMenuItem_Set(int size)
+        {
+            virtualDotSize = size;
+
+            virtualSizeLargeMenuItem.Checked = false;
+            virtualSizeMediumMenuItem.Checked = false;
+            virtualSizeSmallMenuItem.Checked = false;
+
+            switch (size)
+            {
+                case 0:    virtualSizeLargeMenuItem.Checked = true;  break;
+                case 1:    virtualSizeMediumMenuItem.Checked = true; break;
+                case 2:    virtualSizeSmallMenuItem.Checked = true;  break;
+            }
+
+            Settings.Default.VirtualDotSize = virtualDotSize = size;
         }
 
         private void virtualAlwaysMenuItem_Click(object sender, EventArgs e)

@@ -63,6 +63,10 @@
             this.virtualMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.virtualEnabledMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.virtualAlwaysMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.virtualSizeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.virtualSizeLargeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.virtualSizeMediumMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.virtualSizeSmallMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.virtualResetMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.demoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alwaysOnTopMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -391,6 +395,7 @@
             this.virtualMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.virtualEnabledMenuItem,
             this.virtualAlwaysMenuItem,
+            this.virtualSizeMenuItem,
             this.virtualResetMenuItem});
             this.virtualMenuItem.Name = "virtualMenuItem";
             this.virtualMenuItem.Size = new System.Drawing.Size(179, 22);
@@ -411,6 +416,40 @@
             this.virtualAlwaysMenuItem.Text = "Always Visible";
             this.virtualAlwaysMenuItem.ToolTipText = "Show either always OR when driving only (and in demo mode)";
             this.virtualAlwaysMenuItem.Click += new System.EventHandler(this.virtualAlwaysMenuItem_Click);
+            // 
+            // virtualSizeMenuItem
+            // 
+            this.virtualSizeMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.virtualSizeLargeMenuItem,
+            this.virtualSizeMediumMenuItem,
+            this.virtualSizeSmallMenuItem});
+            this.virtualSizeMenuItem.Name = "virtualSizeMenuItem";
+            this.virtualSizeMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.virtualSizeMenuItem.Text = "Size";
+            // 
+            // virtualSizeLargeMenuItem
+            // 
+            this.virtualSizeLargeMenuItem.Name = "virtualSizeLargeMenuItem";
+            this.virtualSizeLargeMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.virtualSizeLargeMenuItem.Text = "Large";
+            this.virtualSizeLargeMenuItem.ToolTipText = "Large virtual device (30px dot)";
+            this.virtualSizeLargeMenuItem.Click += new System.EventHandler(this.virtualSizeMenuItem_Click);
+            // 
+            // virtualSizeMediumMenuItem
+            // 
+            this.virtualSizeMediumMenuItem.Name = "virtualSizeMediumMenuItem";
+            this.virtualSizeMediumMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.virtualSizeMediumMenuItem.Text = "Medium";
+            this.virtualSizeMediumMenuItem.ToolTipText = "Medium virtual device (24px dot)";
+            this.virtualSizeMediumMenuItem.Click += new System.EventHandler(this.virtualSizeMenuItem_Click);
+            // 
+            // virtualSizeSmallMenuItem
+            // 
+            this.virtualSizeSmallMenuItem.Name = "virtualSizeSmallMenuItem";
+            this.virtualSizeSmallMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.virtualSizeSmallMenuItem.Text = "Small";
+            this.virtualSizeSmallMenuItem.ToolTipText = "Small virtual device (20px dot)";
+            this.virtualSizeSmallMenuItem.Click += new System.EventHandler(this.virtualSizeMenuItem_Click);
             // virtualResetMenuItem
             // 
             this.virtualResetMenuItem.Name = "virtualResetMenuItem";
@@ -765,6 +804,10 @@
         private System.Windows.Forms.ToolStripMenuItem virtualMenuItem;
         public System.Windows.Forms.ToolStripMenuItem virtualEnabledMenuItem;
         public System.Windows.Forms.ToolStripMenuItem virtualAlwaysMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem virtualSizeMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem virtualSizeLargeMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem virtualSizeMediumMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem virtualSizeSmallMenuItem;
         private System.Windows.Forms.ToolStripMenuItem virtualResetMenuItem;
     }
 }
