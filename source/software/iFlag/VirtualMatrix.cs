@@ -9,6 +9,8 @@ namespace iFlag
 {
     public partial class VirtualMatrix : Form
     {
+        private mainForm Main;
+
         public Color[] COLORS = new Color[16]
         {
             Color.Black,            // 0x00 | black
@@ -74,9 +76,11 @@ namespace iFlag
         private ToolTip helperTip = new ToolTip();  // Tooltip object for UI controls
 
 
-        public VirtualMatrix()
+        public VirtualMatrix(mainForm main)
         {
             InitializeComponent();
+
+            Main = main;
 
             DotSizeX = DotSizes[DotSizeIndex].Width;
             DotSizeY = DotSizes[DotSizeIndex].Height;
