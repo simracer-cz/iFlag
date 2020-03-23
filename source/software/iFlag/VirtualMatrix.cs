@@ -118,14 +118,14 @@ namespace iFlag
 
                 PageFrames[f] = new Bitmap(Xs * DotSizeX, Ys * DotSizeY);
             }
+            ChangeShape(Settings.Default.VirtualDotShape);
+            ChangeSize(Settings.Default.VirtualDotSize);
         }
 
                                                     // Executes on load of the window to restore matrix
                                                     // settings from the persistent storage
         private void VirtualMatrix_Load(object sender, EventArgs e)
         {
-            ChangeShape(Settings.Default.VirtualDotShape);
-            ChangeSize(Settings.Default.VirtualDotSize);
             if (!Settings.Default.VirtualWindowLocation.IsEmpty)
             {
                 this.Location = Settings.Default.VirtualWindowLocation;
