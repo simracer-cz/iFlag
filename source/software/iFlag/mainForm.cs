@@ -11,12 +11,12 @@ namespace iFlag
     public partial class mainForm : Form
     {
         // Version
-        const string version = "v0.84";
+        const string version = "v0.85";
         const bool updatable = true;
 
         // Embedded firmware version
         const byte firmwareMajor = 0;             // Major version number of the firmware payload
-        const byte firmwareMinor = 22;            // Minor version number
+        const byte firmwareMinor = 21;            // Minor version number
 
                                                   // In case of special occasions releases,
                                                   // this is what holds the edition string,
