@@ -11,7 +11,7 @@ namespace iFlag
     public partial class mainForm : Form
     {
         // Version
-        const string version = "v0.85";
+        const string version = "v0.86";
         const bool updatable = true;
 
         // Embedded firmware version
