@@ -1,6 +1,7 @@
 Changelog
 =========
 
+v0.88 - Faster device connection and responses
 v0.87 - Demo mode after reconnect in session issue fixed
 v0.86 - Brightness persistence issue fixed
 v0.85 - Spotter mode enabled by default
