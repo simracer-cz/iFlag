@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v0.89 - In-pit signals suppressed after checkered
+v0.88 - Faster device connection and responses
+v0.87 - Demo mode after reconnect in session issue fixed
+v0.86 - Brightness persistence issue fixed
+v0.85 - Spotter mode enabled by default
 v0.84 - Corrected race start green timing on ovals
 v0.83 - New pit repairs signals module
 v0.82 - Improved incident overlay module
