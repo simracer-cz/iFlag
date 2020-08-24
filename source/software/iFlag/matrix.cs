@@ -137,9 +137,10 @@ namespace iFlag
         {
             SP_SendData(COMMAND_NOBLINK);
 
+            for (int multiply = 0; multiply < 3; multiply++)
             for (int frame = 0; frame < 2; frame++)
             {
-                COMMAND_FRAME[ 3 ] = Convert.ToByte( frame + 1 );
+                COMMAND_FRAME[ 3 ] = Convert.ToByte( frame + multiply * 2 + 1 );
                 SP_SendData(COMMAND_FRAME);
 
                 for (int y = 0; y < 8; y++)

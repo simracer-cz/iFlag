@@ -83,7 +83,7 @@ void setup()
     setupDevice();
 
     // Communications port
-    Serial.begin( 9600 );
+    Serial.begin( 38400 );
     Serial.println( "##### iFLAG v"+String(major)+"."+String(minor)+" Hello!" );
 
     // Color cycle the matrix to test out
