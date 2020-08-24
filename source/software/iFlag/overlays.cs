@@ -37,8 +37,6 @@ namespace iFlag
         {
             if (!this.spotterOverlayModuleMenuItem.Checked) return 0;
 
-            int carLeftRight = (int)sdk.GetData("CarLeftRight");
-
                  if (carLeftRight == SPOTTER_CAR_LEFT || carLeftRight == SPOTTER_CARS_LEFT) return overlay(if_spotterOverlay, "Left side!", WARN_L_OVERLAY, new byte[] { COLOR_BLACK, COLOR_PURPLE });
             else if (carLeftRight == SPOTTER_CAR_RIGHT || carLeftRight == SPOTTER_CARS_RIGHT) return overlay(if_spotterOverlay, "Right side!", WARN_R_OVERLAY, new byte[] { COLOR_BLACK, COLOR_PURPLE });
             else if (carLeftRight == SPOTTER_CARS_LEFT_RIGHT) return overlay(if_spotterOverlay, "Both sides!", WARN_LR_OVERLAY, new byte[] { COLOR_BLACK, COLOR_PURPLE });
@@ -49,8 +47,6 @@ namespace iFlag
         private int matchClosedPitsOverlay()
         {
             if (!this.closedPitsOverlayModuleMenuItem.Checked) return 0;
-
-            bool pitsOpen = (bool)sdk.GetData("PitsOpen");
 
             if (!pitsOpen)
             {
