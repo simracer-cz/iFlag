@@ -40,6 +40,7 @@
             this.modulesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flagsModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.spotterOverlayModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.proximityOverlayModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startLightsModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.incidentOverlayModuleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.incidentStyleMapMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -173,6 +174,7 @@
             this.modulesMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.flagsModuleMenuItem,
             this.spotterOverlayModuleMenuItem,
+            this.proximityOverlayModuleMenuItem,
             this.startLightsModuleMenuItem,
             this.incidentOverlayModuleMenuItem,
             this.pitExitBlueModuleMenuItem,
@@ -200,6 +202,14 @@
             this.spotterOverlayModuleMenuItem.Size = new System.Drawing.Size(153, 22);
             this.spotterOverlayModuleMenuItem.Text = "Spotter";
             this.spotterOverlayModuleMenuItem.ToolTipText = "Show spotter\'s traffic calls";
+            // 
+            // proximityOverlayModuleMenuItem
+            // 
+            this.proximityOverlayModuleMenuItem.CheckOnClick = true;
+            this.proximityOverlayModuleMenuItem.Name = "proximityOverlayModuleMenuItem";
+            this.proximityOverlayModuleMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.proximityOverlayModuleMenuItem.Text = "Proximity";
+            this.proximityOverlayModuleMenuItem.ToolTipText = "Show distance to car behind";
             // 
             // startLightsModuleMenuItem
             // 
@@ -693,6 +703,7 @@
         private System.Windows.Forms.ToolStripMenuItem flagsModuleMenuItem;
         private System.Windows.Forms.ToolStripMenuItem startLightsModuleMenuItem;
         private System.Windows.Forms.ToolStripMenuItem spotterOverlayModuleMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem proximityOverlayModuleMenuItem;
         private System.Windows.Forms.ToolStripMenuItem incidentOverlayModuleMenuItem;
         private System.Windows.Forms.ToolStripMenuItem incidentStyleMapMenuItem;
         private System.Windows.Forms.ToolStripMenuItem incidentStyleMapSmallMenuItem;

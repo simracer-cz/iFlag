@@ -75,6 +75,7 @@ namespace iFlag
             this.TopMost = this.alwaysOnTopMenuItem.Checked = Settings.Default.WindowTopMost;
             this.demoMenuItem.Checked = Settings.Default.DemoMode;
             this.spotterOverlayModuleMenuItem.Checked = Settings.Default.ShowSpotterOverlay;
+            this.proximityOverlayModuleMenuItem.Checked = Settings.Default.ShowProximityOverlay;
             this.startLightsModuleMenuItem.Checked = Settings.Default.ShowStartLights;
             this.incidentOverlayModuleMenuItem.Checked = Settings.Default.ShowIncidentOverlay;
             this.pitExitBlueModuleMenuItem.Checked = Settings.Default.ShowPitExitBlue;
@@ -151,6 +152,7 @@ namespace iFlag
             Settings.Default.WindowTopMost = this.TopMost;
             Settings.Default.DemoMode = this.demoMenuItem.Checked;
             Settings.Default.ShowSpotterOverlay = this.spotterOverlayModuleMenuItem.Checked;
+            Settings.Default.ShowProximityOverlay = this.proximityOverlayModuleMenuItem.Checked;
             Settings.Default.ShowStartLights = this.startLightsModuleMenuItem.Checked;
             Settings.Default.ShowIncidentOverlay = this.incidentOverlayModuleMenuItem.Checked;
             Settings.Default.ShowPitExitBlue = this.pitExitBlueModuleMenuItem.Checked;
