@@ -68,14 +68,16 @@ byte luma = 100;                    // 0-100 % Luminosity level
 unsigned int blinker;
 byte blink_speed= 0;
 
+byte frame = 0;                     // Currently displayed frame
+const int frames = 6;               // Total frames capacity of the animation
+
+
 // Software reset
 void ( *resetFunc ) ( void ) = 0;
 
 void setup() 
 {
-    // Setup the LED matrix
-    Colorduino.Init();
-    Colorduino.SetWhiteBal( balance );
+    setupDevice();
 
     // Communications port
     Serial.begin( 9600 );
@@ -102,7 +104,7 @@ void loop()
 
     // Blinking
     if ( blink_speed && !(blinker+= blink_speed) )
-        Colorduino.FlipPage();
+        advanceFrame();
 }
 
 void serialEvent(){
@@ -179,4 +181,37 @@ void serialCommand( byte command, byte value, byte extra )
         Serial.println( payload[ i ] );
 }
 
+
+
+
+
+
+// Advance to next buffer frame
+void advanceFrame()
+{
+    frame = frame++ > frames - 2 ? 0 : frame;
+    renderFrame();
+}
+
+// Device-specific proxies
+void setupDevice() { setupDevice_Colorduino(); }
+void renderFrame() { renderFrame_Colorduino(); }
+
+
+
+// -------------------------------------------------------------------------
+
+
+// Instruct Colorduino library to initialize the matrix
+void setupDevice_Colorduino()
+{
+    Colorduino.Init();
+    Colorduino.SetWhiteBal( balance );
+}
+
+// Instruct Colorduino library to render the current frame
+void renderFrame_Colorduino()
+{
+    Colorduino.FlipPage();
+}
 
