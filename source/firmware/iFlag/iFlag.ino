@@ -39,7 +39,7 @@ int dataI;
 int pinger;
 
 // Color palette
-byte colors[ 16 ][ 3 ]=
+byte colors[ 16 ][ 3 ] =
 {
     {   0,   0,   0 },   // 0x00 | black
     { 255, 255, 255 },   // 0x01 | white
@@ -66,7 +66,7 @@ byte balance[ 3 ] = { 36, 45, 63 }; // 0-63 RGB
 float luma = 1.0F;                  // 0.00-1.00 Luminosity % level 
 
 unsigned int blinker;
-byte blink_speed= 0;
+byte blink_speed = 0;
 
 byte frame = 0;                     // Currently displayed frame
 const int frames = 6;               // Total frames capacity of the animation
@@ -106,7 +106,8 @@ void loop()
         advanceFrame();
 }
 
-void serialEvent(){
+void serialEvent()
+{
     while ( Serial.available() && Serial.peek() != PACKET_BYTE ) Serial.read();
     if ( Serial.available() >= 8 && Serial.read() == PACKET_BYTE )
     {
@@ -117,12 +118,10 @@ void serialEvent(){
             dataI = dataX + dataY * 8;
 
             for ( int i = 0; i < 4; i++ )
-            {
                 setDot(
                     dataI + i,
                     Serial.read()            // (00-FE) four color pixels
                 );
-            }
         }
         else                        // Command
         {
