@@ -35,6 +35,7 @@ byte minor = 23;
 int dataX;
 int dataY;
 int dataP;
+int dataI;
 int pinger;
 
 // Color palette
@@ -111,19 +112,15 @@ void serialEvent(){
     {
         if ( Serial.peek() != COMMAND_BYTE ) // Stream
         {
-            dataX = Serial.read();          // (00-07) LED X
-            dataY = Serial.read();          // (00-07) LED Y
+            dataX = Serial.read();           // (00-07) LED X
+            dataY = Serial.read();           // (00-07) LED Y
+            dataI = dataX + dataY * 8;
 
             for ( int i = 0; i < 4; i++ )
             {
-                dataP = Serial.read();      // (00-FE) four color pixels
-
-                Colorduino.SetPixel(
-                    dataX + i,                           // X
-                    dataY,                               // Y
-                    luma * colors[ dataP ][ 0 ] / 100,   // R
-                    luma * colors[ dataP ][ 1 ] / 100,   // G
-                    luma * colors[ dataP ][ 2 ] / 100    // B
+                setDot(
+                    dataI + i,
+                    Serial.read()            // (00-FE) four color pixels
                 );
             }
         }
