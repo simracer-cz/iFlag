@@ -63,7 +63,7 @@ byte balance[ 3 ] = { 36, 45, 63 }; // 0-63 RGB
                                     // strength dominance due to physical custruction differences between all three
                                     // color chips in the matrix LED
 
-byte luma = 100;                    // 0-100 % Luminosity level 
+float luma = 1.0F;                  // 0.00-1.00 Luminosity % level 
 
 unsigned int blinker;
 byte blink_speed= 0;
@@ -156,7 +156,7 @@ void serialEvent(){
                     break;
 
                 case LUMA_COMMAND:
-                    luma = command[ 2 ];
+                    luma = command[ 2 ] / 100.0F;
                     break;
             }
         }
