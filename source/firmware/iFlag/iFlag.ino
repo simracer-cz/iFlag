@@ -35,7 +35,6 @@ byte minor = 23;
 int dataX;
 int dataY;
 int dataP;
-int dataF;
 int pinger;
 
 // Color palette
@@ -70,7 +69,10 @@ byte blink_speed= 0;
 
 byte frame = 0;                     // Currently displayed frame
 const int frames = 6;               // Total frames capacity of the animation
+const int dots = 8 * 8;             // Total number of dots (pixels) of the display
 
+// Frames dots buffer
+byte dot[ frames ][ dots ] = {{ 0 }};
 
 // Software reset
 void ( *resetFunc ) ( void ) = 0;
@@ -87,11 +89,7 @@ void setup()
     byte test[] = { 0x05, 0x06, 0x07, 0x01, 0x00 };
     for ( int i = 0; i < sizeof( test ); i++ )
     {
-        Colorduino.ColorFill(
-            colors[ test[i] ][ 0 ], // R
-            colors[ test[i] ][ 1 ], // G
-            colors[ test[i] ][ 2 ]  // B
-        );
+        testDots( test[i] );
         delay( 1000 );
     }
 } 
@@ -141,7 +139,7 @@ void serialEvent(){
             switch ( command[ 1 ] )
             {
                 case FRAME_COMMAND:
-                    dataF = command[ 2 ];
+                    frame = command[ 2 ] - 1;
                 case DRAW_COMMAND:
                     Colorduino.FlipPage();
                     break;
@@ -183,8 +181,21 @@ void serialCommand( byte command, byte value, byte extra )
 
 
 
+// Set a given dot (pixel) of a frame to a given color
+void setDot( byte px, byte color )
+{
+    dot[ frame ][ px ] = color;
+}
 
+// Set all dots of first frame to given color and render
+void testDots( byte color )
+{
+    frame = 0;
+    for ( int i = 0; i < dots; i++ )
+        setDot( i, color );
 
+    renderFrame();
+}
 
 // Advance to next buffer frame
 void advanceFrame()
@@ -212,6 +223,15 @@ void setupDevice_Colorduino()
 // Instruct Colorduino library to render the current frame
 void renderFrame_Colorduino()
 {
+    for ( int i = 0; i < dots; i++ )
+        Colorduino.SetPixel(
+            i % 8,                                // X
+            i / 8,                                // Y
+            luma * colors[ dot[frame][i] ][ 0 ],  // R
+            luma * colors[ dot[frame][i] ][ 1 ],  // G
+            luma * colors[ dot[frame][i] ][ 2 ]   // B
+        );
+
     Colorduino.FlipPage();
 }
 
