@@ -29,7 +29,6 @@ byte minor = 23;
 #define DRAW_COMMAND   0xA0
 #define BLINK_COMMAND  0xA1
 #define LUMA_COMMAND   0xA2
-#define FRAME_COMMAND  0xA3
 #define RESET_COMMAND  0xA9
 #define PING_COMMAND   0xB0
 int dataX;
@@ -134,10 +133,17 @@ void serialEvent()
             };
             switch ( command[ 1 ] )
             {
-                case FRAME_COMMAND:
-                    frame = command[ 2 ] - 1;
                 case DRAW_COMMAND:
-                    Colorduino.FlipPage();
+                    if (!command[ 2 ])
+                    {
+                        blinker = 0;
+                        frame = 0;
+                        renderFrame();
+                    }
+                    else
+                    {
+                        frame = command[ 2 ] - 1;
+                    }
                     break;
 
                 case BLINK_COMMAND:
