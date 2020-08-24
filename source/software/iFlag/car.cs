@@ -10,6 +10,7 @@ namespace iFlag
         bool[] carsOnPitRoad;
         int[] carsTrackSurface;
         int carSurface;
+        float carsProximity;
         float speed;
         float kph = 1 / 3.600F;
         bool onPitRoad;
@@ -34,7 +35,7 @@ namespace iFlag
             onPitRoad = (bool)sdk.GetData("OnPitRoad");
             onPitExitRoad = !onPitRoad && carSurface == irsdk_AproachingPits && carLapPct < 0.5;
             onPitEntryRoad = !onPitRoad && carSurface == irsdk_AproachingPits && carLapPct > 0.5;
-            inPitStall = (bool)sdk.GetData("PlayerCarInPitStall");
+            inPitStall = carSurface == irsdk_InPitStall;
 
             speed = (float)sdk.GetData("Speed");
         }
