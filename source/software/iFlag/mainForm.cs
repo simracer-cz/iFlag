@@ -16,7 +16,7 @@ namespace iFlag
 
         // Embedded firmware version
         const byte firmwareMajor = 0;             // Major version number of the firmware payload
-        const byte firmwareMinor = 22;            // Minor version number
+        const byte firmwareMinor = 23;            // Minor version number
 
                                                   // In case of special occasions releases,
                                                   // this is what holds the edition string,

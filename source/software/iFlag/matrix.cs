@@ -139,6 +139,9 @@ namespace iFlag
 
             for (int frame = 0; frame < 2; frame++)
             {
+                COMMAND_FRAME[ 3 ] = Convert.ToByte( frame + 1 );
+                SP_SendData(COMMAND_FRAME);
+
                 for (int y = 0; y < 8; y++)
                     for (int x = 0; x < 8; x += 4)
                         SP_SendData(new byte[8] {
@@ -153,7 +156,8 @@ namespace iFlag
                         });
                 SP_SendData(COMMAND_DRAW);
             }
-
+            COMMAND_FRAME[ 3 ] = 0;
+            SP_SendData(COMMAND_FRAME);
             SP_SendData(blinkSpeed ? COMMAND_BLINK_FAST : COMMAND_BLINK_SLOW);
 
             return true;

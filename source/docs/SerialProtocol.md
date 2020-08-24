@@ -52,6 +52,9 @@ Instructs the matrix to switch buffers timely based on the timer value given by 
 - __LUMA__ (`A2`)
 Luminosity setting adjustment. The matrix will always start on 100%, but by using the `LUMA` command matrix can be instructed to use different percentage. Value ranges from `0` (no brightness) to `100` (full brightness).
 
+- __FRAME__ (`A3`)
+Indicates to what animation sequence frame the subsequent data stream belongs to. Value ranges from `1` (first frame) to `6` (last frame).
+
 - __RESET__ (`A9`)
 Resets the board at once.
 
