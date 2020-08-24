@@ -32,6 +32,16 @@ namespace iFlag
 
             carSurface = carsTrackSurface[carID];
 
+            carsProximity = -0.1F;
+            for (var idx = 0; idx < carsLapPct.Length; idx++)
+            if (idx != carID && idx != paceCarID && carsTrackSurface[ idx ] > 1)
+            for (var i = 0; i <= 1; i++)
+            {
+                var distance = carsLapPct[ idx ] - carLapPct + i;
+                if (distance < 0) carsProximity = Math.Max(carsProximity, distance);
+            }
+            carsProximity *= trackLength; // to meters
+
             onPitRoad = (bool)sdk.GetData("OnPitRoad");
             onPitExitRoad = !onPitRoad && carSurface == irsdk_AproachingPits && carLapPct < 0.5;
             onPitEntryRoad = !onPitRoad && carSurface == irsdk_AproachingPits && carLapPct > 0.5;
