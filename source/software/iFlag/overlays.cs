@@ -48,18 +48,9 @@ namespace iFlag
         {
             if (!this.closedPitsOverlayModuleMenuItem.Checked) return 0;
 
-            if (!pitsOpen)
-            {
-                if (onPitEntryRoad)
-                {
-                    return overlay(if_closedPitsOverlay, "Entering Closed Pits!", CROSSED_FLAG, new byte[] { NO_COLOR, COLOR_RED, COLOR_BLACK, COLOR_RED, COLOR_RED });
-                }
-                else
-                {
-                    return overlay(if_closedPitsOverlay, "Pits Closed", CORNERS_OVERLAY, new byte[] { COLOR_RED, COLOR_RED, COLOR_RED, COLOR_RED });
-                }
-            }
-            return 0;
+                 if (!pitsOpen && onPitEntryRoad) return overlay(if_closedPitsOverlay, "Entering Closed Pits!", CROSSED_FLAG, new byte[] { NO_COLOR, COLOR_RED, COLOR_BLACK, COLOR_RED, COLOR_RED });
+            else if (!pitsOpen && !onPitEntryRoad) return overlay(if_closedPitsOverlay, "Pits Closed", CORNERS_OVERLAY, new byte[] { COLOR_RED, COLOR_RED, COLOR_RED, COLOR_RED });
+            else return 0;
         }
 
                                                   // Shows an incident overlay along with the incident count
