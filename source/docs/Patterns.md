@@ -59,6 +59,10 @@ Pattern Frames
 | `WARN_L`             | ![](patterns/warn-left.gif)           | Car(s) left spotter warning |
 | `WARN_R`             | ![](patterns/warn-right.gif)          | Car(s) right spotter warning |
 | `WARN_LR`            | ![](patterns/warn-left-right.gif)     | Cars left abd right spotter warning |
+| `WARN_P_LOW`         | ![](patterns/proximity-low.gif)       | Car(s) behind |
+| `WARN_P_MEDIUM`      | ![](patterns/proximity-med.gif)       | Car(s) close behind |
+| `WARN_P_HIGH`        | ![](patterns/proximity-high.gif)      | Car(s) very close behind |
+| `WARN_P_OVERLAP`     | ![](patterns/proximity-over.gif)      | Car(s) overlap behind |
 | `WRENCH`             | ![](patterns/wrench.gif)              | Repairs progress |
 
 

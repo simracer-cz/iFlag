@@ -60,6 +60,16 @@ These can be enabled or disabled in _iFLAG_ options menu.
 | ![](signals/warn-left-right.gif) | + Cars left and right! | Spotter warning about cars with overlap on both sides of the vehicle | `WARN_LR` |
 
 
+### Proximity Overlay
+
+| Visual                           | Signal   | Description | Flag primitive |
+| -------------------------------- | -------- | ----------- | -------------- |
+| ![](signals/proximity-low.gif)   | + Car behind | Approximately 4 car lengths gap to the car behind | `WARN_P_LOW` |
+| ![](signals/proximity-med.gif)   | + Car close behind | Approximately 2 car lengths gap to the car behind | `WARN_P_MEDIUM` |
+| ![](signals/proximity-high.gif)  | + Car very close behind! | Approximately 1 car length gap to the car behind | `WARN_P_HIGH` |
+| ![](signals/proximity-over.gif)  | + Car overlap behind! | Overlap with car behind. Until you clear the overtaken car or it gets ahead. | `WARN_P_OVERLAP` |
+
+
 ### Incident Overlay
 
 | Visual                           | Signal   | Description | Flag primitive |

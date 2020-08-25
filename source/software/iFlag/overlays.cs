@@ -39,7 +39,7 @@ namespace iFlag
         {
             if (!this.proximityOverlayModuleMenuItem.Checked) return 0;
             
-                 if (carsProximity > -5) return overlay(if_proximityOverlay, "Car overlay behind!", WARN_P_OVERLAY_OVERLAY, new byte[] { COLOR_BLACK, COLOR_PURPLE, COLOR_DIM_PURPLE });
+                 if (carsProximity > -5) return overlay(if_proximityOverlay, "Car overlap behind!", WARN_P_OVERLAP_OVERLAY, new byte[] { COLOR_BLACK, COLOR_PURPLE, COLOR_DIM_PURPLE });
             else if (carsProximity > -10) return overlay(if_proximityOverlay, "Car very close behind!", WARN_P_HIGH_OVERLAY, new byte[] { COLOR_BLACK, COLOR_PURPLE, COLOR_DIM_PURPLE });
             else if (carsProximity > -15) return overlay(if_proximityOverlay, "Car close behind", WARN_P_MEDIUM_OVERLAY, new byte[] { COLOR_BLACK, COLOR_PURPLE, COLOR_DIM_PURPLE });
             else if (carsProximity > -25) return overlay(if_proximityOverlay, "Car behind", WARN_P_LOW_OVERLAY, new byte[] { COLOR_BLACK, COLOR_PURPLE, COLOR_DIM_PURPLE });
